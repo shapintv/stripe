@@ -12,6 +12,7 @@ namespace FAPI\Stripe\Api;
 use FAPI\Stripe\Exception;
 use FAPI\Stripe\Exception\InvalidArgumentException;
 use FAPI\Stripe\Model\Balance\Balance as BalanceModel;
+use FAPI\Stripe\Model\Balance\BalanceTransaction;
 use Psr\Http\Message\ResponseInterface;
 
 final class Balance extends HttpApi
@@ -35,25 +36,20 @@ final class Balance extends HttpApi
     }
 
     /**
-     * @param array $params
-     *
-     * @return Total|ResponseInterface
-     *
      * @throws Exception
      */
-    public function total(array $params = [])
+    public function getBalanceTransaction(string $id): BalanceTransaction
     {
-        $response = $this->httpGet('/v1/stats', $params);
+        $response = $this->httpGet("/v1/balance/history/$id");
 
         if (!$this->hydrator) {
             return $response;
         }
 
-        // Use any valid status code here
         if ($response->getStatusCode() !== 200) {
             $this->handleErrors($response);
         }
 
-        return $this->hydrator->hydrate($response, Total::class);
+        return $this->hydrator->hydrate($response, BalanceTransaction::class);
     }
 }
