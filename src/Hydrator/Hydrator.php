@@ -5,7 +5,7 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace FAPI\Boilerplate\Hydrator;
+namespace FAPI\Stripe\Hydrator;
 
 use Psr\Http\Message\ResponseInterface;
 

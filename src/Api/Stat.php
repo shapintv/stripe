@@ -7,17 +7,14 @@ declare(strict_types=1);
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace FAPI\Boilerplate\Api;
+namespace FAPI\Stripe\Api;
 
-use FAPI\Boilerplate\Exception;
-use FAPI\Boilerplate\Exception\InvalidArgumentException;
-use FAPI\Boilerplate\Model\Stat\Stat as StatModel;
-use FAPI\Boilerplate\Model\Stat\Total;
+use FAPI\Stripe\Exception;
+use FAPI\Stripe\Exception\InvalidArgumentException;
+use FAPI\Stripe\Model\Stat\Stat as StatModel;
+use FAPI\Stripe\Model\Stat\Total;
 use Psr\Http\Message\ResponseInterface;
 
-/**
- * @author Tobias Nyholm <tobias.nyholm@gmail.com>
- */
 final class Stat extends HttpApi
 {
     /**

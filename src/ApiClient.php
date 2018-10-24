@@ -7,17 +7,14 @@ declare(strict_types=1);
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace FAPI\Boilerplate;
+namespace FAPI\Stripe;
 
-use FAPI\Boilerplate\Api\Stat;
-use FAPI\Boilerplate\Api\Tweet;
-use FAPI\Boilerplate\Hydrator\ModelHydrator;
-use FAPI\Boilerplate\Hydrator\Hydrator;
+use FAPI\Stripe\Api\Stat;
+use FAPI\Stripe\Api\Tweet;
+use FAPI\Stripe\Hydrator\ModelHydrator;
+use FAPI\Stripe\Hydrator\Hydrator;
 use Http\Client\HttpClient;
 
-/**
- * @author Tobias Nyholm <tobias.nyholm@gmail.com>
- */
 final class ApiClient
 {
     /**

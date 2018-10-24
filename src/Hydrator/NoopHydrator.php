@@ -7,14 +7,12 @@ declare(strict_types=1);
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace FAPI\Boilerplate\Hydrator;
+namespace FAPI\Stripe\Hydrator;
 
 use Psr\Http\Message\ResponseInterface;
 
 /**
  * Do not hydrate to any object at all.
- *
- * @author Tobias Nyholm <tobias.nyholm@gmail.com>
  */
 final class NoopHydrator implements Hydrator
 {

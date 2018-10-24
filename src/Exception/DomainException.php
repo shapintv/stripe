@@ -5,9 +5,9 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace FAPI\Boilerplate\Exception;
+namespace FAPI\Stripe\Exception;
 
-use FAPI\Boilerplate\Exception;
+use FAPI\Stripe\Exception;
 
 /**
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>

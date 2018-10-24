@@ -7,15 +7,13 @@ declare(strict_types=1);
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace FAPI\Boilerplate\Hydrator;
+namespace FAPI\Stripe\Hydrator;
 
-use FAPI\Boilerplate\Exception\HydrationException;
+use FAPI\Stripe\Exception\HydrationException;
 use Psr\Http\Message\ResponseInterface;
 
 /**
  * Hydrate an HTTP response to array.
- *
- * @author Tobias Nyholm <tobias.nyholm@gmail.com>
  */
 final class ArrayHydrator implements Hydrator
 {

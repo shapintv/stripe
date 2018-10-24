@@ -7,7 +7,7 @@ declare(strict_types=1);
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace FAPI\Boilerplate;
+namespace FAPI\Stripe;
 
 use Http\Client\HttpClient;
 use Http\Client\Common\PluginClient;
@@ -19,8 +19,6 @@ use Http\Client\Common\Plugin;
 
 /**
  * Configure an HTTP client.
- *
- * @author Tobias Nyholm <tobias.nyholm@gmail.com>
  *
  * @internal This class should not be used outside of the API Client, it is not part of the BC promise.
  */
@@ -75,7 +73,7 @@ final class HttpClientConfigurator
 
         $plugins[] = new Plugin\AddHostPlugin($this->uriFactory->createUri($this->endpoint));
         $plugins[] = new Plugin\HeaderDefaultsPlugin([
-            'User-Agent' => 'FriendsOfApi/boilerplate (https://github.com/FriendsOfApi/boilerplate)',
+            'User-Agent' => 'FriendsOfApi/Stripe (https://github.com/FriendsOfApi/Stripe)',
         ]);
 
         if (null !== $this->apiKey) {

@@ -7,19 +7,16 @@ declare(strict_types=1);
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace FAPI\Boilerplate\Api;
+namespace FAPI\Stripe\Api;
 
-use FAPI\Boilerplate\Exception\Domain as DomainExceptions;
-use FAPI\Boilerplate\Exception\DomainException;
-use FAPI\Boilerplate\Hydrator\NoopHydrator;
+use FAPI\Stripe\Exception\Domain as DomainExceptions;
+use FAPI\Stripe\Exception\DomainException;
+use FAPI\Stripe\Hydrator\NoopHydrator;
 use Http\Client\HttpClient;
-use FAPI\Boilerplate\Hydrator\Hydrator;
-use FAPI\Boilerplate\RequestBuilder;
+use FAPI\Stripe\Hydrator\Hydrator;
+use FAPI\Stripe\RequestBuilder;
 use Psr\Http\Message\ResponseInterface;
 
-/**
- * @author Tobias Nyholm <tobias.nyholm@gmail.com>
- */
 abstract class HttpApi
 {
     /**

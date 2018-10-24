@@ -5,11 +5,8 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace FAPI\Boilerplate\Model;
+namespace FAPI\Stripe\Model;
 
-/**
- * @author Tobias Nyholm <tobias.nyholm@gmail.com>
- */
 interface CreatableFromArray
 {
     /**

@@ -7,7 +7,7 @@ declare(strict_types=1);
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace FAPI\Boilerplate;
+namespace FAPI\Stripe;
 
 use Http\Discovery\MessageFactoryDiscovery;
 use Http\Message\MultipartStream\MultipartStreamBuilder;
@@ -15,8 +15,6 @@ use Http\Message\RequestFactory;
 use Psr\Http\Message\RequestInterface;
 
 /**
- * @author Tobias Nyholm <tobias.nyholm@gmail.com>
- *
  * @internal This class should not be used outside of the API Client, it is not part of the BC promise.
  */
 final class RequestBuilder

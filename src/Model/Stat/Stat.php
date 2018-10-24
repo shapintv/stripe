@@ -7,13 +7,10 @@ declare(strict_types=1);
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace FAPI\Boilerplate\Model\Stat;
+namespace FAPI\Stripe\Model\Stat;
 
-use FAPI\Boilerplate\Model\CreatableFromArray;
+use FAPI\Stripe\Model\CreatableFromArray;
 
-/**
- * @author Tobias Nyholm <tobias.nyholm@gmail.com>
- */
 final class Stat implements CreatableFromArray
 {
     /**
