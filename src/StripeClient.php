@@ -9,13 +9,12 @@ declare(strict_types=1);
 
 namespace FAPI\Stripe;
 
-use FAPI\Stripe\Api\Stat;
-use FAPI\Stripe\Api\Tweet;
+use FAPI\Stripe\Api;
 use FAPI\Stripe\Hydrator\ModelHydrator;
 use FAPI\Stripe\Hydrator\Hydrator;
 use Http\Client\HttpClient;
 
-final class ApiClient
+final class StripeClient
 {
     /**
      * @var HttpClient
@@ -35,10 +34,6 @@ final class ApiClient
     /**
      * The constructor accepts already configured HTTP clients.
      * Use the configure method to pass a configuration to the Client and create an HTTP Client.
-     *
-     * @param HttpClient          $httpClient
-     * @param Hydrator|null       $hydrator
-     * @param RequestBuilder|null $requestBuilder
      */
     public function __construct(
         HttpClient $httpClient,
@@ -50,13 +45,6 @@ final class ApiClient
         $this->requestBuilder = $requestBuilder ?: new RequestBuilder();
     }
 
-    /**
-     * @param HttpClientConfigurator $httpClientConfigurator
-     * @param Hydrator|null          $hydrator
-     * @param RequestBuilder|null    $requestBuilder
-     *
-     * @return ApiClient
-     */
     public static function configure(
         HttpClientConfigurator $httpClientConfigurator,
         Hydrator $hydrator = null,
@@ -67,31 +55,15 @@ final class ApiClient
         return new self($httpClient, $hydrator, $requestBuilder);
     }
 
-    /**
-     * @param string $apiKey
-     *
-     * @return ApiClient
-     */
-    public static function create(string $apiKey): ApiClient
+    public static function create(string $apiKey): self
     {
         $httpClientConfigurator = (new HttpClientConfigurator())->setApiKey($apiKey);
 
         return self::configure($httpClientConfigurator);
     }
 
-    /**
-     * @return Api\Tweet
-     */
-    public function tweets(): Tweet
+    public function balances(): Api\Balance
     {
-        return new Api\Tweet($this->httpClient, $this->hydrator, $this->requestBuilder);
-    }
-
-    /**
-     * @return Api\Stat
-     */
-    public function stats(): Stat
-    {
-        return new Api\Stat($this->httpClient, $this->hydrator, $this->requestBuilder);
+        return new Api\Balance($this->httpClient, $this->hydrator, $this->requestBuilder);
     }
 }

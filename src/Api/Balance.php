@@ -11,38 +11,27 @@ namespace FAPI\Stripe\Api;
 
 use FAPI\Stripe\Exception;
 use FAPI\Stripe\Exception\InvalidArgumentException;
-use FAPI\Stripe\Model\Stat\Stat as StatModel;
-use FAPI\Stripe\Model\Stat\Total;
+use FAPI\Stripe\Model\Balance\Balance as BalanceModel;
 use Psr\Http\Message\ResponseInterface;
 
-final class Stat extends HttpApi
+final class Balance extends HttpApi
 {
     /**
-     * @param string $username
-     * @param array  $params
-     *
-     * @return StatModel|ResponseInterface
-     *
      * @throws Exception
      */
-    public function get(string $username, array $params = [])
+    public function get(): BalanceModel
     {
-        if (empty($username)) {
-            throw new InvalidArgumentException('Username cannot be empty');
-        }
-
-        $response = $this->httpGet(sprintf('/v1/stats/%s', rawurlencode($username)), $params);
+        $response = $this->httpGet('/v1/balance');
 
         if (!$this->hydrator) {
             return $response;
         }
 
-        // Use any valid status code here
         if ($response->getStatusCode() !== 200) {
             $this->handleErrors($response);
         }
 
-        return $this->hydrator->hydrate($response, StatModel::class);
+        return $this->hydrator->hydrate($response, BalanceModel::class);
     }
 
     /**
