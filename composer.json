@@ -1,0 +1,41 @@
+{
+    "name": "friendsofapi/stripe",
+    "description": "PHP client for Stripe API",
+    "license": "MIT",
+    "keywords": ["api", "stripe"],
+    "authors": [
+        {
+            "name": "Olivier Dolbeaua",
+            "email": "olivier@bbnt.me"
+        }
+    ],
+    "require": {
+        "php": "^7.0",
+        "php-http/httplug": "^1.0",
+        "php-http/multipart-stream-builder": "^1.0",
+        "php-http/client-common": "^1.1",
+        "php-http/discovery": "^1.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.4",
+        "php-http/message-factory": "^1.0",
+        "php-http/curl-client": "^1.6",
+        "php-http/message": "^1.0",
+        "guzzlehttp/psr7": "^1.3",
+        "nyholm/nsa": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "FAPI\\Stripe\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "FAPI\\Stripe\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-ci": "vendor/bin/phpunit --coverage-text --coverage-clover=build/coverage.xml"
+    }
+}
