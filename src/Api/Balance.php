@@ -13,6 +13,7 @@ use FAPI\Stripe\Exception;
 use FAPI\Stripe\Exception\InvalidArgumentException;
 use FAPI\Stripe\Model\Balance\Balance as BalanceModel;
 use FAPI\Stripe\Model\Balance\BalanceTransaction;
+use FAPI\Stripe\Model\Balance\BalanceTransactionCollection;
 use Psr\Http\Message\ResponseInterface;
 
 final class Balance extends HttpApi
@@ -20,7 +21,7 @@ final class Balance extends HttpApi
     /**
      * @throws Exception
      */
-    public function get(): BalanceModel
+    public function get()
     {
         $response = $this->httpGet('/v1/balance');
 
@@ -38,7 +39,7 @@ final class Balance extends HttpApi
     /**
      * @throws Exception
      */
-    public function getBalanceTransaction(string $id): BalanceTransaction
+    public function getBalanceTransaction(string $id)
     {
         $response = $this->httpGet("/v1/balance/history/$id");
 
@@ -51,5 +52,23 @@ final class Balance extends HttpApi
         }
 
         return $this->hydrator->hydrate($response, BalanceTransaction::class);
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function getBalanceTransactions(array $params = [])
+    {
+        $response = $this->httpGet('/v1/balance/history'.http_build_query($params));
+
+        if (!$this->hydrator) {
+            return $response;
+        }
+
+        if ($response->getStatusCode() !== 200) {
+            $this->handleErrors($response);
+        }
+
+        return $this->hydrator->hydrate($response, BalanceTransactionCollection::class);
     }
 }

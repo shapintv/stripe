@@ -7,7 +7,7 @@
 
 namespace FAPI\Stripe\Model;
 
-final class Collection extends \ArrayObject
+class Collection extends \ArrayObject
 {
     private $elements;
     private $hasMore;

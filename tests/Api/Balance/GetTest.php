@@ -53,28 +53,4 @@ final class GetTest extends ApiTestCase
         $this->assertSame('0', $balance->getPending()[0]->getAmount()->getAmount());
         $this->assertSame('USD', (string) $balance->getPending()[0]->getAmount()->getCurrency());
     }
-
-    public function testGetBalanceTransaction()
-    {
-        $id = 'txn_1DMF8jIpafQncvOM81SXEPbG';
-
-        $balanceTransaction = $this->balanceApi->getBalanceTransaction($id);
-
-        $this->assertInstanceOf(BalanceTransaction::class, $balanceTransaction);
-        $this->assertSame($id, $balanceTransaction->getId());
-        $this->assertInstanceOf(Money::class, $balanceTransaction->getAmount());
-        $this->assertSame('100', $balanceTransaction->getAmount()->getAmount());
-        $this->assertSame('USD', (string) $balanceTransaction->getAmount()->getCurrency());
-        $this->assertInstanceOf(\DateTimeImmutable::class, $balanceTransaction->getAvailableOn());
-        $this->assertSame('My First Test Charge (created for API docs)', $balanceTransaction->getDescription());
-        $this->assertNull($balanceTransaction->getExchangeRate());
-        $this->assertInstanceOf(Money::class, $balanceTransaction->getFee());
-        $this->assertSame('0', $balanceTransaction->getFee()->getAmount());
-        $this->assertSame('USD', (string) $balanceTransaction->getFee()->getCurrency());
-        $this->assertCount(0, $balanceTransaction->getFeeDetails());
-        $this->assertSame('ch_1DMGYDG873roFXQAd5iIC0eO', $balanceTransaction->getSource());
-        $this->assertSame('available', $balanceTransaction->getStatus());
-        $this->assertSame('charge', $balanceTransaction->getType());
-        $this->assertInstanceOf(\DateTimeImmutable::class, $balanceTransaction->getCreatedAt());
-    }
 }
