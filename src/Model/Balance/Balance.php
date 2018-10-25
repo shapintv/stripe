@@ -31,12 +31,8 @@ final class Balance implements CreatableFromArray
      */
     private $pending;
 
-    private function __construct(array $available, array $connectReserved, array $pending, bool $live)
+    private function __construct()
     {
-        $this->available = $available;
-        $this->connectReserved = $connectReserved;
-        $this->pending = $pending;
-        $this->live = $live;
     }
 
     public static function createFromArray(array $data): self
@@ -56,7 +52,13 @@ final class Balance implements CreatableFromArray
             $pending[] = BalancePart::createFromArray($part);
         }
 
-        return new self($available, $connectReserved, $pending, (bool) $data['livemode']);
+        $model = new self();
+        $model->available = $available;
+        $model->connectReserved = $connectReserved;
+        $model->pending = $pending;
+        $model->live = (bool) $data['livemode'];
+
+        return $model;
     }
 
     public function getAvailable(): array

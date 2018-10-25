@@ -75,32 +75,7 @@ final class BalanceTransaction implements CreatableFromArray
      */
     private $createdAt;
 
-    private function __construct(
-        string $id,
-        Money $amount,
-        \DateTimeImmutable $availableOn,
-        ?string $description,
-        ?float $exchangeRate,
-        Money $fee,
-        array $feeDetails,
-        Money $net,
-        string $source,
-        string $status,
-        string $type,
-        \DateTimeImmutable $createdAt
-    ) {
-        $this->id = $id;
-        $this->amount = $amount;
-        $this->availableOn = $availableOn;
-        $this->description = $description;
-        $this->exchangeRate = $exchangeRate;
-        $this->fee = $fee;
-        $this->feeDetails = $feeDetails;
-        $this->net = $net;
-        $this->source = $source;
-        $this->status = $status;
-        $this->type = $type;
-        $this->createdAt = $createdAt;
+    private function __construct() {
     }
 
     public static function createFromArray(array $data): self
@@ -112,20 +87,21 @@ final class BalanceTransaction implements CreatableFromArray
             $feeDetails[] = FeeDetails::createFromArray($feeDetail);
         }
 
-        return new self(
-            $data['id'],
-            new Money($data['amount'], $currency),
-            new \DateTimeImmutable('@'.$data['available_on']),
-            $data['description'],
-            $data['exchange_rate'],
-            new Money($data['fee'], $currency),
-            $feeDetails,
-            new Money($data['net'], $currency),
-            $data['source'],
-            $data['status'],
-            $data['type'],
-            new \DateTimeImmutable('@'.$data['created'])
-        );
+        $model = new self();
+        $model->id = $data['id'];
+        $model->amount = new Money($data['amount'], $currency);
+        $model->availableOn = new \DateTimeImmutable('@'.$data['available_on']);
+        $model->description = $data['description'];
+        $model->exchangeRate = $data['exchange_rate'];
+        $model->fee = new Money($data['fee'], $currency);
+        $model->feeDetails = $feeDetails;
+        $model->net = new Money($data['net'], $currency);
+        $model->source = $data['source'];
+        $model->status = $data['status'];
+        $model->type = $data['type'];
+        $model->createdAt = new \DateTimeImmutable('@'.$data['created']);
+
+        return $model;
     }
 
     public function getId(): string

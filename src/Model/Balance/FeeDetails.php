@@ -35,26 +35,18 @@ final class FeeDetails implements CreatableFromArray
      */
     private $type;
 
-    private function __construct(
-        Money $amount,
-        ?string $application,
-        ?string $description,
-        string $type
-    ) {
-        $this->amount = $amount;
-        $this->application = $application;
-        $this->description = $description;
-        $this->type = $type;
+    private function __construct() {
     }
 
     public static function createFromArray(array $data): self
     {
-        return new self(
-            new Money($data['amount'], new Currency($data['currency'])),
-            $data['application'],
-            $data['description'],
-            $data['type']
-        );
+        $model = new self();
+        $model->amount = new Money($data['amount'], new Currency($data['currency']));
+        $model->application = $data['application'];
+        $model->description = $data['description'];
+        $model->type = $data['type'];
+
+        return $model;
     }
 
     public function getAmount(): Money

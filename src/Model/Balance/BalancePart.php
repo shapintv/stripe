@@ -25,18 +25,17 @@ final class BalancePart implements CreatableFromArray
      */
     private $sourceTypes;
 
-    private function __construct(Money $amount, array $sourceTypes = [])
+    private function __construct()
     {
-        $this->amount = $amount;
-        $this->sourceTypes= $sourceTypes;
     }
 
     public static function createFromArray(array $data): self
     {
-        return new self(
-            new Money($data['amount'], new Currency(strtoupper($data['currency']))),
-            isset($data['source_types']) ? $data['source_types'] : []
-        );
+        $model = new self();
+        $model->amount = new Money($data['amount'], new Currency(strtoupper($data['currency'])));
+        $model->sourceTypes = $data['source_types'] ?? [];
+
+        return $model;
     }
 
     public function getAmount(): Money
