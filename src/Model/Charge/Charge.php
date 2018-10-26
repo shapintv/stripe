@@ -17,6 +17,7 @@ use Shapin\Stripe\Model\LivemodeTrait;
 use Shapin\Stripe\Model\MetadataTrait;
 use Shapin\Stripe\Model\MetadataCollection;
 use Shapin\Stripe\Model\Refund\RefundCollection;
+use Shapin\Stripe\Model\Source\Source;
 use Money\Currency;
 use Money\Money;
 
@@ -190,6 +191,8 @@ final class Charge implements CreatableFromArray, ContainsMetadata
                 $source = Card::createFromArray($source);
             } elseif ('account' === $source['object']) {
                 $source = Account::createFromArray($source);
+            } elseif ('source' === $source['object']) {
+                $source = Source::createFromArray($source);
             }
         }
 

@@ -7,7 +7,7 @@ declare(strict_types=1);
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace Shapin\Stripe\Model\Balance;
+namespace Shapin\Stripe\Model\Charge;
 
 use Shapin\Stripe\Model\CreatableFromArray;
 use Money\Currency;
@@ -73,7 +73,7 @@ final class Outcome implements CreatableFromArray
         return $this->networkStatus;
     }
 
-    public function getReason(): string
+    public function getReason(): ?string
     {
         return $this->reason;
     }

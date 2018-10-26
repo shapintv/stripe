@@ -91,4 +91,9 @@ final class StripeClient
     {
         return new Api\Account($this->httpClient, $this->hydrator, $this->requestBuilder);
     }
+
+    public function sources(): Api\Source
+    {
+        return new Api\Source($this->httpClient, $this->hydrator, $this->requestBuilder);
+    }
 }
