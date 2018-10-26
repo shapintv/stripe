@@ -90,7 +90,7 @@ final class Refund implements CreatableFromArray, ContainsMetadata
         $model->metadata = MetadataCollection::createFromArray($data['metadata']);
         $model->reason = $data['reason'];
         $model->receiptNumber = $data['receipt_number'];
-        $model->sourceTransferReversal = $data['source_transfer_reversal'];
+        $model->sourceTransferReversal = $data['source_transfer_reversal'] ?? null;
         $model->status = $data['status'];
 
         return $model;
