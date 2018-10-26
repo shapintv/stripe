@@ -59,7 +59,12 @@ final class Balance extends HttpApi
      */
     public function getBalanceTransactions(array $params = [])
     {
-        $response = $this->httpGet('/v1/balance/history'.http_build_query($params));
+        $paramsString = '';
+        if (0 < count($params)) {
+            $paramsString = '?'.http_build_query($params);
+        }
+
+        $response = $this->httpGet("/v1/balance/history$paramsString");
 
         if (!$this->hydrator) {
             return $response;
