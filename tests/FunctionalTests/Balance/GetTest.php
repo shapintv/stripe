@@ -35,22 +35,8 @@ final class GetTest extends TestCase
 
         $this->assertFalse($balance->isLive());
 
-        $this->assertCount(1, $balance->getAvailable());
-        $this->assertInstanceOf(BalancePart::class, $balance->getAvailable()[0]);
-        $this->assertInstanceOf(Money::class, $balance->getAvailable()[0]->getAmount());
-        $this->assertSame('0', $balance->getAvailable()[0]->getAmount()->getAmount());
-        $this->assertSame('USD', (string) $balance->getAvailable()[0]->getAmount()->getCurrency());
-
-        $this->assertCount(1, $balance->getConnectReserved());
-        $this->assertInstanceOf(BalancePart::class, $balance->getConnectReserved()[0]);
-        $this->assertInstanceOf(Money::class, $balance->getConnectReserved()[0]->getAmount());
-        $this->assertSame('0', $balance->getConnectReserved()[0]->getAmount()->getAmount());
-        $this->assertSame('USD', (string) $balance->getConnectReserved()[0]->getAmount()->getCurrency());
-
-        $this->assertCount(1, $balance->getPending());
-        $this->assertInstanceOf(BalancePart::class, $balance->getPending()[0]);
-        $this->assertInstanceOf(Money::class, $balance->getPending()[0]->getAmount());
-        $this->assertSame('0', $balance->getPending()[0]->getAmount()->getAmount());
-        $this->assertSame('USD', (string) $balance->getPending()[0]->getAmount()->getCurrency());
+        $this->assertCount(0, $balance->getAvailable());
+        $this->assertCount(0, $balance->getConnectReserved());
+        $this->assertCount(0, $balance->getPending());
     }
 }

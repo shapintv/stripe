@@ -310,7 +310,7 @@ final class Account implements CreatableFromArray, ContainsMetadata
         return $this->productDescription;
     }
 
-    public function getStatementDescriptor(): string
+    public function getStatementDescriptor(): ?string
     {
         return $this->statementDescriptor;
     }

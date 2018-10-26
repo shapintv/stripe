@@ -43,8 +43,10 @@ final class Balance implements CreatableFromArray
         }
 
         $connectReserved = [];
-        foreach ($data['connect_reserved'] as $part) {
-            $connectReserved[] = BalancePart::createFromArray($part);
+        if (isset($data['connect_reserved'])) {
+            foreach ($data['connect_reserved'] as $part) {
+                $connectReserved[] = BalancePart::createFromArray($part);
+            }
         }
 
         $pending = [];

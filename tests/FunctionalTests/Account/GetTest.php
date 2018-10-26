@@ -17,7 +17,7 @@ use Shapin\Stripe\Model\Account\LegalEntityVerification;
 use Shapin\Stripe\Model\Account\PayoutSchedule;
 use Shapin\Stripe\Model\Account\TermsOfServiceAcceptance;
 use Shapin\Stripe\Model\Address;
-use Shapin\Stripe\Model\Card\Card;
+use Shapin\Stripe\Model\BankAccount\BankAccount;
 use Shapin\Stripe\Model\MetadataCollection;
 use Shapin\Stripe\Tests\FunctionalTests\TestCase;;
 
@@ -53,7 +53,7 @@ final class GetTest extends TestCase
         $this->assertSame('site@stripe.com', $account->getEmail());
         $this->assertInstanceOf(ExternalAccountCollection::class, $account->getExternalAccounts());
         $this->assertCount(1, $account->getExternalAccounts());
-        $this->assertInstanceOf(Card::class, $account->getExternalAccounts()[0]);
+        $this->assertInstanceOf(BankAccount::class, $account->getExternalAccounts()[0]);
 
         $legalEntity = $account->getLegalEntity();
         $this->assertInstanceOf(LegalEntity::class, $legalEntity);
@@ -85,7 +85,7 @@ final class GetTest extends TestCase
         $this->assertNull($account->getPayoutStatementDescriptor());
         $this->assertFalse($account->arePayoutsEnabled());
         $this->assertNull($account->getProductDescription());
-        $this->assertSame('', $account->getStatementDescriptor());
+        $this->assertNull($account->getStatementDescriptor());
         $this->assertNull($account->getSupportAddress());
         $this->assertNull($account->getSupportEmail());
         $this->assertNull($account->getSupportPhone());

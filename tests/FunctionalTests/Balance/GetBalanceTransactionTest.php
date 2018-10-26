@@ -45,7 +45,7 @@ final class GetBalanceTransactionTest extends TestCase
         $this->assertSame('0', $balanceTransaction->getFee()->getAmount());
         $this->assertSame('USD', (string) $balanceTransaction->getFee()->getCurrency());
         $this->assertCount(0, $balanceTransaction->getFeeDetails());
-        $this->assertSame('ch_1DMGYDG873roFXQAd5iIC0eO', $balanceTransaction->getSource());
+        $this->assertSame('ch_1DO5YeFgK3s3qfchfs8alIMx', $balanceTransaction->getSource());
         $this->assertSame('available', $balanceTransaction->getStatus());
         $this->assertSame('charge', $balanceTransaction->getType());
         $this->assertInstanceOf(\DateTimeImmutable::class, $balanceTransaction->getCreatedAt());
