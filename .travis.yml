@@ -10,12 +10,28 @@ php:
     - 7.1
     - 7.2
 
+env:
+    global:
+        - TEST_COMMAND="composer test"
+        - STRIPE_MOCK_VERSION=0.33.0
+
 before_install:
-    - go get -u github.com/stripe/stripe-mock
-    - stripe-mock > /dev/null
+    - |
+        if [ ! -d "stripe-mock/stripe-mock_${STRIPE_MOCK_VERSION}" ]; then
+            mkdir -p stripe-mock/stripe-mock_${STRIPE_MOCK_VERSION}/
+            curl -L "https://github.com/stripe/stripe-mock/releases/download/v${STRIPE_MOCK_VERSION}/stripe-mock_${STRIPE_MOCK_VERSION}_linux_amd64.tar.gz" -o "stripe-mock/stripe-mock_${STRIPE_MOCK_VERSION}_linux_amd64.tar.gz"
+            tar -zxf "stripe-mock/stripe-mock_${STRIPE_MOCK_VERSION}_linux_amd64.tar.gz" -C "stripe-mock/stripe-mock_${STRIPE_MOCK_VERSION}/"
+        fi
+    - |
+        stripe-mock/stripe-mock_${STRIPE_MOCK_VERSION}/stripe-mock > /dev/null &
+        STRIPE_MOCK_PID=$!
 
 install:
     - travis_retry composer install --prefer-dist --no-interaction
 
 script:
-    - composer test
+    - $TEST_COMMAND
+
+after_success:
+    - if [[ $COVERAGE = true ]]; then wget https://scrutinizer-ci.com/ocular.phar; fi
+    - if [[ $COVERAGE = true ]]; then php ocular.phar code-coverage:upload --format=php-clover build/coverage.xml; fi
