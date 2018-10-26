@@ -7,9 +7,9 @@ declare(strict_types=1);
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace FAPI\Stripe\Tests\Model;
+namespace Shapin\Stripe\Tests\Model;
 
-use FAPI\Stripe\Model\MetadataCollection;
+use Shapin\Stripe\Model\MetadataCollection;
 use PHPUnit\Framework\TestCase;
 
 class MetadataCollectionTest extends TestCase

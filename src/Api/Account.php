@@ -7,12 +7,12 @@ declare(strict_types=1);
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace FAPI\Stripe\Api;
+namespace Shapin\Stripe\Api;
 
-use FAPI\Stripe\Exception;
-use FAPI\Stripe\Exception\InvalidArgumentException;
-use FAPI\Stripe\Model\Account\Account as AccountModel;
-use FAPI\Stripe\Model\Account\AccountCollection;
+use Shapin\Stripe\Exception;
+use Shapin\Stripe\Exception\InvalidArgumentException;
+use Shapin\Stripe\Model\Account\Account as AccountModel;
+use Shapin\Stripe\Model\Account\AccountCollection;
 use Psr\Http\Message\ResponseInterface;
 
 final class Account extends HttpApi

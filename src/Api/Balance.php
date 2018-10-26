@@ -7,13 +7,13 @@ declare(strict_types=1);
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace FAPI\Stripe\Api;
+namespace Shapin\Stripe\Api;
 
-use FAPI\Stripe\Exception;
-use FAPI\Stripe\Exception\InvalidArgumentException;
-use FAPI\Stripe\Model\Balance\Balance as BalanceModel;
-use FAPI\Stripe\Model\Balance\BalanceTransaction;
-use FAPI\Stripe\Model\Balance\BalanceTransactionCollection;
+use Shapin\Stripe\Exception;
+use Shapin\Stripe\Exception\InvalidArgumentException;
+use Shapin\Stripe\Model\Balance\Balance as BalanceModel;
+use Shapin\Stripe\Model\Balance\BalanceTransaction;
+use Shapin\Stripe\Model\Balance\BalanceTransactionCollection;
 use Psr\Http\Message\ResponseInterface;
 
 final class Balance extends HttpApi

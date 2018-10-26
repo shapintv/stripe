@@ -7,9 +7,9 @@ declare(strict_types=1);
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace FAPI\Stripe\Tests;
+namespace Shapin\Stripe\Tests;
 
-use FAPI\Stripe\HttpClientConfigurator;
+use Shapin\Stripe\HttpClientConfigurator;
 use Http\Client\Common\Plugin\HeaderAppendPlugin;
 use Nyholm\NSA;
 use PHPUnit\Framework\TestCase;

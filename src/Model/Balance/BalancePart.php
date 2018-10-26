@@ -7,9 +7,9 @@ declare(strict_types=1);
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace FAPI\Stripe\Model\Balance;
+namespace Shapin\Stripe\Model\Balance;
 
-use FAPI\Stripe\Model\CreatableFromArray;
+use Shapin\Stripe\Model\CreatableFromArray;
 use Money\Currency;
 use Money\Money;
 

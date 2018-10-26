@@ -7,10 +7,10 @@ declare(strict_types=1);
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace FAPI\Stripe\Model\Refund;
+namespace Shapin\Stripe\Model\Refund;
 
-use FAPI\Stripe\Model\Collection;
-use FAPI\Stripe\Model\CreatableFromArray;
+use Shapin\Stripe\Model\Collection;
+use Shapin\Stripe\Model\CreatableFromArray;
 
 final class RefundCollection extends Collection
 {

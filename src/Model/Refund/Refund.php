@@ -7,12 +7,12 @@ declare(strict_types=1);
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace FAPI\Stripe\Model\Refund;
+namespace Shapin\Stripe\Model\Refund;
 
-use FAPI\Stripe\Model\ContainsMetadata;
-use FAPI\Stripe\Model\CreatableFromArray;
-use FAPI\Stripe\Model\MetadataTrait;
-use FAPI\Stripe\Model\MetadataCollection;
+use Shapin\Stripe\Model\ContainsMetadata;
+use Shapin\Stripe\Model\CreatableFromArray;
+use Shapin\Stripe\Model\MetadataTrait;
+use Shapin\Stripe\Model\MetadataCollection;
 use Money\Currency;
 use Money\Money;
 

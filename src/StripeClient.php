@@ -7,11 +7,11 @@ declare(strict_types=1);
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace FAPI\Stripe;
+namespace Shapin\Stripe;
 
-use FAPI\Stripe\Api;
-use FAPI\Stripe\Hydrator\ModelHydrator;
-use FAPI\Stripe\Hydrator\Hydrator;
+use Shapin\Stripe\Api;
+use Shapin\Stripe\Hydrator\ModelHydrator;
+use Shapin\Stripe\Hydrator\Hydrator;
 use Http\Client\HttpClient;
 
 final class StripeClient

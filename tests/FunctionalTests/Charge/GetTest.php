@@ -7,14 +7,14 @@ declare(strict_types=1);
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace FAPI\Stripe\Tests\Api\Charge;
+namespace Shapin\Stripe\Tests\Api\Charge;
 
-use FAPI\Stripe\Model\Account\Account;
-use FAPI\Stripe\Model\Charge\Charge;
-use FAPI\Stripe\Model\MetadataCollection;
-use FAPI\Stripe\Model\Refund\Refund;
-use FAPI\Stripe\Model\Refund\RefundCollection;
-use FAPI\Stripe\Tests\FunctionalTests\TestCase;;
+use Shapin\Stripe\Model\Account\Account;
+use Shapin\Stripe\Model\Charge\Charge;
+use Shapin\Stripe\Model\MetadataCollection;
+use Shapin\Stripe\Model\Refund\Refund;
+use Shapin\Stripe\Model\Refund\RefundCollection;
+use Shapin\Stripe\Tests\FunctionalTests\TestCase;;
 use Money\Money;
 
 final class GetTest extends TestCase

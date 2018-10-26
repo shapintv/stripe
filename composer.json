@@ -27,12 +27,12 @@
     },
     "autoload": {
         "psr-4": {
-            "FAPI\\Stripe\\": "src/"
+            "Shapin\\Stripe\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "FAPI\\Stripe\\Tests\\": "tests/"
+            "Shapin\\Stripe\\Tests\\": "tests/"
         }
     },
     "scripts": {

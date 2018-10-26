@@ -7,14 +7,14 @@ declare(strict_types=1);
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace FAPI\Stripe\Api;
+namespace Shapin\Stripe\Api;
 
-use FAPI\Stripe\Exception\Domain as DomainExceptions;
-use FAPI\Stripe\Exception\DomainException;
-use FAPI\Stripe\Hydrator\NoopHydrator;
+use Shapin\Stripe\Exception\Domain as DomainExceptions;
+use Shapin\Stripe\Exception\DomainException;
+use Shapin\Stripe\Hydrator\NoopHydrator;
 use Http\Client\HttpClient;
-use FAPI\Stripe\Hydrator\Hydrator;
-use FAPI\Stripe\RequestBuilder;
+use Shapin\Stripe\Hydrator\Hydrator;
+use Shapin\Stripe\RequestBuilder;
 use Psr\Http\Message\ResponseInterface;
 
 abstract class HttpApi

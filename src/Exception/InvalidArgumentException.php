@@ -5,9 +5,9 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace FAPI\Stripe\Exception;
+namespace Shapin\Stripe\Exception;
 
-use FAPI\Stripe\Exception;
+use Shapin\Stripe\Exception;
 
 class InvalidArgumentException extends \InvalidArgumentException implements Exception
 {

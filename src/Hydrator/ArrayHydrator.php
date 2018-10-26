@@ -7,9 +7,9 @@ declare(strict_types=1);
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace FAPI\Stripe\Hydrator;
+namespace Shapin\Stripe\Hydrator;
 
-use FAPI\Stripe\Exception\HydrationException;
+use Shapin\Stripe\Exception\HydrationException;
 use Psr\Http\Message\ResponseInterface;
 
 /**

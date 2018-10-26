@@ -7,10 +7,10 @@ declare(strict_types=1);
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace FAPI\Stripe\Tests\FunctionalTests;
+namespace Shapin\Stripe\Tests\FunctionalTests;
 
-use FAPI\Stripe\HttpClientConfigurator;
-use FAPI\Stripe\StripeClient;
+use Shapin\Stripe\HttpClientConfigurator;
+use Shapin\Stripe\StripeClient;
 use GuzzleHttp\Psr7\Request;
 use Http\Client\Exception\NetworkException;
 use PHPUnit\Framework\TestCase as BaseTestCase;

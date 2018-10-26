@@ -7,11 +7,11 @@ declare(strict_types=1);
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace FAPI\Stripe\Tests\Api\Card;
+namespace Shapin\Stripe\Tests\Api\Card;
 
-use FAPI\Stripe\Model\Card\Card;
-use FAPI\Stripe\Model\Card\CardCollection;
-use FAPI\Stripe\Tests\FunctionalTests\TestCase;;
+use Shapin\Stripe\Model\Card\Card;
+use Shapin\Stripe\Model\Card\CardCollection;
+use Shapin\Stripe\Tests\FunctionalTests\TestCase;;
 
 final class AllTest extends TestCase
 {

@@ -5,9 +5,9 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace FAPI\Stripe\Exception\Domain;
+namespace Shapin\Stripe\Exception\Domain;
 
-use FAPI\Stripe\Exception\DomainException;
+use Shapin\Stripe\Exception\DomainException;
 
 /**
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>

@@ -7,10 +7,10 @@ declare(strict_types=1);
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace FAPI\Stripe\Tests\FunctionalTests;
+namespace Shapin\Stripe\Tests\FunctionalTests;
 
-use FAPI\Stripe\Hydrator\Hydrator;
-use FAPI\Stripe\Hydrator\ModelHydrator;
+use Shapin\Stripe\Hydrator\Hydrator;
+use Shapin\Stripe\Hydrator\ModelHydrator;
 use Psr\Http\Message\ResponseInterface;
 
 final class TestModelHydrator implements Hydrator

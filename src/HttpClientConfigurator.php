@@ -7,7 +7,7 @@ declare(strict_types=1);
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace FAPI\Stripe;
+namespace Shapin\Stripe;
 
 use Http\Client\HttpClient;
 use Http\Client\Common\PluginClient;

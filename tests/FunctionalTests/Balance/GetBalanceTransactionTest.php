@@ -7,14 +7,14 @@ declare(strict_types=1);
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace FAPI\Stripe\Tests\Api\Balance;
+namespace Shapin\Stripe\Tests\Api\Balance;
 
-use FAPI\Stripe\Model\Balance\Balance;
-use FAPI\Stripe\Model\Balance\BalancePart;
-use FAPI\Stripe\Model\Balance\BalanceTransaction;
-use FAPI\Stripe\Model\Balance\FeeDetails;
-use FAPI\Stripe\HttpClientConfigurator;
-use FAPI\Stripe\Tests\FunctionalTests\TestCase;;
+use Shapin\Stripe\Model\Balance\Balance;
+use Shapin\Stripe\Model\Balance\BalancePart;
+use Shapin\Stripe\Model\Balance\BalanceTransaction;
+use Shapin\Stripe\Model\Balance\FeeDetails;
+use Shapin\Stripe\HttpClientConfigurator;
+use Shapin\Stripe\Tests\FunctionalTests\TestCase;;
 use Http\Client\Common\Plugin\HeaderAppendPlugin;
 use Money\Money;
 

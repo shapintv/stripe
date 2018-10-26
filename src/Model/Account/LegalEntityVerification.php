@@ -7,9 +7,9 @@ declare(strict_types=1);
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace FAPI\Stripe\Model\Account;
+namespace Shapin\Stripe\Model\Account;
 
-use FAPI\Stripe\Model\CreatableFromArray;
+use Shapin\Stripe\Model\CreatableFromArray;
 
 final class LegalEntityVerification implements CreatableFromArray
 {

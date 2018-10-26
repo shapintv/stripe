@@ -7,13 +7,13 @@ declare(strict_types=1);
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace FAPI\Stripe\Model\Account;
+namespace Shapin\Stripe\Model\Account;
 
-use FAPI\Stripe\Exception\InvalidArgumentException;
-use FAPI\Stripe\Model\BankAccount\BankAccount;
-use FAPI\Stripe\Model\Card\Card;
-use FAPI\Stripe\Model\Collection;
-use FAPI\Stripe\Model\CreatableFromArray;
+use Shapin\Stripe\Exception\InvalidArgumentException;
+use Shapin\Stripe\Model\BankAccount\BankAccount;
+use Shapin\Stripe\Model\Card\Card;
+use Shapin\Stripe\Model\Collection;
+use Shapin\Stripe\Model\CreatableFromArray;
 
 final class ExternalAccountCollection extends Collection
 {

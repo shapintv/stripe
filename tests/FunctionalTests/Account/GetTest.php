@@ -7,19 +7,19 @@ declare(strict_types=1);
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace FAPI\Stripe\Tests\Api\Account;
+namespace Shapin\Stripe\Tests\Api\Account;
 
-use FAPI\Stripe\Model\Account\Account;
-use FAPI\Stripe\Model\Account\AccountVerification;
-use FAPI\Stripe\Model\Account\ExternalAccountCollection;
-use FAPI\Stripe\Model\Account\LegalEntity;
-use FAPI\Stripe\Model\Account\LegalEntityVerification;
-use FAPI\Stripe\Model\Account\PayoutSchedule;
-use FAPI\Stripe\Model\Account\TermsOfServiceAcceptance;
-use FAPI\Stripe\Model\Address;
-use FAPI\Stripe\Model\Card\Card;
-use FAPI\Stripe\Model\MetadataCollection;
-use FAPI\Stripe\Tests\FunctionalTests\TestCase;;
+use Shapin\Stripe\Model\Account\Account;
+use Shapin\Stripe\Model\Account\AccountVerification;
+use Shapin\Stripe\Model\Account\ExternalAccountCollection;
+use Shapin\Stripe\Model\Account\LegalEntity;
+use Shapin\Stripe\Model\Account\LegalEntityVerification;
+use Shapin\Stripe\Model\Account\PayoutSchedule;
+use Shapin\Stripe\Model\Account\TermsOfServiceAcceptance;
+use Shapin\Stripe\Model\Address;
+use Shapin\Stripe\Model\Card\Card;
+use Shapin\Stripe\Model\MetadataCollection;
+use Shapin\Stripe\Tests\FunctionalTests\TestCase;;
 
 final class GetTest extends TestCase
 {

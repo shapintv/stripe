@@ -7,11 +7,11 @@ declare(strict_types=1);
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace FAPI\Stripe\Tests\Api\BankAccount;
+namespace Shapin\Stripe\Tests\Api\BankAccount;
 
-use FAPI\Stripe\Model\BankAccount\BankAccount;
-use FAPI\Stripe\Model\MetadataCollection;
-use FAPI\Stripe\Tests\FunctionalTests\TestCase;;
+use Shapin\Stripe\Model\BankAccount\BankAccount;
+use Shapin\Stripe\Model\MetadataCollection;
+use Shapin\Stripe\Tests\FunctionalTests\TestCase;;
 
 final class GetTest extends TestCase
 {
