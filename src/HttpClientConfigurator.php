@@ -27,7 +27,7 @@ final class HttpClientConfigurator
     /**
      * @var string
      */
-    private $endpoint = 'https://fake-twitter.com';
+    private $endpoint = 'https://api.stripe.com/';
 
     /**
      * @var string
@@ -73,7 +73,7 @@ final class HttpClientConfigurator
 
         $plugins[] = new Plugin\AddHostPlugin($this->uriFactory->createUri($this->endpoint));
         $plugins[] = new Plugin\HeaderDefaultsPlugin([
-            'User-Agent' => 'FriendsOfApi/Stripe (https://github.com/FriendsOfApi/Stripe)',
+            'User-Agent' => 'Shapin/Stripe (https://github.com/shapintv/Stripe)',
         ]);
 
         if (null !== $this->apiKey) {
