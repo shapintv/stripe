@@ -27,7 +27,9 @@ echo $balance->getAvailable()->getAmount()->getAmount(); // 22;
 
 In order to test locally, you need to have [stripe-mock](https://github.com/stripe/stripe-mock#usage) installed.
 
-The run `stripe-mock 2>&1 > /dev/null &` and you're done.
+To install the correct version, use `make install`.
+
+You can start the Stripe mock server with `make start` and stop it with `make stop`.
 
 ## License
 
