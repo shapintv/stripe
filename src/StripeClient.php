@@ -66,4 +66,29 @@ final class StripeClient
     {
         return new Api\Balance($this->httpClient, $this->hydrator, $this->requestBuilder);
     }
+
+    public function charges(): Api\Charge
+    {
+        return new Api\Charge($this->httpClient, $this->hydrator, $this->requestBuilder);
+    }
+
+    public function refunds(): Api\Refund
+    {
+        return new Api\Refund($this->httpClient, $this->hydrator, $this->requestBuilder);
+    }
+
+    public function cards(): Api\Card
+    {
+        return new Api\Card($this->httpClient, $this->hydrator, $this->requestBuilder);
+    }
+
+    public function bankAccounts(): Api\BankAccount
+    {
+        return new Api\BankAccount($this->httpClient, $this->hydrator, $this->requestBuilder);
+    }
+
+    public function accounts(): Api\Account
+    {
+        return new Api\Account($this->httpClient, $this->hydrator, $this->requestBuilder);
+    }
 }

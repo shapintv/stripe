@@ -7,15 +7,15 @@ declare(strict_types=1);
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace FAPI\Stripe\Tests\Api;
+namespace FAPI\Stripe\Tests\FunctionalTests;
 
 use FAPI\Stripe\HttpClientConfigurator;
 use FAPI\Stripe\StripeClient;
 use GuzzleHttp\Psr7\Request;
 use Http\Client\Exception\NetworkException;
-use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestCase as BaseTestCase;
 
-abstract class ApiTestCase extends TestCase
+abstract class TestCase extends BaseTestCase
 {
     const API_KEY = 'sk_test_123';
     const API_ENDPOINT = 'http://127.0.0.1:12111';

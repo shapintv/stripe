@@ -7,18 +7,18 @@ declare(strict_types=1);
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace FAPI\Stripe\Model\Balance;
+namespace FAPI\Stripe\Model\Account;
 
 use FAPI\Stripe\Model\Collection;
 use FAPI\Stripe\Model\CreatableFromArray;
 
-final class BalanceTransactionCollection extends Collection
+final class AccountCollection extends Collection
 {
     public static function createFromArray(array $data): self
     {
         $elements = [];
         foreach ($data['data'] as $element) {
-            $elements[] = BalanceTransaction::createFromArray($element);
+            $elements[] = Account::createFromArray($element);
         }
 
         return new self($elements, $data['has_more']);

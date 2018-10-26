@@ -7,10 +7,15 @@
 
 namespace FAPI\Stripe\Model;
 
-interface CreatableFromArray
+trait MetadataTrait
 {
     /**
-     * Create an API response object from the HTTP response from the API server.
+     * @var MetadataCollection
      */
-    public static function createFromArray(array $data);
+    protected $metadata;
+
+    public function getMetadata(): MetadataCollection
+    {
+        return $this->metadata;
+    }
 }

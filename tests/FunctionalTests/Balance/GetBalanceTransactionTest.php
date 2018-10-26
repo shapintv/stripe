@@ -14,11 +14,11 @@ use FAPI\Stripe\Model\Balance\BalancePart;
 use FAPI\Stripe\Model\Balance\BalanceTransaction;
 use FAPI\Stripe\Model\Balance\FeeDetails;
 use FAPI\Stripe\HttpClientConfigurator;
-use FAPI\Stripe\Tests\Api\ApiTestCase;;
+use FAPI\Stripe\Tests\FunctionalTests\TestCase;;
 use Http\Client\Common\Plugin\HeaderAppendPlugin;
 use Money\Money;
 
-final class GetBalanceTransactionTest extends ApiTestCase
+final class GetBalanceTransactionTest extends TestCase
 {
     private $balanceApi;
 

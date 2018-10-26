@@ -9,16 +9,16 @@ declare(strict_types=1);
 
 namespace FAPI\Stripe\Tests\Model;
 
-use FAPI\Stripe\Model\Collection;
+use FAPI\Stripe\Model\MetadataCollection;
 use PHPUnit\Framework\TestCase;
 
-class CollectionTest extends TestCase
+class MetadataCollectionTest extends TestCase
 {
     public function testCollection()
     {
         $elements = ['apple', 'orange', 'grape', 'plum'];
 
-        $collection = new Collection($elements, false);
+        $collection = new MetadataCollection($elements, false);
 
         $this->assertSame($elements, $collection->getElements());
         $this->assertFalse($collection->hasMore());

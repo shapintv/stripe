@@ -7,7 +7,7 @@
 
 namespace FAPI\Stripe\Model;
 
-class Collection extends \ArrayObject
+abstract class Collection extends \ArrayObject implements CreatableFromArray
 {
     private $elements;
     private $hasMore;

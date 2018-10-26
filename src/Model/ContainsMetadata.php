@@ -7,10 +7,10 @@
 
 namespace FAPI\Stripe\Model;
 
-interface CreatableFromArray
+interface ContainsMetadata
 {
     /**
-     * Create an API response object from the HTTP response from the API server.
+     * Retrieve Metadata associated to current Model.
      */
-    public static function createFromArray(array $data);
+    public function getMetadata(): MetadataCollection;
 }
