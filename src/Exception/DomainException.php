@@ -9,9 +9,6 @@ namespace Shapin\Stripe\Exception;
 
 use Shapin\Stripe\Exception;
 
-/**
- * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
- */
 interface DomainException extends Exception
 {
 }

@@ -9,9 +9,6 @@ namespace Shapin\Stripe\Exception\Domain;
 
 use Shapin\Stripe\Exception\DomainException;
 
-/**
- * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
- */
 final class NotFoundException extends \Exception implements DomainException
 {
 }
