@@ -96,8 +96,8 @@ final class LegalEntity implements CreatableFromArray
         $model->firstName = $data['first_name'];
         $model->lastName = $data['last_name'];
         $model->personalAddress = Address::createFromArray($data['personal_address']);
-        $model->personalIdNumberProvided = (bool) $data['personal_id_number_provided'];
-        $model->ssnLastFourProvided = (bool) $data['ssn_last_4_provided'];
+        $model->personalIdNumberProvided = isset($data['personal_id_number_provided']) ? (bool) $data['personal_id_number_provided'] : false;
+        $model->ssnLastFourProvided = isset($data['ssn_last_4_provided']) ? (bool) $data['ssn_last_4_provided'] : false;
         $model->type = $data['type'];
         $model->verification = LegalEntityVerification::createFromArray($data['verification']);
 

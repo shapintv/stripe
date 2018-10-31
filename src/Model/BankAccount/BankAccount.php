@@ -56,7 +56,7 @@ final class BankAccount implements CreatableFromArray, ContainsMetadata
     private $currency;
 
     /**
-     * @var string
+     * @var ?string
      */
     private $customer;
 
@@ -90,7 +90,7 @@ final class BankAccount implements CreatableFromArray, ContainsMetadata
         $model->bankName = $data['bank_name'];
         $model->country = $data['country'];
         $model->currency = new Currency(strtoupper($data['currency']));
-        $model->customer = $data['customer'];
+        $model->customer = $data['customer'] ?? null;
         $model->fingerprint = $data['fingerprint'];
         $model->lastFour = $data['last4'];
         $model->metadata = MetadataCollection::createFromArray($data['metadata']);
