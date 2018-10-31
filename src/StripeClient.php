@@ -96,4 +96,9 @@ final class StripeClient
     {
         return new Api\Source($this->httpClient, $this->hydrator, $this->requestBuilder);
     }
+
+    public function transfers(): Api\Transfer
+    {
+        return new Api\Transfer($this->httpClient, $this->hydrator, $this->requestBuilder);
+    }
 }
