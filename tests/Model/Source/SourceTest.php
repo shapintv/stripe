@@ -43,6 +43,10 @@ class SourceTest extends TestCase
         $this->assertNull($source->getCard()->getName());
         $this->assertSame('optional', $source->getCard()->getThreeDSecure());
         $this->assertNull($source->getCard()->getTokenizationMethod());
+        $this->assertFalse($source->getCard()->isThreeDSecureRequired());
+        $this->assertFalse($source->getCard()->isThreeDSecureRecommended());
+        $this->assertTrue($source->getCard()->isThreeDSecureOptional());
+        $this->assertTrue($source->getCard()->isThreeDSecureSupported());
         $this->assertSame('src_client_secret_Dt6bIBUoRf18XUxjB6KrvTxJ', $source->getClientSecret());
         $this->assertNull($source->getCodeVerification());
         $this->assertSame(1234567890, $source->getCreatedAt()->getTimestamp());

@@ -34,4 +34,22 @@ final class Source extends HttpApi
 
         return $this->hydrator->hydrate($response, SourceModel::class);
     }
+
+    /**
+     * @throws Exception
+     */
+    public function create(array $params)
+    {
+        $response = $this->httpPostRaw('/v1/sources', http_build_query($params), ['Content-Type' => 'application/x-www-form-urlencoded']);
+
+        if (!$this->hydrator) {
+            return $response;
+        }
+
+        if ($response->getStatusCode() !== 200) {
+            $this->handleErrors($response);
+        }
+
+        return $this->hydrator->hydrate($response, SourceModel::class);
+    }
 }

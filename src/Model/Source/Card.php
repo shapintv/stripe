@@ -13,6 +13,11 @@ use Shapin\Stripe\Model\CreatableFromArray;
 
 final class Card implements CreatableFromArray
 {
+    const THREE_D_SECURE_REQUIRED = 'required';
+    const THREE_D_SECURE_RECOMMENDED = 'recommended';
+    const THREE_D_SECURE_OPTIONAL = 'optional';
+    const THREE_D_SECURE_NOT_SUPPORTED = 'not_supported';
+
     /**
      * @var string
      */
@@ -102,6 +107,26 @@ final class Card implements CreatableFromArray
         $model->tokenizationMethod = $data['tokenization_method'];
 
         return $model;
+    }
+
+    public function isThreeDSecureRequired(): bool
+    {
+        return self::THREE_D_SECURE_REQUIRED === $this->threeDSecure;
+    }
+
+    public function isThreeDSecureRecommended(): bool
+    {
+        return self::THREE_D_SECURE_RECOMMENDED === $this->threeDSecure;
+    }
+
+    public function isThreeDSecureOptional(): bool
+    {
+        return self::THREE_D_SECURE_OPTIONAL === $this->threeDSecure;
+    }
+
+    public function isThreeDSecureSupported(): bool
+    {
+        return self::THREE_D_SECURE_NOT_SUPPORTED !== $this->threeDSecure;
     }
 
     public function getAddressLine1Check(): ?string

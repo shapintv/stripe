@@ -19,6 +19,24 @@ use Money\Money;
 
 final class Source implements CreatableFromArray, ContainsMetadata
 {
+    const FLOW_CODE_VERIFICATION = 'code_verification';
+    const FLOW_NONE = 'none';
+    const FLOW_REDIRECT = 'redirect';
+    const FLOW_RECEIVER = 'receiver';
+
+    const NOTIFICATION_METHOD_EMAIL = 'email';
+    const NOTIFICATION_METHOD_MANUAL = 'manual';
+    const NOTIFICATION_METHOD_NONE = 'none';
+
+    const REFUND_ATTRIBUTES_METHOD_EMAIL = 'email';
+    const REFUND_ATTRIBUTES_METHOD_MANUAL = 'manual';
+
+    const STATUS_ACCEPTED = 'accepted';
+    const STATUS_REFUSED = 'refused';
+
+    const USAGE_REUSABLE = 'reusable';
+    const USAGE_SINGLE_USE = 'single_use';
+
     use LivemodeTrait, MetadataTrait;
 
     /**
