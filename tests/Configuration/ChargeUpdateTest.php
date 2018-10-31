@@ -19,10 +19,11 @@ class ChargeUpdateTest extends TestCase
     /**
      * @dataProvider configProvider
      */
-    public function testProcess(array $config, bool $isValid)
+    public function testProcess(array $config, ?string $errorMessage = null)
     {
-        if (!$isValid) {
+        if (null !== $errorMessage) {
             $this->expectException(InvalidConfigurationException::class);
+            $this->expectExceptionMessage($errorMessage);
         } else {
             $this->expectNotToPerformAssertions();
         }
@@ -33,12 +34,9 @@ class ChargeUpdateTest extends TestCase
 
     public function configProvider()
     {
+        // ## VALID
         // Simple example
-        yield [['customer' => 'coucou'], true];
-        // Empty fraud details
-        yield [['fraud_details' => []], false];
-        // Incomplete shipping hash
-        yield [['shipping' => ['name' => 'Incomplete']], false];
+        yield [['customer' => 'coucou']];
         // Full example
         yield [[
             'customer' => 'my_awesome_customer',
@@ -61,6 +59,12 @@ class ChargeUpdateTest extends TestCase
                 'carrier' => 'UPS',
             ],
             'trasnfer_group' => 'new_one',
-        ], true];
+        ]];
+
+        // ## INVALID
+        // Empty fraud details
+        yield [['fraud_details' => []], 'The child node "user_report" at path "shapin_stripe.fraud_details" must be configured.'];
+        // Incomplete shipping hash
+        yield [['shipping' => ['name' => 'Incomplete']], 'The child node "address" at path "shapin_stripe.shipping" must be configured.'];
     }
 }

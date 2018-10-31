@@ -20,10 +20,11 @@ class SourceCreateTest extends TestCase
     /**
      * @dataProvider configProvider
      */
-    public function testProcess(array $config, bool $isValid)
+    public function testProcess(array $config, ?string $errorMessage = null)
     {
-        if (!$isValid) {
+        if (null !== $errorMessage) {
             $this->expectException(InvalidConfigurationException::class);
+            $this->expectExceptionMessage($errorMessage);
         } else {
             $this->expectNotToPerformAssertions();
         }
@@ -36,18 +37,18 @@ class SourceCreateTest extends TestCase
     {
         // ## VALID
         // Simple example
-        yield [['type' => 'original_source'], true];
+        yield [['type' => 'original_source']];
         // Redirect flow with redirect url
-        yield [['type' => 'original_source', 'flow' => Source::FLOW_REDIRECT, 'redirect' => ['redirect_url' => 'http://here.am/I']], false];
+        yield [['type' => 'original_source', 'flow' => Source::FLOW_REDIRECT, 'redirect' => ['return_url' => 'http://here.am/I']]];
 
         // ## INVALID
         // Missing amount for single_use source
-        yield [['type' => 'original_source', 'usage' => Source::USAGE_SINGLE_USE], false];
+        yield [['type' => 'original_source', 'usage' => Source::USAGE_SINGLE_USE], 'Invalid configuration for path "shapin_stripe": "amount" is required for "single_use" sources.'];
         // Receiver is specified but not flow
-        yield [['type' => 'original_source', 'receiver' => []], false];
+        yield [['type' => 'original_source', 'receiver' => []], 'Invalid configuration for path "shapin_stripe": "receiver" can be set only for "receiver" flow.'];
         // Receiver is specified but flow is not the correct one
-        yield [['type' => 'original_source', 'receiver' => [], 'flow' => Source::FLOW_NONE], false];
+        yield [['type' => 'original_source', 'receiver' => [], 'flow' => Source::FLOW_NONE], 'Invalid configuration for path "shapin_stripe": "receiver" can be set only for "receiver" flow.'];
         // Redirect flow without redirect url
-        yield [['type' => 'original_source', 'flow' => Source::FLOW_REDIRECT], false];
+        yield [['type' => 'original_source', 'flow' => Source::FLOW_REDIRECT], 'Invalid configuration for path "shapin_stripe": "redirect" must be set when using "redirect" flow.'];
     }
 }
