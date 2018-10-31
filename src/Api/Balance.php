@@ -21,9 +21,14 @@ final class Balance extends HttpApi
     /**
      * @throws Exception
      */
-    public function get()
+    public function get(string $stripeAccount = null)
     {
-        $response = $this->httpGet('/v1/balance');
+        $headers = [];
+        if (null !== $stripeAccount) {
+            $headers = ['Stripe-Account' => $stripeAccount];
+        }
+
+        $response = $this->httpGet('/v1/balance', [], $headers);
 
         if (!$this->hydrator) {
             return $response;
