@@ -9,11 +9,13 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Api;
 
+use Psr\Http\Message\ResponseInterface;
+use Shapin\Stripe\Configuration;
 use Shapin\Stripe\Exception;
 use Shapin\Stripe\Exception\InvalidArgumentException;
 use Shapin\Stripe\Model\Source\Source as SourceModel;
 use Shapin\Stripe\Model\Source\SourceCollection;
-use Psr\Http\Message\ResponseInterface;
+use Symfony\Component\Config\Definition\Processor;
 
 final class Source extends HttpApi
 {
@@ -40,6 +42,9 @@ final class Source extends HttpApi
      */
     public function create(array $params)
     {
+        $processor = new Processor();
+        $processor->processConfiguration(new Configuration\SourceCreate(), [$params]);
+
         $response = $this->httpPostRaw('/v1/sources', http_build_query($params), ['Content-Type' => 'application/x-www-form-urlencoded']);
 
         if (!$this->hydrator) {
