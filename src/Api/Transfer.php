@@ -9,11 +9,13 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Api;
 
+use Psr\Http\Message\ResponseInterface;
+use Shapin\Stripe\Configuration;
 use Shapin\Stripe\Exception;
 use Shapin\Stripe\Exception\InvalidArgumentException;
 use Shapin\Stripe\Model\Transfer\Transfer as TransferModel;
 use Shapin\Stripe\Model\Transfer\TransferCollection;
-use Psr\Http\Message\ResponseInterface;
+use Symfony\Component\Config\Definition\Processor;
 
 final class Transfer extends HttpApi
 {
@@ -40,7 +42,15 @@ final class Transfer extends HttpApi
      */
     public function all(array $params = [])
     {
-        $response = $this->httpGet('/v1/transfers'.http_build_query($params));
+        $processor = new Processor();
+        $processor->processConfiguration(new Configuration\TransferList(), [$params]);
+
+        $searchString = '';
+        if (0 < count($params)) {
+            $searchString = '?'.http_build_query($params);
+        }
+
+        $response = $this->httpGet('/v1/transfers'.$searchString);
 
         if (!$this->hydrator) {
             return $response;
