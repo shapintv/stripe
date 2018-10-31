@@ -1,0 +1,42 @@
+{
+    "id": "src_1DRKIVIpafQncvOMg0qev4dH",
+    "object": "source",
+    "amount": null,
+    "card": {
+        "exp_month": 2,
+        "exp_year": 2021,
+        "brand": "Visa",
+        "country": "FR",
+        "cvc_check": "unchecked",
+        "fingerprint": "8J0hhCks6oaRa2eE",
+        "funding": "credit",
+        "last4": "0003",
+        "three_d_secure": "optional",
+        "name": null,
+        "address_line1_check": null,
+        "address_zip_check": null,
+        "tokenization_method": null,
+        "dynamic_last4": null
+    },
+    "client_secret": "src_client_secret_Dt6bIBUoRf18XUxjB6KrvTxJ",
+    "created": 1234567890,
+    "currency": null,
+    "flow": "none",
+    "livemode": false,
+    "metadata": {
+    },
+    "owner": {
+        "address": null,
+        "email": null,
+        "name": null,
+        "phone": null,
+        "verified_address": null,
+        "verified_email": null,
+        "verified_name": null,
+        "verified_phone": null
+    },
+    "statement_descriptor": null,
+    "status": "chargeable",
+    "type": "card",
+    "usage": "reusable"
+}

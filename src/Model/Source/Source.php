@@ -37,6 +37,11 @@ final class Source implements CreatableFromArray, ContainsMetadata
     private $amount;
 
     /**
+     * @var ?Card
+     */
+    private $card;
+
+    /**
      * @var string
      */
     private $clientSecret;
@@ -111,6 +116,9 @@ final class Source implements CreatableFromArray, ContainsMetadata
             $model->achCreditTransfer = AchCreditTransfer::createFromArray($data['ach_credit_transfer']);
         }
         $model->amount = isset($data['amount']) ? new Money($data['amount'], $currency) : null;
+        if (isset($data['card'])) {
+            $model->card = Card::createFromArray($data['card']);
+        }
         $model->clientSecret = $data['client_secret'];
         if (isset($data['code_verification'])) {
             $model->codeVerification = CodeVerification::createFromArray($data['code_verification']);
@@ -149,6 +157,11 @@ final class Source implements CreatableFromArray, ContainsMetadata
     public function getAmount(): ?Money
     {
         return $this->amount;
+    }
+
+    public function getCard(): ?Card
+    {
+        return $this->card;
     }
 
     public function getClientSecret(): string
