@@ -39,6 +39,18 @@ class SourceCreate implements ConfigurationInterface
                 })
                 ->thenInvalid('"redirect" must be set when using "redirect" flow.')
             ->end()
+            ->validate()
+                ->ifTrue(function ($v) {
+                    return isset($v['type']) && Source::TYPE_THREE_D_SECURE === $v['type'] && !isset($v['three_d_secure']);
+                })
+                ->thenInvalid('"three_d_secure" must be set when using "three_d_secure" source type.')
+            ->end()
+            ->validate()
+                ->ifTrue(function ($v) {
+                    return isset($v['type']) && Source::TYPE_THREE_D_SECURE === $v['type'] && !isset($v['redirect']);
+                })
+                ->thenInvalid('"redirect" must be set when using "three_d_secure" source type.')
+            ->end()
             ->children()
                 ->scalarNode('type')
                     ->isRequired()
@@ -133,6 +145,13 @@ class SourceCreate implements ConfigurationInterface
                 ->end()
                 ->scalarNode('statement_descriptor')
                     ->info('An arbitrary string to be displayed on your customer’s statement. As an example, if your website is RunClub and the item you’re charging for is a race ticket, you may want to specify a statement_descriptor of RunClub 5K race ticket. While many payment types will display this information, some may not display it at all.')
+                ->end()
+                ->arrayNode('three_d_secure')
+                    ->children()
+                        ->scalarNode('card')
+                            ->info('The ID of the card source.')
+                        ->end()
+                    ->end()
                 ->end()
                 ->scalarNode('token')
                     ->info('An optional token used to create the source. When passed, token properties will override source parameters.')

@@ -34,6 +34,8 @@ final class Source implements CreatableFromArray, ContainsMetadata
     const STATUS_ACCEPTED = 'accepted';
     const STATUS_REFUSED = 'refused';
 
+    const TYPE_THREE_D_SECURE = 'three_d_secure';
+
     const USAGE_REUSABLE = 'reusable';
     const USAGE_SINGLE_USE = 'single_use';
 

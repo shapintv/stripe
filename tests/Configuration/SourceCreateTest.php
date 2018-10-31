@@ -50,5 +50,9 @@ class SourceCreateTest extends TestCase
         yield [['type' => 'original_source', 'receiver' => [], 'flow' => Source::FLOW_NONE], 'Invalid configuration for path "shapin_stripe": "receiver" can be set only for "receiver" flow.'];
         // Redirect flow without redirect url
         yield [['type' => 'original_source', 'flow' => Source::FLOW_REDIRECT], 'Invalid configuration for path "shapin_stripe": "redirect" must be set when using "redirect" flow.'];
+        // Three D Secure without three_d_secure card
+        yield [['type' => 'three_d_secure'], 'Invalid configuration for path "shapin_stripe": "three_d_secure" must be set when using "three_d_secure" source type.'];
+        // Three D Secure without redirect infos
+        yield [['type' => 'three_d_secure', 'three_d_secure' => ['card' => 'card_12345']], 'Invalid configuration for path "shapin_stripe": "redirect" must be set when using "three_d_secure" source type.'];
     }
 }
