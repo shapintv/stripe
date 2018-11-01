@@ -9,11 +9,13 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Api;
 
+use Psr\Http\Message\ResponseInterface;
+use Shapin\Stripe\Configuration;
 use Shapin\Stripe\Exception;
 use Shapin\Stripe\Exception\InvalidArgumentException;
 use Shapin\Stripe\Model\Account\Account as AccountModel;
 use Shapin\Stripe\Model\Account\AccountCollection;
-use Psr\Http\Message\ResponseInterface;
+use Symfony\Component\Config\Definition\Processor;
 
 final class Account extends HttpApi
 {
@@ -51,5 +53,47 @@ final class Account extends HttpApi
         }
 
         return $this->hydrator->hydrate($response, AccountCollection::class);
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function create(array $params)
+    {
+        $processor = new Processor();
+        $processor->processConfiguration(new Configuration\AccountCreate(), [$params]);
+
+        $response = $this->httpPostRaw('/v1/accounts', http_build_query($params), ['Content-Type' => 'application/x-www-form-urlencoded']);
+
+        if (!$this->hydrator) {
+            return $response;
+        }
+
+        if ($response->getStatusCode() !== 200) {
+            $this->handleErrors($response);
+        }
+
+        return $this->hydrator->hydrate($response, AccountModel::class);
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function update(string $id, array $params)
+    {
+        $processor = new Processor();
+        $processor->processConfiguration(new Configuration\AccountUpdate(), [$params]);
+
+        $response = $this->httpPostRaw("/v1/accounts/$id", http_build_query($params), ['Content-Type' => 'application/x-www-form-urlencoded']);
+
+        if (!$this->hydrator) {
+            return $response;
+        }
+
+        if ($response->getStatusCode() !== 200) {
+            $this->handleErrors($response);
+        }
+
+        return $this->hydrator->hydrate($response, AccountModel::class);
     }
 }

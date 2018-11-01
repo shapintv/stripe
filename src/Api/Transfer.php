@@ -62,4 +62,25 @@ final class Transfer extends HttpApi
 
         return $this->hydrator->hydrate($response, TransferCollection::class);
     }
+
+    /**
+     * @throws Exception
+     */
+    public function create(array $params)
+    {
+        $processor = new Processor();
+        $processor->processConfiguration(new Configuration\TransferCreate(), [$params]);
+
+        $response = $this->httpPostRaw('/v1/transfers', http_build_query($params), ['Content-Type' => 'application/x-www-form-urlencoded']);
+
+        if (!$this->hydrator) {
+            return $response;
+        }
+
+        if ($response->getStatusCode() !== 200) {
+            $this->handleErrors($response);
+        }
+
+        return $this->hydrator->hydrate($response, TransferModel::class);
+    }
 }

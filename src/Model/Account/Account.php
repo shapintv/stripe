@@ -21,6 +21,9 @@ final class Account implements CreatableFromArray, ContainsMetadata
 {
     use MetadataTrait;
 
+    const TYPE_CUSTOM = 'custom';
+    const TYPE_STANDARD = 'standard';
+
     /**
      * @var string
      */
