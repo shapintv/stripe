@@ -34,3 +34,12 @@ start: ## Start application
 
 stop: ## Stop the application
 	@pkill stripe-mock || $(call say_red,"No running Stripe mock server")
+
+test: ## Launch tests
+	@vendor/bin/phpunit
+
+cs-lint: ## Verify check styles
+	-vendor/bin/php-cs-fixer fix --dry-run --using-cache=no --verbose --diff
+
+cs-fix: ## Apply Check styles
+	-vendor/bin/php-cs-fixer fix --using-cache=no --verbose --diff
