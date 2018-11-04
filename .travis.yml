@@ -15,6 +15,12 @@ env:
         - TEST_COMMAND="composer test"
         - STRIPE_MOCK_VERSION=0.35.0
 
+matrix:
+    fast_finish: true
+    include:
+        - php: 7.1
+          env: COVERAGE=true TEST_COMMAND="composer test-ci"
+
 before_install:
     - |
         if [ ! -d "stripe-mock/stripe-mock_${STRIPE_MOCK_VERSION}" ]; then
@@ -25,6 +31,7 @@ before_install:
     - |
         stripe-mock/stripe-mock_${STRIPE_MOCK_VERSION}/stripe-mock > /dev/null &
         STRIPE_MOCK_PID=$!
+    - if [[ $COVERAGE != true ]]; then phpenv config-rm xdebug.ini || true; fi
 
 install:
     - travis_retry composer install --prefer-dist --no-interaction
