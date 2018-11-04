@@ -30,15 +30,15 @@ final class CodeVerification implements CreatableFromArray
     public static function createFromArray(array $data): self
     {
         $model = new self();
-        $model->attempsRemaining = (int) $data['attemps_remaining'];
+        $model->attemptsRemaining = (int) $data['attempts_remaining'];
         $model->status = $data['status'];
 
         return $model;
     }
 
-    public function getAttempsRemaining(): int
+    public function getAttemptsRemaining(): int
     {
-        return $this->attempsRemaining;
+        return $this->attemptsRemaining;
     }
 
     public function getStatus(): string

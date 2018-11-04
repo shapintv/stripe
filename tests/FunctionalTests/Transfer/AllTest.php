@@ -7,7 +7,7 @@ declare(strict_types=1);
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace Shapin\Stripe\Tests\Api\Transfer;
+namespace Shapin\Stripe\Tests\FunctionalTests\Transfer;
 
 use Shapin\Stripe\Model\Transfer\Transfer;
 use Shapin\Stripe\Model\Transfer\TransferCollection;

@@ -7,7 +7,7 @@ declare(strict_types=1);
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace Shapin\Stripe\Tests\Api\Source;
+namespace Shapin\Stripe\Tests\FunctionalTests\Source;
 
 use Shapin\Stripe\Model\Source\AchCreditTransfer;
 use Shapin\Stripe\Model\Source\Owner;

@@ -7,7 +7,7 @@ declare(strict_types=1);
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace Shapin\Stripe\Tests\Api\Card;
+namespace Shapin\Stripe\Tests\FunctionalTests\Card;
 
 use Shapin\Stripe\Model\Card\Card;
 use Shapin\Stripe\Model\Card\CardCollection;

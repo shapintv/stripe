@@ -21,7 +21,7 @@ final class BalancePart implements CreatableFromArray
     private $amount;
 
     /**
-     * @var SourceType[]
+     * @var array
      */
     private $sourceTypes;
 

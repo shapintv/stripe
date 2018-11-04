@@ -7,7 +7,7 @@ declare(strict_types=1);
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace Shapin\Stripe\Tests\Api\Refund;
+namespace Shapin\Stripe\Tests\FunctionalTests\Refund;
 
 use Shapin\Stripe\Model\Refund\Refund;
 use Shapin\Stripe\Model\MetadataCollection;

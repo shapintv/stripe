@@ -7,7 +7,7 @@ declare(strict_types=1);
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace Shapin\Stripe\Tests\Api\Balance;
+namespace Shapin\Stripe\Tests\FunctionalTests\Balance;
 
 use Shapin\Stripe\Model\Balance\BalanceTransaction;
 use Shapin\Stripe\Tests\FunctionalTests\TestCase;

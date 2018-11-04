@@ -81,7 +81,7 @@ final class Account implements CreatableFromArray, ContainsMetadata
     /**
      * @var Currency
      */
-    private $defaultcurrency;
+    private $defaultCurrency;
 
     /**
      * @var bool
@@ -134,7 +134,7 @@ final class Account implements CreatableFromArray, ContainsMetadata
     private $statementDescriptor;
 
     /**
-     * @var SupportAddress
+     * @var Address
      */
     private $supportAddress;
 

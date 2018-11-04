@@ -7,7 +7,7 @@ declare(strict_types=1);
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace Shapin\Stripe\Tests\Api\Charge;
+namespace Shapin\Stripe\Tests\FunctionalTests\Charge;
 
 use Shapin\Stripe\Model\Account\Account;
 use Shapin\Stripe\Model\Charge\Charge;

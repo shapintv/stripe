@@ -175,6 +175,26 @@ final class Charge implements CreatableFromArray, ContainsMetadata
      */
     private $sourceTransfer;
 
+    /**
+     * @var string
+     */
+    private $statementDescriptor;
+
+    /**
+     * @var string
+     */
+    private $status;
+
+    /**
+     * @var string
+     */
+    private $transfer;
+
+    /**
+     * @var string
+     */
+    private $transferGroup;
+
     private function __construct()
     {
     }
