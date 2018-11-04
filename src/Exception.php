@@ -9,6 +9,6 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe;
 
-interface Exception
+interface Exception extends \Throwable
 {
 }

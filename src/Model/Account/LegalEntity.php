@@ -36,7 +36,7 @@ final class LegalEntity implements CreatableFromArray
     private $businessTaxIdProvided;
 
     /**
-     * @var DateOfBirth
+     * @var ?DateOfBirth
      */
     private $dateOfBirth;
 

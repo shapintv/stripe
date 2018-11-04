@@ -99,12 +99,12 @@ final class Account implements CreatableFromArray, ContainsMetadata
     private $email;
 
     /**
-     * @var string
+     * @var ExternalAccountCollection
      */
     private $externalAccounts;
 
     /**
-     * @var array
+     * @var LegalEntity
      */
     private $legalEntity;
 

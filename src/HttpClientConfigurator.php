@@ -54,19 +54,12 @@ final class HttpClientConfigurator
      */
     private $appendPlugins = [];
 
-    /**
-     * @param HttpClient|null $httpClient
-     * @param UriFactory|null $uriFactory
-     */
     public function __construct(HttpClient $httpClient = null, UriFactory $uriFactory = null)
     {
         $this->httpClient = $httpClient ?? HttpClientDiscovery::find();
         $this->uriFactory = $uriFactory ?? UriFactoryDiscovery::find();
     }
 
-    /**
-     * @return HttpClient
-     */
     public function createConfiguredClient(): HttpClient
     {
         $plugins = $this->prependPlugins;
@@ -83,11 +76,6 @@ final class HttpClientConfigurator
         return new PluginClient($this->httpClient, array_merge($plugins, $this->appendPlugins));
     }
 
-    /**
-     * @param string $endpoint
-     *
-     * @return HttpClientConfigurator
-     */
     public function setEndpoint(string $endpoint): self
     {
         $this->endpoint = $endpoint;
@@ -95,11 +83,6 @@ final class HttpClientConfigurator
         return $this;
     }
 
-    /**
-     * @param string $apiKey
-     *
-     * @return HttpClientConfigurator
-     */
     public function setApiKey(string $apiKey): self
     {
         $this->apiKey = $apiKey;
@@ -107,11 +90,6 @@ final class HttpClientConfigurator
         return $this;
     }
 
-    /**
-     * @param Plugin $plugin
-     *
-     * @return HttpClientConfigurator
-     */
     public function appendPlugin(Plugin ...$plugin): self
     {
         foreach ($plugin as $p) {
@@ -121,11 +99,6 @@ final class HttpClientConfigurator
         return $this;
     }
 
-    /**
-     * @param Plugin $plugin
-     *
-     * @return HttpClientConfigurator
-     */
     public function prependPlugin(Plugin ...$plugin): self
     {
         $plugin = array_reverse($plugin);

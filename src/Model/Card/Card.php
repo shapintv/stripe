@@ -35,7 +35,7 @@ final class Card implements CreatableFromArray, ContainsMetadata
     private $address;
 
     /**
-     * @var string
+     * @var ?array
      */
     private $availablePayoutMethods;
 
