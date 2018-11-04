@@ -4,7 +4,7 @@
 [![Build Status](https://img.shields.io/travis/shapintv/stripe.svg?style=flat-square)](https://travis-ci.org/shapintv/stripe)
 [![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/shapintv/stripe.svg?style=flat-square)](https://scrutinizer-ci.com/g/shapintv/stripe)
 [![Quality Score](https://img.shields.io/scrutinizer/g/shapintv/stripe.svg?style=flat-square)](https://scrutinizer-ci.com/g/shapintv/stripe)
-[![Total Downloads](https://img.shields.io/packagist/dt/friendsofapi/stripe.svg?style=flat-square)](https://packagist.org/packages/friendsofapi/stripe)
+[![Total Downloads](https://img.shields.io/packagist/dt/shapintv/stripe.svg?style=flat-square)](https://packagist.org/packages/shapintv/stripe)
 
 
 ## Install
