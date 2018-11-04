@@ -22,7 +22,6 @@ final class HttpClient implements BaseHttpClient
         $this->httpClient = $httpClient;
     }
 
-
     /**
      * Return the content of a file on disk if it exists.
      * Otherwise call the embedded Httpclient.
@@ -33,7 +32,7 @@ final class HttpClient implements BaseHttpClient
         $requestTarget = str_replace('/v1', '', $requestTarget);
         $requestTarget = str_replace('?', '+', $requestTarget);
 
-        $file = __DIR__. "/fixtures/$requestTarget.json";
+        $file = __DIR__."/fixtures/$requestTarget.json";
 
         if (file_exists($file)) {
             return new Response(200, [], file_get_contents($file));

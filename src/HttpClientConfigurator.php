@@ -20,7 +20,7 @@ use Http\Client\Common\Plugin;
 /**
  * Configure an HTTP client.
  *
- * @internal This class should not be used outside of the API Client, it is not part of the BC promise.
+ * @internal this class should not be used outside of the API Client, it is not part of the BC promise
  */
 final class HttpClientConfigurator
 {
@@ -88,7 +88,7 @@ final class HttpClientConfigurator
      *
      * @return HttpClientConfigurator
      */
-    public function setEndpoint(string $endpoint): HttpClientConfigurator
+    public function setEndpoint(string $endpoint): self
     {
         $this->endpoint = $endpoint;
 
@@ -100,7 +100,7 @@ final class HttpClientConfigurator
      *
      * @return HttpClientConfigurator
      */
-    public function setApiKey(string $apiKey): HttpClientConfigurator
+    public function setApiKey(string $apiKey): self
     {
         $this->apiKey = $apiKey;
 
@@ -112,7 +112,7 @@ final class HttpClientConfigurator
      *
      * @return HttpClientConfigurator
      */
-    public function appendPlugin(Plugin ...$plugin): HttpClientConfigurator
+    public function appendPlugin(Plugin ...$plugin): self
     {
         foreach ($plugin as $p) {
             $this->appendPlugins[] = $p;
@@ -126,7 +126,7 @@ final class HttpClientConfigurator
      *
      * @return HttpClientConfigurator
      */
-    public function prependPlugin(Plugin ...$plugin): HttpClientConfigurator
+    public function prependPlugin(Plugin ...$plugin): self
     {
         $plugin = array_reverse($plugin);
         foreach ($plugin as $p) {

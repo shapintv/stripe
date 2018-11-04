@@ -9,12 +9,9 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Api;
 
-use Psr\Http\Message\ResponseInterface;
 use Shapin\Stripe\Configuration;
 use Shapin\Stripe\Exception;
-use Shapin\Stripe\Exception\InvalidArgumentException;
 use Shapin\Stripe\Model\Source\Source as SourceModel;
-use Shapin\Stripe\Model\Source\SourceCollection;
 use Symfony\Component\Config\Definition\Processor;
 
 final class Source extends HttpApi
@@ -30,7 +27,7 @@ final class Source extends HttpApi
             return $response;
         }
 
-        if ($response->getStatusCode() !== 200) {
+        if (200 !== $response->getStatusCode()) {
             $this->handleErrors($response);
         }
 
@@ -51,7 +48,7 @@ final class Source extends HttpApi
             return $response;
         }
 
-        if ($response->getStatusCode() !== 200) {
+        if (200 !== $response->getStatusCode()) {
             $this->handleErrors($response);
         }
 

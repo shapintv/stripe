@@ -65,7 +65,7 @@ class SourceCreate implements ConfigurationInterface
                 ->enumNode('flow')
                     ->cannotBeEmpty()
                     ->values([Source::FLOW_CODE_VERIFICATION, Source::FLOW_NONE, Source::FLOW_RECEIVER, Source::FLOW_REDIRECT])
-                    ->info ('The authentication flow of the source to create. flow is one of redirect, receiver, code_verification, none. It is generally inferred unless a type supports multiple flows.')
+                    ->info('The authentication flow of the source to create. flow is one of redirect, receiver, code_verification, none. It is generally inferred unless a type supports multiple flows.')
                 ->end()
                 ->arrayNode('mandate')
                     ->children()

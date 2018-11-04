@@ -15,7 +15,7 @@ use Http\Message\RequestFactory;
 use Psr\Http\Message\RequestInterface;
 
 /**
- * @internal This class should not be used outside of the API Client, it is not part of the BC promise.
+ * @internal this class should not be used outside of the API Client, it is not part of the BC promise
  */
 final class RequestBuilder
 {
@@ -60,7 +60,7 @@ final class RequestBuilder
      */
     public function create(string $method, string $uri, array $headers = [], $body = null): RequestInterface
     {
-        if (!is_array($body)) {
+        if (!\is_array($body)) {
             return $this->requestFactory->createRequest($method, $uri, $headers, $body);
         }
 

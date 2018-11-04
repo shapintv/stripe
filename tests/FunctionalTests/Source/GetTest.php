@@ -14,7 +14,7 @@ use Shapin\Stripe\Model\Source\Owner;
 use Shapin\Stripe\Model\Source\Receiver;
 use Shapin\Stripe\Model\Source\Source;
 use Shapin\Stripe\Model\MetadataCollection;
-use Shapin\Stripe\Tests\FunctionalTests\TestCase;;
+use Shapin\Stripe\Tests\FunctionalTests\TestCase;
 
 final class GetTest extends TestCase
 {

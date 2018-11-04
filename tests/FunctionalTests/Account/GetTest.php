@@ -19,7 +19,7 @@ use Shapin\Stripe\Model\Account\TermsOfServiceAcceptance;
 use Shapin\Stripe\Model\Address;
 use Shapin\Stripe\Model\BankAccount\BankAccount;
 use Shapin\Stripe\Model\MetadataCollection;
-use Shapin\Stripe\Tests\FunctionalTests\TestCase;;
+use Shapin\Stripe\Tests\FunctionalTests\TestCase;
 
 final class GetTest extends TestCase
 {

@@ -9,7 +9,6 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe;
 
-use Shapin\Stripe\Api;
 use Shapin\Stripe\Hydrator\ModelHydrator;
 use Shapin\Stripe\Hydrator\Hydrator;
 use Http\Client\HttpClient;

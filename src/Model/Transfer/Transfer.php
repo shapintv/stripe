@@ -72,7 +72,7 @@ final class Transfer implements CreatableFromArray, ContainsMetadata
     private $reversals;
 
     /**
-     * @var boolean
+     * @var bool
      */
     private $reversed;
 

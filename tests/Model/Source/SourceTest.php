@@ -13,14 +13,13 @@ use Shapin\Stripe\Model\Source\Card;
 use Shapin\Stripe\Model\Source\Owner;
 use Shapin\Stripe\Model\Source\Source;
 use Shapin\Stripe\Model\MetadataCollection;
-use Shapin\Stripe\Model\Refund\RefundCollection;
 use PHPUnit\Framework\TestCase;
 
 class SourceTest extends TestCase
 {
     public function testCreateFromArray()
     {
-        $data = json_decode(file_get_contents(__DIR__ . '/../../fixtures/sources/src_1DRKIVIpafQncvOMg0qev4dH.json'), true);
+        $data = json_decode(file_get_contents(__DIR__.'/../../fixtures/sources/src_1DRKIVIpafQncvOMg0qev4dH.json'), true);
 
         $source = Source::createFromArray($data);
 

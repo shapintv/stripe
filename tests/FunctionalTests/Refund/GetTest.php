@@ -11,7 +11,7 @@ namespace Shapin\Stripe\Tests\Api\Refund;
 
 use Shapin\Stripe\Model\Refund\Refund;
 use Shapin\Stripe\Model\MetadataCollection;
-use Shapin\Stripe\Tests\FunctionalTests\TestCase;;
+use Shapin\Stripe\Tests\FunctionalTests\TestCase;
 
 final class GetTest extends TestCase
 {

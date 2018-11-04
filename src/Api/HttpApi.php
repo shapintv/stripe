@@ -59,7 +59,7 @@ abstract class HttpApi
      */
     protected function httpGet(string $path, array $params = [], array $requestHeaders = []): ResponseInterface
     {
-        if (count($params) > 0) {
+        if (\count($params) > 0) {
             $path .= '?'.http_build_query($params);
         }
 
@@ -139,7 +139,7 @@ abstract class HttpApi
      */
     private function createJsonBody(array $params)
     {
-        return (count($params) === 0) ? null : json_encode($params, empty($params) ? JSON_FORCE_OBJECT : 0);
+        return (0 === \count($params)) ? null : json_encode($params, empty($params) ? JSON_FORCE_OBJECT : 0);
     }
 
     /**

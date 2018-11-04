@@ -10,11 +10,9 @@ declare(strict_types=1);
 namespace Shapin\Stripe\Api;
 
 use Shapin\Stripe\Exception;
-use Shapin\Stripe\Exception\InvalidArgumentException;
 use Shapin\Stripe\Model\Balance\Balance as BalanceModel;
 use Shapin\Stripe\Model\Balance\BalanceTransaction;
 use Shapin\Stripe\Model\Balance\BalanceTransactionCollection;
-use Psr\Http\Message\ResponseInterface;
 
 final class Balance extends HttpApi
 {
@@ -34,7 +32,7 @@ final class Balance extends HttpApi
             return $response;
         }
 
-        if ($response->getStatusCode() !== 200) {
+        if (200 !== $response->getStatusCode()) {
             $this->handleErrors($response);
         }
 
@@ -52,7 +50,7 @@ final class Balance extends HttpApi
             return $response;
         }
 
-        if ($response->getStatusCode() !== 200) {
+        if (200 !== $response->getStatusCode()) {
             $this->handleErrors($response);
         }
 
@@ -65,7 +63,7 @@ final class Balance extends HttpApi
     public function getBalanceTransactions(array $params = [])
     {
         $paramsString = '';
-        if (0 < count($params)) {
+        if (0 < \count($params)) {
             $paramsString = '?'.http_build_query($params);
         }
 
@@ -75,7 +73,7 @@ final class Balance extends HttpApi
             return $response;
         }
 
-        if ($response->getStatusCode() !== 200) {
+        if (200 !== $response->getStatusCode()) {
             $this->handleErrors($response);
         }
 

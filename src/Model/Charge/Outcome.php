@@ -10,8 +10,6 @@ declare(strict_types=1);
 namespace Shapin\Stripe\Model\Charge;
 
 use Shapin\Stripe\Model\CreatableFromArray;
-use Money\Currency;
-use Money\Money;
 
 final class Outcome implements CreatableFromArray
 {

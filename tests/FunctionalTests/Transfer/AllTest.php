@@ -11,7 +11,7 @@ namespace Shapin\Stripe\Tests\Api\Transfer;
 
 use Shapin\Stripe\Model\Transfer\Transfer;
 use Shapin\Stripe\Model\Transfer\TransferCollection;
-use Shapin\Stripe\Tests\FunctionalTests\TestCase;;
+use Shapin\Stripe\Tests\FunctionalTests\TestCase;
 
 final class AllTest extends TestCase
 {

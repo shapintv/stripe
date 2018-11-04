@@ -11,7 +11,7 @@ namespace Shapin\Stripe\Tests\Api\Account;
 
 use Shapin\Stripe\Model\Account\Account;
 use Shapin\Stripe\Model\Account\AccountCollection;
-use Shapin\Stripe\Tests\FunctionalTests\TestCase;;
+use Shapin\Stripe\Tests\FunctionalTests\TestCase;
 
 final class AllTest extends TestCase
 {

@@ -35,7 +35,8 @@ final class FeeDetails implements CreatableFromArray
      */
     private $type;
 
-    private function __construct() {
+    private function __construct()
+    {
     }
 
     public static function createFromArray(array $data): self

@@ -9,8 +9,6 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Model;
 
-use Shapin\Stripe\Model\CreatableFromArray;
-
 final class DateOfBirth
 {
     /**

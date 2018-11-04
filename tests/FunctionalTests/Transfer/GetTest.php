@@ -13,7 +13,7 @@ use Shapin\Stripe\Model\Transfer\Transfer;
 use Shapin\Stripe\Model\Transfer\TransferReversal;
 use Shapin\Stripe\Model\Transfer\TransferReversalCollection;
 use Shapin\Stripe\Model\MetadataCollection;
-use Shapin\Stripe\Tests\FunctionalTests\TestCase;;
+use Shapin\Stripe\Tests\FunctionalTests\TestCase;
 
 final class GetTest extends TestCase
 {

@@ -14,8 +14,7 @@ use Shapin\Stripe\Model\Charge\Charge;
 use Shapin\Stripe\Model\MetadataCollection;
 use Shapin\Stripe\Model\Refund\Refund;
 use Shapin\Stripe\Model\Refund\RefundCollection;
-use Shapin\Stripe\Tests\FunctionalTests\TestCase;;
-use Money\Money;
+use Shapin\Stripe\Tests\FunctionalTests\TestCase;
 
 final class GetTest extends TestCase
 {

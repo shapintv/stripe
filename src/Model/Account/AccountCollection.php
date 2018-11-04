@@ -10,7 +10,6 @@ declare(strict_types=1);
 namespace Shapin\Stripe\Model\Account;
 
 use Shapin\Stripe\Model\Collection;
-use Shapin\Stripe\Model\CreatableFromArray;
 
 final class AccountCollection extends Collection
 {

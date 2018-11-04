@@ -20,7 +20,7 @@ class ChargeTest extends TestCase
 {
     public function testCreateFromArray()
     {
-        $data = json_decode(file_get_contents(__DIR__ . '/../../fixtures/charges/ch_1DMyewIpafQncvOMYhZHHlxV.json'), true);
+        $data = json_decode(file_get_contents(__DIR__.'/../../fixtures/charges/ch_1DMyewIpafQncvOMYhZHHlxV.json'), true);
 
         $charge = Charge::createFromArray($data);
 

@@ -9,10 +9,8 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Api;
 
-use Psr\Http\Message\ResponseInterface;
 use Shapin\Stripe\Configuration;
 use Shapin\Stripe\Exception;
-use Shapin\Stripe\Exception\InvalidArgumentException;
 use Shapin\Stripe\Model\Transfer\Transfer as TransferModel;
 use Shapin\Stripe\Model\Transfer\TransferCollection;
 use Symfony\Component\Config\Definition\Processor;
@@ -30,7 +28,7 @@ final class Transfer extends HttpApi
             return $response;
         }
 
-        if ($response->getStatusCode() !== 200) {
+        if (200 !== $response->getStatusCode()) {
             $this->handleErrors($response);
         }
 
@@ -46,7 +44,7 @@ final class Transfer extends HttpApi
         $processor->processConfiguration(new Configuration\TransferList(), [$params]);
 
         $searchString = '';
-        if (0 < count($params)) {
+        if (0 < \count($params)) {
             $searchString = '?'.http_build_query($params);
         }
 
@@ -56,7 +54,7 @@ final class Transfer extends HttpApi
             return $response;
         }
 
-        if ($response->getStatusCode() !== 200) {
+        if (200 !== $response->getStatusCode()) {
             $this->handleErrors($response);
         }
 
@@ -77,7 +75,7 @@ final class Transfer extends HttpApi
             return $response;
         }
 
-        if ($response->getStatusCode() !== 200) {
+        if (200 !== $response->getStatusCode()) {
             $this->handleErrors($response);
         }
 

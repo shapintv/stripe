@@ -10,10 +10,8 @@ declare(strict_types=1);
 namespace Shapin\Stripe\Api;
 
 use Shapin\Stripe\Exception;
-use Shapin\Stripe\Exception\InvalidArgumentException;
 use Shapin\Stripe\Model\Refund\Refund as RefundModel;
 use Shapin\Stripe\Model\Refund\RefundCollection;
-use Psr\Http\Message\ResponseInterface;
 
 final class Refund extends HttpApi
 {
@@ -28,7 +26,7 @@ final class Refund extends HttpApi
             return $response;
         }
 
-        if ($response->getStatusCode() !== 200) {
+        if (200 !== $response->getStatusCode()) {
             $this->handleErrors($response);
         }
 
@@ -46,7 +44,7 @@ final class Refund extends HttpApi
             return $response;
         }
 
-        if ($response->getStatusCode() !== 200) {
+        if (200 !== $response->getStatusCode()) {
             $this->handleErrors($response);
         }
 

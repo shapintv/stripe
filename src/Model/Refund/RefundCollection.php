@@ -10,7 +10,6 @@ declare(strict_types=1);
 namespace Shapin\Stripe\Model\Refund;
 
 use Shapin\Stripe\Model\Collection;
-use Shapin\Stripe\Model\CreatableFromArray;
 
 final class RefundCollection extends Collection
 {

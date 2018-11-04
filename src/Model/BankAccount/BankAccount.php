@@ -14,7 +14,6 @@ use Shapin\Stripe\Model\CreatableFromArray;
 use Shapin\Stripe\Model\MetadataTrait;
 use Shapin\Stripe\Model\MetadataCollection;
 use Money\Currency;
-use Money\Money;
 
 final class BankAccount implements CreatableFromArray, ContainsMetadata
 {

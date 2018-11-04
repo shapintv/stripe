@@ -13,7 +13,6 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
 use Http\Client\HttpClient;
 use PHPUnit\Framework\TestCase;
-use Shapin\Stripe\Api\HttpApi;
 use Shapin\Stripe\Hydrator\NoopHydrator;
 use Shapin\Stripe\RequestBuilder;
 

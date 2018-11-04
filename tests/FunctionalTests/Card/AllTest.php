@@ -11,7 +11,7 @@ namespace Shapin\Stripe\Tests\Api\Card;
 
 use Shapin\Stripe\Model\Card\Card;
 use Shapin\Stripe\Model\Card\CardCollection;
-use Shapin\Stripe\Tests\FunctionalTests\TestCase;;
+use Shapin\Stripe\Tests\FunctionalTests\TestCase;
 
 final class AllTest extends TestCase
 {

@@ -12,8 +12,6 @@ namespace Shapin\Stripe\Model\Account;
 use Shapin\Stripe\Model\Address;
 use Shapin\Stripe\Model\CreatableFromArray;
 use Shapin\Stripe\Model\DateOfBirth;
-use Money\Currency;
-use Money\Money;
 
 final class LegalEntity implements CreatableFromArray
 {

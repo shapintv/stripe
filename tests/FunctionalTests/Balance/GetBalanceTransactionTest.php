@@ -9,13 +9,8 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Tests\Api\Balance;
 
-use Shapin\Stripe\Model\Balance\Balance;
-use Shapin\Stripe\Model\Balance\BalancePart;
 use Shapin\Stripe\Model\Balance\BalanceTransaction;
-use Shapin\Stripe\Model\Balance\FeeDetails;
-use Shapin\Stripe\HttpClientConfigurator;
-use Shapin\Stripe\Tests\FunctionalTests\TestCase;;
-use Http\Client\Common\Plugin\HeaderAppendPlugin;
+use Shapin\Stripe\Tests\FunctionalTests\TestCase;
 use Money\Money;
 
 final class GetBalanceTransactionTest extends TestCase

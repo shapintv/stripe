@@ -1,13 +1,21 @@
 <?php
 
-/*
- * In order to make it work, fabpot/php-cs-fixer and sllh/php-cs-fixer-styleci-bridge must be installed globally
- * with composer.
- *
- * @link https://github.com/Soullivaneuh/php-cs-fixer-styleci-bridge
- * @link https://github.com/FriendsOfPHP/PHP-CS-Fixer
- */
-
-use SLLH\StyleCIBridge\ConfigBridge;
-
-return ConfigBridge::create();
+return PhpCsFixer\Config::create()
+    ->setRules([
+        '@Symfony' => true,
+        '@Symfony:risky' => true,
+        'array_syntax' => ['syntax' => 'short'],
+        'declare_strict_types' => true,
+    ])
+    ->setRiskyAllowed(true)
+    ->setFinder(
+        PhpCsFixer\Finder::create()
+            ->in(__DIR__)
+            ->ignoreDotFiles(true)
+            ->ignoreVCS(true)
+            ->exclude(['vendor', 'var'])
+            ->notPath('config/bundles.php')
+            ->files()
+            ->name('*.php')
+    )
+;

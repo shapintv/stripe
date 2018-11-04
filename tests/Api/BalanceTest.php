@@ -10,11 +10,7 @@ declare(strict_types=1);
 namespace Shapin\Stripe\Tests\Api;
 
 use GuzzleHttp\Psr7\Request;
-use GuzzleHttp\Psr7\Response;
-use Http\Client\HttpClient;
 use Shapin\Stripe\Api\Balance;
-use Shapin\Stripe\Hydrator\NoopHydrator;
-use Shapin\Stripe\RequestBuilder;
 
 final class BalanceTest extends ApiTestCase
 {

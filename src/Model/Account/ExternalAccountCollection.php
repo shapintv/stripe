@@ -13,7 +13,6 @@ use Shapin\Stripe\Exception\InvalidArgumentException;
 use Shapin\Stripe\Model\BankAccount\BankAccount;
 use Shapin\Stripe\Model\Card\Card;
 use Shapin\Stripe\Model\Collection;
-use Shapin\Stripe\Model\CreatableFromArray;
 
 final class ExternalAccountCollection extends Collection
 {

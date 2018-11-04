@@ -10,10 +10,8 @@ declare(strict_types=1);
 namespace Shapin\Stripe\Api;
 
 use Shapin\Stripe\Exception;
-use Shapin\Stripe\Exception\InvalidArgumentException;
 use Shapin\Stripe\Model\BankAccount\BankAccount as BankAccountModel;
 use Shapin\Stripe\Model\BankAccount\BankAccountCollection;
-use Psr\Http\Message\ResponseInterface;
 
 final class BankAccount extends HttpApi
 {
@@ -28,7 +26,7 @@ final class BankAccount extends HttpApi
             return $response;
         }
 
-        if ($response->getStatusCode() !== 200) {
+        if (200 !== $response->getStatusCode()) {
             $this->handleErrors($response);
         }
 
@@ -49,7 +47,7 @@ final class BankAccount extends HttpApi
             return $response;
         }
 
-        if ($response->getStatusCode() !== 200) {
+        if (200 !== $response->getStatusCode()) {
             $this->handleErrors($response);
         }
 
