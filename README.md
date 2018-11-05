@@ -2,7 +2,7 @@
 
 [![Latest Version](https://img.shields.io/github/release/shapintv/stripe.svg?style=flat-square)](https://github.com/shapintv/stripe/releases)
 [![Build Status](https://img.shields.io/travis/shapintv/stripe.svg?style=flat-square)](https://travis-ci.org/shapintv/stripe)
-[![Coverage Status](https://coveralls.io/repos/github/shapintv/stripe/badge.svg?branch=master)](https://coveralls.io/github/shapintv/stripe?branch=master)
+[![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/shapintv/stripe.svg?style=flat-square)](https://scrutinizer-ci.com/g/shapintv/stripe)
 [![Quality Score](https://img.shields.io/scrutinizer/g/shapintv/stripe.svg?style=flat-square)](https://scrutinizer-ci.com/g/shapintv/stripe)
 [![Total Downloads](https://img.shields.io/packagist/dt/shapin/stripe.svg?style=flat-square)](https://packagist.org/packages/shapin/stripe)
 
