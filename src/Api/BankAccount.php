@@ -42,7 +42,6 @@ final class BankAccount extends HttpApi
 
         $response = $this->httpGet("/v1/customers/$customerId/sources?".http_build_query($params));
 
-        $body = json_decode($response->getBody()->__toString(), true);
         if (!$this->hydrator) {
             return $response;
         }

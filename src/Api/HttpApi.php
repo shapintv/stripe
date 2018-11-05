@@ -93,7 +93,7 @@ abstract class HttpApi
      */
     protected function httpPostRaw(string $path, $body, array $requestHeaders = []): ResponseInterface
     {
-        return $response = $this->httpClient->sendRequest(
+        return $this->httpClient->sendRequest(
             $this->requestBuilder->create('POST', $path, $requestHeaders, $body)
         );
     }
@@ -156,15 +156,12 @@ abstract class HttpApi
         switch ($response->getStatusCode()) {
             case 400:
                 throw new DomainExceptions\BadRequestException($response);
-                break;
 
             case 404:
                 throw new DomainExceptions\NotFoundException();
-                break;
 
             default:
                 throw new DomainExceptions\UnknownErrorException();
-                break;
         }
     }
 }
