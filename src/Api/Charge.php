@@ -12,6 +12,7 @@ namespace Shapin\Stripe\Api;
 use Shapin\Stripe\Configuration;
 use Shapin\Stripe\Exception;
 use Shapin\Stripe\Model\Charge\Charge as ChargeModel;
+use Shapin\Stripe\Model\Charge\ChargeCollection;
 use Symfony\Component\Config\Definition\Processor;
 
 final class Charge extends HttpApi
@@ -74,5 +75,31 @@ final class Charge extends HttpApi
         }
 
         return $this->hydrator->hydrate($response, ChargeModel::class);
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function all(array $params = [])
+    {
+        $processor = new Processor();
+        $processor->processConfiguration(new Configuration\ChargeList(), [$params]);
+
+        $searchString = '';
+        if (0 < \count($params)) {
+            $searchString = '?'.http_build_query($params);
+        }
+
+        $response = $this->httpGet('/v1/charges'.$searchString);
+
+        if (!$this->hydrator) {
+            return $response;
+        }
+
+        if (200 !== $response->getStatusCode()) {
+            $this->handleErrors($response);
+        }
+
+        return $this->hydrator->hydrate($response, ChargeCollection::class);
     }
 }
