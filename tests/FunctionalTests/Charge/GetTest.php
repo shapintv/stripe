@@ -67,6 +67,9 @@ final class GetTest extends TestCase
         $this->assertNull($charge->getSourceTransfer());
         $this->assertNull($charge->getStatementDescriptor());
         $this->assertSame('succeeded', $charge->getStatus());
+        $this->assertTrue($charge->isSucceeded());
+        $this->assertFalse($charge->isPending());
+        $this->assertFalse($charge->isFailed());
         $this->assertNull($charge->getTransfer());
         $this->assertNull($charge->getTransferGroup());
     }

@@ -25,6 +25,10 @@ final class Charge implements CreatableFromArray, ContainsMetadata
 {
     use LivemodeTrait, MetadataTrait;
 
+    const STATUS_FAILED = 'failed';
+    const STATUS_PENDING = 'pending';
+    const STATUS_SUCCEEDED = 'succeeded';
+
     /**
      * @var string
      */
@@ -255,6 +259,22 @@ final class Charge implements CreatableFromArray, ContainsMetadata
         $model->transferGroup = $data['transfer_group'];
 
         return $model;
+    }
+
+
+    public function isFailed(): bool
+    {
+        return self::STATUS_FAILED === $this->status;
+    }
+
+    public function isSucceeded(): bool
+    {
+        return self::STATUS_SUCCEEDED === $this->status;
+    }
+
+    public function isPending(): bool
+    {
+        return self::STATUS_PENDING === $this->status;
     }
 
     public function getId(): string
