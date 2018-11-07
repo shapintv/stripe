@@ -68,7 +68,7 @@ class SourceTest extends TestCase
         $this->assertNull($source->getRedirect());
         $this->assertNull($source->getStatementDescriptor());
         $this->assertSame('chargeable', $source->getStatus());
-        $this->assertSame('card', $source->getType());
+        $this->assertSame(Source::TYPE_CARD, $source->getType());
         $this->assertSame('reusable', $source->getUsage());
     }
 }

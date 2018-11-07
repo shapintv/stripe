@@ -65,7 +65,8 @@ final class GetTest extends TestCase
         $this->assertNull($source->getRedirect());
         $this->assertNull($source->getStatementDescriptor());
         $this->assertSame('pending', $source->getStatus());
-        $this->assertSame('ach_credit_transfer', $source->getType());
+        $this->assertSame(Source::TYPE_ACH_CREDIT_TRANSFER, $source->getType());
+        $this->assertFalse($source->isThreeDSecure());
         $this->assertSame('reusable', $source->getUsage());
     }
 }

@@ -34,6 +34,21 @@ final class Source implements CreatableFromArray, ContainsMetadata
     const STATUS_ACCEPTED = 'accepted';
     const STATUS_REFUSED = 'refused';
 
+    const TYPE_ACH_CREDIT_TRANSFER = 'ach_credit_transfer';
+    const TYPE_ACH_DEBIT = 'ach_debit';
+    const TYPE_ALIPAY = 'alipay';
+    const TYPE_BANCONTACT = 'bancontact';
+    const TYPE_CARD = 'card';
+    const TYPE_CARD_PRESENT = 'card_present';
+    const TYPE_EPS = 'eps';
+    const TYPE_GIROPAY = 'giropay';
+    const TYPE_IDEAL = 'ideal';
+    const TYPE_MULTIBANCO = 'multibanco';
+    const TYPE_P24 = 'p24';
+    const TYPE_PAPER_CHECK = 'paper_check';
+    const TYPE_SEPA_CREDIT_TRANSFER = 'sepa_credit_transfer';
+    const TYPE_SEPA_DEBIT = 'sepa_debit';
+    const TYPE_SOFORT = 'sofort';
     const TYPE_THREE_D_SECURE = 'three_d_secure';
 
     const USAGE_REUSABLE = 'reusable';
@@ -162,6 +177,11 @@ final class Source implements CreatableFromArray, ContainsMetadata
         $model->usage = $data['usage'];
 
         return $model;
+    }
+
+    public function isThreeDSecure(): bool
+    {
+        return self::TYPE_THREE_D_SECURE === $this->type;
     }
 
     public function getId(): string
