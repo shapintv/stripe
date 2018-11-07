@@ -51,7 +51,7 @@ final class Charge implements CreatableFromArray, ContainsMetadata
     private $applicationFee;
 
     /**
-     * @var string
+     * @var ?string
      */
     private $balanceTransaction;
 
@@ -282,7 +282,7 @@ final class Charge implements CreatableFromArray, ContainsMetadata
         return $this->applicationFee;
     }
 
-    public function getBalanceTransaction(): string
+    public function getBalanceTransaction(): ?string
     {
         return $this->balanceTransaction;
     }
