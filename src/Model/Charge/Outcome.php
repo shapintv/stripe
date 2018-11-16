@@ -58,7 +58,7 @@ final class Outcome implements CreatableFromArray
         $model->networkStatus = $data['network_status'];
         $model->reason = $data['reason'];
         $model->riskLevel = $data['risk_level'] ?? null;
-        $model->riskScore = $data['risk_score'] ? (int) $data['risk_score'] : null;
+        $model->riskScore = isset($data['risk_score']) ? (int) $data['risk_score'] : null;
         $model->rule = $data['rule'] ?? null;
         $model->sellerMessage = $data['seller_message'];
         $model->type = $data['type'];
