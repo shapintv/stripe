@@ -9,9 +9,11 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Api;
 
+use Shapin\Stripe\Configuration;
 use Shapin\Stripe\Exception;
 use Shapin\Stripe\Model\Refund\Refund as RefundModel;
 use Shapin\Stripe\Model\Refund\RefundCollection;
+use Symfony\Component\Config\Definition\Processor;
 
 final class Refund extends HttpApi
 {
@@ -49,5 +51,26 @@ final class Refund extends HttpApi
         }
 
         return $this->hydrator->hydrate($response, RefundCollection::class);
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function create(array $params)
+    {
+        $processor = new Processor();
+        $processor->processConfiguration(new Configuration\RefundCreate(), [$params]);
+
+        $response = $this->httpPostRaw('/v1/refunds', http_build_query($params), ['Content-Type' => 'application/x-www-form-urlencoded']);
+
+        if (!$this->hydrator) {
+            return $response;
+        }
+
+        if (200 !== $response->getStatusCode()) {
+            $this->handleErrors($response);
+        }
+
+        return $this->hydrator->hydrate($response, RefundModel::class);
     }
 }
