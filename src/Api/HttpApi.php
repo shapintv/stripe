@@ -156,10 +156,8 @@ abstract class HttpApi
         switch ($response->getStatusCode()) {
             case 400:
                 throw new DomainExceptions\BadRequestException($response);
-
             case 404:
                 throw new DomainExceptions\NotFoundException();
-
             default:
                 throw new DomainExceptions\UnknownErrorException();
         }

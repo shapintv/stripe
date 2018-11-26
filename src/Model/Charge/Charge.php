@@ -261,7 +261,6 @@ final class Charge implements CreatableFromArray, ContainsMetadata
         return $model;
     }
 
-
     public function isFailed(): bool
     {
         return self::STATUS_FAILED === $this->status;
