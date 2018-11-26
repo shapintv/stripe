@@ -12,12 +12,20 @@ namespace Shapin\Stripe\Exception\Domain;
 use Psr\Http\Message\ResponseInterface;
 use Shapin\Stripe\Exception\DomainException;
 
-final class BadRequestException extends \Exception implements DomainException
+class BadRequestException extends \Exception implements DomainException
 {
+    protected $response;
+
     public function __construct(ResponseInterface $response)
     {
+        $this->response = $response;
         $content = json_decode($response->getBody()->__toString(), true);
 
         parent::__construct($content['error']['message']);
+    }
+
+    public function getResponse(): ResponseInterface
+    {
+        return $this->response;
     }
 }

@@ -9,8 +9,10 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Api;
 
+use Psr\Http\Message\ResponseInterface;
 use Shapin\Stripe\Configuration;
 use Shapin\Stripe\Exception;
+use Shapin\Stripe\Exception\Domain\Refund as RefundExceptions;
 use Shapin\Stripe\Model\Refund\Refund as RefundModel;
 use Shapin\Stripe\Model\Refund\RefundCollection;
 use Symfony\Component\Config\Definition\Processor;
@@ -72,5 +74,23 @@ final class Refund extends HttpApi
         }
 
         return $this->hydrator->hydrate($response, RefundModel::class);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function handleErrors(ResponseInterface $response)
+    {
+        if (400 === $response->getStatusCode()) {
+            $body = json_decode((string) $response->getBody(), true);
+            if (isset($body['error']['code'])) {
+                switch ($body['error']['code']) {
+                    case 'charge_already_refunded':
+                        throw new RefundExceptions\ChargeAlreadyRefundedException($response);
+                }
+            }
+        }
+
+        parent::handleErrors($response);
     }
 }
