@@ -95,6 +95,7 @@ final class GetTest extends TestCase
         $this->assertNull($account->getTermsOfServiceAcceptance()->getIp());
         $this->assertNull($account->getTermsOfServiceAcceptance()->getUserAgent());
         $this->assertSame('standard', $account->getType());
+        $this->assertTrue($account->needVerification());
         $this->assertInstanceOf(AccountVerification::class, $account->getVerification());
 
         $this->assertSame('fields_needed', $account->getVerification()->getDisabledReason());

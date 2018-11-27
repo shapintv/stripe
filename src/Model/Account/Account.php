@@ -351,4 +351,9 @@ final class Account implements CreatableFromArray, ContainsMetadata
     {
         return $this->verification;
     }
+
+    public function needVerification(): bool
+    {
+        return null !== $this->verification && 0 < count($this->verification->getFieldsNeeded());
+    }
 }
