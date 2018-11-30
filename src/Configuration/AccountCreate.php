@@ -17,8 +17,8 @@ class AccountCreate implements ConfigurationInterface
 {
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('shapin_stripe');
+        $treeBuilder = new TreeBuilder('shapin_stripe');
+        $rootNode = $treeBuilder->getRootNode();
 
         $rootNode
             ->children()
