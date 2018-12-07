@@ -28,6 +28,8 @@ install: ## Install all applications
 	@curl -L "https://github.com/stripe/stripe-mock/releases/download/v${STRIPE_MOCK_VERSION}/stripe-mock_${STRIPE_MOCK_VERSION}_linux_amd64.tar.gz" -o "var/stripe-mock.tar.gz"
 	@$(call say_green,"Unpacking Stripe mock server")
 	@tar -zxf "var/stripe-mock.tar.gz" -C "var/"
+	@$(call say_green,"Installin PHP dependencies")
+	@composer install
 
 start: ## Start application
 	@var/stripe-mock > /dev/null &
