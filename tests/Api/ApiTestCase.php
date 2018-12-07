@@ -21,13 +21,13 @@ class ApiTestCase extends TestCase
     public function getMockedApi(string $classUnderTest, Request $request)
     {
         $httpClient = $this->prophesize(HttpClient::class);
-        $httpClient->sendRequest($request)->shouldBeCalledTimes(1)->willReturn(new Response('OK'));
+        $httpClient->sendRequest($request)->shouldBeCalledTimes(1)->willReturn(new Response(200));
 
         return new $classUnderTest($httpClient->reveal(), new NoopHydrator(), new RequestBuilder());
     }
 
     protected function assertResponseIsValid(Response $response)
     {
-        $this->assertEquals(new Response('OK'), $response);
+        $this->assertEquals(new Response(200), $response);
     }
 }
