@@ -100,4 +100,9 @@ final class StripeClient
     {
         return new Api\Transfer($this->httpClient, $this->hydrator, $this->requestBuilder);
     }
+
+    public function products(): Api\Product
+    {
+        return new Api\Product($this->httpClient, $this->hydrator, $this->requestBuilder);
+    }
 }
