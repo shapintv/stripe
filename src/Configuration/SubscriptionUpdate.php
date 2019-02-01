@@ -95,7 +95,7 @@ class SubscriptionUpdate implements ConfigurationInterface
                             ->ifTrue(function ($v) {
                                 return isset($v['clear_usage']) && true === $v['clear_usage'] && (!isset($v['deleted']) || false === $v['deleted']);
                             })
-                            ->thenInvalid("Cannot clear usage of a non deleted item.")
+                            ->thenInvalid('Cannot clear usage of a non deleted item.')
                         ->end()
                     ->end()
                     ->info('Define thresholds at which an invoice will be sent, and the subscription advanced to a new billing period. Pass an empty string to remove previously-defined thresholds.')
@@ -124,7 +124,7 @@ class SubscriptionUpdate implements ConfigurationInterface
                 ->ifTrue(function ($v) {
                     return isset($v['billing']) && Subscription::BILLING_SEND_INVOICE !== $v['billing'] && isset($v['days_until_due']);
                 })
-                ->thenInvalid("You can only set \"days_until_due\" for \"send_invoice\" billing type.")
+                ->thenInvalid('You can only set "days_until_due" for "send_invoice" billing type.')
             ->end()
         ;
 

@@ -9,10 +9,8 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Api;
 
-use Psr\Http\Message\ResponseInterface;
 use Shapin\Stripe\Configuration;
 use Shapin\Stripe\Exception;
-use Shapin\Stripe\Exception\Domain\Subscription as SubscriptionExceptions;
 use Shapin\Stripe\Model\Subscription\Item;
 use Shapin\Stripe\Model\Subscription\Subscription as SubscriptionModel;
 use Shapin\Stripe\Model\Subscription\SubscriptionCollection;

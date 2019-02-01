@@ -9,7 +9,6 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Model\Customer;
 
-use Shapin\Stripe\Model\Address;
 use Shapin\Stripe\Model\CreatableFromArray;
 
 final class TaxInfo implements CreatableFromArray

@@ -11,7 +11,6 @@ namespace Shapin\Stripe\Tests\Configuration;
 
 use PHPUnit\Framework\TestCase;
 use Shapin\Stripe\Configuration\PlanUpdate;
-use Shapin\Stripe\Model\Plan\Plan;
 use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
 use Symfony\Component\Config\Definition\Processor;
 

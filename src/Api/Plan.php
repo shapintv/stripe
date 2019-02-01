@@ -9,11 +9,8 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Api;
 
-use Psr\Http\Message\ResponseInterface;
 use Shapin\Stripe\Configuration;
 use Shapin\Stripe\Exception;
-use Shapin\Stripe\Exception\Domain\Plan as PlanExceptions;
-use Shapin\Stripe\Model\Plan\Item;
 use Shapin\Stripe\Model\Plan\Plan as PlanModel;
 use Shapin\Stripe\Model\Plan\PlanCollection;
 use Symfony\Component\Config\Definition\Processor;

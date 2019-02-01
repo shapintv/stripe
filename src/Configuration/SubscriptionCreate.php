@@ -115,13 +115,13 @@ class SubscriptionCreate implements ConfigurationInterface
                 ->ifTrue(function ($v) {
                     return isset($v['billing']) && Subscription::BILLING_SEND_INVOICE !== $v['billing'] && isset($v['days_until_due']);
                 })
-                ->thenInvalid("You can only set \"days_until_due\" for \"send_invoice\" billing type.")
+                ->thenInvalid('You can only set "days_until_due" for "send_invoice" billing type.')
             ->end()
             ->validate()
                 ->ifTrue(function ($v) {
                     return isset($v['trial_from_plan']) && true === $v['trial_from_plan'] && isset($v['trial_period_days']);
                 })
-                ->thenInvalid("You cannot specify \"trial_period_days\" when \"trial_from_plan\" is true.")
+                ->thenInvalid('You cannot specify "trial_period_days" when "trial_from_plan" is true.')
             ->end()
         ;
 

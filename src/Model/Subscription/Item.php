@@ -13,8 +13,6 @@ use Shapin\Stripe\Model\ContainsMetadata;
 use Shapin\Stripe\Model\CreatableFromArray;
 use Shapin\Stripe\Model\MetadataTrait;
 use Shapin\Stripe\Model\MetadataCollection;
-use Money\Currency;
-use Money\Money;
 
 final class Item implements CreatableFromArray, ContainsMetadata
 {
@@ -36,7 +34,7 @@ final class Item implements CreatableFromArray, ContainsMetadata
     private $plan;
 
     /**
-     * @var integer
+     * @var int
      */
     private $quantity;
 

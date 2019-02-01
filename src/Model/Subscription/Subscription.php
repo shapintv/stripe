@@ -14,8 +14,6 @@ use Shapin\Stripe\Model\CreatableFromArray;
 use Shapin\Stripe\Model\LivemodeTrait;
 use Shapin\Stripe\Model\MetadataTrait;
 use Shapin\Stripe\Model\MetadataCollection;
-use Money\Currency;
-use Money\Money;
 
 final class Subscription implements CreatableFromArray, ContainsMetadata
 {
@@ -138,7 +136,7 @@ final class Subscription implements CreatableFromArray, ContainsMetadata
     public static function createFromArray(array $data): self
     {
         $model = new self();
-        $model->id =$data['id'];
+        $model->id = $data['id'];
         $model->applicationFeePercent = null !== $data['application_fee_percent'] ? (float) $data['application_fee_percent'] : null;
         $model->billing = $data['billing'];
         $model->billingCycleAnchor = $data['billing_cycle_anchor'];

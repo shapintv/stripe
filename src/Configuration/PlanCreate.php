@@ -158,8 +158,8 @@ class PlanCreate implements ConfigurationInterface
             ->end()
             ->validate()
             ->ifTrue(function ($v) {
-                    return isset($v['tiers']) && isset($v['transform_usage']) && null !== $v['tiers'] && !empty($v['transform_usage']);
-                })
+                return isset($v['tiers']) && isset($v['transform_usage']) && null !== $v['tiers'] && !empty($v['transform_usage']);
+            })
                 ->thenInvalid('"transform_usage" cannot be combined with "tiers".')
             ->end()
             ->validate()

@@ -9,7 +9,6 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Configuration;
 
-use Shapin\Stripe\Model\Product\Product;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
@@ -29,8 +28,8 @@ class ProductUpdate implements ConfigurationInterface
                     ->scalarPrototype()->end()
                     ->info('A list of up to 5 alphanumeric attributes that each SKU can provide values for (e.g., ["color", "size"]). If a value for attributes is specified, the list specified will replace the existing attributes list on this product. Any attributes not present after the update will be deleted from the SKUs for this product. This will be unset if you POST an empty value.')
                     ->validate()
-                        ->ifTrue(function($c) {
-                            return 5 < count($c);
+                        ->ifTrue(function ($c) {
+                            return 5 < \count($c);
                         })
                         ->thenInvalid('You can have up to 5 attributes.')
                     ->end()
@@ -49,8 +48,8 @@ class ProductUpdate implements ConfigurationInterface
                     ->scalarPrototype()->end()
                     ->info('A list of up to 8 URLs of images for this product, meant to be displayable to the customer. This will be unset if you POST an empty value.')
                     ->validate()
-                        ->ifTrue(function($c) {
-                            return 8 < count($c);
+                        ->ifTrue(function ($c) {
+                            return 8 < \count($c);
                         })
                         ->thenInvalid('You can have up to 8 images.')
                     ->end()
@@ -94,7 +93,7 @@ class ProductUpdate implements ConfigurationInterface
 
         $rootNode
             ->validate()
-                ->always(function($c) {
+                ->always(function ($c) {
                     if (empty($c['deactivate_on'])) {
                         unset($c['deactivate_on']);
                     }

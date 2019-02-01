@@ -9,7 +9,6 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Tests\FunctionalTests\Plan;
 
-use Shapin\Stripe\Model\Plan\ItemCollection;
 use Shapin\Stripe\Model\Plan\Plan;
 use Shapin\Stripe\Model\MetadataCollection;
 use Shapin\Stripe\Tests\FunctionalTests\TestCase;

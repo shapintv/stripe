@@ -41,8 +41,8 @@ class ProductCreate implements ConfigurationInterface
                     ->scalarPrototype()->end()
                     ->info('A list of up to 5 alphanumeric attributes. Applicable to both service and good types.')
                     ->validate()
-                        ->ifTrue(function($c) {
-                            return 5 < count($c);
+                        ->ifTrue(function ($c) {
+                            return 5 < \count($c);
                         })
                         ->thenInvalid('You can have up to 5 attributes.')
                     ->end()
@@ -61,8 +61,8 @@ class ProductCreate implements ConfigurationInterface
                     ->scalarPrototype()->end()
                     ->info('A list of up to 8 URLs of images for this product, meant to be displayable to the customer. May only be set if type=good.')
                     ->validate()
-                        ->ifTrue(function($c) {
-                            return 8 < count($c);
+                        ->ifTrue(function ($c) {
+                            return 8 < \count($c);
                         })
                         ->thenInvalid('You can have up to 8 images.')
                     ->end()
@@ -103,7 +103,7 @@ class ProductCreate implements ConfigurationInterface
 
         $rootNode
             ->validate()
-                ->always(function($c) {
+                ->always(function ($c) {
                     if (empty($c['deactivate_on'])) {
                         unset($c['deactivate_on']);
                     }

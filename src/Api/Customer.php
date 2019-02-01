@@ -9,11 +9,9 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Api;
 
-use Shapin\Stripe\Configuration;
 use Shapin\Stripe\Exception;
 use Shapin\Stripe\Model\Customer\Customer as CustomerModel;
 use Shapin\Stripe\Model\Customer\CustomerCollection;
-use Symfony\Component\Config\Definition\Processor;
 
 final class Customer extends HttpApi
 {
@@ -42,7 +40,7 @@ final class Customer extends HttpApi
     {
         $searchString = '';
         if (0 < \count($params)) {
-            $searchString = '?'.\http_build_query($params);
+            $searchString = '?'.http_build_query($params);
         }
 
         $response = $this->httpGet("/v1/customers$searchString");

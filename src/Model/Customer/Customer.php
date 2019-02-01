@@ -28,7 +28,7 @@ final class Customer implements CreatableFromArray, ContainsMetadata
     private $id;
 
     /**
-     * @var integer
+     * @var int
      */
     private $accountBalance;
 
@@ -123,7 +123,7 @@ final class Customer implements CreatableFromArray, ContainsMetadata
         $model->live = (bool) $data['livemode'];
         $model->metadata = MetadataCollection::createFromArray($data['metadata']);
         if (isset($data['shipping'])) {
-            $model->shipping =  Shipping::createFromArray($data['shipping']);
+            $model->shipping = Shipping::createFromArray($data['shipping']);
         }
         //$model->sources = SourceCollection::createFromArray($data['sources']);
         //$model->subscriptions = SubscriptionCollection::createFromArray($data['subscriptions']);
