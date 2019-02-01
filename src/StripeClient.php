@@ -110,4 +110,9 @@ final class StripeClient
     {
         return new Api\Customer($this->httpClient, $this->hydrator, $this->requestBuilder);
     }
+
+    public function subscriptions(): Api\Subscription
+    {
+        return new Api\Subscription($this->httpClient, $this->hydrator, $this->requestBuilder);
+    }
 }
