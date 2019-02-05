@@ -1,0 +1,17 @@
+{
+  "created": 1326853478,
+  "livemode": false,
+  "id": "account.application.authorized_00000000000000",
+  "type": "account.application.authorized",
+  "object": "event",
+  "request": null,
+  "pending_webhooks": 1,
+  "api_version": "2018-11-08",
+  "data": {
+    "object": {
+      "id": "ca_00000000000000",
+      "object": "application",
+      "name": null
+    }
+  }
+}
