@@ -9,9 +9,11 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Api;
 
+use Shapin\Stripe\Configuration;
 use Shapin\Stripe\Exception;
 use Shapin\Stripe\Model\Customer\Customer as CustomerModel;
 use Shapin\Stripe\Model\Customer\CustomerCollection;
+use Symfony\Component\Config\Definition\Processor;
 
 final class Customer extends HttpApi
 {
@@ -54,5 +56,26 @@ final class Customer extends HttpApi
         }
 
         return $this->hydrator->hydrate($response, CustomerCollection::class);
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function create(array $params)
+    {
+        $processor = new Processor();
+        $params = $processor->processConfiguration(new Configuration\CustomerCreate(), [$params]);
+
+        $response = $this->httpPostRaw('/v1/customers', http_build_query($params), ['Content-Type' => 'application/x-www-form-urlencoded']);
+
+        if (!$this->hydrator) {
+            return $response;
+        }
+
+        if (200 !== $response->getStatusCode()) {
+            $this->handleErrors($response);
+        }
+
+        return $this->hydrator->hydrate($response, CustomerModel::class);
     }
 }

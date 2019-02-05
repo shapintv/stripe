@@ -30,8 +30,10 @@ final class InvoiceSettings implements CreatableFromArray
     public static function createFromArray(array $data): self
     {
         $customFields = [];
-        foreach ($data['custom_fields'] as $customField) {
-            $customFields[] = new CustomField($customField['name'], $customField['value']);
+        if (isset($data['custom_fields'])) {
+            foreach ($data['custom_fields'] as $customField) {
+                $customFields[] = new CustomField($customField['name'], $customField['value']);
+            }
         }
 
         $model = new self();

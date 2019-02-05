@@ -38,7 +38,7 @@ final class Customer implements CreatableFromArray, ContainsMetadata
     private $createdAt;
 
     /**
-     * @var Currency
+     * @var ?Currency
      */
     private $currency;
 
@@ -112,7 +112,9 @@ final class Customer implements CreatableFromArray, ContainsMetadata
         $model->id = $data['id'];
         $model->accountBalance = (int) $data['account_balance'];
         $model->createdAt = new \DateTimeImmutable('@'.$data['created']);
-        $model->currency = new Currency(strtoupper($data['currency']));
+        if (isset($data['currency'])) {
+            $model->currency = new Currency(strtoupper($data['currency']));
+        }
         $model->defaultSource = $data['default_source'];
         $model->delinquent = (bool) $data['delinquent'];
         $model->description = $data['description'];
@@ -153,7 +155,7 @@ final class Customer implements CreatableFromArray, ContainsMetadata
         return $this->createdAt;
     }
 
-    public function getCurrency(): Currency
+    public function getCurrency(): ?Currency
     {
         return $this->currency;
     }
