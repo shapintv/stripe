@@ -60,9 +60,30 @@ final class Subscription extends HttpApi
     public function create(array $params)
     {
         $processor = new Processor();
-        $processor->processConfiguration(new Configuration\SubscriptionCreate(), [$params]);
+        $params = $processor->processConfiguration(new Configuration\SubscriptionCreate(), [$params]);
 
         $response = $this->httpPostRaw('/v1/subscriptions', http_build_query($params), ['Content-Type' => 'application/x-www-form-urlencoded']);
+
+        if (!$this->hydrator) {
+            return $response;
+        }
+
+        if (200 !== $response->getStatusCode()) {
+            $this->handleErrors($response);
+        }
+
+        return $this->hydrator->hydrate($response, SubscriptionModel::class);
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function cancel(string $id, array $params = [])
+    {
+        $processor = new Processor();
+        $params = $processor->processConfiguration(new Configuration\SubscriptionCancel(), [$params]);
+
+        $response = $this->httpDelete("/v1/subscriptions/$id?".http_build_query($params));
 
         if (!$this->hydrator) {
             return $response;
