@@ -159,7 +159,7 @@ abstract class HttpApi
             case 404:
                 throw new DomainExceptions\NotFoundException();
             default:
-                throw new DomainExceptions\UnknownErrorException();
+                throw new DomainExceptions\UnknownErrorException($response);
         }
     }
 }
