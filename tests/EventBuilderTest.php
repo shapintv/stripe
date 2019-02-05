@@ -12,9 +12,28 @@ namespace Shapin\Stripe\Tests;
 use PHPUnit\Framework\TestCase;
 use Shapin\Stripe\EventBuilder;
 use Shapin\Stripe\Exception\InvalidArgumentException;
+use Symfony\Component\HttpFoundation\Request;
 
 final class EventBuilderTest extends TestCase
 {
+    public function testValidRequest()
+    {
+        $request = new Request([], [], [], [], [], [], file_get_contents(__DIR__.'/fixtures/events/charge.captured.json'));
+
+        $event = (new EventBuilder())->createEventFromRequest($request);
+        $this->assertSame('charge.captured', $event->getType());
+    }
+
+    public function testInvalidRequest()
+    {
+        $request = new Request([], [], [], [], [], [], '{invalidjson');
+
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Unable to process Request: Invalid JSON provided (Syntax error)');
+
+        (new EventBuilder())->createEventFromRequest($request);
+    }
+
     public function supportedEvents()
     {
         yield ['account.external_account.created', Event\AccountExternalAccountCreatedEvent::class];
