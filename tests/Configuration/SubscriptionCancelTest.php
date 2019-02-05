@@ -11,7 +11,6 @@ namespace Shapin\Stripe\Tests\Configuration;
 
 use PHPUnit\Framework\TestCase;
 use Shapin\Stripe\Configuration\SubscriptionCancel;
-use Shapin\Stripe\Model\Subscription\Subscription;
 use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
 use Symfony\Component\Config\Definition\Processor;
 
