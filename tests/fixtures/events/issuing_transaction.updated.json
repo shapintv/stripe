@@ -1,0 +1,42 @@
+{
+  "created": 1326853478,
+  "livemode": false,
+  "id": "issuing_00000000000000",
+  "type": "issuing_transaction.updated",
+  "object": "event",
+  "request": null,
+  "pending_webhooks": 1,
+  "api_version": "2018-11-08",
+  "data": {
+    "object": {
+      "id": "ipi_00000000000000",
+      "object": "issuing.transaction",
+      "amount": -100,
+      "authorization": "iauth_1DSnlSIpafQncvOMcO5ZNpOO",
+      "balance_transaction": null,
+      "card": "ic_00000000000000",
+      "cardholder": null,
+      "created": 1549443842,
+      "currency": "usd",
+      "dispute": null,
+      "livemode": false,
+      "merchant_data": {
+        "category": "taxicabs_limousines",
+        "city": "San Francisco",
+        "country": "US",
+        "name": "Rocket Rides",
+        "network_id": "1234567890",
+        "postal_code": "94107",
+        "state": "CA"
+      },
+      "metadata": {
+      },
+      "type": "capture"
+    },
+    "previous_attributes": {
+      "metadata": {
+        "description": "Old description"
+      }
+    }
+  }
+}

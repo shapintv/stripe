@@ -1,0 +1,44 @@
+{
+  "created": 1326853478,
+  "livemode": false,
+  "id": "reporting.report_00000000000000",
+  "type": "reporting.report_run.failed",
+  "object": "event",
+  "request": null,
+  "pending_webhooks": 1,
+  "api_version": "2018-11-08",
+  "data": {
+    "object": {
+      "id": "frr_00000000000000",
+      "object": "reporting.report_run",
+      "created": 1549444309,
+      "error": null,
+      "livemode": true,
+      "parameters": {
+        "interval_end": 1525132800,
+        "interval_start": 1522540800
+      },
+      "report_type": "balance.summary.1",
+      "result": {
+        "id": "file_00000000000000",
+        "object": "file",
+        "created": 1535597583,
+        "filename": "file_1D4gHL2VYugoKSBzPVsMMEo0",
+        "links": {
+          "object": "list",
+          "data": [
+          ],
+          "has_more": false,
+          "url": "/v1/file_links?file=file_1D4gHL2VYugoKSBzPVsMMEo0"
+        },
+        "purpose": "finance_report_run",
+        "size": 9863,
+        "title": null,
+        "type": "csv",
+        "url": "https://files.stripe.com/v1/files/file_1D4gHL2VYugoKSBzPVsMMEo0/contents"
+      },
+      "status": "succeeded",
+      "succeeded_at": 1525192811
+    }
+  }
+}

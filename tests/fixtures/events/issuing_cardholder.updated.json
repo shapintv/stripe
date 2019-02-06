@@ -1,0 +1,40 @@
+{
+  "created": 1326853478,
+  "livemode": false,
+  "id": "issuing_00000000000000",
+  "type": "issuing_cardholder.updated",
+  "object": "event",
+  "request": null,
+  "pending_webhooks": 1,
+  "api_version": "2018-11-08",
+  "data": {
+    "object": {
+      "id": "ich_00000000000000",
+      "object": "issuing.cardholder",
+      "billing": {
+        "address": {
+          "city": "Beverly Hills",
+          "country": "US",
+          "line1": "123 Fake St",
+          "line2": "Apt 3",
+          "postal_code": "90210",
+          "state": "CA"
+        },
+        "name": "Jenny Rosen"
+      },
+      "created": 1539597944,
+      "email": "jenny@example.com",
+      "is_default": false,
+      "livemode": false,
+      "metadata": {
+      },
+      "name": "Jenny Rosen",
+      "phone_number": "+18008675309",
+      "status": "active",
+      "type": "individual"
+    },
+    "previous_attributes": {
+      "email": "old@email.com"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "created": 1326853478,
+  "livemode": false,
+  "id": "reporting.report_00000000000000",
+  "type": "reporting.report_type.updated",
+  "object": "event",
+  "request": null,
+  "pending_webhooks": 1,
+  "api_version": "2018-11-08",
+  "data": {
+    "object": {
+      "id": "balance.summary.1_00000000000000",
+      "object": "reporting.report_type",
+      "data_available_end": 1549238400,
+      "data_available_start": 1520985600,
+      "name": "Balance summary",
+      "updated": 1549410435,
+      "version": 1
+    }
+  }
+}

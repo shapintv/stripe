@@ -41,18 +41,75 @@ final class EventBuilder
                 return Event\AccountExternalAccountUpdatedEvent::createFromArray($data);
             case 'account.updated':
                 return Event\AccountUpdatedEvent::createFromArray($data);
+            case 'balance.available':
+                return Event\BalanceAvailableEvent::createFromArray($data);
             case 'charge.captured':
                 return Event\ChargeCapturedEvent::createFromArray($data);
+            case 'charge.expired':
+                return Event\ChargeExpiredEvent::createFromArray($data);
             case 'charge.failed':
                 return Event\ChargeFailedEvent::createFromArray($data);
+            case 'charge.pending':
+                return Event\ChargePendingEvent::createFromArray($data);
+            case 'charge.refund.updated':
+                return Event\ChargeRefundUpdatedEvent::createFromArray($data);
             case 'charge.refunded':
                 return Event\ChargeRefundedEvent::createFromArray($data);
             case 'charge.succeeded':
                 return Event\ChargeSucceededEvent::createFromArray($data);
+            case 'customer.bank_account.deleted':
+                return Event\CustomerBankAccountDeletedEvent::createFromArray($data);
+            case 'customer.created':
+                return Event\CustomerCreatedEvent::createFromArray($data);
+            case 'customer.deleted':
+                return Event\CustomerDeletedEvent::createFromArray($data);
             case 'customer.source.created':
                 return Event\CustomerSourceCreatedEvent::createFromArray($data);
+            case 'customer.source.deleted':
+                return Event\CustomerSourceDeletedEvent::createFromArray($data);
+            case 'customer.source.expiring':
+                return Event\CustomerSourceExpiringEvent::createFromArray($data);
+            case 'customer.source.updated':
+                return Event\CustomerSourceUpdatedEvent::createFromArray($data);
             case 'customer.subscription.created':
                 return Event\CustomerSubscriptionCreatedEvent::createFromArray($data);
+            case 'customer.subscription.deleted':
+                return Event\CustomerSubscriptionDeletedEvent::createFromArray($data);
+            case 'customer.subscription.trial_will_end':
+                return Event\CustomerSubscriptionTrialWillEndEvent::createFromArray($data);
+            case 'customer.subscription.updated':
+                return Event\CustomerSubscriptionUpdatedEvent::createFromArray($data);
+            case 'customer.updated':
+                return Event\CustomerUpdatedEvent::createFromArray($data);
+            case 'plan.created':
+                return Event\PlanCreatedEvent::createFromArray($data);
+            case 'plan.deleted':
+                return Event\PlanDeletedEvent::createFromArray($data);
+            case 'plan.updated':
+                return Event\PlanUpdatedEvent::createFromArray($data);
+            case 'product.created':
+                return Event\ProductCreatedEvent::createFromArray($data);
+            case 'product.deleted':
+                return Event\ProductDeletedEvent::createFromArray($data);
+            case 'product.updated':
+                return Event\ProductUpdatedEvent::createFromArray($data);
+            case 'source.canceled':
+                return Event\SourceCanceledEvent::createFromArray($data);
+            case 'source.chargeable':
+                return Event\SourceChargeableEvent::createFromArray($data);
+            case 'source.failed':
+                return Event\SourceFailedEvent::createFromArray($data);
+            case 'source.mandate_notification':
+                return Event\SourceMandateNotificationEvent::createFromArray($data);
+            case 'source.refund_attributes_required':
+                return Event\SourceRefundAttributesRequiredEvent::createFromArray($data);
+            case 'transfer.created':
+                return Event\TransferCreatedEvent::createFromArray($data);
+            case 'transfer.reversed':
+                return Event\TransferReversedEvent::createFromArray($data);
+            case 'transfer.updated':
+                return Event\TransferUpdatedEvent::createFromArray($data);
+
             default:
                 throw new InvalidArgumentException("Unable to process event: Event \"{$data['type']}\" is not supported yet.");
         }

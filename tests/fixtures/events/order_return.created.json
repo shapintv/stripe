@@ -1,0 +1,33 @@
+{
+  "created": 1326853478,
+  "livemode": false,
+  "id": "order_00000000000000",
+  "type": "order_return.created",
+  "object": "event",
+  "request": null,
+  "pending_webhooks": 1,
+  "api_version": "2018-11-08",
+  "data": {
+    "object": {
+      "id": "orret_00000000000000",
+      "object": "order_return",
+      "amount": 1500,
+      "created": 1549443937,
+      "currency": "eur",
+      "items": [
+        {
+          "object": "order_item",
+          "amount": 1500,
+          "currency": "eur",
+          "description": "Monthly subscription",
+          "parent": "sk_1E0mLdIpafQncvOMXnFQrwdr",
+          "quantity": null,
+          "type": "sku"
+        }
+      ],
+      "livemode": false,
+      "order": "or_00000000000000",
+      "refund": "re_00000000000000"
+    }
+  }
+}

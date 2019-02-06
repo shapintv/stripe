@@ -9,69 +9,8 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Model\Event;
 
-use Shapin\Stripe\Model\LivemodeTrait;
+use Shapin\Stripe\Model\CreatableFromArray;
 
-class Event
+interface Event extends CreatableFromArray
 {
-    use LivemodeTrait;
-
-    /**
-     * @var string
-     */
-    protected $id;
-
-    /**
-     * @var string
-     */
-    protected $apiVersion;
-
-    /**
-     * @var \DateTimeImmutable
-     */
-    protected $createdAt;
-
-    /**
-     * @var integer
-     */
-    protected $pendingWebhooks;
-
-    /**
-     * @var Request
-     */
-    protected $request;
-
-    /**
-     * @var string
-     */
-    protected $type;
-
-    public function getId(): string
-    {
-        return $this->id;
-    }
-
-    public function getApiVersion(): string
-    {
-        return $this->apiVersion;
-    }
-
-    public function getCreatedAt(): \DateTimeImmutable
-    {
-        return $this->createdAt;
-    }
-
-    public function getPendingWebhooks(): int
-    {
-        return $this->pendingWebhooks;
-    }
-
-    public function getRequest(): Request
-    {
-        return $this->request;
-    }
-
-    public function getType(): string
-    {
-        return $this->type;
-    }
 }

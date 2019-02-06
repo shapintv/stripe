@@ -9,34 +9,11 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Model\Event;
 
-use Shapin\Stripe\Model\CreatableFromArray;
 use Shapin\Stripe\Model\Subscription\Subscription;
 
-final class CustomerSubscriptionCreatedEvent extends Event implements CreatableFromArray
+final class CustomerSubscriptionCreatedEvent implements Event
 {
-    /**
-     * @var string
-     */
-    private $subscription;
-
-    private function __construct()
-    {
-    }
-
-    public static function createFromArray(array $data): self
-    {
-        $model = new self();
-        $model->id = $data['id'];
-        $model->apiVersion = $data['api_version'];
-        $model->createdAt = new \DateTimeImmutable('@'.$data['created']);
-        $model->pendingWebhooks = (int) $data['pending_webhooks'];
-        $model->request = isset($data['request']) ? Request::createFromArray($data['request']) : null;
-        $model->type = $data['type'];
-
-        $model->subscription = Subscription::createFromArray($data['data']['object']);
-
-        return $model;
-    }
+    use EventTrait;
 
     public function getSubscription(): Subscription
     {

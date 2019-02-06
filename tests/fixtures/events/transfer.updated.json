@@ -1,0 +1,46 @@
+{
+  "created": 1326853478,
+  "livemode": false,
+  "id": "transfer.updated_00000000000000",
+  "type": "transfer.updated",
+  "object": "event",
+  "request": null,
+  "pending_webhooks": 1,
+  "api_version": "2018-11-08",
+  "data": {
+    "object": {
+      "id": "tr_00000000000000",
+      "object": "transfer",
+      "amount": 13600,
+      "amount_reversed": 0,
+      "balance_transaction": "txn_00000000000000",
+      "created": 1539244409,
+      "currency": "eur",
+      "description": "A transfer",
+      "destination": "acct_1DJyl3A04Sf4LpJK",
+      "destination_payment": "py_1DJyz7A04Sf4LpJKFxPu0ZD1",
+      "livemode": false,
+      "metadata": {
+        "program_id": "c90c1c2b-fd55-4755-a713-d367a1605356",
+        "program_title": "BIKINI BODY PULSE",
+        "member_id": "455fbdb0-4ae7-4263-ada3-d6f4e4de2de6"
+      },
+      "reversals": {
+        "object": "list",
+        "data": [
+        ],
+        "has_more": false,
+        "total_count": 0,
+        "url": "/v1/transfers/tr_1DJyz7IpafQncvOMJkER5bOQ/reversals"
+      },
+      "reversed": false,
+      "source_transaction": null,
+      "source_type": "card",
+      "transfer_group": "bikini-body-pulse",
+      "status": "pending"
+    },
+    "previous_attributes": {
+      "description": "Old description"
+    }
+  }
+}

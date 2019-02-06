@@ -11,53 +11,10 @@ namespace Shapin\Stripe\Model\Event;
 
 use Shapin\Stripe\Model\BankAccount\BankAccount;
 use Shapin\Stripe\Model\Card\Card;
-use Shapin\Stripe\Model\CreatableFromArray;
-use Shapin\Stripe\Model\Subscription\Subscription;
 
-final class AccountExternalAccountUpdatedEvent extends Event implements CreatableFromArray
+final class AccountExternalAccountUpdatedEvent implements Event
 {
-    /**
-     * @var ?BankAccount
-     */
-    private $bankAccount;
-
-    /**
-     * @var ?Card
-     */
-    private $card;
-
-    /**
-     * @var array
-     */
-    private $previousAttributes;
-
-    private function __construct()
-    {
-    }
-
-    public static function createFromArray(array $data): self
-    {
-        $model = new self();
-        $model->id = $data['id'];
-        $model->apiVersion = $data['api_version'];
-        $model->createdAt = new \DateTimeImmutable('@'.$data['created']);
-        $model->pendingWebhooks = (int) $data['pending_webhooks'];
-        $model->request = isset($data['request']) ? Request::createFromArray($data['request']) : null;
-        $model->type = $data['type'];
-
-        $object = $data['data']['object']['object'];
-        if ('bank_account' === $object) {
-            $model->bankAccount = BankAccount::createFromArray($data['data']['object']);
-        } elseif ('card' === $object) {
-            $model->card = Card::createFromArray($data['data']['object']);
-        } else {
-            throw new InvalidArgumentException("Unknown external account type: $object");
-        }
-
-        $model->previousAttributes = $data['data']['previous_attributes'];
-
-        return $model;
-    }
+    use EventTrait;
 
     public function getBankAccount(): ?BankAccount
     {

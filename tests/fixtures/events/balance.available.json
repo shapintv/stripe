@@ -1,0 +1,40 @@
+{
+  "created": 1326853478,
+  "livemode": false,
+  "id": "balance.available_00000000000000",
+  "type": "balance.available",
+  "object": "event",
+  "request": null,
+  "pending_webhooks": 1,
+  "api_version": "2018-11-08",
+  "data": {
+    "object": {
+      "object": "balance",
+      "available": [
+        {
+          "amount": -1453,
+          "currency": "eur",
+          "source_types": {
+            "card": -1453
+          }
+        }
+      ],
+      "connect_reserved": [
+        {
+          "amount": 0,
+          "currency": "eur"
+        }
+      ],
+      "livemode": false,
+      "pending": [
+        {
+          "amount": 41087,
+          "currency": "eur",
+          "source_types": {
+            "card": 41087
+          }
+        }
+      ]
+    }
+  }
+}

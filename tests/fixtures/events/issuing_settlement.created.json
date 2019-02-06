@@ -1,0 +1,31 @@
+{
+  "created": 1326853478,
+  "livemode": false,
+  "id": "issuing_00000000000000",
+  "type": "issuing_settlement.created",
+  "object": "event",
+  "request": null,
+  "pending_webhooks": 1,
+  "api_version": "2018-11-08",
+  "data": {
+    "object": {
+      "id": "ise_00000000000000",
+      "object": "issuing.settlement",
+      "bin": "424242",
+      "created": 1549443781,
+      "currency": "eur",
+      "interchange_fees": 44,
+      "livemode": false,
+      "metadata": {
+      },
+      "net_total": 3575,
+      "network_fees": 37,
+      "network_settlement_identifier": "1000633976",
+      "settlement_date": 1549443781,
+      "settlement_service": "international",
+      "transaction_count": 2,
+      "transaction_volume": 3656,
+      "transactions_reconciled": false
+    }
+  }
+}

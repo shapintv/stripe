@@ -1,0 +1,32 @@
+{
+  "created": 1326853478,
+  "livemode": false,
+  "id": "issuing_00000000000000",
+  "type": "issuing_dispute.created",
+  "object": "event",
+  "request": null,
+  "pending_webhooks": 1,
+  "api_version": "2018-11-08",
+  "data": {
+    "object": {
+      "id": "idp_00000000000000",
+      "object": "issuing.dispute",
+      "amount": 100,
+      "created": 1549443738,
+      "currency": "usd",
+      "disputed_transaction": "ipi_1E0mIQIpafQncvOMNQo22KeC",
+      "evidence": {
+        "fraudulent": {
+          "dispute_explanation": "Fraud; card reported lost on 02/06/2019",
+          "uncategorized_file": null
+        },
+        "other": null
+      },
+      "livemode": false,
+      "metadata": {
+      },
+      "reason": "fraudulent",
+      "status": "under_review"
+    }
+  }
+}

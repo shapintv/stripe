@@ -1,0 +1,64 @@
+{
+  "created": 1326853478,
+  "livemode": false,
+  "id": "issuing_00000000000000",
+  "type": "issuing_card.updated",
+  "object": "event",
+  "request": null,
+  "pending_webhooks": 1,
+  "api_version": "2018-11-08",
+  "data": {
+    "object": {
+      "id": "ic_00000000000000",
+      "object": "issuing.card",
+      "authorization_controls": {
+        "allowed_categories": null,
+        "blocked_categories": null,
+        "currency": "usd",
+        "max_amount": 10000,
+        "max_approvals": 1
+      },
+      "brand": "Visa",
+      "cardholder": {
+        "id": "ich_00000000000000",
+        "object": "issuing.cardholder",
+        "billing": {
+          "address": {
+            "city": "Beverly Hills",
+            "country": "US",
+            "line1": "123 Fake St",
+            "line2": "Apt 3",
+            "postal_code": "90210",
+            "state": "CA"
+          },
+          "name": "Jenny Rosen"
+        },
+        "created": 1539597944,
+        "email": "jenny@example.com",
+        "is_default": false,
+        "livemode": false,
+        "metadata": {
+        },
+        "name": "Jenny Rosen",
+        "phone_number": "+18008675309",
+        "status": "active",
+        "type": "individual"
+      },
+      "created": 1549443668,
+      "currency": "usd",
+      "exp_month": 12,
+      "exp_year": 2022,
+      "last4": "0003",
+      "livemode": false,
+      "metadata": {
+      },
+      "name": "Jenny Rosen",
+      "shipping": null,
+      "status": "active",
+      "type": "physical"
+    },
+    "previous_attributes": {
+      "status": "inactive"
+    }
+  }
+}

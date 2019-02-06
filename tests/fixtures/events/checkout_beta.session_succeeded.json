@@ -1,0 +1,28 @@
+{
+  "created": 1326853478,
+  "livemode": false,
+  "id": "checkout_00000000000000",
+  "type": "checkout_beta.session_succeeded",
+  "object": "event",
+  "request": null,
+  "pending_webhooks": 1,
+  "api_version": "2018-11-08",
+  "data": {
+    "object": {
+      "object": "checkout_beta",
+      "client_reference_id": null,
+      "display_items": [
+        {
+          "currency": "usd",
+          "amount": 1999,
+          "type": "sku",
+          "quantity": 2,
+          "sku": "sk_00000000000000"
+        }
+      ],
+      "line_items": null,
+      "livemode": false,
+      "payment_intent": "pi_00000000000000"
+    }
+  }
+}
