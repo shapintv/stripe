@@ -146,7 +146,7 @@ final class Source implements CreatableFromArray, ContainsMetadata
         $model = new self();
 
         if (isset($data['currency'])) {
-            $currency =  new Currency(strtoupper($data['currency']));
+            $currency = new Currency(strtoupper($data['currency']));
             $model->amount = isset($data['amount']) ? new Money($data['amount'], $currency) : null;
             $model->currency = $currency;
             if (isset($data['receiver'])) {

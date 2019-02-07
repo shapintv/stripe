@@ -9,8 +9,6 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Model\Event;
 
-use Shapin\Stripe\Model\Account\Account;
-
 final class AccountUpdatedEvent implements ContainsAccount, ContainsPreviousAttributes
 {
     use ContainsAccountTrait, ContainsPreviousAttributesTrait;

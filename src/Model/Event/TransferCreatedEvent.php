@@ -9,8 +9,6 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Model\Event;
 
-use Shapin\Stripe\Model\Transfer\Transfer;
-
 final class TransferCreatedEvent implements ContainsTransfer
 {
     use ContainsTransferTrait;

@@ -9,8 +9,6 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Model\Event;
 
-use Shapin\Stripe\Model\Subscription\Subscription;
-
 final class CustomerSubscriptionTrialWillEndEvent implements ContainsSubscription
 {
     use ContainsSubscriptionTrait;

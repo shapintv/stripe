@@ -11,7 +11,6 @@ namespace Shapin\Stripe\Api;
 
 use Shapin\Stripe\Exception\Domain as DomainExceptions;
 use Shapin\Stripe\Exception\DomainException;
-use Shapin\Stripe\Hydrator\NoopHydrator;
 use Http\Client\HttpClient;
 use Shapin\Stripe\Hydrator\Hydrator;
 use Shapin\Stripe\RequestBuilder;
