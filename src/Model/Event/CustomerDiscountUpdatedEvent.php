@@ -9,19 +9,7 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Model\Event;
 
-use Shapin\Stripe\Model\Discount\Discount;
-
-final class CustomerDiscountUpdatedEvent implements Event
+final class CustomerDiscountUpdatedEvent implements ContainsDiscount, ContainsPreviousAttributes
 {
-    use EventTrait;
-
-    public function getDiscount(): Discount
-    {
-        return $this->discount;
-    }
-
-    public function getPreviousAttributes(): array
-    {
-        return $this->previousAttributes;
-    }
+    use ContainsDiscountTrait, ContainsPreviousAttributesTrait;
 }

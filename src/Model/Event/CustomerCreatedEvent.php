@@ -9,14 +9,7 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Model\Event;
 
-use Shapin\Stripe\Model\Customer\Customer;
-
-final class CustomerCreatedEvent implements Event
+final class CustomerCreatedEvent implements ContainsCustomer
 {
-    use EventTrait;
-
-    public function getCustomer(): Customer
-    {
-        return $this->customer;
-    }
+    use ContainsCustomerTrait;
 }

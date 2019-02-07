@@ -9,14 +9,7 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Model\Event;
 
-use Shapin\Stripe\Model\Invoice\Invoice;
-
-final class InvoiceDeletedEvent implements Event
+final class InvoiceDeletedEvent implements ContainsInvoice
 {
-    use EventTrait;
-
-    public function getInvoice(): Invoice
-    {
-        return $this->invoice;
-    }
+    use ContainsInvoiceTrait;
 }

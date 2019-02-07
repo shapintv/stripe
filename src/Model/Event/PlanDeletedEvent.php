@@ -9,14 +9,7 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Model\Event;
 
-use Shapin\Stripe\Model\Plan\Plan;
-
-final class PlanDeletedEvent implements Event
+final class PlanDeletedEvent implements ContainsPlan
 {
-    use EventTrait;
-
-    public function getPlan(): Plan
-    {
-        return $this->plan;
-    }
+    use ContainsPlanTrait;
 }

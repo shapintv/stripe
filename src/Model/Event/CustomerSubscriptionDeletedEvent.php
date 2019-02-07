@@ -9,14 +9,7 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Model\Event;
 
-use Shapin\Stripe\Model\Subscription\Subscription;
-
-final class CustomerSubscriptionDeletedEvent implements Event
+final class CustomerSubscriptionDeletedEvent implements ContainsSubscription
 {
-    use EventTrait;
-
-    public function getSubscription(): Subscription
-    {
-        return $this->subscription;
-    }
+    use ContainsSubscriptionTrait;
 }

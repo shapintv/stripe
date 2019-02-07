@@ -9,14 +9,7 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Model\Event;
 
-use Shapin\Stripe\Model\Source\Source;
-
-final class SourceMandateNotificationEvent implements Event
+final class SourceMandateNotificationEvent implements ContainsSource
 {
-    use EventTrait;
-
-    public function getSource(): Source
-    {
-        return $this->source;
-    }
+    use ContainsSourceTrait;
 }

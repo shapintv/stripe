@@ -9,14 +9,7 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Model\Event;
 
-use Shapin\Stripe\Model\Charge\Charge;
-
-final class ChargeExpiredEvent implements Event
+final class ChargeExpiredEvent implements ContainsCharge
 {
-    use EventTrait;
-
-    public function getCharge(): Charge
-    {
-        return $this->charge;
-    }
+    use ContainsChargeTrait;
 }

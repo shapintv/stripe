@@ -9,14 +9,7 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Model\Event;
 
-use Shapin\Stripe\Model\Coupon\Coupon;
-
-final class CouponCreatedEvent implements Event
+final class CouponCreatedEvent implements ContainsCoupon
 {
-    use EventTrait;
-
-    public function getCoupon(): Coupon
-    {
-        return $this->coupon;
-    }
+    use ContainsCouponTrait;
 }

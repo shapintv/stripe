@@ -11,17 +11,7 @@ namespace Shapin\Stripe\Model\Event;
 
 use Shapin\Stripe\Model\Subscription\Subscription;
 
-final class CustomerSubscriptionUpdatedEvent implements Event
+final class CustomerSubscriptionUpdatedEvent implements ContainsSubscription, ContainsPreviousAttributes
 {
-    use EventTrait;
-
-    public function getSubscription(): Subscription
-    {
-        return $this->subscription;
-    }
-
-    public function getPreviousAttributes(): array
-    {
-        return $this->previousAttributes;
-    }
+    use ContainsSubscriptionTrait, ContainsPreviousAttributesTrait;
 }

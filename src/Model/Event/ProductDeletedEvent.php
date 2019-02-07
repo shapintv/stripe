@@ -9,14 +9,7 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Model\Event;
 
-use Shapin\Stripe\Model\Product\Product;
-
-final class ProductDeletedEvent implements Event
+final class ProductDeletedEvent implements ContainsProduct
 {
-    use EventTrait;
-
-    public function getProduct(): Product
-    {
-        return $this->product;
-    }
+    use ContainsProductTrait;
 }

@@ -9,14 +9,7 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Model\Event;
 
-use Shapin\Stripe\Model\Invoice\LineItem as InvoiceItem;
-
-final class InvoiceItemUpdatedEvent implements Event
+final class InvoiceItemUpdatedEvent implements ContainsInvoiceItem
 {
-    use EventTrait;
-
-    public function getInvoiceItem(): InvoiceItem
-    {
-        return $this->invoiceItem;
-    }
+    use ContainsInvoiceItemTrait;
 }

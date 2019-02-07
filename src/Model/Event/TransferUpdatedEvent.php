@@ -9,19 +9,7 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Model\Event;
 
-use Shapin\Stripe\Model\Transfer\Transfer;
-
-final class TransferUpdatedEvent implements Event
+final class TransferUpdatedEvent implements ContainsTransfer, ContainsPreviousAttributes
 {
-    use EventTrait;
-
-    public function getTransfer(): Transfer
-    {
-        return $this->transfer;
-    }
-
-    public function getPreviousAttributes(): array
-    {
-        return $this->previousAttributes;
-    }
+    use ContainsTransferTrait, ContainsPreviousAttributesTrait;
 }

@@ -11,17 +11,7 @@ namespace Shapin\Stripe\Model\Event;
 
 use Shapin\Stripe\Model\Customer\Customer;
 
-final class CustomerUpdatedEvent implements Event
+final class CustomerUpdatedEvent implements ContainsCustomer, ContainsPreviousAttributes
 {
-    use EventTrait;
-
-    public function getCustomer(): Customer
-    {
-        return $this->customer;
-    }
-
-    public function getPreviousAttributes(): array
-    {
-        return $this->previousAttributes;
-    }
+    use ContainsCustomerTrait, ContainsPreviousAttributesTrait;
 }

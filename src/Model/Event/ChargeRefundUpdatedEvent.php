@@ -9,14 +9,7 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Model\Event;
 
-use Shapin\Stripe\Model\Refund\Refund;
-
-final class ChargeRefundUpdatedEvent implements Event
+final class ChargeRefundUpdatedEvent implements ContainsRefund
 {
-    use EventTrait;
-
-    public function getRefund(): Refund
-    {
-        return $this->refund;
-    }
+    use ContainsRefundTrait;
 }

@@ -11,12 +11,7 @@ namespace Shapin\Stripe\Model\Event;
 
 use Shapin\Stripe\Model\Subscription\Subscription;
 
-final class CustomerSubscriptionTrialWillEndEvent implements Event
+final class CustomerSubscriptionTrialWillEndEvent implements ContainsSubscription
 {
-    use EventTrait;
-
-    public function getSubscription(): Subscription
-    {
-        return $this->subscription;
-    }
+    use ContainsSubscriptionTrait;
 }

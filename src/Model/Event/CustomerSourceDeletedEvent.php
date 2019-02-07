@@ -11,12 +11,7 @@ namespace Shapin\Stripe\Model\Event;
 
 use Shapin\Stripe\Model\Source\Source;
 
-final class CustomerSourceDeletedEvent implements Event
+final class CustomerSourceDeletedEvent implements ContainsSource
 {
-    use EventTrait;
-
-    public function getSource(): Source
-    {
-        return $this->source;
-    }
+    use ContainsSourceTrait;
 }

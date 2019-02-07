@@ -9,14 +9,7 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Model\Event;
 
-use Shapin\Stripe\Model\Source\Source;
-
-final class SourceRefundAttributesRequiredEvent implements Event
+final class SourceRefundAttributesRequiredEvent implements ContainsSource
 {
-    use EventTrait;
-
-    public function getSource(): Source
-    {
-        return $this->source;
-    }
+    use ContainsSourceTrait;
 }

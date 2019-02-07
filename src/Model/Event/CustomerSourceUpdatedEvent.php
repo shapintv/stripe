@@ -9,19 +9,7 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Model\Event;
 
-use Shapin\Stripe\Model\Source\Source;
-
-final class CustomerSourceUpdatedEvent implements Event
+final class CustomerSourceUpdatedEvent implements ContainsSource, ContainsPreviousAttributes
 {
-    use EventTrait;
-
-    public function getSource(): Source
-    {
-        return $this->source;
-    }
-
-    public function getPreviousAttributes(): array
-    {
-        return $this->previousAttributes;
-    }
+    use ContainsSourceTrait, ContainsPreviousAttributesTrait;
 }

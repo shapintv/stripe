@@ -11,12 +11,7 @@ namespace Shapin\Stripe\Model\Event;
 
 use Shapin\Stripe\Model\Transfer\Transfer;
 
-final class TransferCreatedEvent implements Event
+final class TransferCreatedEvent implements ContainsTransfer
 {
-    use EventTrait;
-
-    public function getTransfer(): Transfer
-    {
-        return $this->transfer;
-    }
+    use ContainsTransferTrait;
 }

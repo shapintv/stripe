@@ -9,19 +9,7 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Model\Event;
 
-use Shapin\Stripe\Model\Plan\Plan;
-
-final class PlanUpdatedEvent implements Event
+final class PlanUpdatedEvent implements ContainsPlan, ContainsPreviousAttributes
 {
-    use EventTrait;
-
-    public function getPlan(): Plan
-    {
-        return $this->plan;
-    }
-
-    public function getPreviousAttributes(): array
-    {
-        return $this->previousAttributes;
-    }
+    use ContainsPlanTrait, ContainsPreviousAttributesTrait;
 }

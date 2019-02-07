@@ -9,14 +9,7 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Model\Event;
 
-use Shapin\Stripe\Model\Transfer\Transfer;
-
-final class TransferReversedEvent implements Event
+final class TransferReversedEvent implements ContainsTransfer
 {
-    use EventTrait;
-
-    public function getTransfer(): Transfer
-    {
-        return $this->transfer;
-    }
+    use ContainsTransferTrait;
 }

@@ -9,19 +9,7 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Model\Event;
 
-use Shapin\Stripe\Model\Product\Product;
-
-final class ProductUpdatedEvent implements Event
+final class ProductUpdatedEvent implements ContainsProduct, ContainsPreviousAttributes
 {
-    use EventTrait;
-
-    public function getProduct(): Product
-    {
-        return $this->product;
-    }
-
-    public function getPreviousAttributes(): array
-    {
-        return $this->previousAttributes;
-    }
+    use ContainsProductTrait, ContainsPreviousAttributesTrait;
 }

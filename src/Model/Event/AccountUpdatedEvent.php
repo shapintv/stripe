@@ -11,17 +11,7 @@ namespace Shapin\Stripe\Model\Event;
 
 use Shapin\Stripe\Model\Account\Account;
 
-final class AccountUpdatedEvent implements Event
+final class AccountUpdatedEvent implements ContainsAccount, ContainsPreviousAttributes
 {
-    use EventTrait;
-
-    public function getAccount(): Account
-    {
-        return $this->account;
-    }
-
-    public function getPreviousAttributes(): array
-    {
-        return $this->previousAttributes;
-    }
+    use ContainsAccountTrait, ContainsPreviousAttributesTrait;
 }

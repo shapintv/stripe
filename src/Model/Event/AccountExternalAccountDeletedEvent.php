@@ -9,20 +9,7 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Model\Event;
 
-use Shapin\Stripe\Model\BankAccount\BankAccount;
-use Shapin\Stripe\Model\Card\Card;
-
-final class AccountExternalAccountDeletedEvent implements Event
+final class AccountExternalAccountDeletedEvent implements ContainsExternalAccount
 {
-    use EventTrait;
-
-    public function getBankAccount(): ?BankAccount
-    {
-        return $this->bankAccount;
-    }
-
-    public function getCard(): ?Card
-    {
-        return $this->card;
-    }
+    use ContainsExternalAccountTrait;
 }
