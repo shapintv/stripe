@@ -10,7 +10,6 @@ declare(strict_types=1);
 namespace Shapin\Stripe\Model\Event;
 
 use Shapin\Stripe\Model\BankAccount\BankAccount;
-use Shapin\Stripe\Model\Card\Card;
 
 final class CustomerBankAccountDeletedEvent implements Event
 {

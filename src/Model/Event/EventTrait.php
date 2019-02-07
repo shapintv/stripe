@@ -50,7 +50,7 @@ trait EventTrait
     protected $createdAt;
 
     /**
-     * @var integer
+     * @var int
      */
     protected $pendingWebhooks;
 
@@ -218,7 +218,6 @@ trait EventTrait
             default:
                 throw new InvalidArgumentException("Unable to process event data: Unknown object $object");
         }
-
 
         $model->previousAttributes = $data['data']['previous_attributes'] ?? [];
 

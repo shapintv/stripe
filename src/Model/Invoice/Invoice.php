@@ -65,7 +65,7 @@ final class Invoice implements CreatableFromArray, ContainsMetadata
     private $applicationFeeAmount;
 
     /**
-     * @var integer
+     * @var int
      */
     private $attemptCount;
 

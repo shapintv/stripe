@@ -9,12 +9,9 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Api;
 
-use Shapin\Stripe\Configuration;
 use Shapin\Stripe\Exception;
-use Shapin\Stripe\Model\Invoice\Item;
 use Shapin\Stripe\Model\Invoice\Invoice as InvoiceModel;
 use Shapin\Stripe\Model\Invoice\InvoiceCollection;
-use Symfony\Component\Config\Definition\Processor;
 
 final class Invoice extends HttpApi
 {

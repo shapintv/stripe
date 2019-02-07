@@ -11,8 +11,6 @@ namespace Shapin\Stripe\Model\Discount;
 
 use Shapin\Stripe\Model\Coupon\Coupon;
 use Shapin\Stripe\Model\CreatableFromArray;
-use Money\Currency;
-use Money\Money;
 
 final class Discount implements CreatableFromArray
 {
