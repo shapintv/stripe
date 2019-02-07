@@ -58,7 +58,7 @@ final class Coupon implements CreatableFromArray, ContainsMetadata
     /**
      * @var ?int
      */
-    private $maxRedemtions;
+    private $maxRedemptions;
 
     /**
      * @var string

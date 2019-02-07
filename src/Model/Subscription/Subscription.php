@@ -14,6 +14,7 @@ use Shapin\Stripe\Model\CreatableFromArray;
 use Shapin\Stripe\Model\LivemodeTrait;
 use Shapin\Stripe\Model\MetadataTrait;
 use Shapin\Stripe\Model\MetadataCollection;
+use Shapin\Stripe\Model\Plan\Plan;
 
 final class Subscription implements CreatableFromArray, ContainsMetadata
 {
@@ -94,7 +95,7 @@ final class Subscription implements CreatableFromArray, ContainsMetadata
     private $endedAt;
 
     /**
-     * @var array
+     * @var ItemCollection
      */
     private $items;
 
@@ -152,7 +153,7 @@ final class Subscription implements CreatableFromArray, ContainsMetadata
         $model->items = ItemCollection::createFromArray($data['items']);
         $model->live = $data['livemode'];
         $model->metadata = MetadataCollection::createFromArray($data['metadata']);
-        //$model->plan = Plan::createFromArray($data['plan']);
+        $model->plan = Plan::createFromArray($data['plan']);
         $model->quantity = (int) $data['quantity'];
         $model->startAt = new \DateTimeImmutable('@'.$data['start']);
         $model->status = $data['status'];

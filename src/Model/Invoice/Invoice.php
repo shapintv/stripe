@@ -12,6 +12,7 @@ namespace Shapin\Stripe\Model\Invoice;
 use Shapin\Stripe\Model\ContainsMetadata;
 use Shapin\Stripe\Model\CreatableFromArray;
 use Shapin\Stripe\Model\Customer\CustomField;
+use Shapin\Stripe\Model\Discount\Discount;
 use Shapin\Stripe\Model\LivemodeTrait;
 use Shapin\Stripe\Model\MetadataTrait;
 use Shapin\Stripe\Model\MetadataCollection;
@@ -100,7 +101,7 @@ final class Invoice implements CreatableFromArray, ContainsMetadata
     private $createdAt;
 
     /**
-     * @var string
+     * @var Currency
      */
     private $currency;
 
@@ -220,7 +221,7 @@ final class Invoice implements CreatableFromArray, ContainsMetadata
     private $subscriptionProrationAt;
 
     /**
-     * @var int
+     * @var Money
      */
     private $subtotal;
 
@@ -247,7 +248,7 @@ final class Invoice implements CreatableFromArray, ContainsMetadata
     /**
      * @var \DateTimeImmutable
      */
-    private $webhookDeliveredAt;
+    private $webhooksDeliveredAt;
 
     public static function createFromArray(array $data): self
     {

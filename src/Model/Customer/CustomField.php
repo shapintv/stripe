@@ -9,9 +9,7 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Model\Customer;
 
-use Shapin\Stripe\Model\CreatableFromArray;
-
-final class CustomField implements CreatableFromArray
+final class CustomField
 {
     /**
      * @var string

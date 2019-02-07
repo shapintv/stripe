@@ -34,7 +34,7 @@ final class ThresholdItemReason implements CreatableFromArray
 
     public function getLineItemIds(): array
     {
-        return $this->lineItemsIds;
+        return $this->lineItemIds;
     }
 
     public function getUsageGte(): int

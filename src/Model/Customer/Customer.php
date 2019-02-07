@@ -160,7 +160,7 @@ final class Customer implements CreatableFromArray, ContainsMetadata
         return $this->currency;
     }
 
-    public function getDefaultSource(): ?array
+    public function getDefaultSource(): ?string
     {
         return $this->defaultSource;
     }

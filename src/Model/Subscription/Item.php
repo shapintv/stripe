@@ -13,6 +13,7 @@ use Shapin\Stripe\Model\ContainsMetadata;
 use Shapin\Stripe\Model\CreatableFromArray;
 use Shapin\Stripe\Model\MetadataTrait;
 use Shapin\Stripe\Model\MetadataCollection;
+use Shapin\Stripe\Model\Plan\Plan;
 
 final class Item implements CreatableFromArray, ContainsMetadata
 {
@@ -49,7 +50,7 @@ final class Item implements CreatableFromArray, ContainsMetadata
         $model->id = $data['id'];
         $model->createdAt = new \DateTimeImmutable('@'.$data['created']);
         $model->metadata = MetadataCollection::createFromArray($data['metadata']);
-        //$model->plan = Plan::createFromArray($data['plan']);
+        $model->plan = Plan::createFromArray($data['plan']);
         $model->quantity = (int) $data['quantity'];
         $model->subscription = $data['subscription'];
 

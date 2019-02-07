@@ -4,5 +4,4 @@ parameters:
         - %currentWorkingDirectory%/src
         - %currentWorkingDirectory%/tests
     ignoreErrors:
-        - '#Call to an undefined method Prophecy\\Prophecy\\ObjectProphecy#'
         - '#Call to an undefined method Symfony\\Component\\Config\\Definition\\Builder\\NodeDefinition::children\(\).#'

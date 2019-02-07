@@ -35,7 +35,7 @@ final class LineItem implements CreatableFromArray, ContainsMetadata
     private $amount;
 
     /**
-     * @var string
+     * @var Currency
      */
     private $currency;
 
