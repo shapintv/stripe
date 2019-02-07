@@ -18,7 +18,11 @@ use Shapin\Stripe\Model\Balance\Balance;
 use Shapin\Stripe\Model\BankAccount\BankAccount;
 use Shapin\Stripe\Model\Card\Card;
 use Shapin\Stripe\Model\Charge\Charge;
+use Shapin\Stripe\Model\Coupon\Coupon;
 use Shapin\Stripe\Model\Customer\Customer;
+use Shapin\Stripe\Model\Discount\Discount;
+use Shapin\Stripe\Model\Invoice\Invoice;
+use Shapin\Stripe\Model\Invoice\LineItem as InvoiceItem;
 use Shapin\Stripe\Model\Plan\Plan;
 use Shapin\Stripe\Model\Product\Product;
 use Shapin\Stripe\Model\Refund\Refund;
@@ -86,9 +90,29 @@ trait EventTrait
     private $charge;
 
     /**
+     * @var ?Coupon
+     */
+    private $coupon;
+
+    /**
      * @var ?Customer
      */
     private $customer;
+
+    /**
+     * @var ?Discount
+     */
+    private $discount;
+
+    /**
+     * @var ?Invoice
+     */
+    private $invoice;
+
+    /**
+     * @var ?InvoiceItem
+     */
+    private $invoiceItem;
 
     /**
      * @var ?Plan
@@ -158,8 +182,20 @@ trait EventTrait
             case 'charge':
                 $model->charge = Charge::createFromArray($data['data']['object']);
                 break;
+            case 'coupon':
+                $model->coupon = Coupon::createFromArray($data['data']['object']);
+                break;
             case 'customer':
                 $model->customer = Customer::createFromArray($data['data']['object']);
+                break;
+            case 'discount':
+                $model->discount = Discount::createFromArray($data['data']['object']);
+                break;
+            case 'invoice':
+                $model->invoice = Invoice::createFromArray($data['data']['object']);
+                break;
+            case 'invoiceitem':
+                $model->invoiceItem = InvoiceItem::createFromArray($data['data']['object']);
                 break;
             case 'plan':
                 $model->plan = Plan::createFromArray($data['data']['object']);

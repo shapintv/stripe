@@ -57,12 +57,24 @@ final class EventBuilder
                 return Event\ChargeRefundedEvent::createFromArray($data);
             case 'charge.succeeded':
                 return Event\ChargeSucceededEvent::createFromArray($data);
+            case 'coupon.created':
+                return Event\CouponCreatedEvent::createFromArray($data);
+            case 'coupon.deleted':
+                return Event\CouponDeletedEvent::createFromArray($data);
+            case 'coupon.updated':
+                return Event\CouponUpdatedEvent::createFromArray($data);
             case 'customer.bank_account.deleted':
                 return Event\CustomerBankAccountDeletedEvent::createFromArray($data);
             case 'customer.created':
                 return Event\CustomerCreatedEvent::createFromArray($data);
             case 'customer.deleted':
                 return Event\CustomerDeletedEvent::createFromArray($data);
+            case 'customer.discount.created':
+                return Event\CustomerDiscountCreatedEvent::createFromArray($data);
+            case 'customer.discount.deleted':
+                return Event\CustomerDiscountDeletedEvent::createFromArray($data);
+            case 'customer.discount.updated':
+                return Event\CustomerDiscountUpdatedEvent::createFromArray($data);
             case 'customer.source.created':
                 return Event\CustomerSourceCreatedEvent::createFromArray($data);
             case 'customer.source.deleted':
@@ -81,6 +93,32 @@ final class EventBuilder
                 return Event\CustomerSubscriptionUpdatedEvent::createFromArray($data);
             case 'customer.updated':
                 return Event\CustomerUpdatedEvent::createFromArray($data);
+            case 'invoice.created':
+                return Event\InvoiceCreatedEvent::createFromArray($data);
+            case 'invoice.deleted':
+                return Event\InvoiceDeletedEvent::createFromArray($data);
+            case 'invoice.finalized':
+                return Event\InvoiceFinalizedEvent::createFromArray($data);
+            case 'invoice.marked_uncollectible':
+                return Event\InvoiceMarkedUncollectibleEvent::createFromArray($data);
+            case 'invoice.payment_failed':
+                return Event\InvoicePaymentFailedEvent::createFromArray($data);
+            case 'invoice.payment_succeeded':
+                return Event\InvoicePaymentSucceededEvent::createFromArray($data);
+            case 'invoice.sent':
+                return Event\InvoiceSentEvent::createFromArray($data);
+            case 'invoice.upcoming':
+                return Event\InvoiceUpcomingEvent::createFromArray($data);
+            case 'invoice.updated':
+                return Event\InvoiceUpdatedEvent::createFromArray($data);
+            case 'invoice.voided':
+                return Event\InvoiceVoidedEvent::createFromArray($data);
+            case 'invoiceitem.created':
+                return Event\InvoiceItemCreatedEvent::createFromArray($data);
+            case 'invoiceitem.deleted':
+                return Event\InvoiceItemDeletedEvent::createFromArray($data);
+            case 'invoiceitem.updated':
+                return Event\InvoiceItemUpdatedEvent::createFromArray($data);
             case 'plan.created':
                 return Event\PlanCreatedEvent::createFromArray($data);
             case 'plan.deleted':

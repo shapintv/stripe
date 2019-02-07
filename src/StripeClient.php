@@ -120,4 +120,14 @@ final class StripeClient
     {
         return new Api\Plan($this->httpClient, $this->hydrator, $this->requestBuilder);
     }
+
+    public function invoices(): Api\Invoice
+    {
+        return new Api\Invoice($this->httpClient, $this->hydrator, $this->requestBuilder);
+    }
+
+    public function coupons(): Api\Coupon
+    {
+        return new Api\Coupon($this->httpClient, $this->hydrator, $this->requestBuilder);
+    }
 }
