@@ -22,10 +22,6 @@ final class Invoice extends HttpApi
     {
         $response = $this->httpGet("/v1/invoices/$id");
 
-        if (!$this->hydrator) {
-            return $response;
-        }
-
         if (200 !== $response->getStatusCode()) {
             $this->handleErrors($response);
         }
@@ -39,10 +35,6 @@ final class Invoice extends HttpApi
     public function all(array $params = [])
     {
         $response = $this->httpGet('/v1/invoices'.http_build_query($params));
-
-        if (!$this->hydrator) {
-            return $response;
-        }
 
         if (200 !== $response->getStatusCode()) {
             $this->handleErrors($response);

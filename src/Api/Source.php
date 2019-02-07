@@ -23,10 +23,6 @@ final class Source extends HttpApi
     {
         $response = $this->httpGet("/v1/sources/$id");
 
-        if (!$this->hydrator) {
-            return $response;
-        }
-
         if (200 !== $response->getStatusCode()) {
             $this->handleErrors($response);
         }
@@ -43,10 +39,6 @@ final class Source extends HttpApi
         $processor->processConfiguration(new Configuration\SourceCreate(), [$params]);
 
         $response = $this->httpPostRaw('/v1/sources', http_build_query($params), ['Content-Type' => 'application/x-www-form-urlencoded']);
-
-        if (!$this->hydrator) {
-            return $response;
-        }
 
         if (200 !== $response->getStatusCode()) {
             $this->handleErrors($response);

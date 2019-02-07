@@ -24,10 +24,6 @@ final class Customer extends HttpApi
     {
         $response = $this->httpGet("/v1/customers/$customerId");
 
-        if (!$this->hydrator) {
-            return $response;
-        }
-
         if (200 !== $response->getStatusCode()) {
             $this->handleErrors($response);
         }
@@ -47,10 +43,6 @@ final class Customer extends HttpApi
 
         $response = $this->httpGet("/v1/customers$searchString");
 
-        if (!$this->hydrator) {
-            return $response;
-        }
-
         if (200 !== $response->getStatusCode()) {
             $this->handleErrors($response);
         }
@@ -67,10 +59,6 @@ final class Customer extends HttpApi
         $params = $processor->processConfiguration(new Configuration\CustomerCreate(), [$params]);
 
         $response = $this->httpPostRaw('/v1/customers', http_build_query($params), ['Content-Type' => 'application/x-www-form-urlencoded']);
-
-        if (!$this->hydrator) {
-            return $response;
-        }
 
         if (200 !== $response->getStatusCode()) {
             $this->handleErrors($response);

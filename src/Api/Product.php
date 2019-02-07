@@ -24,10 +24,6 @@ final class Product extends HttpApi
     {
         $response = $this->httpGet("/v1/products/$productId");
 
-        if (!$this->hydrator) {
-            return $response;
-        }
-
         if (200 !== $response->getStatusCode()) {
             $this->handleErrors($response);
         }
@@ -45,10 +41,6 @@ final class Product extends HttpApi
 
         $response = $this->httpPostRaw('/v1/products', http_build_query($params), ['Content-Type' => 'application/x-www-form-urlencoded']);
 
-        if (!$this->hydrator) {
-            return $response;
-        }
-
         if (200 !== $response->getStatusCode()) {
             $this->handleErrors($response);
         }
@@ -65,10 +57,6 @@ final class Product extends HttpApi
         $processor->processConfiguration(new Configuration\ProductUpdate(), [$params]);
 
         $response = $this->httpPostRaw("/v1/products/$id", http_build_query($params), ['Content-Type' => 'application/x-www-form-urlencoded']);
-
-        if (!$this->hydrator) {
-            return $response;
-        }
 
         if (200 !== $response->getStatusCode()) {
             $this->handleErrors($response);
@@ -88,10 +76,6 @@ final class Product extends HttpApi
         }
 
         $response = $this->httpGet("/v1/products$searchString");
-
-        if (!$this->hydrator) {
-            return $response;
-        }
 
         if (200 !== $response->getStatusCode()) {
             $this->handleErrors($response);

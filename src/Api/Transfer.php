@@ -24,10 +24,6 @@ final class Transfer extends HttpApi
     {
         $response = $this->httpGet("/v1/transfers/$id");
 
-        if (!$this->hydrator) {
-            return $response;
-        }
-
         if (200 !== $response->getStatusCode()) {
             $this->handleErrors($response);
         }
@@ -50,10 +46,6 @@ final class Transfer extends HttpApi
 
         $response = $this->httpGet('/v1/transfers'.$searchString);
 
-        if (!$this->hydrator) {
-            return $response;
-        }
-
         if (200 !== $response->getStatusCode()) {
             $this->handleErrors($response);
         }
@@ -70,10 +62,6 @@ final class Transfer extends HttpApi
         $processor->processConfiguration(new Configuration\TransferCreate(), [$params]);
 
         $response = $this->httpPostRaw('/v1/transfers', http_build_query($params), ['Content-Type' => 'application/x-www-form-urlencoded']);
-
-        if (!$this->hydrator) {
-            return $response;
-        }
 
         if (200 !== $response->getStatusCode()) {
             $this->handleErrors($response);

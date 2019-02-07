@@ -28,10 +28,6 @@ final class Balance extends HttpApi
 
         $response = $this->httpGet('/v1/balance', [], $headers);
 
-        if (!$this->hydrator) {
-            return $response;
-        }
-
         if (200 !== $response->getStatusCode()) {
             $this->handleErrors($response);
         }
@@ -45,10 +41,6 @@ final class Balance extends HttpApi
     public function getBalanceTransaction(string $id)
     {
         $response = $this->httpGet("/v1/balance/history/$id");
-
-        if (!$this->hydrator) {
-            return $response;
-        }
 
         if (200 !== $response->getStatusCode()) {
             $this->handleErrors($response);
@@ -68,10 +60,6 @@ final class Balance extends HttpApi
         }
 
         $response = $this->httpGet("/v1/balance/history$paramsString");
-
-        if (!$this->hydrator) {
-            return $response;
-        }
 
         if (200 !== $response->getStatusCode()) {
             $this->handleErrors($response);

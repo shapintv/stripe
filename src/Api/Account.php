@@ -24,10 +24,6 @@ final class Account extends HttpApi
     {
         $response = $this->httpGet("/v1/accounts/$id");
 
-        if (!$this->hydrator) {
-            return $response;
-        }
-
         if (200 !== $response->getStatusCode()) {
             $this->handleErrors($response);
         }
@@ -41,10 +37,6 @@ final class Account extends HttpApi
     public function all(array $params = [])
     {
         $response = $this->httpGet('/v1/accounts'.http_build_query($params));
-
-        if (!$this->hydrator) {
-            return $response;
-        }
 
         if (200 !== $response->getStatusCode()) {
             $this->handleErrors($response);
@@ -63,10 +55,6 @@ final class Account extends HttpApi
 
         $response = $this->httpPostRaw('/v1/accounts', http_build_query($params), ['Content-Type' => 'application/x-www-form-urlencoded']);
 
-        if (!$this->hydrator) {
-            return $response;
-        }
-
         if (200 !== $response->getStatusCode()) {
             $this->handleErrors($response);
         }
@@ -83,10 +71,6 @@ final class Account extends HttpApi
         $processor->processConfiguration(new Configuration\AccountUpdate(), [$params]);
 
         $response = $this->httpPostRaw("/v1/accounts/$id", http_build_query($params), ['Content-Type' => 'application/x-www-form-urlencoded']);
-
-        if (!$this->hydrator) {
-            return $response;
-        }
 
         if (200 !== $response->getStatusCode()) {
             $this->handleErrors($response);

@@ -42,10 +42,8 @@ abstract class HttpApi
     public function __construct(HttpClient $httpClient, Hydrator $hydrator, RequestBuilder $requestBuilder)
     {
         $this->httpClient = $httpClient;
+        $this->hydrator = $hydrator;
         $this->requestBuilder = $requestBuilder;
-        if (!$hydrator instanceof NoopHydrator) {
-            $this->hydrator = $hydrator;
-        }
     }
 
     /**
