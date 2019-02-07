@@ -14,7 +14,7 @@ use Shapin\Stripe\Model\CreatableFromArray;
 final class TermsOfServiceAcceptance implements CreatableFromArray
 {
     /**
-     * @var \DateTimeImmutable
+     * @var ?\DateTimeImmutable
      */
     private $date;
 

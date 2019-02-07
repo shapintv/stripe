@@ -50,7 +50,7 @@ final class Card implements CreatableFromArray, ContainsMetadata
     private $country;
 
     /**
-     * @var Currency
+     * @var ?Currency
      */
     private $currency;
 

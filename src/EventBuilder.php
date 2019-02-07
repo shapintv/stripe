@@ -17,7 +17,7 @@ final class EventBuilder
 {
     public function createEventFromRequest(Request $request): Event\Event
     {
-        $data = json_decode($request->getContent(), true);
+        $data = json_decode((string) $request->getContent(), true);
 
         if (\JSON_ERROR_NONE !== json_last_error()) {
             throw new InvalidArgumentException('Unable to process Request: Invalid JSON provided ('.json_last_error_msg().')');

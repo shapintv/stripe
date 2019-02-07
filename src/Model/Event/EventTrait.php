@@ -55,7 +55,7 @@ trait EventTrait
     protected $pendingWebhooks;
 
     /**
-     * @var Request
+     * @var ?Request
      */
     protected $request;
 
@@ -244,7 +244,7 @@ trait EventTrait
         return $this->pendingWebhooks;
     }
 
-    public function getRequest(): Request
+    public function getRequest(): ?Request
     {
         return $this->request;
     }

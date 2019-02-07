@@ -19,7 +19,7 @@ final class AccountVerification implements CreatableFromArray
     private $disabledReason;
 
     /**
-     * @var \DateTimeImmutable
+     * @var ?\DateTimeImmutable
      */
     private $dueBy;
 

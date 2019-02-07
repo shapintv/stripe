@@ -107,7 +107,7 @@ final class Source implements CreatableFromArray, ContainsMetadata
     private $flow;
 
     /**
-     * @var ?Owner
+     * @var Owner
      */
     private $owner;
 
@@ -143,14 +143,21 @@ final class Source implements CreatableFromArray, ContainsMetadata
 
     public static function createFromArray(array $data): self
     {
-        $currency = isset($data['currency']) ? new Currency(strtoupper($data['currency'])) : null;
-
         $model = new self();
+
+        if (isset($data['currency'])) {
+            $currency =  new Currency(strtoupper($data['currency']));
+            $model->amount = isset($data['amount']) ? new Money($data['amount'], $currency) : null;
+            $model->currency = $currency;
+            if (isset($data['receiver'])) {
+                $model->receiver = Receiver::createFromArray($data['receiver'], $currency);
+            }
+        }
+
         $model->id = $data['id'];
         if (isset($data['ach_credit_transfer'])) {
             $model->achCreditTransfer = AchCreditTransfer::createFromArray($data['ach_credit_transfer']);
         }
-        $model->amount = isset($data['amount']) ? new Money($data['amount'], $currency) : null;
         if (isset($data['card'])) {
             $model->card = Card::createFromArray($data['card']);
         }
@@ -159,15 +166,11 @@ final class Source implements CreatableFromArray, ContainsMetadata
             $model->codeVerification = CodeVerification::createFromArray($data['code_verification']);
         }
         $model->createdAt = new \DateTimeImmutable('@'.$data['created']);
-        $model->currency = $currency;
         $model->customer = $data['customer'] ?? null;
         $model->flow = $data['flow'];
         $model->live = $data['livemode'];
         $model->metadata = MetadataCollection::createFromArray($data['metadata']);
         $model->owner = Owner::createFromArray($data['owner']);
-        if (isset($data['receiver'])) {
-            $model->receiver = Receiver::createFromArray($data['receiver'], $currency);
-        }
         if (isset($data['redirect'])) {
             $model->redirect = Redirect::createFromArray($data['redirect']);
         }

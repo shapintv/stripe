@@ -181,12 +181,12 @@ final class Invoice implements CreatableFromArray, ContainsMetadata
     private $paid;
 
     /**
-     * @var ?\DateTimeImmutable
+     * @var \DateTimeImmutable
      */
     private $periodEndAt;
 
     /**
-     * @var ?\DateTimeImmutable
+     * @var \DateTimeImmutable
      */
     private $periodStartAt;
 

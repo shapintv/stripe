@@ -35,7 +35,7 @@ final class Subscription implements CreatableFromArray, ContainsMetadata
     private $id;
 
     /**
-     * @var float
+     * @var ?float
      */
     private $applicationFeePercent;
 
@@ -90,7 +90,7 @@ final class Subscription implements CreatableFromArray, ContainsMetadata
     private $defaultSource;
 
     /**
-     * @var \DateTimeImmutable
+     * @var ?\DateTimeImmutable
      */
     private $endedAt;
 
@@ -120,7 +120,7 @@ final class Subscription implements CreatableFromArray, ContainsMetadata
     private $status;
 
     /**
-     * @var float
+     * @var ?float
      */
     private $taxPercent;
 

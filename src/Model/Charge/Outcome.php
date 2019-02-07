@@ -29,7 +29,7 @@ final class Outcome implements CreatableFromArray
     private $riskLevel;
 
     /**
-     * @var int
+     * @var ?int
      */
     private $riskScore;
 

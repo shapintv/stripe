@@ -59,12 +59,12 @@ final class Account implements CreatableFromArray, ContainsMetadata
     private $country;
 
     /**
-     * @var \DateTimeImmutable
+     * @var ?\DateTimeImmutable
      */
     private $createdAt;
 
     /**
-     * @var ?bool
+     * @var bool
      */
     private $debitNegativeBalances;
 

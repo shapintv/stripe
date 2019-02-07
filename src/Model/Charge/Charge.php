@@ -50,7 +50,7 @@ final class Charge implements CreatableFromArray, ContainsMetadata
     private $application;
 
     /**
-     * @var ?Money
+     * @var Money
      */
     private $applicationFee;
 
