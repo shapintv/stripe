@@ -11,7 +11,9 @@ namespace Shapin\Stripe\Model\Event;
 
 trait ContainsPreviousAttributesTrait
 {
-    use EventTrait;
+    // Commented cause it fails on travis for PHP < 7.3
+    // It looks like it's not possible to se 2 traits using the same other trait in a given class...
+    //use EventTrait;
 
     public function getPreviousAttributes(): array
     {
