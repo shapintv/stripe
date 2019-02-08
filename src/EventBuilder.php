@@ -15,6 +15,66 @@ use Symfony\Component\HttpFoundation\Request;
 
 final class EventBuilder
 {
+    private $events = [
+        'account.external_account.created' => Event\AccountExternalAccountCreatedEvent::class,
+        'account.external_account.deleted' => Event\AccountExternalAccountDeletedEvent::class,
+        'account.external_account.updated' => Event\AccountExternalAccountUpdatedEvent::class,
+        'account.updated' => Event\AccountUpdatedEvent::class,
+        'balance.available' => Event\BalanceAvailableEvent::class,
+        'charge.captured' => Event\ChargeCapturedEvent::class,
+        'charge.expired' => Event\ChargeExpiredEvent::class,
+        'charge.failed' => Event\ChargeFailedEvent::class,
+        'charge.pending' => Event\ChargePendingEvent::class,
+        'charge.refund.updated' => Event\ChargeRefundUpdatedEvent::class,
+        'charge.refunded' => Event\ChargeRefundedEvent::class,
+        'charge.succeeded' => Event\ChargeSucceededEvent::class,
+        'coupon.created' => Event\CouponCreatedEvent::class,
+        'coupon.deleted' => Event\CouponDeletedEvent::class,
+        'coupon.updated' => Event\CouponUpdatedEvent::class,
+        'customer.bank_account.deleted' => Event\CustomerBankAccountDeletedEvent::class,
+        'customer.created' => Event\CustomerCreatedEvent::class,
+        'customer.deleted' => Event\CustomerDeletedEvent::class,
+        'customer.discount.created' => Event\CustomerDiscountCreatedEvent::class,
+        'customer.discount.deleted' => Event\CustomerDiscountDeletedEvent::class,
+        'customer.discount.updated' => Event\CustomerDiscountUpdatedEvent::class,
+        'customer.source.created' => Event\CustomerSourceCreatedEvent::class,
+        'customer.source.deleted' => Event\CustomerSourceDeletedEvent::class,
+        'customer.source.expiring' => Event\CustomerSourceExpiringEvent::class,
+        'customer.source.updated' => Event\CustomerSourceUpdatedEvent::class,
+        'customer.subscription.created' => Event\CustomerSubscriptionCreatedEvent::class,
+        'customer.subscription.deleted' => Event\CustomerSubscriptionDeletedEvent::class,
+        'customer.subscription.trial_will_end' => Event\CustomerSubscriptionTrialWillEndEvent::class,
+        'customer.subscription.updated' => Event\CustomerSubscriptionUpdatedEvent::class,
+        'customer.updated' => Event\CustomerUpdatedEvent::class,
+        'invoice.created' => Event\InvoiceCreatedEvent::class,
+        'invoice.deleted' => Event\InvoiceDeletedEvent::class,
+        'invoice.finalized' => Event\InvoiceFinalizedEvent::class,
+        'invoice.marked_uncollectible' => Event\InvoiceMarkedUncollectibleEvent::class,
+        'invoice.payment_failed' => Event\InvoicePaymentFailedEvent::class,
+        'invoice.payment_succeeded' => Event\InvoicePaymentSucceededEvent::class,
+        'invoice.sent' => Event\InvoiceSentEvent::class,
+        'invoice.upcoming' => Event\InvoiceUpcomingEvent::class,
+        'invoice.updated' => Event\InvoiceUpdatedEvent::class,
+        'invoice.voided' => Event\InvoiceVoidedEvent::class,
+        'invoiceitem.created' => Event\InvoiceItemCreatedEvent::class,
+        'invoiceitem.deleted' => Event\InvoiceItemDeletedEvent::class,
+        'invoiceitem.updated' => Event\InvoiceItemUpdatedEvent::class,
+        'plan.created' => Event\PlanCreatedEvent::class,
+        'plan.deleted' => Event\PlanDeletedEvent::class,
+        'plan.updated' => Event\PlanUpdatedEvent::class,
+        'product.created' => Event\ProductCreatedEvent::class,
+        'product.deleted' => Event\ProductDeletedEvent::class,
+        'product.updated' => Event\ProductUpdatedEvent::class,
+        'source.canceled' => Event\SourceCanceledEvent::class,
+        'source.chargeable' => Event\SourceChargeableEvent::class,
+        'source.failed' => Event\SourceFailedEvent::class,
+        'source.mandate_notification' => Event\SourceMandateNotificationEvent::class,
+        'source.refund_attributes_required' => Event\SourceRefundAttributesRequiredEvent::class,
+        'transfer.created' => Event\TransferCreatedEvent::class,
+        'transfer.reversed' => Event\TransferReversedEvent::class,
+        'transfer.updated' => Event\TransferUpdatedEvent::class,
+    ];
+
     public function createEventFromRequest(Request $request): Event\Event
     {
         $data = json_decode((string) $request->getContent(), true);
@@ -32,124 +92,10 @@ final class EventBuilder
             throw new InvalidArgumentException('Unable to process event: No "type" provided in array.');
         }
 
-        switch ($data['type']) {
-            case 'account.external_account.created':
-                return Event\AccountExternalAccountCreatedEvent::createFromArray($data);
-            case 'account.external_account.deleted':
-                return Event\AccountExternalAccountDeletedEvent::createFromArray($data);
-            case 'account.external_account.updated':
-                return Event\AccountExternalAccountUpdatedEvent::createFromArray($data);
-            case 'account.updated':
-                return Event\AccountUpdatedEvent::createFromArray($data);
-            case 'balance.available':
-                return Event\BalanceAvailableEvent::createFromArray($data);
-            case 'charge.captured':
-                return Event\ChargeCapturedEvent::createFromArray($data);
-            case 'charge.expired':
-                return Event\ChargeExpiredEvent::createFromArray($data);
-            case 'charge.failed':
-                return Event\ChargeFailedEvent::createFromArray($data);
-            case 'charge.pending':
-                return Event\ChargePendingEvent::createFromArray($data);
-            case 'charge.refund.updated':
-                return Event\ChargeRefundUpdatedEvent::createFromArray($data);
-            case 'charge.refunded':
-                return Event\ChargeRefundedEvent::createFromArray($data);
-            case 'charge.succeeded':
-                return Event\ChargeSucceededEvent::createFromArray($data);
-            case 'coupon.created':
-                return Event\CouponCreatedEvent::createFromArray($data);
-            case 'coupon.deleted':
-                return Event\CouponDeletedEvent::createFromArray($data);
-            case 'coupon.updated':
-                return Event\CouponUpdatedEvent::createFromArray($data);
-            case 'customer.bank_account.deleted':
-                return Event\CustomerBankAccountDeletedEvent::createFromArray($data);
-            case 'customer.created':
-                return Event\CustomerCreatedEvent::createFromArray($data);
-            case 'customer.deleted':
-                return Event\CustomerDeletedEvent::createFromArray($data);
-            case 'customer.discount.created':
-                return Event\CustomerDiscountCreatedEvent::createFromArray($data);
-            case 'customer.discount.deleted':
-                return Event\CustomerDiscountDeletedEvent::createFromArray($data);
-            case 'customer.discount.updated':
-                return Event\CustomerDiscountUpdatedEvent::createFromArray($data);
-            case 'customer.source.created':
-                return Event\CustomerSourceCreatedEvent::createFromArray($data);
-            case 'customer.source.deleted':
-                return Event\CustomerSourceDeletedEvent::createFromArray($data);
-            case 'customer.source.expiring':
-                return Event\CustomerSourceExpiringEvent::createFromArray($data);
-            case 'customer.source.updated':
-                return Event\CustomerSourceUpdatedEvent::createFromArray($data);
-            case 'customer.subscription.created':
-                return Event\CustomerSubscriptionCreatedEvent::createFromArray($data);
-            case 'customer.subscription.deleted':
-                return Event\CustomerSubscriptionDeletedEvent::createFromArray($data);
-            case 'customer.subscription.trial_will_end':
-                return Event\CustomerSubscriptionTrialWillEndEvent::createFromArray($data);
-            case 'customer.subscription.updated':
-                return Event\CustomerSubscriptionUpdatedEvent::createFromArray($data);
-            case 'customer.updated':
-                return Event\CustomerUpdatedEvent::createFromArray($data);
-            case 'invoice.created':
-                return Event\InvoiceCreatedEvent::createFromArray($data);
-            case 'invoice.deleted':
-                return Event\InvoiceDeletedEvent::createFromArray($data);
-            case 'invoice.finalized':
-                return Event\InvoiceFinalizedEvent::createFromArray($data);
-            case 'invoice.marked_uncollectible':
-                return Event\InvoiceMarkedUncollectibleEvent::createFromArray($data);
-            case 'invoice.payment_failed':
-                return Event\InvoicePaymentFailedEvent::createFromArray($data);
-            case 'invoice.payment_succeeded':
-                return Event\InvoicePaymentSucceededEvent::createFromArray($data);
-            case 'invoice.sent':
-                return Event\InvoiceSentEvent::createFromArray($data);
-            case 'invoice.upcoming':
-                return Event\InvoiceUpcomingEvent::createFromArray($data);
-            case 'invoice.updated':
-                return Event\InvoiceUpdatedEvent::createFromArray($data);
-            case 'invoice.voided':
-                return Event\InvoiceVoidedEvent::createFromArray($data);
-            case 'invoiceitem.created':
-                return Event\InvoiceItemCreatedEvent::createFromArray($data);
-            case 'invoiceitem.deleted':
-                return Event\InvoiceItemDeletedEvent::createFromArray($data);
-            case 'invoiceitem.updated':
-                return Event\InvoiceItemUpdatedEvent::createFromArray($data);
-            case 'plan.created':
-                return Event\PlanCreatedEvent::createFromArray($data);
-            case 'plan.deleted':
-                return Event\PlanDeletedEvent::createFromArray($data);
-            case 'plan.updated':
-                return Event\PlanUpdatedEvent::createFromArray($data);
-            case 'product.created':
-                return Event\ProductCreatedEvent::createFromArray($data);
-            case 'product.deleted':
-                return Event\ProductDeletedEvent::createFromArray($data);
-            case 'product.updated':
-                return Event\ProductUpdatedEvent::createFromArray($data);
-            case 'source.canceled':
-                return Event\SourceCanceledEvent::createFromArray($data);
-            case 'source.chargeable':
-                return Event\SourceChargeableEvent::createFromArray($data);
-            case 'source.failed':
-                return Event\SourceFailedEvent::createFromArray($data);
-            case 'source.mandate_notification':
-                return Event\SourceMandateNotificationEvent::createFromArray($data);
-            case 'source.refund_attributes_required':
-                return Event\SourceRefundAttributesRequiredEvent::createFromArray($data);
-            case 'transfer.created':
-                return Event\TransferCreatedEvent::createFromArray($data);
-            case 'transfer.reversed':
-                return Event\TransferReversedEvent::createFromArray($data);
-            case 'transfer.updated':
-                return Event\TransferUpdatedEvent::createFromArray($data);
-
-            default:
-                throw new InvalidArgumentException("Unable to process event: Event \"{$data['type']}\" is not supported yet.");
+        if (array_key_exists($data['type'], $this->events)) {
+            return call_user_func($this->events[$data['type']].'::createFromArray', $data);
         }
+
+        throw new InvalidArgumentException("Unable to process event: Event \"{$data['type']}\" is not supported yet.");
     }
 }
