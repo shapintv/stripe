@@ -18,7 +18,7 @@ final class GetTest extends TestCase
 {
     private $subscriptionApi;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->subscriptionApi = $this->getStripeClient()->subscriptions();
     }

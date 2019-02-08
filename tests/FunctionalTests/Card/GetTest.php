@@ -17,7 +17,7 @@ final class GetTest extends TestCase
 {
     private $cardApi;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->cardApi = $this->getStripeClient()->cards();
     }

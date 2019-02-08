@@ -17,7 +17,7 @@ final class GetTest extends TestCase
 {
     private $planApi;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->planApi = $this->getStripeClient()->plans();
     }

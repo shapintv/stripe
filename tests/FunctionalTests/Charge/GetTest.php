@@ -20,7 +20,7 @@ final class GetTest extends TestCase
 {
     private $chargeApi;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->chargeApi = $this->getStripeClient()->charges();
     }

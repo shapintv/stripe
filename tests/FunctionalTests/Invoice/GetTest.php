@@ -20,7 +20,7 @@ final class GetTest extends TestCase
 {
     private $invoiceApi;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->invoiceApi = $this->getStripeClient()->invoices();
     }

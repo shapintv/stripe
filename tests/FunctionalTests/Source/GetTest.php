@@ -20,7 +20,7 @@ final class GetTest extends TestCase
 {
     private $sourceApi;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->sourceApi = $this->getStripeClient()->sources();
     }

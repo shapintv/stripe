@@ -17,7 +17,7 @@ final class GetTest extends TestCase
 {
     private $refundApi;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->refundApi = $this->getStripeClient()->refunds();
     }

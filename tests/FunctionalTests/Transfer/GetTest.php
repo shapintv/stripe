@@ -19,7 +19,7 @@ final class GetTest extends TestCase
 {
     private $transferApi;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->transferApi = $this->getStripeClient()->transfers();
     }

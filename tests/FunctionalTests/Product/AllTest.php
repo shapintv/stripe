@@ -17,7 +17,7 @@ final class AllTest extends TestCase
 {
     private $productApi;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->productApi = $this->getStripeClient()->products();
     }

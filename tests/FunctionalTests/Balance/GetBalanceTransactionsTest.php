@@ -17,7 +17,7 @@ final class GetBalanceTransactionsTest extends TestCase
 {
     private $balanceApi;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->balanceApi = $this->getStripeClient()->balances();
     }

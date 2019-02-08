@@ -25,7 +25,7 @@ final class GetTest extends TestCase
 {
     private $accountApi;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->accountApi = $this->getStripeClient()->accounts();
     }
