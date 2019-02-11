@@ -77,7 +77,7 @@ final class Source implements CreatableFromArray, ContainsMetadata
     private $card;
 
     /**
-     * @var string
+     * @var ?string
      */
     private $clientSecret;
 
@@ -102,12 +102,12 @@ final class Source implements CreatableFromArray, ContainsMetadata
     private $customer;
 
     /**
-     * @var string
+     * @var ?string
      */
     private $flow;
 
     /**
-     * @var Owner
+     * @var ?Owner
      */
     private $owner;
 
@@ -122,22 +122,22 @@ final class Source implements CreatableFromArray, ContainsMetadata
     private $redirect;
 
     /**
-     * @var string
+     * @var ?string
      */
     private $statementDescriptor;
 
     /**
-     * @var string
+     * @var ?string
      */
     private $status;
 
     /**
-     * @var string
+     * @var ?string
      */
     private $type;
 
     /**
-     * @var string
+     * @var ?string
      */
     private $usage;
 
@@ -161,23 +161,23 @@ final class Source implements CreatableFromArray, ContainsMetadata
         if (isset($data['card'])) {
             $model->card = Card::createFromArray($data['card']);
         }
-        $model->clientSecret = $data['client_secret'];
+        $model->clientSecret = $data['client_secret'] ?? null;
         if (isset($data['code_verification'])) {
             $model->codeVerification = CodeVerification::createFromArray($data['code_verification']);
         }
         $model->createdAt = new \DateTimeImmutable('@'.$data['created']);
         $model->customer = $data['customer'] ?? null;
-        $model->flow = $data['flow'];
+        $model->flow = $data['flow'] ?? null;
         $model->live = $data['livemode'];
         $model->metadata = MetadataCollection::createFromArray($data['metadata']);
-        $model->owner = Owner::createFromArray($data['owner']);
+        $model->owner = isset($data['owner']) ? Owner::createFromArray($data['owner']) : null;
         if (isset($data['redirect'])) {
             $model->redirect = Redirect::createFromArray($data['redirect']);
         }
-        $model->statementDescriptor = $data['statement_descriptor'];
-        $model->status = $data['status'];
-        $model->type = $data['type'];
-        $model->usage = $data['usage'];
+        $model->statementDescriptor = $data['statement_descriptor'] ?? null;
+        $model->status = $data['status'] ?? null;
+        $model->type = $data['type'] ?? null;
+        $model->usage = $data['usage'] ?? null;
 
         return $model;
     }
@@ -207,7 +207,7 @@ final class Source implements CreatableFromArray, ContainsMetadata
         return $this->card;
     }
 
-    public function getClientSecret(): string
+    public function getClientSecret(): ?string
     {
         return $this->clientSecret;
     }
@@ -232,12 +232,12 @@ final class Source implements CreatableFromArray, ContainsMetadata
         return $this->customer;
     }
 
-    public function getFlow(): string
+    public function getFlow(): ?string
     {
         return $this->flow;
     }
 
-    public function getOwner(): Owner
+    public function getOwner(): ?Owner
     {
         return $this->owner;
     }
@@ -257,17 +257,17 @@ final class Source implements CreatableFromArray, ContainsMetadata
         return $this->statementDescriptor;
     }
 
-    public function getStatus(): string
+    public function getStatus(): ?string
     {
         return $this->status;
     }
 
-    public function getType(): string
+    public function getType(): ?string
     {
         return $this->type;
     }
 
-    public function getUsage(): string
+    public function getUsage(): ?string
     {
         return $this->usage;
     }

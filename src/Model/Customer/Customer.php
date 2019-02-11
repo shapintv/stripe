@@ -9,11 +9,13 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Model\Customer;
 
+use Shapin\Stripe\Exception\LogicException;
 use Shapin\Stripe\Model\ContainsMetadata;
 use Shapin\Stripe\Model\CreatableFromArray;
 use Shapin\Stripe\Model\LivemodeTrait;
 use Shapin\Stripe\Model\MetadataTrait;
 use Shapin\Stripe\Model\MetadataCollection;
+use Shapin\Stripe\Model\Source\Source;
 use Shapin\Stripe\Model\Source\SourceCollection;
 use Shapin\Stripe\Model\Subscription\SubscriptionCollection;
 use Money\Currency;
@@ -45,7 +47,7 @@ final class Customer implements CreatableFromArray, ContainsMetadata
     /**
      * @var string
      */
-    private $defaultSource;
+    private $defaultSourceId;
 
     /**
      * @var bool
@@ -115,7 +117,7 @@ final class Customer implements CreatableFromArray, ContainsMetadata
         if (isset($data['currency'])) {
             $model->currency = new Currency(strtoupper($data['currency']));
         }
-        $model->defaultSource = $data['default_source'];
+        $model->defaultSourceId = $data['default_source'];
         $model->delinquent = (bool) $data['delinquent'];
         $model->description = $data['description'];
         $model->discount = array_key_exists('discount', $data) ? $data['discount'] : null;
@@ -127,9 +129,8 @@ final class Customer implements CreatableFromArray, ContainsMetadata
         if (isset($data['shipping'])) {
             $model->shipping = Shipping::createFromArray($data['shipping']);
         }
-        //$model->sources = SourceCollection::createFromArray($data['sources']);
-        //$model->subscriptions = SubscriptionCollection::createFromArray($data['subscriptions']);
-        $model->sources = SourceCollection::createFromArray(['data' => [], 'has_more' => false]);
+        $model->sources = SourceCollection::createFromArray($data['sources']);
+        $model->subscriptions = SubscriptionCollection::createFromArray($data['subscriptions']);
         if (isset($data['tax_info'])) {
             $model->taxInfo = TaxInfo::createFromArray($data['tax_info']);
         }
@@ -160,9 +161,24 @@ final class Customer implements CreatableFromArray, ContainsMetadata
         return $this->currency;
     }
 
-    public function getDefaultSource(): ?string
+    public function getDefaultSource(): ?Source
     {
-        return $this->defaultSource;
+        if (null === $this->defaultSourceId) {
+            return null;
+        }
+
+        foreach ($this->sources->getElements() as $source) {
+            if ($this->defaultSourceId === $source->getId()) {
+                return $source;
+            }
+        }
+
+        throw new LogicException('Unable to find default source in available sources.');
+    }
+
+    public function getDefaultSourceId(): ?string
+    {
+        return $this->defaultSourceId;
     }
 
     public function isDelinquent(): bool
