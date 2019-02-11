@@ -66,4 +66,21 @@ final class Plan extends HttpApi
 
         return $this->hydrator->hydrate($response, PlanModel::class);
     }
+
+    /**
+     * @throws Exception
+     */
+    public function update(string $id, array $params)
+    {
+        $processor = new Processor();
+        $processor->processConfiguration(new Configuration\PlanUpdate(), [$params]);
+
+        $response = $this->httpPostRaw("/v1/plans/$id", http_build_query($params), ['Content-Type' => 'application/x-www-form-urlencoded']);
+
+        if (200 !== $response->getStatusCode()) {
+            $this->handleErrors($response);
+        }
+
+        return $this->hydrator->hydrate($response, PlanModel::class);
+    }
 }
