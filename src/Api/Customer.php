@@ -66,4 +66,21 @@ final class Customer extends HttpApi
 
         return $this->hydrator->hydrate($response, CustomerModel::class);
     }
+
+    /**
+     * @throws Exception
+     */
+    public function update(string $id, array $params)
+    {
+        $processor = new Processor();
+        $processor->processConfiguration(new Configuration\CustomerUpdate(), [$params]);
+
+        $response = $this->httpPostRaw("/v1/customers/$id", http_build_query($params), ['Content-Type' => 'application/x-www-form-urlencoded']);
+
+        if (200 !== $response->getStatusCode()) {
+            $this->handleErrors($response);
+        }
+
+        return $this->hydrator->hydrate($response, CustomerModel::class);
+    }
 }
