@@ -38,7 +38,7 @@ final class Source extends HttpApi
         $processor = new Processor();
         $processor->processConfiguration(new Configuration\SourceCreate(), [$params]);
 
-        $response = $this->httpPostRaw('/v1/sources', http_build_query($params), ['Content-Type' => 'application/x-www-form-urlencoded']);
+        $response = $this->httpPost('/v1/sources', $params);
 
         if (200 !== $response->getStatusCode()) {
             $this->handleErrors($response);

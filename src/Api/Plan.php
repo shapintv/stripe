@@ -36,7 +36,7 @@ final class Plan extends HttpApi
      */
     public function all(array $params = [])
     {
-        $response = $this->httpGet('/v1/plans'.http_build_query($params));
+        $response = $this->httpGet('/v1/plans', $params);
 
         if (200 !== $response->getStatusCode()) {
             $this->handleErrors($response);
@@ -58,7 +58,7 @@ final class Plan extends HttpApi
             unset($params['existing_product']);
         }
 
-        $response = $this->httpPostRaw('/v1/plans', http_build_query($params), ['Content-Type' => 'application/x-www-form-urlencoded']);
+        $response = $this->httpPost('/v1/plans', $params);
 
         if (200 !== $response->getStatusCode()) {
             $this->handleErrors($response);
@@ -75,7 +75,7 @@ final class Plan extends HttpApi
         $processor = new Processor();
         $processor->processConfiguration(new Configuration\PlanUpdate(), [$params]);
 
-        $response = $this->httpPostRaw("/v1/plans/$id", http_build_query($params), ['Content-Type' => 'application/x-www-form-urlencoded']);
+        $response = $this->httpPost("/v1/plans/$id", $params);
 
         if (200 !== $response->getStatusCode()) {
             $this->handleErrors($response);

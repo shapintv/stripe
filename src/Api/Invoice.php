@@ -39,12 +39,7 @@ final class Invoice extends HttpApi
         $processor = new Processor();
         $params = $processor->processConfiguration(new Configuration\InvoiceList(), [$params]);
 
-        $searchString = '';
-        if (0 < \count($params)) {
-            $searchString = '?'.http_build_query($params);
-        }
-
-        $response = $this->httpGet("/v1/invoices$searchString");
+        $response = $this->httpGet('/v1/invoices', $params);
 
         if (200 !== $response->getStatusCode()) {
             $this->handleErrors($response);

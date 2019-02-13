@@ -36,7 +36,7 @@ final class Coupon extends HttpApi
      */
     public function all(array $params = [])
     {
-        $response = $this->httpGet('/v1/coupons'.http_build_query($params));
+        $response = $this->httpGet('/v1/coupons', $params);
 
         if (200 !== $response->getStatusCode()) {
             $this->handleErrors($response);
@@ -53,7 +53,7 @@ final class Coupon extends HttpApi
         $processor = new Processor();
         $params = $processor->processConfiguration(new Configuration\CouponCreate(), [$params]);
 
-        $response = $this->httpPostRaw('/v1/coupons', http_build_query($params), ['Content-Type' => 'application/x-www-form-urlencoded']);
+        $response = $this->httpPost('/v1/coupons', $params);
 
         if (200 !== $response->getStatusCode()) {
             $this->handleErrors($response);

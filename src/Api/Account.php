@@ -53,7 +53,7 @@ final class Account extends HttpApi
         $processor = new Processor();
         $processor->processConfiguration(new Configuration\AccountCreate(), [$params]);
 
-        $response = $this->httpPostRaw('/v1/accounts', http_build_query($params), ['Content-Type' => 'application/x-www-form-urlencoded']);
+        $response = $this->httpPost('/v1/accounts', $params);
 
         if (200 !== $response->getStatusCode()) {
             $this->handleErrors($response);
@@ -70,7 +70,7 @@ final class Account extends HttpApi
         $processor = new Processor();
         $processor->processConfiguration(new Configuration\AccountUpdate(), [$params]);
 
-        $response = $this->httpPostRaw("/v1/accounts/$id", http_build_query($params), ['Content-Type' => 'application/x-www-form-urlencoded']);
+        $response = $this->httpPost("/v1/accounts/$id", $params);
 
         if (200 !== $response->getStatusCode()) {
             $this->handleErrors($response);

@@ -54,12 +54,7 @@ final class Balance extends HttpApi
      */
     public function getBalanceTransactions(array $params = [])
     {
-        $paramsString = '';
-        if (0 < \count($params)) {
-            $paramsString = '?'.http_build_query($params);
-        }
-
-        $response = $this->httpGet("/v1/balance/history$paramsString");
+        $response = $this->httpGet("/v1/balance/history", $params);
 
         if (200 !== $response->getStatusCode()) {
             $this->handleErrors($response);

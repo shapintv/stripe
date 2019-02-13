@@ -38,7 +38,7 @@ final class Refund extends HttpApi
      */
     public function all(array $params = [])
     {
-        $response = $this->httpGet('/v1/refunds'.http_build_query($params));
+        $response = $this->httpGet('/v1/refunds', $params);
 
         if (200 !== $response->getStatusCode()) {
             $this->handleErrors($response);
@@ -55,7 +55,7 @@ final class Refund extends HttpApi
         $processor = new Processor();
         $processor->processConfiguration(new Configuration\RefundCreate(), [$params]);
 
-        $response = $this->httpPostRaw('/v1/refunds', http_build_query($params), ['Content-Type' => 'application/x-www-form-urlencoded']);
+        $response = $this->httpPost('/v1/refunds', $params);
 
         if (200 !== $response->getStatusCode()) {
             $this->handleErrors($response);

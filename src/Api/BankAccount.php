@@ -36,7 +36,7 @@ final class BankAccount extends HttpApi
     {
         $params['object'] = 'bank_account';
 
-        $response = $this->httpGet("/v1/customers/$customerId/sources?".http_build_query($params));
+        $response = $this->httpGet("/v1/customers/$customerId/sources", $params);
 
         if (200 !== $response->getStatusCode()) {
             $this->handleErrors($response);

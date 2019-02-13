@@ -12,6 +12,7 @@ namespace Shapin\Stripe\Api;
 use Shapin\Stripe\Exception\Domain as DomainExceptions;
 use Shapin\Stripe\Exception\DomainException;
 use Http\Client\HttpClient;
+use Shapin\Stripe\HttpQueryBuilder;
 use Shapin\Stripe\Hydrator\Hydrator;
 use Shapin\Stripe\RequestBuilder;
 use Psr\Http\Message\ResponseInterface;
@@ -33,11 +34,17 @@ abstract class HttpApi
      */
     protected $requestBuilder;
 
-    public function __construct(HttpClient $httpClient, Hydrator $hydrator, RequestBuilder $requestBuilder)
+    /**
+     * @var HttpQueryBuilder
+     */
+    protected $httpQueryBuilder;
+
+    public function __construct(HttpClient $httpClient, Hydrator $hydrator, RequestBuilder $requestBuilder, HttpQueryBuilder $httpQueryBuilder = null)
     {
         $this->httpClient = $httpClient;
         $this->hydrator = $hydrator;
         $this->requestBuilder = $requestBuilder;
+        $this->httpQueryBuilder = $httpQueryBuilder ?: new HttpQueryBuilder();
     }
 
     /**
@@ -45,9 +52,7 @@ abstract class HttpApi
      */
     protected function httpGet(string $path, array $params = [], array $requestHeaders = []): ResponseInterface
     {
-        if (\count($params) > 0) {
-            $path .= '?'.http_build_query($params);
-        }
+        $path .= '?'.$this->httpQueryBuilder->build($params);
 
         return $this->httpClient->sendRequest(
             $this->requestBuilder->create('GET', $path, $requestHeaders)
@@ -59,13 +64,17 @@ abstract class HttpApi
      */
     protected function httpPost(string $path, array $params = [], array $requestHeaders = []): ResponseInterface
     {
-        return $this->httpPostRaw($path, $this->createJsonBody($params), $requestHeaders);
+        if (empty($requestHeaders)) {
+            $requestHeaders = ['Content-Type' => 'application/x-www-form-urlencoded'];
+        }
+
+        return $this->httpPostRaw($path, $this->httpQueryBuilder->build($params), $requestHeaders);
     }
 
     /**
      * Send a POST request with raw data.
      */
-    protected function httpPostRaw(string $path, $body, array $requestHeaders = []): ResponseInterface
+    private function httpPostRaw(string $path, $body, array $requestHeaders = []): ResponseInterface
     {
         return $this->httpClient->sendRequest(
             $this->requestBuilder->create('POST', $path, $requestHeaders, $body)
@@ -78,7 +87,7 @@ abstract class HttpApi
     protected function httpPut(string $path, array $params = [], array $requestHeaders = []): ResponseInterface
     {
         return $this->httpClient->sendRequest(
-            $this->requestBuilder->create('PUT', $path, $requestHeaders, $this->createJsonBody($params))
+            $this->requestBuilder->create('PUT', $path, $requestHeaders, $this->httpQueryBuilder->build($params))
         );
     }
 
@@ -88,20 +97,8 @@ abstract class HttpApi
     protected function httpDelete(string $path, array $params = [], array $requestHeaders = []): ResponseInterface
     {
         return $this->httpClient->sendRequest(
-            $this->requestBuilder->create('DELETE', $path, $requestHeaders, $this->createJsonBody($params))
+            $this->requestBuilder->create('DELETE', $path, $requestHeaders, $this->httpQueryBuilder->build($params))
         );
-    }
-
-    /**
-     * Create a JSON encoded version of an array of parameters.
-     */
-    private function createJsonBody(array $params): ?string
-    {
-        if (0 === \count($params)) {
-            return null;
-        }
-
-        return json_encode($params, \JSON_FORCE_OBJECT);
     }
 
     /**

@@ -39,7 +39,7 @@ final class Charge extends HttpApi
         $processor = new Processor();
         $processor->processConfiguration(new Configuration\ChargeCreate(), [$params]);
 
-        $response = $this->httpPostRaw('/v1/charges', http_build_query($params), ['Content-Type' => 'application/x-www-form-urlencoded']);
+        $response = $this->httpPost('/v1/charges', $params);
 
         if (200 !== $response->getStatusCode()) {
             $this->handleErrors($response);
@@ -56,7 +56,7 @@ final class Charge extends HttpApi
         $processor = new Processor();
         $processor->processConfiguration(new Configuration\ChargeUpdate(), [$params]);
 
-        $response = $this->httpPostRaw("/v1/charges/$id", http_build_query($params), ['Content-Type' => 'application/x-www-form-urlencoded']);
+        $response = $this->httpPost("/v1/charges/$id", $params);
 
         if (200 !== $response->getStatusCode()) {
             $this->handleErrors($response);
@@ -71,14 +71,9 @@ final class Charge extends HttpApi
     public function all(array $params = [])
     {
         $processor = new Processor();
-        $processor->processConfiguration(new Configuration\ChargeList(), [$params]);
+        $params = $processor->processConfiguration(new Configuration\ChargeList(), [$params]);
 
-        $searchString = '';
-        if (0 < \count($params)) {
-            $searchString = '?'.http_build_query($params);
-        }
-
-        $response = $this->httpGet('/v1/charges'.$searchString);
+        $response = $this->httpGet('/v1/charges', $params);
 
         if (200 !== $response->getStatusCode()) {
             $this->handleErrors($response);

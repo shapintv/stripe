@@ -34,7 +34,7 @@ final class Card extends HttpApi
      */
     public function all(string $customerId, array $params = [])
     {
-        $response = $this->httpGet("/v1/customers/$customerId/cards".http_build_query($params));
+        $response = $this->httpGet("/v1/customers/$customerId/cards", $params);
 
         if (200 !== $response->getStatusCode()) {
             $this->handleErrors($response);

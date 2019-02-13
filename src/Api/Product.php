@@ -37,9 +37,9 @@ final class Product extends HttpApi
     public function create(array $params)
     {
         $processor = new Processor();
-        $processor->processConfiguration(new Configuration\ProductCreate(), [$params]);
+        $params = $processor->processConfiguration(new Configuration\ProductCreate(), [$params]);
 
-        $response = $this->httpPostRaw('/v1/products', http_build_query($params), ['Content-Type' => 'application/x-www-form-urlencoded']);
+        $response = $this->httpPost('/v1/products', $params);
 
         if (200 !== $response->getStatusCode()) {
             $this->handleErrors($response);
@@ -54,9 +54,9 @@ final class Product extends HttpApi
     public function update(string $id, array $params)
     {
         $processor = new Processor();
-        $processor->processConfiguration(new Configuration\ProductUpdate(), [$params]);
+        $params = $processor->processConfiguration(new Configuration\ProductUpdate(), [$params]);
 
-        $response = $this->httpPostRaw("/v1/products/$id", http_build_query($params), ['Content-Type' => 'application/x-www-form-urlencoded']);
+        $response = $this->httpPost("/v1/products/$id", $params);
 
         if (200 !== $response->getStatusCode()) {
             $this->handleErrors($response);
@@ -70,12 +70,7 @@ final class Product extends HttpApi
      */
     public function all(array $params = [])
     {
-        $searchString = '';
-        if (0 < \count($params)) {
-            $searchString = '?'.http_build_query($params);
-        }
-
-        $response = $this->httpGet("/v1/products$searchString");
+        $response = $this->httpGet('/v1/products', $params);
 
         if (200 !== $response->getStatusCode()) {
             $this->handleErrors($response);
