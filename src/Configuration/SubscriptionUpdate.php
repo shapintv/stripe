@@ -121,6 +121,21 @@ class SubscriptionUpdate implements ConfigurationInterface
 
         $rootNode
             ->validate()
+                ->always(function($v) {
+                    if (empty($v['items'])) {
+                        unset($v['items']);
+                    }
+                    if (empty($v['metadata'])) {
+                        unset($v['metadata']);
+                    }
+
+                    return $v;
+                })
+            ->end()
+        ;
+
+        $rootNode
+            ->validate()
                 ->ifTrue(function ($v) {
                     return isset($v['billing']) && Subscription::BILLING_SEND_INVOICE !== $v['billing'] && isset($v['days_until_due']);
                 })
