@@ -9,9 +9,11 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Api;
 
+use Shapin\Stripe\Configuration;
 use Shapin\Stripe\Exception;
 use Shapin\Stripe\Model\Invoice\Invoice as InvoiceModel;
 use Shapin\Stripe\Model\Invoice\InvoiceCollection;
+use Symfony\Component\Config\Definition\Processor;
 
 final class Invoice extends HttpApi
 {
@@ -34,7 +36,15 @@ final class Invoice extends HttpApi
      */
     public function all(array $params = [])
     {
-        $response = $this->httpGet('/v1/invoices'.http_build_query($params));
+        $processor = new Processor();
+        $params = $processor->processConfiguration(new Configuration\InvoiceList(), [$params]);
+
+        $searchString = '';
+        if (0 < \count($params)) {
+            $searchString = '?'.http_build_query($params);
+        }
+
+        $response = $this->httpGet("/v1/invoices$searchString");
 
         if (200 !== $response->getStatusCode()) {
             $this->handleErrors($response);

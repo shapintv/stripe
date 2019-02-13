@@ -246,7 +246,7 @@ final class Invoice implements CreatableFromArray, ContainsMetadata
     private $total;
 
     /**
-     * @var \DateTimeImmutable
+     * @var ?\DateTimeImmutable
      */
     private $webhooksDeliveredAt;
 
@@ -305,7 +305,7 @@ final class Invoice implements CreatableFromArray, ContainsMetadata
         $model->taxPercent = (float) $data['tax_percent'];
         $model->thresholdReason = isset($data['threshold_reason']) ? ThresholdReason::createFromArray($data['threshold_reason']) : null;
         $model->total = new Money($data['total'], $currency);
-        $model->webhooksDeliveredAt = new \DateTimeImmutable('@'.$data['webhooks_delivered_at']);
+        $model->webhooksDeliveredAt = isset($data['webhooks_delivered_at']) ? new \DateTimeImmutable('@'.$data['webhooks_delivered_at']) : null;
 
         return $model;
     }
@@ -515,7 +515,7 @@ final class Invoice implements CreatableFromArray, ContainsMetadata
         return $this->total;
     }
 
-    public function getWebhooksDeliveredAt(): \DateTimeImmutable
+    public function getWebhooksDeliveredAt(): ?\DateTimeImmutable
     {
         return $this->webhooksDeliveredAt;
     }
