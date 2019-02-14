@@ -169,6 +169,31 @@ final class Subscription implements CreatableFromArray, ContainsMetadata
         return self::BILLING_CHARGE_AUTOMATICALLY === $this->billing;
     }
 
+    public function isTrialing(): bool
+    {
+        return self::STATUS_TRIALING === $this->status;
+    }
+
+    public function isActive(): bool
+    {
+        return self::STATUS_ACTIVE === $this->status;
+    }
+
+    public function isPastDue(): bool
+    {
+        return self::STATUS_PAST_DUE === $this->status;
+    }
+
+    public function isCanceled(): bool
+    {
+        return self::STATUS_CANCELED === $this->status;
+    }
+
+    public function isUnpaid(): bool
+    {
+        return self::STATUS_UNPAID === $this->status;
+    }
+
     public function getId(): string
     {
         return $this->id;
