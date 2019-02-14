@@ -19,8 +19,9 @@ $ composer require shapintv/stripe
 
 ``` php
 $stripeClient = StripeClient::create($stripeApiKey);
-$balance = $apiClient->balances()->get();
-echo $balance->getAvailable()->getAmount()->getAmount(); // 22;
+$subscription = $apiClient->subscriptions()->get('sub_myid');
+echo $subscription->isActive(); // true
+echo $subscription->getCreatedAt()->getTimestamp(); // 1234567890
 ```
 
 ## Contributing
