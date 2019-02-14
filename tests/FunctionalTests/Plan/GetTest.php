@@ -41,7 +41,7 @@ final class GetTest extends TestCase
         $this->assertInstanceOf(MetadataCollection::class, $plan->getMetadata());
         $this->assertCount(0, $plan->getMetadata());
         $this->assertNull($plan->getNickname());
-        $this->assertSame('prod_Dpl4hUuBOKzjTJ', $plan->getProduct());
+        $this->assertIsString($plan->getProduct());
         $this->assertSame([], $plan->getTiers());
         $this->assertNull($plan->getTiersMode());
         $this->assertNull($plan->getTransformUsage());

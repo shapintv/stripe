@@ -30,7 +30,7 @@ final class GetTest extends TestCase
 
         $this->assertSame('100', $refund->getAmount()->getAmount());
         $this->assertNull($refund->getBalanceTransaction());
-        $this->assertSame('ch_1DO5YeFgK3s3qfchfs8alIMx', $refund->getCharge());
+        $this->assertIsString($refund->getCharge());
         $this->assertSame(1234567890, $refund->getCreatedAt()->getTimestamp());
         $this->assertSame('USD', (string) $refund->getCurrency());
         $this->assertNull($refund->getFailureBalanceTransaction());

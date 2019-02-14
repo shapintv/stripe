@@ -33,12 +33,12 @@ final class GetTest extends TestCase
         $this->assertSame('tr_164xRv2eZvKYlo2CZxJZWm1E', $transfer->getId());
         $this->assertSame('1100', $transfer->getAmount()->getAmount());
         $this->assertSame('0', $transfer->getAmountReversed()->getAmount());
-        $this->assertSame('txn_1DPFJCFgK3s3qfchldRdMy4Z', $transfer->getBalanceTransaction());
+        $this->assertIsString($transfer->getBalanceTransaction());
         $this->assertSame(1234567890, $transfer->getCreatedAt()->getTimestamp());
         $this->assertSame('USD', (string) $transfer->getCurrency());
         $this->assertNull($transfer->getDescription());
-        $this->assertSame('acct_1DO5YZFgK3s3qfch', $transfer->getDestination());
-        $this->assertSame('py_DqxDwbZzKjFgA8', $transfer->getDestinationPayment());
+        $this->assertIsString($transfer->getDestination());
+        $this->assertIsString($transfer->getDestinationPayment());
         $this->assertFalse($transfer->isLive());
         $this->assertInstanceOf(MetadataCollection::class, $transfer->getMetadata());
         $this->assertCount(0, $transfer->getMetadata());
@@ -46,7 +46,7 @@ final class GetTest extends TestCase
         $this->assertCount(1, $transfer->getTransferReversals());
         $reversal = $transfer->getTransferReversals()[0];
         $this->assertInstanceOf(TransferReversal::class, $reversal);
-        $this->assertSame('trr_1DPFJDFgK3s3qfchQgWVUVI7', $reversal->getId());
+        $this->assertIsString($reversal->getId());
         $this->assertSame('1100', $reversal->getAmount()->getAmount());
         $this->assertSame(1234567890, $reversal->getCreatedAt()->getTimestamp());
         $this->assertSame('USD', (string) $reversal->getCurrency());
@@ -54,7 +54,7 @@ final class GetTest extends TestCase
         $this->assertInstanceOf(MetadataCollection::class, $reversal->getMetadata());
         $this->assertCount(0, $reversal->getMetadata());
         $this->assertNull($reversal->getSourceRefund());
-        $this->assertSame('tr_164xRv2eZvKYlo2CZxJZWm1E', $reversal->getTransfer());
+        $this->assertIsString($reversal->getTransfer());
         $this->assertFalse($transfer->isReversed());
         $this->assertNull($transfer->getSourceTransaction());
         $this->assertSame('card', $transfer->getSourceType());

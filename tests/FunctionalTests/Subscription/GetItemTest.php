@@ -29,10 +29,9 @@ final class GetItemTest extends TestCase
         $this->assertInstanceOf(Item::class, $item);
 
         $this->assertSame('si_ERVlvIQFPNbvRq', $item->getId());
-        $this->assertSame(1540498799, $item->getCreatedAt()->getTimestamp());
-        $this->assertInstanceOf(MetadataCollection::class, $item->getMetadata());
+        $this->assertInstanceOf(\DateTimeImmutable::class, $item->getCreatedAt());
         $this->assertCount(0, $item->getMetadata());
         $this->assertSame(1, $item->getQuantity());
-        $this->assertSame('sub_DqxDc3Z6Euxwui', $item->getSubscription());
+        $this->assertIsString($item->getSubscription());
     }
 }

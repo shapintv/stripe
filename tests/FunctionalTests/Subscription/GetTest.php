@@ -39,7 +39,7 @@ final class GetTest extends TestCase
         $this->assertSame(1234567890, $subscription->getCreatedAt()->getTimestamp());
         $this->assertSame(1234567890, $subscription->getCurrentPeriodEndAt()->getTimestamp());
         $this->assertSame(1234567890, $subscription->getCurrentPeriodStartAt()->getTimestamp());
-        $this->assertSame('cus_Dpl4sEDRQnKTh3', $subscription->getCustomer());
+        $this->assertIsString($subscription->getCustomer());
         $this->assertNull($subscription->getDaysUntilDue());
         $this->assertNull($subscription->getDefaultSource());
         $this->assertSame(1234567890, $subscription->getEndedAt()->getTimestamp());

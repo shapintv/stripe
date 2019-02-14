@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace Shapin\Stripe\Tests\FunctionalTests\Customer;
 
 use Shapin\Stripe\Model\Customer\Customer;
+use Shapin\Stripe\Model\Customer\InvoiceSettings;
 use Shapin\Stripe\Model\Source\SourceCollection;
 use Shapin\Stripe\Model\Subscription\SubscriptionCollection;
 use Shapin\Stripe\Tests\FunctionalTests\TestCase;
@@ -38,8 +39,10 @@ final class GetTest extends TestCase
         $this->assertNull($customer->getDescription());
         $this->assertNull($customer->getDiscount());
         $this->assertNull($customer->getEmail());
-        $this->assertSame('FADD2E8', $customer->getInvoicePrefix());
-        $this->assertNull($customer->getInvoiceSettings());
+        $this->assertIsString($customer->getInvoicePrefix());
+        $this->assertInstanceOf(InvoiceSettings::class, $customer->getInvoiceSettings());
+        $this->assertSame([], $customer->getInvoiceSettings()->getCustomFields());
+        $this->assertNull($customer->getInvoiceSettings()->getFooter());
         $this->assertInstanceOf(SourceCollection::class, $customer->getSources());
         $this->assertCount(1, $customer->getSources());
         $this->assertInstanceOf(SubscriptionCollection::class, $customer->getSubscriptions());

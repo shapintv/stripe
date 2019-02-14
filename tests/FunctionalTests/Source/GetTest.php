@@ -39,7 +39,7 @@ final class GetTest extends TestCase
         $this->assertSame('110000000', $source->getAchCreditTransfer()->getRoutingNumber());
         $this->assertSame('TSTEZ122', $source->getAchCreditTransfer()->getSwiftCode());
         $this->assertNull($source->getAmount());
-        $this->assertSame('src_client_secret_DqxDA3Xspe7eXzaKiDAhtzBz', $source->getClientSecret());
+        $this->assertIsString($source->getClientSecret());
         $this->assertNull($source->getCodeVerification());
         $this->assertSame(1234567890, $source->getCreatedAt()->getTimestamp());
         $this->assertSame('USD', (string) $source->getCurrency());

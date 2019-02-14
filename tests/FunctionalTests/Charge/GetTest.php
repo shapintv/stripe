@@ -35,7 +35,7 @@ final class GetTest extends TestCase
         $this->assertSame('0', $charge->getAmountRefunded()->getAmount());
         $this->assertNull($charge->getApplication());
         $this->assertSame('0', $charge->getApplicationFee()->getAmount());
-        $this->assertSame('txn_1DPFJCFgK3s3qfchldRdMy4Z', $charge->getBalanceTransaction());
+        $this->assertIsString($charge->getBalanceTransaction());
         $this->assertFalse($charge->isCaptured());
         $this->assertSame(1234567890, $charge->getCreatedAt()->getTimestamp());
         $this->assertSame('USD', (string) $charge->getCurrency());

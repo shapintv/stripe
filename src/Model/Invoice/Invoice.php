@@ -206,7 +206,7 @@ final class Invoice implements CreatableFromArray, ContainsMetadata
     private $statementDescriptor;
 
     /**
-     * @var ?string
+     * @var string
      */
     private $status;
 
@@ -297,7 +297,7 @@ final class Invoice implements CreatableFromArray, ContainsMetadata
         $model->receiptNumber = $data['receipt_number'];
         $model->startingBalance = new Money($data['starting_balance'], $currency);
         $model->statementDescriptor = $data['statement_descriptor'];
-        $model->status = $data['status'] ?? null;
+        $model->status = $data['status'];
         $model->subscription = $data['subscription'];
         $model->subscriptionProrationAt = isset($data['subscription_proration_at']) ? new \DateTimeImmutable('@'.$data['subscription_proration_at']) : null;
         $model->subtotal = new Money($data['subtotal'], $currency);
@@ -475,7 +475,7 @@ final class Invoice implements CreatableFromArray, ContainsMetadata
         return $this->statementDescriptor;
     }
 
-    public function getStatus(): ?string
+    public function getStatus(): string
     {
         return $this->status;
     }
