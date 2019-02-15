@@ -82,7 +82,7 @@ class SourceCreate implements ConfigurationInterface
                                 ->enumNode('status')
                                     ->isRequired()
                                     ->cannotBeEmpty()
-                                    ->values([Source::STATUS_ACCEPTED, Source::STATUS_REFUSED])
+                                    ->values(['accepted', 'refused'])
                                     ->info('The status of the mandate acceptance. Either accepted (the mandate was accepted) or refused (the mandate was refused).')
                                 ->end()
                                 ->scalarNode('user_agent')

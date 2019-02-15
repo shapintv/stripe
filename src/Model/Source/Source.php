@@ -31,8 +31,11 @@ final class Source implements CreatableFromArray, ContainsMetadata
     const REFUND_ATTRIBUTES_METHOD_EMAIL = 'email';
     const REFUND_ATTRIBUTES_METHOD_MANUAL = 'manual';
 
-    const STATUS_ACCEPTED = 'accepted';
-    const STATUS_REFUSED = 'refused';
+    const STATUS_CANCELED = 'canceled';
+    const STATUS_CHARGEABLE = 'chargeable';
+    const STATUS_CONSUMED = 'consumed';
+    const STATUS_FAILED = 'failed';
+    const STATUS_PENDING = 'pending';
 
     const TYPE_ACH_CREDIT_TRANSFER = 'ach_credit_transfer';
     const TYPE_ACH_DEBIT = 'ach_debit';
@@ -185,6 +188,31 @@ final class Source implements CreatableFromArray, ContainsMetadata
     public function isThreeDSecure(): bool
     {
         return self::TYPE_THREE_D_SECURE === $this->type;
+    }
+
+    public function isCanceled(): bool
+    {
+        return self::STATUS_CANCELED === $this->status;
+    }
+
+    public function isChargeable(): bool
+    {
+        return self::STATUS_CHARGEABLE === $this->status;
+    }
+
+    public function isConsumed(): bool
+    {
+        return self::STATUS_CONSUMED === $this->status;
+    }
+
+    public function isFailed(): bool
+    {
+        return self::STATUS_FAILED === $this->status;
+    }
+
+    public function isPending(): bool
+    {
+        return self::STATUS_PENDING === $this->status;
     }
 
     public function getId(): string
