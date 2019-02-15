@@ -17,6 +17,7 @@ use Shapin\Stripe\Model\MetadataTrait;
 use Shapin\Stripe\Model\MetadataCollection;
 use Shapin\Stripe\Model\Source\Source;
 use Shapin\Stripe\Model\Source\SourceCollection;
+use Shapin\Stripe\Model\Subscription\Subscription;
 use Shapin\Stripe\Model\Subscription\SubscriptionCollection;
 use Money\Currency;
 
@@ -229,6 +230,16 @@ final class Customer implements CreatableFromArray, ContainsMetadata
     public function getSubscriptions(): SubscriptionCollection
     {
         return $this->subscriptions;
+    }
+
+    public function getLatestSubscription(): ?Subscription
+    {
+        $subscriptions = $this->subscriptions->getElements();
+        if (0 === count($subscriptions)) {
+            return null;
+        }
+
+        return reset($subscriptions);
     }
 
     public function getTaxInfo(): ?TaxInfo

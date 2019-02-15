@@ -12,6 +12,7 @@ namespace Shapin\Stripe\Tests\FunctionalTests\Customer;
 use Shapin\Stripe\Model\Customer\Customer;
 use Shapin\Stripe\Model\Customer\InvoiceSettings;
 use Shapin\Stripe\Model\Source\SourceCollection;
+use Shapin\Stripe\Model\Subscription\Subscription;
 use Shapin\Stripe\Model\Subscription\SubscriptionCollection;
 use Shapin\Stripe\Tests\FunctionalTests\TestCase;
 
@@ -47,6 +48,7 @@ final class GetTest extends TestCase
         $this->assertCount(1, $customer->getSources());
         $this->assertInstanceOf(SubscriptionCollection::class, $customer->getSubscriptions());
         $this->assertCount(1, $customer->getSubscriptions());
+        $this->assertInstanceOf(Subscription::class, $customer->getLatestSubscription());
         $this->assertNull($customer->getTaxInfo());
         $this->assertNull($customer->getTaxInfoVerification());
         $this->assertFalse($customer->isLive());

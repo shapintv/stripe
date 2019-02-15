@@ -194,6 +194,11 @@ final class Subscription implements CreatableFromArray, ContainsMetadata
         return self::STATUS_UNPAID === $this->status;
     }
 
+    public function hasDefaultSource(): bool
+    {
+        return null !== $this->defaultSource;
+    }
+
     public function getId(): string
     {
         return $this->id;
