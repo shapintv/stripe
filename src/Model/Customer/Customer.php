@@ -181,6 +181,11 @@ final class Customer implements CreatableFromArray, ContainsMetadata
         return $this->defaultSourceId;
     }
 
+    public function hasDefaultSource(): bool
+    {
+        return null !== $this->defaultSourceId;
+    }
+
     public function isDelinquent(): bool
     {
         return $this->delinquent;
