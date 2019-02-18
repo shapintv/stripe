@@ -70,6 +70,8 @@ final class HttpQueryBuilder
             return $param ? 'true' : 'false';
         }
 
-        return (string) $param;
+        $param = urlencode((string) $param);
+
+        return $param;
     }
 }

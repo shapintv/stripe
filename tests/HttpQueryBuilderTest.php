@@ -19,6 +19,7 @@ final class HttpQueryBuilderTest extends TestCase
         yield [[], ''];
         yield [['key' => true], 'key=true'];
         yield [['key' => 'value'], 'key=value'];
+        yield [['key' => 'val%ue'], 'key=val%25ue'];
         yield [['key' => 'value', 'integer' => 34, 'bool' => true], 'key=value&integer=34&bool=true'];
         yield [['key' => ['subkey1' => 'value1', 'subkey2' => 'value2']], 'key[subkey1]=value1&key[subkey2]=value2'];
         yield [['key' => ['subkey1' => ['subsubkey1' => 'subsubvalue1', 'subsubkey2' => 'subsubvalue2'], 'subkey2' => 'value2']], 'key[subkey1][subsubkey1]=subsubvalue1&key[subkey1][subsubkey2]=subsubvalue2&key[subkey2]=value2'];
