@@ -269,6 +269,11 @@ final class Subscription implements CreatableFromArray, ContainsMetadata
         return $this->items;
     }
 
+    public function getPlan(): Plan
+    {
+        return $this->plan;
+    }
+
     public function getQuantity(): int
     {
         return $this->quantity;
