@@ -51,6 +51,11 @@ final class Discount implements CreatableFromArray
         return $model;
     }
 
+    public function isEnded(): bool
+    {
+        return $this->endAt < new \DateTimeImmutable();
+    }
+
     public function getCoupon(): Coupon
     {
         return $this->coupon;

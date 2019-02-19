@@ -112,6 +112,21 @@ final class Coupon implements CreatableFromArray, ContainsMetadata
         return $model;
     }
 
+    public function isRepeating(): bool
+    {
+        return self::DURATION_REPEATING === $this->duration;
+    }
+
+    public function isOnce(): bool
+    {
+        return self::DURATION_ONCE === $this->duration;
+    }
+
+    public function isForever(): bool
+    {
+        return self::DURATION_FOREVER === $this->duration;
+    }
+
     public function getId(): string
     {
         return $this->id;

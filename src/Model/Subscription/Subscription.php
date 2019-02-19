@@ -11,6 +11,7 @@ namespace Shapin\Stripe\Model\Subscription;
 
 use Shapin\Stripe\Model\ContainsMetadata;
 use Shapin\Stripe\Model\CreatableFromArray;
+use Shapin\Stripe\Model\Discount\Discount;
 use Shapin\Stripe\Model\LivemodeTrait;
 use Shapin\Stripe\Model\MetadataTrait;
 use Shapin\Stripe\Model\MetadataCollection;
@@ -90,6 +91,11 @@ final class Subscription implements CreatableFromArray, ContainsMetadata
     private $defaultSource;
 
     /**
+     * @var ?Discount
+     */
+    private $discount;
+
+    /**
      * @var ?\DateTimeImmutable
      */
     private $endedAt;
@@ -149,6 +155,7 @@ final class Subscription implements CreatableFromArray, ContainsMetadata
         $model->customer = $data['customer'];
         $model->daysUntilDue = null !== $data['days_until_due'] ? (int) $data['days_until_due'] : null;
         $model->defaultSource = $data['default_source'] ?? null;
+        $model->discount = isset($data['discount']) ? Discount::createFromArray($data['discount']) : null;
         $model->endedAt = null !== $data['ended_at'] ? new \DateTimeImmutable('@'.$data['ended_at']) : null;
         $model->items = ItemCollection::createFromArray($data['items']);
         $model->live = $data['livemode'];
@@ -257,6 +264,16 @@ final class Subscription implements CreatableFromArray, ContainsMetadata
     public function getDefaultSource(): ?string
     {
         return $this->defaultSource;
+    }
+
+    public function getDiscount(): Discount
+    {
+        return $this->discount;
+    }
+
+    public function hasDiscount(): bool
+    {
+        return null !== $this->discount;
     }
 
     public function getEndedAt(): ?\DateTimeImmutable
