@@ -42,6 +42,9 @@ final class GetTest extends TestCase
         $this->assertIsString($subscription->getCustomer());
         $this->assertNull($subscription->getDaysUntilDue());
         $this->assertNull($subscription->getDefaultSource());
+        $this->assertFalse($subscription->hasDiscount());
+        $this->assertFalse($subscription->hasActiveDiscountForCurrentPeriod());
+        $this->assertNull($subscription->getDiscount());
         $this->assertSame(1234567890, $subscription->getEndedAt()->getTimestamp());
         $this->assertInstanceOf(ItemCollection::class, $subscription->getItems());
         $this->assertCount(1, $subscription->getItems());

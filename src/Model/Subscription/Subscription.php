@@ -266,7 +266,7 @@ final class Subscription implements CreatableFromArray, ContainsMetadata
         return $this->defaultSource;
     }
 
-    public function getDiscount(): Discount
+    public function getDiscount(): ?Discount
     {
         return $this->discount;
     }
@@ -274,6 +274,26 @@ final class Subscription implements CreatableFromArray, ContainsMetadata
     public function hasDiscount(): bool
     {
         return null !== $this->discount;
+    }
+
+    public function hasActiveDiscountForCurrentPeriod(): bool
+    {
+        if (!$this->hasDiscount()) {
+            return false;
+        }
+
+        // Discount start after the current period
+        if ($this->getCurrentPeriodEndAt() < $this->discount->getStartAt()) {
+            return false;
+        }
+
+        // Discount has ended before the current period
+        $endAt = $this->discount->getEndAt() ?? $this->discount->getStartAt();
+        if ($this->getCurrentPeriodStartAt() > $endAt) {
+            return false;
+        }
+
+        return true;
     }
 
     public function getEndedAt(): ?\DateTimeImmutable
