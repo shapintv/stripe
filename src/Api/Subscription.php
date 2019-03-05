@@ -25,10 +25,6 @@ final class Subscription extends HttpApi
     {
         $response = $this->httpGet("/v1/subscriptions/$id");
 
-        if (200 !== $response->getStatusCode()) {
-            $this->handleErrors($response);
-        }
-
         return $this->hydrator->hydrate($response, SubscriptionModel::class);
     }
 
@@ -38,10 +34,6 @@ final class Subscription extends HttpApi
     public function all(array $params = [])
     {
         $response = $this->httpGet('/v1/subscriptions', $params);
-
-        if (200 !== $response->getStatusCode()) {
-            $this->handleErrors($response);
-        }
 
         return $this->hydrator->hydrate($response, SubscriptionCollection::class);
     }
@@ -56,10 +48,6 @@ final class Subscription extends HttpApi
 
         $response = $this->httpPost('/v1/subscriptions', $params);
 
-        if (200 !== $response->getStatusCode()) {
-            $this->handleErrors($response);
-        }
-
         return $this->hydrator->hydrate($response, SubscriptionModel::class);
     }
 
@@ -73,10 +61,6 @@ final class Subscription extends HttpApi
 
         $response = $this->httpDelete("/v1/subscriptions/$id", $params);
 
-        if (200 !== $response->getStatusCode()) {
-            $this->handleErrors($response);
-        }
-
         return $this->hydrator->hydrate($response, SubscriptionModel::class);
     }
 
@@ -86,10 +70,6 @@ final class Subscription extends HttpApi
     public function getItem(string $id)
     {
         $response = $this->httpGet("/v1/subscription_items/$id");
-
-        if (200 !== $response->getStatusCode()) {
-            $this->handleErrors($response);
-        }
 
         return $this->hydrator->hydrate($response, Item::class);
     }
@@ -103,10 +83,6 @@ final class Subscription extends HttpApi
         $params = $processor->processConfiguration(new Configuration\SubscriptionUpdate(), [$params]);
 
         $response = $this->httpPost("/v1/subscriptions/$id", $params);
-
-        if (200 !== $response->getStatusCode()) {
-            $this->handleErrors($response);
-        }
 
         return $this->hydrator->hydrate($response, SubscriptionModel::class);
     }

@@ -24,10 +24,6 @@ final class Coupon extends HttpApi
     {
         $response = $this->httpGet("/v1/coupons/$id");
 
-        if (200 !== $response->getStatusCode()) {
-            $this->handleErrors($response);
-        }
-
         return $this->hydrator->hydrate($response, CouponModel::class);
     }
 
@@ -37,10 +33,6 @@ final class Coupon extends HttpApi
     public function all(array $params = [])
     {
         $response = $this->httpGet('/v1/coupons', $params);
-
-        if (200 !== $response->getStatusCode()) {
-            $this->handleErrors($response);
-        }
 
         return $this->hydrator->hydrate($response, CouponCollection::class);
     }
@@ -54,10 +46,6 @@ final class Coupon extends HttpApi
         $params = $processor->processConfiguration(new Configuration\CouponCreate(), [$params]);
 
         $response = $this->httpPost('/v1/coupons', $params);
-
-        if (200 !== $response->getStatusCode()) {
-            $this->handleErrors($response);
-        }
 
         return $this->hydrator->hydrate($response, CouponModel::class);
     }

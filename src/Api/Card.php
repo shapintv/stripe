@@ -22,10 +22,6 @@ final class Card extends HttpApi
     {
         $response = $this->httpGet("/v1/customers/$customerId/cards/$cardId");
 
-        if (200 !== $response->getStatusCode()) {
-            $this->handleErrors($response);
-        }
-
         return $this->hydrator->hydrate($response, CardModel::class);
     }
 
@@ -35,10 +31,6 @@ final class Card extends HttpApi
     public function all(string $customerId, array $params = [])
     {
         $response = $this->httpGet("/v1/customers/$customerId/cards", $params);
-
-        if (200 !== $response->getStatusCode()) {
-            $this->handleErrors($response);
-        }
 
         return $this->hydrator->hydrate($response, CardCollection::class);
     }

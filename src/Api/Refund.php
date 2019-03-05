@@ -26,10 +26,6 @@ final class Refund extends HttpApi
     {
         $response = $this->httpGet("/v1/refunds/$id");
 
-        if (200 !== $response->getStatusCode()) {
-            $this->handleErrors($response);
-        }
-
         return $this->hydrator->hydrate($response, RefundModel::class);
     }
 
@@ -39,10 +35,6 @@ final class Refund extends HttpApi
     public function all(array $params = [])
     {
         $response = $this->httpGet('/v1/refunds', $params);
-
-        if (200 !== $response->getStatusCode()) {
-            $this->handleErrors($response);
-        }
 
         return $this->hydrator->hydrate($response, RefundCollection::class);
     }
@@ -57,28 +49,6 @@ final class Refund extends HttpApi
 
         $response = $this->httpPost('/v1/refunds', $params);
 
-        if (200 !== $response->getStatusCode()) {
-            $this->handleErrors($response);
-        }
-
         return $this->hydrator->hydrate($response, RefundModel::class);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function handleErrors(ResponseInterface $response)
-    {
-        if (400 === $response->getStatusCode()) {
-            $body = json_decode((string) $response->getBody(), true);
-            if (isset($body['error']['code'])) {
-                switch ($body['error']['code']) {
-                    case 'charge_already_refunded':
-                        throw new RefundExceptions\ChargeAlreadyRefundedException($response);
-                }
-            }
-        }
-
-        parent::handleErrors($response);
     }
 }

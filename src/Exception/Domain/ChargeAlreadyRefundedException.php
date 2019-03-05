@@ -9,8 +9,6 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Exception\Domain;
 
-use Shapin\Stripe\Exception\DomainException;
-
-final class ValidationException extends \Exception implements DomainException
+final class ChargeAlreadyRefundedException extends BadRequestException
 {
 }

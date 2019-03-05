@@ -24,10 +24,6 @@ final class Plan extends HttpApi
     {
         $response = $this->httpGet("/v1/plans/$id");
 
-        if (200 !== $response->getStatusCode()) {
-            $this->handleErrors($response);
-        }
-
         return $this->hydrator->hydrate($response, PlanModel::class);
     }
 
@@ -37,10 +33,6 @@ final class Plan extends HttpApi
     public function all(array $params = [])
     {
         $response = $this->httpGet('/v1/plans', $params);
-
-        if (200 !== $response->getStatusCode()) {
-            $this->handleErrors($response);
-        }
 
         return $this->hydrator->hydrate($response, PlanCollection::class);
     }
@@ -60,10 +52,6 @@ final class Plan extends HttpApi
 
         $response = $this->httpPost('/v1/plans', $params);
 
-        if (200 !== $response->getStatusCode()) {
-            $this->handleErrors($response);
-        }
-
         return $this->hydrator->hydrate($response, PlanModel::class);
     }
 
@@ -76,10 +64,6 @@ final class Plan extends HttpApi
         $processor->processConfiguration(new Configuration\PlanUpdate(), [$params]);
 
         $response = $this->httpPost("/v1/plans/$id", $params);
-
-        if (200 !== $response->getStatusCode()) {
-            $this->handleErrors($response);
-        }
 
         return $this->hydrator->hydrate($response, PlanModel::class);
     }

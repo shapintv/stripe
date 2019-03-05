@@ -24,10 +24,6 @@ final class Invoice extends HttpApi
     {
         $response = $this->httpGet("/v1/invoices/$id");
 
-        if (200 !== $response->getStatusCode()) {
-            $this->handleErrors($response);
-        }
-
         return $this->hydrator->hydrate($response, InvoiceModel::class);
     }
 
@@ -40,10 +36,6 @@ final class Invoice extends HttpApi
         $params = $processor->processConfiguration(new Configuration\InvoiceList(), [$params]);
 
         $response = $this->httpGet('/v1/invoices', $params);
-
-        if (200 !== $response->getStatusCode()) {
-            $this->handleErrors($response);
-        }
 
         return $this->hydrator->hydrate($response, InvoiceCollection::class);
     }

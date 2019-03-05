@@ -22,10 +22,6 @@ final class BankAccount extends HttpApi
     {
         $response = $this->httpGet("/v1/customers/$customerId/sources/$bankAccountId");
 
-        if (200 !== $response->getStatusCode()) {
-            $this->handleErrors($response);
-        }
-
         return $this->hydrator->hydrate($response, BankAccountModel::class);
     }
 
@@ -37,10 +33,6 @@ final class BankAccount extends HttpApi
         $params['object'] = 'bank_account';
 
         $response = $this->httpGet("/v1/customers/$customerId/sources", $params);
-
-        if (200 !== $response->getStatusCode()) {
-            $this->handleErrors($response);
-        }
 
         return $this->hydrator->hydrate($response, BankAccountCollection::class);
     }

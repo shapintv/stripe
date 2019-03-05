@@ -9,9 +9,8 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Api;
 
-use Shapin\Stripe\Exception\Domain as DomainExceptions;
-use Shapin\Stripe\Exception\DomainException;
 use Http\Client\HttpClient;
+use Shapin\Stripe\ErrorHandler;
 use Shapin\Stripe\HttpQueryBuilder;
 use Shapin\Stripe\Hydrator\Hydrator;
 use Shapin\Stripe\RequestBuilder;
@@ -39,12 +38,18 @@ abstract class HttpApi
      */
     protected $httpQueryBuilder;
 
-    public function __construct(HttpClient $httpClient, Hydrator $hydrator, RequestBuilder $requestBuilder, HttpQueryBuilder $httpQueryBuilder = null)
+    /**
+     * @var ErrorHandler
+     */
+    protected $errorHandler;
+
+    public function __construct(HttpClient $httpClient, Hydrator $hydrator, RequestBuilder $requestBuilder, HttpQueryBuilder $httpQueryBuilder = null, ErrorHandler $errorHandler = null)
     {
         $this->httpClient = $httpClient;
         $this->hydrator = $hydrator;
         $this->requestBuilder = $requestBuilder;
         $this->httpQueryBuilder = $httpQueryBuilder ?: new HttpQueryBuilder();
+        $this->errorHandler = $errorHandler ?: new ErrorHandler();
     }
 
     /**
@@ -54,9 +59,15 @@ abstract class HttpApi
     {
         $path .= '?'.$this->httpQueryBuilder->build($params);
 
-        return $this->httpClient->sendRequest(
+        $response = $this->httpClient->sendRequest(
             $this->requestBuilder->create('GET', $path, $requestHeaders)
         );
+
+        if (200 !== $response->getStatusCode()) {
+            $this->errorHandler->handle($response);
+        }
+
+        return $response;
     }
 
     /**
@@ -68,7 +79,45 @@ abstract class HttpApi
             $requestHeaders = ['Content-Type' => 'application/x-www-form-urlencoded'];
         }
 
-        return $this->httpPostRaw($path, $this->httpQueryBuilder->build($params), $requestHeaders);
+        $response = $this->httpPostRaw($path, $this->httpQueryBuilder->build($params), $requestHeaders);
+
+        if (200 !== $response->getStatusCode()) {
+            $this->errorHandler->handle($response);
+        }
+
+        return $response;
+    }
+
+    /**
+     * Send a PUT request with JSON-encoded parameters.
+     */
+    protected function httpPut(string $path, array $params = [], array $requestHeaders = []): ResponseInterface
+    {
+        $response = $this->httpClient->sendRequest(
+            $this->requestBuilder->create('PUT', $path, $requestHeaders, $this->httpQueryBuilder->build($params))
+        );
+
+        if (200 !== $response->getStatusCode()) {
+            $this->errorHandler->handle($response);
+        }
+
+        return $response;
+    }
+
+    /**
+     * Send a DELETE request with JSON-encoded parameters.
+     */
+    protected function httpDelete(string $path, array $params = [], array $requestHeaders = []): ResponseInterface
+    {
+        $response = $this->httpClient->sendRequest(
+            $this->requestBuilder->create('DELETE', $path, $requestHeaders, $this->httpQueryBuilder->build($params))
+        );
+
+        if (200 !== $response->getStatusCode()) {
+            $this->errorHandler->handle($response);
+        }
+
+        return $response;
     }
 
     /**
@@ -79,44 +128,5 @@ abstract class HttpApi
         return $this->httpClient->sendRequest(
             $this->requestBuilder->create('POST', $path, $requestHeaders, $body)
         );
-    }
-
-    /**
-     * Send a PUT request with JSON-encoded parameters.
-     */
-    protected function httpPut(string $path, array $params = [], array $requestHeaders = []): ResponseInterface
-    {
-        return $this->httpClient->sendRequest(
-            $this->requestBuilder->create('PUT', $path, $requestHeaders, $this->httpQueryBuilder->build($params))
-        );
-    }
-
-    /**
-     * Send a DELETE request with JSON-encoded parameters.
-     */
-    protected function httpDelete(string $path, array $params = [], array $requestHeaders = []): ResponseInterface
-    {
-        return $this->httpClient->sendRequest(
-            $this->requestBuilder->create('DELETE', $path, $requestHeaders, $this->httpQueryBuilder->build($params))
-        );
-    }
-
-    /**
-     * Handle HTTP errors.
-     *
-     * Call is controlled by the specific API methods.
-     *
-     * @throws DomainException
-     */
-    protected function handleErrors(ResponseInterface $response)
-    {
-        switch ($response->getStatusCode()) {
-            case 400:
-                throw new DomainExceptions\BadRequestException($response);
-            case 404:
-                throw new DomainExceptions\NotFoundException();
-            default:
-                throw new DomainExceptions\UnknownErrorException($response);
-        }
     }
 }

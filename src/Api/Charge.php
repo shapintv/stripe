@@ -24,10 +24,6 @@ final class Charge extends HttpApi
     {
         $response = $this->httpGet("/v1/charges/$id");
 
-        if (200 !== $response->getStatusCode()) {
-            $this->handleErrors($response);
-        }
-
         return $this->hydrator->hydrate($response, ChargeModel::class);
     }
 
@@ -40,10 +36,6 @@ final class Charge extends HttpApi
         $processor->processConfiguration(new Configuration\ChargeCreate(), [$params]);
 
         $response = $this->httpPost('/v1/charges', $params);
-
-        if (200 !== $response->getStatusCode()) {
-            $this->handleErrors($response);
-        }
 
         return $this->hydrator->hydrate($response, ChargeModel::class);
     }
@@ -58,10 +50,6 @@ final class Charge extends HttpApi
 
         $response = $this->httpPost("/v1/charges/$id", $params);
 
-        if (200 !== $response->getStatusCode()) {
-            $this->handleErrors($response);
-        }
-
         return $this->hydrator->hydrate($response, ChargeModel::class);
     }
 
@@ -74,10 +62,6 @@ final class Charge extends HttpApi
         $params = $processor->processConfiguration(new Configuration\ChargeList(), [$params]);
 
         $response = $this->httpGet('/v1/charges', $params);
-
-        if (200 !== $response->getStatusCode()) {
-            $this->handleErrors($response);
-        }
 
         return $this->hydrator->hydrate($response, ChargeCollection::class);
     }

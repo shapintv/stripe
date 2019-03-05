@@ -24,10 +24,6 @@ final class Customer extends HttpApi
     {
         $response = $this->httpGet("/v1/customers/$customerId");
 
-        if (200 !== $response->getStatusCode()) {
-            $this->handleErrors($response);
-        }
-
         return $this->hydrator->hydrate($response, CustomerModel::class);
     }
 
@@ -37,10 +33,6 @@ final class Customer extends HttpApi
     public function all(array $params = [])
     {
         $response = $this->httpGet('/v1/customers', $params);
-
-        if (200 !== $response->getStatusCode()) {
-            $this->handleErrors($response);
-        }
 
         return $this->hydrator->hydrate($response, CustomerCollection::class);
     }
@@ -55,10 +47,6 @@ final class Customer extends HttpApi
 
         $response = $this->httpPost('/v1/customers', $params);
 
-        if (200 !== $response->getStatusCode()) {
-            $this->handleErrors($response);
-        }
-
         return $this->hydrator->hydrate($response, CustomerModel::class);
     }
 
@@ -71,10 +59,6 @@ final class Customer extends HttpApi
         $params = $processor->processConfiguration(new Configuration\CustomerUpdate(), [$params]);
 
         $response = $this->httpPost("/v1/customers/$id", $params);
-
-        if (200 !== $response->getStatusCode()) {
-            $this->handleErrors($response);
-        }
 
         return $this->hydrator->hydrate($response, CustomerModel::class);
     }

@@ -23,10 +23,6 @@ final class Source extends HttpApi
     {
         $response = $this->httpGet("/v1/sources/$id");
 
-        if (200 !== $response->getStatusCode()) {
-            $this->handleErrors($response);
-        }
-
         return $this->hydrator->hydrate($response, SourceModel::class);
     }
 
@@ -39,10 +35,6 @@ final class Source extends HttpApi
         $processor->processConfiguration(new Configuration\SourceCreate(), [$params]);
 
         $response = $this->httpPost('/v1/sources', $params);
-
-        if (200 !== $response->getStatusCode()) {
-            $this->handleErrors($response);
-        }
 
         return $this->hydrator->hydrate($response, SourceModel::class);
     }
