@@ -9,11 +9,6 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe;
 
-use Http\Discovery\MessageFactoryDiscovery;
-use Http\Message\MultipartStream\MultipartStreamBuilder;
-use Http\Message\RequestFactory;
-use Psr\Http\Message\RequestInterface;
-
 /**
  * @internal this class should not be used outside of the API Client, it is not part of the BC promise
  */
@@ -32,7 +27,7 @@ final class HttpQueryBuilder
             $resolvedParams[] = "$key=$value";
         }
 
-        if (0 === count($resolvedParams)) {
+        if (0 === \count($resolvedParams)) {
             return '';
         }
 
@@ -43,7 +38,7 @@ final class HttpQueryBuilder
     {
         $parts = [];
         foreach ($params as $key => $value) {
-            if (is_array($value)) {
+            if (\is_array($value)) {
                 $newPrefix = null === $prefix ? $key : $prefix.'['.$key.']';
                 $subParts = $this->getParts($value, $newPrefix);
 
@@ -66,7 +61,7 @@ final class HttpQueryBuilder
 
     private function sanitizeParam($param): string
     {
-        if (is_bool($param)) {
+        if (\is_bool($param)) {
             return $param ? 'true' : 'false';
         }
 

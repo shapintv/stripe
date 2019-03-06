@@ -10,10 +10,6 @@ declare(strict_types=1);
 namespace Shapin\Stripe\Tests\Model\Account;
 
 use Shapin\Stripe\Model\Account\Account;
-use Shapin\Stripe\Model\Account\Outcome;
-use Shapin\Stripe\Model\MetadataCollection;
-use Shapin\Stripe\Model\Refund\RefundCollection;
-use Shapin\Stripe\Model\Source\Source;
 use PHPUnit\Framework\TestCase;
 
 class AccountTest extends TestCase
@@ -25,6 +21,5 @@ class AccountTest extends TestCase
         $account = Account::createFromArray($data['object']);
 
         $this->assertInstanceOf(Account::class, $account);
-
     }
 }

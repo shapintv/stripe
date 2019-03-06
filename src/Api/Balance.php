@@ -46,7 +46,7 @@ final class Balance extends HttpApi
      */
     public function getBalanceTransactions(array $params = [])
     {
-        $response = $this->httpGet("/v1/balance/history", $params);
+        $response = $this->httpGet('/v1/balance/history', $params);
 
         return $this->hydrator->hydrate($response, BalanceTransactionCollection::class);
     }

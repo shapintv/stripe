@@ -12,8 +12,6 @@ namespace Shapin\Stripe;
 use Psr\Http\Message\ResponseInterface;
 use Shapin\Stripe\Exception\Domain as DomainExceptions;
 use Shapin\Stripe\Exception\DomainException;
-use Shapin\Stripe\Model\Event;
-use Symfony\Component\HttpFoundation\Request;
 
 final class ErrorHandler
 {
@@ -114,17 +112,17 @@ final class ErrorHandler
             throw $this->getExceptionForStatusCode($response);
         }
 
-        if (!array_key_exists('error', $data)) {
+        if (!\array_key_exists('error', $data)) {
             throw $this->getExceptionForStatusCode($response);
         }
 
-        if (!array_key_exists('code', $data['error'])) {
+        if (!\array_key_exists('code', $data['error'])) {
             throw $this->getExceptionForStatusCode($response);
         }
 
         $errorCode = $data['error']['code'];
 
-        if (!array_key_exists($errorCode, self::$errorCodes)) {
+        if (!\array_key_exists($errorCode, self::$errorCodes)) {
             throw $this->getExceptionForStatusCode($response);
         }
 

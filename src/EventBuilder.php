@@ -92,8 +92,8 @@ final class EventBuilder
             throw new InvalidArgumentException('Unable to process event: No "type" provided in array.');
         }
 
-        if (array_key_exists($data['type'], $this->events)) {
-            return call_user_func($this->events[$data['type']].'::createFromArray', $data);
+        if (\array_key_exists($data['type'], $this->events)) {
+            return \call_user_func($this->events[$data['type']].'::createFromArray', $data);
         }
 
         throw new InvalidArgumentException("Unable to process event: Event \"{$data['type']}\" is not supported yet.");

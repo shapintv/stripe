@@ -113,7 +113,7 @@ final class Product implements CreatableFromArray, ContainsMetadata
         $model->description = $data['description'];
         $model->images = $data['images'];
         $model->name = $data['name'];
-        $model->packageDimension = array_key_exists('package_dimension', $data) ? PackageDimension::createFromArray($data['package_dimension']) : null;
+        $model->packageDimension = \array_key_exists('package_dimension', $data) ? PackageDimension::createFromArray($data['package_dimension']) : null;
         $model->shippable = (bool) $data['shippable'];
         $model->statementDescriptor = $data['statement_descriptor'];
         $model->type = $data['type'];

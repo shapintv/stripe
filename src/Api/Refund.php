@@ -9,10 +9,8 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Api;
 
-use Psr\Http\Message\ResponseInterface;
 use Shapin\Stripe\Configuration;
 use Shapin\Stripe\Exception;
-use Shapin\Stripe\Exception\Domain\Refund as RefundExceptions;
 use Shapin\Stripe\Model\Refund\Refund as RefundModel;
 use Shapin\Stripe\Model\Refund\RefundCollection;
 use Symfony\Component\Config\Definition\Processor;

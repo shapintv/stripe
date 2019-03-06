@@ -11,7 +11,6 @@ namespace Shapin\Stripe\Model\Account;
 
 use Shapin\Stripe\Model\Address;
 use Shapin\Stripe\Model\CreatableFromArray;
-use Shapin\Stripe\Model\DateOfBirth;
 
 final class Company implements CreatableFromArray
 {

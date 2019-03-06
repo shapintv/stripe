@@ -10,16 +10,11 @@ declare(strict_types=1);
 namespace Shapin\Stripe\Tests\FunctionalTests\Account;
 
 use Shapin\Stripe\Model\Account\Account;
-use Shapin\Stripe\Model\Account\AccountVerification;
 use Shapin\Stripe\Model\Account\BusinessProfile;
 use Shapin\Stripe\Model\Account\ExternalAccountCollection;
-use Shapin\Stripe\Model\Account\LegalEntity;
-use Shapin\Stripe\Model\Account\LegalEntityVerification;
-use Shapin\Stripe\Model\Account\PayoutSchedule;
 use Shapin\Stripe\Model\Account\Requirements;
 use Shapin\Stripe\Model\Account\Settings;
 use Shapin\Stripe\Model\Account\TermsOfServiceAcceptance;
-use Shapin\Stripe\Model\Address;
 use Shapin\Stripe\Model\BankAccount\BankAccount;
 use Shapin\Stripe\Model\MetadataCollection;
 use Shapin\Stripe\Tests\FunctionalTests\TestCase;

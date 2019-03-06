@@ -19,7 +19,7 @@ class ExternalAccountCollectionTest extends TestCase
         $collection = ExternalAccountCollection::createFromArray([]);
 
         $this->assertInstanceOf(ExternalAccountCollection::class, $collection);
-        $this->assertSame(0, count($collection->getElements()));
+        $this->assertSame(0, \count($collection->getElements()));
         $this->assertFalse($collection->hasMore());
     }
 }

@@ -121,7 +121,7 @@ class SubscriptionUpdate implements ConfigurationInterface
 
         $rootNode
             ->validate()
-                ->always(function($v) {
+                ->always(function ($v) {
                     if (empty($v['items'])) {
                         unset($v['items']);
                     }

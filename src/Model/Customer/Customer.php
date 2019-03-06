@@ -121,10 +121,10 @@ final class Customer implements CreatableFromArray, ContainsMetadata
         $model->defaultSourceId = $data['default_source'];
         $model->delinquent = (bool) $data['delinquent'];
         $model->description = $data['description'];
-        $model->discount = array_key_exists('discount', $data) ? $data['discount'] : null;
+        $model->discount = \array_key_exists('discount', $data) ? $data['discount'] : null;
         $model->email = $data['email'];
         $model->invoicePrefix = $data['invoice_prefix'];
-        $model->invoiceSettings = array_key_exists('invoice_settings', $data) ? InvoiceSettings::createFromArray($data['invoice_settings']) : null;
+        $model->invoiceSettings = \array_key_exists('invoice_settings', $data) ? InvoiceSettings::createFromArray($data['invoice_settings']) : null;
         $model->live = (bool) $data['livemode'];
         $model->metadata = MetadataCollection::createFromArray($data['metadata']);
         if (isset($data['shipping'])) {
@@ -235,7 +235,7 @@ final class Customer implements CreatableFromArray, ContainsMetadata
     public function getLatestSubscription(): ?Subscription
     {
         $subscriptions = $this->subscriptions->getElements();
-        if (0 === count($subscriptions)) {
+        if (0 === \count($subscriptions)) {
             return null;
         }
 

@@ -10,7 +10,6 @@ declare(strict_types=1);
 namespace Shapin\Stripe\Tests\FunctionalTests\Subscription;
 
 use Shapin\Stripe\Model\Subscription\Item;
-use Shapin\Stripe\Model\MetadataCollection;
 use Shapin\Stripe\Tests\FunctionalTests\TestCase;
 
 final class GetItemTest extends TestCase

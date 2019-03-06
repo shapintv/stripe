@@ -42,7 +42,7 @@ final class GetTest extends TestCase
         $this->assertSame(Invoice::BILLING_CHARGE_AUTOMATICALLY, $invoice->getBilling());
         $this->assertSame(Invoice::BILLING_REASON_MANUAL, $invoice->getBillingReason());
         $this->assertNull($invoice->getCharge());
-        $this->assertTrue(is_int($invoice->getCreatedAt()->getTimestamp()));
+        $this->assertTrue(\is_int($invoice->getCreatedAt()->getTimestamp()));
         $this->assertSame('USD', (string) $invoice->getCurrency());
         $this->assertSame([], $invoice->getCustomFields());
         $this->assertIsString($invoice->getCustomer());
