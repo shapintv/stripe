@@ -19,19 +19,21 @@ final class ExternalAccountCollection extends Collection
     public static function createFromArray(array $data): self
     {
         $elements = [];
-        foreach ($data['data'] as $element) {
-            switch ($element['object']) {
-                case 'bank_account':
-                    $elements[] = BankAccount::createFromArray($element);
-                    break;
-                case 'card':
-                    $elements[] = Card::createFromArray($element);
-                    break;
-                default:
-                    throw new InvalidArgumentException('Unknown external account type: '.$element['object']);
+        if (isset($data['data'])) {
+            foreach ($data['data'] as $element) {
+                switch ($element['object']) {
+                    case 'bank_account':
+                        $elements[] = BankAccount::createFromArray($element);
+                        break;
+                    case 'card':
+                        $elements[] = Card::createFromArray($element);
+                        break;
+                    default:
+                        throw new InvalidArgumentException('Unknown external account type: '.$element['object']);
+                }
             }
         }
 
-        return new self($elements, $data['has_more']);
+        return new self($elements, $data['has_more'] ?? false);
     }
 }
