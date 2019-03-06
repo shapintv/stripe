@@ -85,7 +85,7 @@ final class Charge implements CreatableFromArray, ContainsMetadata
     private $description;
 
     /**
-     * @var string
+     * @var ?string
      */
     private $destination;
 
@@ -232,7 +232,7 @@ final class Charge implements CreatableFromArray, ContainsMetadata
         $model->currency = $currency;
         $model->customer = $data['customer'];
         $model->description = $data['description'];
-        $model->destination = $data['destination'];
+        $model->destination = $data['destination'] ?? null;
         $model->dispute = $data['dispute'];
         $model->failureCode = $data['failure_code'];
         $model->failureMessage = $data['failure_message'];

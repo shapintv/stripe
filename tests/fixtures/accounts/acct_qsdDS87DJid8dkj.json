@@ -1,0 +1,45 @@
+{
+    "object": {
+        "id": "acct_qsdDS87DJid8dkj",
+        "object": "account",
+        "business_profile": {
+            "mcc": null,
+            "name": "My name",
+            "support_address": {
+                "city": "",
+                "country": "FR",
+                "line1": null,
+                "line2": null,
+                "postal_code": "",
+                "state": ""
+            },
+            "support_email": "infos@mail.fr",
+            "support_phone": "+3306060606",
+            "support_url": "",
+            "url": "https://website.xyz"
+        },
+        "charges_enabled": true,
+        "country": "FR",
+        "default_currency": "eur",
+        "details_submitted": true,
+        "email": "me@mail.fr",
+        "payouts_enabled": true,
+        "settings": {
+            "branding": {
+                "icon": "file_1C5bH0IKJQcvOM3GTEjY3G",
+                "logo": null,
+                "primary_color": "#000000"
+            },
+            "card_payments": {
+            },
+            "dashboard": {
+                "display_name": "My name",
+                "timezone": "Europe/Paris"
+            },
+            "payments": {
+                "statement_descriptor": "MYNAME SAS"
+            }
+        },
+        "type": "standard"
+    }
+}

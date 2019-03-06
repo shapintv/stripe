@@ -6,26 +6,47 @@
   "object": "event",
   "request": null,
   "pending_webhooks": 1,
-  "api_version": "2018-11-08",
+  "api_version": "2019-02-19",
   "data": {
     "object": {
       "id": "acct_00000000000000",
       "object": "account",
-      "business_logo": "file_1C5bH0IpafQncvOM3GTEjY1G",
-      "business_name": "SHAPIN'",
-      "business_primary_color": "#e8c55c",
-      "business_url": "https://www.shapin.tv",
+      "business_profile": {
+        "mcc": null,
+        "name": "NAME",
+        "product_description": "Plateforme de mise en relation entre particuliers",
+        "support_address": {
+          "city": "",
+          "country": "FR",
+          "line1": null,
+          "line2": null,
+          "postal_code": "",
+          "state": ""
+        },
+        "support_email": "infos@name.fr",
+        "support_phone": "+33643868911",
+        "support_url": "",
+        "url": "https://www.name.tv"
+      },
+      "business_type": "company",
       "charges_enabled": true,
+      "company": {
+        "address": {
+          "city": "Paris 18",
+          "country": "FR",
+          "line1": "136 rue championnet Batiment G",
+          "line2": null,
+          "postal_code": "75018",
+          "state": "75"
+        },
+        "name": "Name'",
+        "tax_id_provided": true,
+        "vat_id_provided": true
+      },
       "country": "FR",
       "created": 1521039699,
-      "debit_negative_balances": true,
-      "decline_charge_on": {
-        "avs_failure": false,
-        "cvc_failure": true
-      },
       "default_currency": "eur",
       "details_submitted": true,
-      "display_name": "Shapin'",
       "email": "test@stripe.com",
       "external_accounts": {
         "object": "list",
@@ -52,82 +73,56 @@
         "total_count": 1,
         "url": "/v1/accounts/acct_1C5b6lIpafQncvOM/external_accounts"
       },
-      "legal_entity": {
-        "additional_owners": [
-        ],
-        "address": {
-          "city": "Paris 18",
-          "country": "FR",
-          "line1": "Line 1",
-          "line2": null,
-          "postal_code": "75018",
-          "state": "75"
-        },
-        "business_name": "Shapin'",
-        "business_tax_id_provided": true,
-        "business_vat_id_provided": true,
-        "dob": {
-          "day": 11,
-          "month": 9,
-          "year": 1988
-        },
-        "first_name": "Justine",
-        "last_name": "Renaudet",
-        "personal_address": {
-          "city": "Paris 18",
-          "country": "FR",
-          "line1": "Line 1",
-          "line2": null,
-          "postal_code": "75018",
-          "state": "75"
-        },
-        "personal_id_number_provided": true,
-        "type": "company",
-        "verification": {
-          "details": null,
-          "details_code": null,
-          "document": null,
-          "document_back": null,
-          "status": "verified"
-        }
-      },
       "metadata": {
       },
-      "payout_schedule": {
-        "delay_days": 7,
-        "interval": "monthly",
-        "monthly_anchor": 31
-      },
-      "payout_statement_descriptor": null,
       "payouts_enabled": true,
-      "product_description": "Plateforme de mise en relation entre particuliers",
-      "statement_descriptor": "TEST",
-      "support_address": {
-        "city": "",
-        "country": "FR",
-        "line1": null,
-        "line2": null,
-        "postal_code": "",
-        "state": ""
+      "requirements": {
+        "current_deadline": null,
+        "currently_due": [
+        ],
+        "disabled_reason": null,
+        "eventually_due": [
+        ],
+        "past_due": [
+        ]
       },
-      "support_email": "infos@shapin.fr",
-      "support_phone": "+33606060606",
-      "support_url": "",
-      "timezone": "Europe/Paris",
+      "settings": {
+        "branding": {
+          "icon": "file_1C5bH0IpafQncvOM3GTEjY1G",
+          "logo": null,
+          "primary_color": "#e8c55c"
+        },
+        "card_payments": {
+          "decline_on": {
+            "avs_failure": false,
+            "cvc_failure": true
+          }
+        },
+        "dashboard": {
+          "display_name": "Name'",
+          "timezone": "Europe/Paris"
+        },
+        "payments": {
+          "statement_descriptor": "NAME SAS"
+        },
+        "payouts": {
+          "debit_negative_balances": true,
+          "schedule": {
+            "delay_days": 7,
+            "interval": "monthly",
+            "monthly_anchor": 31
+          },
+          "statement_descriptor": null
+        }
+      },
       "tos_acceptance": {
         "date": 1523016527,
         "iovation_blackbox": "0400R9HVeoYv1gsNf94lis1ztpRNmiaNjbTAktBHje9TfLe6yW+cEOWWDMQcD9viM38qoX+VSCoxH4r6QZvmiXmndO031BzALJ1qLzS8z3os9WU/yoVIBnjain3l6hbzqbST6CN8D30iz+cHN/nOf7OCchcQLmVWBXxAh0ylJGfM1m5dSDvFsQ9SobfE6hIm6XmwTld6LUiJXX9c8V1ZIWK++ykzCGBlggcGImwI4pTgqhY6nJyAMNUlqkxFXRiZcQcAnPGnG3CqgLln+4KLswTyWhDAstLN4US5V97h50/5jKuksZ+gFcc8aWv9+wL9TPT/o0khxZFaqj2g5dRbGWPI8GGv4RQQVRK6lU99UoH2xknH6cljl5cLciF/pw+NSOAh7A+UtF/OZ2bwm/7cpXPTMdlf07WJNzI24pIAbf9RGMpfq3bGwE2owA7TNAEKJoy+p63BxpuwNda7FIsvgR+bp9VKL1B8ftMSWGaZ2Oda7/904hiAcL/dBjV9nBJW1Y3JLACqjtcRnAt1iB/Zpw79oe9RJsn4u3PdHf7WUtiodkQghj1LfBHLbRFMCWFSId3zzfOmf6paX3UpQs/EGzmZL8oln8UkWIICuzwXKl0Gz8vcFWFz1ox3YAQxSxzPuRtycb0H5IjHkCcKSs4KVYKB4sYRtsxPIW0X+KRnCtOZRo5HDo0vYYDC3xqkbjiKwBZfdLDs+1JC1RHeqz7TtH33U8MJk8BUDtmv3xzTtbE2UTjN/dwgvgvTJTSos/ourUZHFgzzHSahZXK8hZCSHGBUGQbz44XiMf/eY92hNSmr+k28EssPaX5qs3ScdOqvXcrfEp48DVRl0oBkPCJz7Ln+v5KTIBvOIMzuTzEBdNLiXsPV6scyeMvquBjjjLl415WXhE2/w3XUg/hAzMNzaip47pYwJVsFx3E/58zGq/hZ0ZoyseD0G1/ThxEIvsJRqGfF9spFd7LTpxiIVb7/dLR/aeq024GYThb6+Z4baa9a0Da8VDdLGBfK9PH/LgnAtMTg/gz07uVSINAdsIM8fdgRSwCL7Bm/ll7KknAVvD0YZcCCeRcZmibg3ZO5KMbupKvvjC3ZpJaGiq8SG6yT7kqGucmhxnoWuJ2ISt90/h2xKJesYxB/DMIeOgKjbh6tKSJYRgEqSehE5i3xb70QnyzU+3jy31bXhdUO5ExJlsEDyWeZwhjxiodtYrAtjgzHMGAk58fx3+Rcwz0I4HEJnGOmG0vEoXq/Y8/GXhBBz3OgEm8b/j6Q87qDY9m4JivOPiYRBNe8T77DDBVZl/dKYVxb2l22PjcuhFhUU1tetETJkni+RXQsRKZ98InUPcpWx610KvNP/QyYCoBxC66lh9MB5gKwiwTsyk+9w373yEX7viMNQLN8Bu3cvIdNP/Bxx9JLopvyPHHKgrcYBviCqHQ3vf1Li5nmaYbyHq2O0aA1zCeCMVDs/lJiPCqtbleyGLALmjRNUZ0vbxuK6/pdx/gqwoGyNZJXrJV34UihYn5yZ0xaPFDqlbTALwy5GghQ9wt3BFBXtex1Kinl1xlt6opauUVCcuAzYjmBxHg9liKipjgQuVrlbQFc7otlkmuFCasRwvw69XeZl6USVBTMHG7OKjyQerBcksyZe6Gdft1F0wKVT31SgfbGScfpyWOXlwtyIX+nD41I4CHsD5S0X85nZvCb/tylc9Mx2V/TtYk3MjbZPw/HOmykyg==",
-        "ip": "90.79.201.142",
+        "ip": "90.79.201.141",
         "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36"
       },
       "type": "standard",
-      "verification": {
-        "disabled_reason": null,
-        "due_by": 1549640912,
-        "fields_needed": [
-          "legal_entity.verification.document"
-        ]
-      }
+      "statement_descriptor": "TEST"
     },
     "previous_attributes": {
       "verification": {

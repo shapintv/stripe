@@ -42,7 +42,7 @@ final class GetTest extends TestCase
         $this->assertSame(Invoice::BILLING_CHARGE_AUTOMATICALLY, $invoice->getBilling());
         $this->assertSame(Invoice::BILLING_REASON_MANUAL, $invoice->getBillingReason());
         $this->assertNull($invoice->getCharge());
-        $this->assertSame(1234567890, $invoice->getCreatedAt()->getTimestamp());
+        $this->assertTrue(is_int($invoice->getCreatedAt()->getTimestamp()));
         $this->assertSame('USD', (string) $invoice->getCurrency());
         $this->assertSame([], $invoice->getCustomFields());
         $this->assertIsString($invoice->getCustomer());
@@ -51,7 +51,7 @@ final class GetTest extends TestCase
         $this->assertNull($invoice->getDiscount());
         $this->assertNull($invoice->getDueAt());
         $this->assertNull($invoice->getEndingBalance());
-        $this->assertSame(1234567890, $invoice->getFinalizedAt()->getTimestamp());
+        $this->assertNull($invoice->getFinalizedAt());
         $this->assertNull($invoice->getFooter());
         $this->assertNull($invoice->getHostedInvoiceUrl());
         $this->assertNull($invoice->getInvoicePdf());
