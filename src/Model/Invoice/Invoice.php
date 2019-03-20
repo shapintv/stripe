@@ -41,7 +41,7 @@ final class Invoice implements CreatableFromArray, ContainsMetadata
     const STATUS_VOID = 'void';
 
     /**
-     * @var string
+     * @var ?string
      */
     private $id;
 
@@ -310,7 +310,7 @@ final class Invoice implements CreatableFromArray, ContainsMetadata
         return $model;
     }
 
-    public function getId(): string
+    public function getId(): ?string
     {
         return $this->id;
     }
