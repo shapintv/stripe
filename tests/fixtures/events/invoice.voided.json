@@ -1,12 +1,12 @@
 {
   "created": 1326853478,
   "livemode": false,
-  "id": "invoice.voided_00000000000000",
+  "id": "evt_00000000000000",
   "type": "invoice.voided",
   "object": "event",
   "request": null,
   "pending_webhooks": 1,
-  "api_version": "2018-11-08",
+  "api_version": "2019-02-19",
   "data": {
     "object": {
       "id": "in_00000000000000",
@@ -21,6 +21,7 @@
       "billing": "charge_automatically",
       "billing_reason": "subscription_create",
       "charge": "ch_00000000000000",
+      "created": 1549296189,
       "currency": "eur",
       "custom_fields": null,
       "customer": "cus_00000000000000",
@@ -39,26 +40,26 @@
           {
             "id": "sli_00000000000000",
             "object": "line_item",
-            "amount": 2500,
+            "amount": 0,
             "currency": "eur",
-            "description": "1 × Monthly subscription (at €25.00 / month)",
+            "description": "Trial period for Monthly subscription",
             "discountable": true,
             "livemode": false,
             "metadata": {
-              "member_id": "ad3bbc8d-afc0-416b-b0e0-834267566e73"
+              "member_id": "323380a2-96a8-47c1-b3f9-7064e07b3a97"
             },
             "period": {
-              "end": 1554393789,
-              "start": 1551715389
+              "end": 1561505822,
+              "start": 1554731146
             },
             "plan": {
               "id": "plan_00000000000000",
               "object": "plan",
               "active": true,
               "aggregate_usage": null,
-              "amount": 2500,
+              "amount": 2000,
               "billing_scheme": "per_unit",
-              "created": 1549041757,
+              "created": 1550752212,
               "currency": "eur",
               "interval": "month",
               "interval_count": 1,
@@ -96,6 +97,12 @@
       "starting_balance": 0,
       "statement_descriptor": null,
       "status": "paid",
+      "status_transitions": {
+        "finalized_at": 1549296189,
+        "marked_uncollectible_at": null,
+        "paid_at": 1549296189,
+        "voided_at": null
+      },
       "subscription": "sub_00000000000000",
       "subtotal": 2500,
       "tax": 0,

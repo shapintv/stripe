@@ -51,7 +51,6 @@ final class GetTest extends TestCase
         $this->assertNull($invoice->getDiscount());
         $this->assertNull($invoice->getDueAt());
         $this->assertNull($invoice->getEndingBalance());
-        $this->assertNull($invoice->getFinalizedAt());
         $this->assertNull($invoice->getFooter());
         $this->assertNull($invoice->getHostedInvoiceUrl());
         $this->assertNull($invoice->getInvoicePdf());

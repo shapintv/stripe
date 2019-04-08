@@ -141,11 +141,6 @@ final class Invoice implements CreatableFromArray, ContainsMetadata
     private $endingBalance;
 
     /**
-     * @var ?\DateTimeImmutable
-     */
-    private $finalizedAt;
-
-    /**
      * @var ?string
      */
     private $footer;
@@ -273,7 +268,7 @@ final class Invoice implements CreatableFromArray, ContainsMetadata
         $model->billing = $data['billing'];
         $model->billingReason = $data['billing_reason'];
         $model->charge = $data['charge'];
-        $model->createdAt = new \DateTimeImmutable('@'.$data['date']);
+        $model->createdAt = new \DateTimeImmutable('@'.$data['created']);
         $model->currency = $currency;
         $model->customFields = $customFields;
         $model->customer = $data['customer'];
@@ -282,7 +277,6 @@ final class Invoice implements CreatableFromArray, ContainsMetadata
         $model->discount = isset($data['discount']) ? Discount::createFromArray($data['discount']) : null;
         $model->dueAt = isset($data['due_at']) ? new \DateTimeImmutable('@'.$data['due_at']) : null;
         $model->endingBalance = isset($data['ending_balance']) ? new Money($data['ending_balance'], $currency) : null;
-        $model->finalizedAt = isset($data['finalized_at']) ? new \DateTimeImmutable('@'.$data['finalized_at']) : null;
         $model->footer = $data['footer'] ?? null;
         $model->hostedInvoiceUrl = $data['hosted_invoice_url'];
         $model->invoicePdf = $data['invoice_pdf'];
@@ -408,11 +402,6 @@ final class Invoice implements CreatableFromArray, ContainsMetadata
     public function getEndingBalance(): ?Money
     {
         return $this->endingBalance;
-    }
-
-    public function getFinalizedAt(): ?\DateTimeImmutable
-    {
-        return $this->finalizedAt;
     }
 
     public function getFooter(): ?string
