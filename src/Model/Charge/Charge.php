@@ -150,6 +150,11 @@ final class Charge implements CreatableFromArray, ContainsMetadata
     private $receiptNumber;
 
     /**
+     * @var string
+     */
+    private $receiptUrl;
+
+    /**
      * @var bool
      */
     private $refunded;
@@ -247,6 +252,7 @@ final class Charge implements CreatableFromArray, ContainsMetadata
         $model->paymentIntent = $data['payment_intent'];
         $model->receiptEmail = $data['receipt_email'];
         $model->receiptNumber = $data['receipt_number'];
+        $model->receiptUrl = $data['receipt_number'];
         $model->refunded = (bool) $data['refunded'];
         $model->refunds = RefundCollection::createFromArray($data['refunds']);
         $model->review = $data['review'];
@@ -394,6 +400,11 @@ final class Charge implements CreatableFromArray, ContainsMetadata
     public function getReceiptNumber(): ?string
     {
         return $this->receiptNumber;
+    }
+
+    public function getReceiptUrl(): ?string
+    {
+        return $this->receiptUrl;
     }
 
     public function isRefunded(): bool

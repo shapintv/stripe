@@ -57,6 +57,7 @@ final class GetTest extends TestCase
         $this->assertNull($charge->getPaymentIntent());
         $this->assertNull($charge->getReceiptEmail());
         $this->assertNull($charge->getReceiptNumber());
+        $this->assertNull($charge->getReceiptUrl());
         $this->assertFalse($charge->isRefunded());
         $this->assertInstanceOf(RefundCollection::class, $charge->getRefunds());
         $this->assertCount(1, $charge->getRefunds());
