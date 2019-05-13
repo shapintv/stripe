@@ -24,6 +24,8 @@ final class Subscription implements CreatableFromArray, ContainsMetadata
     const BILLING_CHARGE_AUTOMATICALLY = 'charge_automatically';
     const BILLING_SEND_INVOICE = 'send_invoice';
 
+    const STATUS_EXPIRED = 'incomplete_expired';
+    const STATUS_INCOMPLETE = 'incomplete';
     const STATUS_TRIALING = 'trialing';
     const STATUS_ACTIVE = 'active';
     const STATUS_PAST_DUE = 'past_due';
@@ -174,6 +176,16 @@ final class Subscription implements CreatableFromArray, ContainsMetadata
     public function isBilledAutomatically(): bool
     {
         return self::BILLING_CHARGE_AUTOMATICALLY === $this->billing;
+    }
+
+    public function isIncomplete(): bool
+    {
+        return self::STATUS_INCOMPLETE === $this->status;
+    }
+
+    public function isExpired(): bool
+    {
+        return self::STATUS_EXPIRED === $this->status;
     }
 
     public function isTrialing(): bool
