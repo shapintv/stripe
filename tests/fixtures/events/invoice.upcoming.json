@@ -6,32 +6,44 @@
   "object": "event",
   "request": null,
   "pending_webhooks": 1,
-  "api_version": "2019-02-19",
+  "api_version": "2019-05-16",
   "data": {
     "object": {
       "id": null,
       "object": "invoice",
+      "account_country": "FR",
+      "account_name": "SHAPIN'",
       "amount_due": 2500,
       "amount_paid": 2500,
       "amount_remaining": 0,
-      "application_fee": null,
+      "application_fee_amount": null,
       "attempt_count": 1,
       "attempted": true,
       "auto_advance": false,
       "billing": "charge_automatically",
       "billing_reason": "subscription_create",
       "charge": "ch_00000000000000",
+      "collection_method": "charge_automatically",
       "created": 1549296189,
       "currency": "eur",
       "custom_fields": null,
       "customer": "cus_00000000000000",
-      "date": 1549296189,
+      "customer_address": null,
+      "customer_email": "shapee1@mail.com",
+      "customer_name": null,
+      "customer_phone": null,
+      "customer_shipping": null,
+      "customer_tax_exempt": "none",
+      "customer_tax_ids": [
+      ],
+      "default_payment_method": null,
       "default_source": null,
+      "default_tax_rates": [
+      ],
       "description": null,
       "discount": null,
       "due_date": null,
       "ending_balance": 0,
-      "finalized_at": 1549296189,
       "footer": null,
       "hosted_invoice_url": "https://pay.stripe.com/invoice/invst_FNZK0N3bVGQttgijTeAbEaQMCz",
       "invoice_pdf": "https://pay.stripe.com/invoice/invst_FNZK0N3bVGQttgijTeAbEaQMCz/pdf",
@@ -40,26 +52,26 @@
           {
             "id": "sli_00000000000000",
             "object": "line_item",
-            "amount": 0,
+            "amount": 2500,
             "currency": "eur",
-            "description": "Trial period for Monthly subscription",
+            "description": "1 × Monthly subscription (at €25.00 / month)",
             "discountable": true,
             "livemode": false,
             "metadata": {
-              "member_id": "323380a2-96a8-47c1-b3f9-7064e07b3a97"
+              "member_id": "ad3bbc8d-afc0-416b-b0e0-834267566e73"
             },
             "period": {
-              "end": 1561505822,
-              "start": 1554731146
+              "end": 1562256189,
+              "start": 1559664189
             },
             "plan": {
               "id": "plan_00000000000000",
               "object": "plan",
               "active": true,
               "aggregate_usage": null,
-              "amount": 2000,
+              "amount": 2500,
               "billing_scheme": "per_unit",
-              "created": 1550752212,
+              "created": 1549041757,
               "currency": "eur",
               "interval": "month",
               "interval_count": 1,
@@ -78,6 +90,10 @@
             "quantity": 1,
             "subscription": "sub_00000000000000",
             "subscription_item": "si_00000000000000",
+            "tax_amounts": [
+            ],
+            "tax_rates": [
+            ],
             "type": "subscription"
           }
         ],
@@ -91,8 +107,11 @@
       "next_payment_attempt": null,
       "number": "51CECB1-0001",
       "paid": true,
+      "payment_intent": null,
       "period_end": 1549296189,
       "period_start": 1549296189,
+      "post_payment_credit_notes_amount": 0,
+      "pre_payment_credit_notes_amount": 0,
       "receipt_number": null,
       "starting_balance": 0,
       "statement_descriptor": null,
@@ -108,6 +127,8 @@
       "tax": 0,
       "tax_percent": null,
       "total": 2500,
+      "total_tax_amounts": [
+      ],
       "webhooks_delivered_at": 1549296189
     }
   }

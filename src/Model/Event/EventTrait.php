@@ -164,6 +164,11 @@ trait EventTrait
         $model->pendingWebhooks = (int) $data['pending_webhooks'];
         $model->request = isset($data['request']) ? Request::createFromArray($data['request']) : null;
         $model->type = $data['type'];
+        $model->previousAttributes = $data['data']['previous_attributes'] ?? [];
+
+        if ('invoice.upcoming' === $data['type']) {
+            return $model;
+        }
 
         $object = $data['data']['object']['object'];
         switch ($object) {
@@ -218,8 +223,6 @@ trait EventTrait
             default:
                 throw new InvalidArgumentException("Unable to process event data: Unknown object $object");
         }
-
-        $model->previousAttributes = $data['data']['previous_attributes'] ?? [];
 
         return $model;
     }

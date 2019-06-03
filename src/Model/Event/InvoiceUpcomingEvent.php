@@ -9,7 +9,7 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Model\Event;
 
-final class InvoiceUpcomingEvent implements ContainsInvoice
+final class InvoiceUpcomingEvent implements Event
 {
-    use ContainsInvoiceTrait;
+    use EventTrait;
 }
