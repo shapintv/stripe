@@ -57,14 +57,14 @@ final class GetTest extends TestCase
         $this->assertNull($charge->getPaymentIntent());
         $this->assertNull($charge->getReceiptEmail());
         $this->assertNull($charge->getReceiptNumber());
-        $this->assertSame('https://remi-manage-mydev.dev.stripe.me/receipts/acct_1EKFvYKEq1Gj9P4G/ch_1EKFvhKEq1Gj9P4G6TTx8cu5/rcpt_Enrfc3txUoAFEqsMt5Jsvh94LClFyHq', $charge->getReceiptUrl());
+        $this->assertSame('https://remi-manage-mydev.dev.stripe.me/receipts/acct_1Efz8dLEfszBpMQY/ch_1Efz8iLEfszBpMQYIS9AKe1O/rcpt_FAJmkWX7AhMermwRSmOHXz2bbhpp9u1', $charge->getReceiptUrl());
         $this->assertFalse($charge->isRefunded());
         $this->assertInstanceOf(RefundCollection::class, $charge->getRefunds());
         $this->assertCount(1, $charge->getRefunds());
         $this->assertInstanceOf(Refund::class, $charge->getRefunds()[0]);
         $this->assertNull($charge->getReview());
         $this->assertNull($charge->getShipping());
-        $this->assertInstanceOf(Account::class, $charge->getSource());
+        $this->assertNull($charge->getSource());
         $this->assertNull($charge->getSourceTransfer());
         $this->assertNull($charge->getStatementDescriptor());
         $this->assertSame('succeeded', $charge->getStatus());

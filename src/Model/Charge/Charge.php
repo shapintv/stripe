@@ -214,8 +214,8 @@ final class Charge implements CreatableFromArray, ContainsMetadata
 
         // Most of the time, the source is a card
         // @see: https://stripe.com/docs/api/charges/object?lang=curl#charge_object-source
-        $source = $data['source'];
-        if (isset($source['object'])) {
+        $source = $data['source'] ?? null;
+        if (is_array($source) && isset($source['object'])) {
             if ('card' === $source['object']) {
                 $source = Card::createFromArray($source);
             } elseif ('account' === $source['object']) {

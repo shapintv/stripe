@@ -51,7 +51,7 @@ final class GetTest extends TestCase
         $this->assertSame('4242', $card->getLastFour());
         $this->assertInstanceOf(MetadataCollection::class, $card->getMetadata());
         $this->assertCount(0, $card->getMetadata());
-        $this->assertSame('Jenny Rosen', $card->getName());
+        $this->assertNull($card->getName());
         $this->assertNull($card->getRecipient());
         $this->assertNull($card->getTokenizationMethod());
     }

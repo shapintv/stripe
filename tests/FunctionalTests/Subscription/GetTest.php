@@ -52,7 +52,7 @@ final class GetTest extends TestCase
         $this->assertInstanceOf(MetadataCollection::class, $subscription->getMetadata());
         $this->assertCount(0, $subscription->getMetadata());
         $this->assertSame(1, $subscription->getQuantity());
-        $this->assertSame(1234567890, $subscription->getStartAt()->getTimestamp());
+        $this->assertTrue(is_int($subscription->getStartAt()->getTimestamp()));
         $this->assertSame(Subscription::STATUS_ACTIVE, $subscription->getStatus());
         $this->assertNull($subscription->getTaxPercent());
         $this->assertSame(1234567890, $subscription->getTrialEndAt()->getTimestamp());

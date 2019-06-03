@@ -100,7 +100,7 @@ final class Card implements CreatableFromArray, ContainsMetadata
     private $lastFour;
 
     /**
-     * @var string
+     * @var ?string
      */
     private $name;
 
@@ -221,7 +221,7 @@ final class Card implements CreatableFromArray, ContainsMetadata
         return $this->lastFour;
     }
 
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
