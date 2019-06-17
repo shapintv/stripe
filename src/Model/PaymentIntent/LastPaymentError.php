@@ -71,12 +71,12 @@ final class LastPaymentError implements CreatableFromArray
     {
         $model = new self();
         $model->type = $data['type'];
-        $model->chargeId = $data['charge_id'];
-        $model->code = $data['code'];
-        $model->declineCode = $data['decline_code'];
+        $model->chargeId = $data['charge_id'] ?? null;
+        $model->code = $data['code'] ?? null;
+        $model->declineCode = $data['decline_code'] ?? null;
         $model->docUrl = $data['doc_url'];
         $model->message = $data['message'];
-        $model->param = $data['param'];
+        $model->param = $data['param'] ?? null;
         $model->paymentIntent = isset($data['payment_intent']) ? PaymentIntent::createFromArray($data['payment_method']) : null;
         // TODO: Deal with payment methods
         //$model->paymentMethod = isset($data['payment_method']) ? PaymentMethod::createFromArray($data['payment_method']) : null;
