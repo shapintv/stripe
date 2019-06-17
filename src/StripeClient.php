@@ -130,4 +130,9 @@ final class StripeClient
     {
         return new Api\Coupon($this->httpClient, $this->hydrator, $this->requestBuilder);
     }
+
+    public function paymentIntents(): Api\PaymentIntent
+    {
+        return new Api\PaymentIntent($this->httpClient, $this->hydrator, $this->requestBuilder);
+    }
 }
