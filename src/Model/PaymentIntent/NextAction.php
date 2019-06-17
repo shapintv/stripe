@@ -39,11 +39,16 @@ final class NextAction implements CreatableFromArray
     public static function createFromArray(array $data): self
     {
         $model = new self();
-        $model->redirectToUrl = $data['redirect_to_url'];
+        $model->redirectToUrl = $data['redirect_to_url'] ?? null;
         $model->type = $data['type'];
-        $model->useStripeSDK = $data['use_stripe_sdk'];
+        $model->useStripeSDK = $data['use_stripe_sdk'] ?? null;
 
         return $model;
+    }
+
+    public function useStripeSDK(): bool
+    {
+        return self::TYPE_USE_STRIPE_SDK === $this->type;
     }
 
     public function getRedirectToUrl(): ?array

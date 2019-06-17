@@ -205,7 +205,7 @@ final class PaymentIntent implements CreatableFromArray, ContainsMetadata
         $model->lastPaymentError = isset($data['last_payment_error']) ? LastPaymentError::createFromArray($data['last_payment_error']) : null;
         $model->live = $data['livemode'];
         $model->metadata = MetadataCollection::createFromArray($data['metadata']);
-        $model->nextAction = isset($data['next_action']) ? LastPaymentError::createFromArray($data['next_action']) : null;
+        $model->nextAction = isset($data['next_action']) ? NextAction::createFromArray($data['next_action']) : null;
         $model->onBehalfOfId = $data['on_behalf_of'];
         $model->paymentMethodId = $data['payment_method'];
         $model->paymentMethodTypes = $data['payment_method_types'];
@@ -218,6 +218,11 @@ final class PaymentIntent implements CreatableFromArray, ContainsMetadata
         $model->transferGroup = $data['transfer_group'];
 
         return $model;
+    }
+
+    public function requiresAction(): bool
+    {
+        return self::STATUS_REQUIRES_ACTION === $this->status;
     }
 
     public function getId(): string
