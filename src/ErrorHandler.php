@@ -85,7 +85,7 @@ final class ErrorHandler
         'processing_error' => DomainExceptions\BadRequestException::class,
         'product_inactive' => DomainExceptions\BadRequestException::class,
         'rate_limit' => DomainExceptions\BadRequestException::class,
-        'resource_already_exists' => DomainExceptions\BadRequestException::class,
+        'resource_already_exists' => DomainExceptions\ResourceAlreadyExistsException::class,
         'resource_missing' => DomainExceptions\BadRequestException::class,
         'routing_number_invalid' => DomainExceptions\BadRequestException::class,
         'secret_key_required' => DomainExceptions\BadRequestException::class,
