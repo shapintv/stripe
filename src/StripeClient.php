@@ -135,4 +135,9 @@ final class StripeClient
     {
         return new Api\PaymentIntent($this->httpClient, $this->hydrator, $this->requestBuilder);
     }
+
+    public function taxRates(): Api\TaxRate
+    {
+        return new Api\TaxRate($this->httpClient, $this->hydrator, $this->requestBuilder);
+    }
 }
