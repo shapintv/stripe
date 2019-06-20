@@ -90,7 +90,7 @@ final class Source implements CreatableFromArray, ContainsMetadata
     private $codeVerification;
 
     /**
-     * @var \DateTimeImmutable
+     * @var ?\DateTimeImmutable
      */
     private $createdAt;
 
@@ -168,10 +168,10 @@ final class Source implements CreatableFromArray, ContainsMetadata
         if (isset($data['code_verification'])) {
             $model->codeVerification = CodeVerification::createFromArray($data['code_verification']);
         }
-        $model->createdAt = new \DateTimeImmutable('@'.$data['created']);
+        $model->createdAt = isset($data['created']) ? new \DateTimeImmutable('@'.$data['created']) : null;
         $model->customer = $data['customer'] ?? null;
         $model->flow = $data['flow'] ?? null;
-        $model->live = $data['livemode'];
+        $model->live = $data['livemode'] ?? false;
         $model->metadata = MetadataCollection::createFromArray($data['metadata']);
         $model->owner = isset($data['owner']) ? Owner::createFromArray($data['owner']) : null;
         if (isset($data['redirect'])) {
@@ -245,7 +245,7 @@ final class Source implements CreatableFromArray, ContainsMetadata
         return $this->codeVerification;
     }
 
-    public function getCreatedAt(): \DateTimeImmutable
+    public function getCreatedAt(): ?\DateTimeImmutable
     {
         return $this->createdAt;
     }
