@@ -22,7 +22,7 @@ final class Customer extends HttpApi
      */
     public function get(string $customerId)
     {
-        $response = $this->httpGet("/v1/customers/$customerId");
+        $response = $this->httpGet("customers/$customerId");
 
         return $this->hydrator->hydrate($response, CustomerModel::class);
     }
@@ -32,7 +32,7 @@ final class Customer extends HttpApi
      */
     public function all(array $params = [])
     {
-        $response = $this->httpGet('/v1/customers', $params);
+        $response = $this->httpGet('customers', $params);
 
         return $this->hydrator->hydrate($response, CustomerCollection::class);
     }
@@ -45,7 +45,7 @@ final class Customer extends HttpApi
         $processor = new Processor();
         $params = $processor->processConfiguration(new Configuration\CustomerCreate(), [$params]);
 
-        $response = $this->httpPost('/v1/customers', $params);
+        $response = $this->httpPost('customers', $params);
 
         return $this->hydrator->hydrate($response, CustomerModel::class);
     }
@@ -58,7 +58,7 @@ final class Customer extends HttpApi
         $processor = new Processor();
         $params = $processor->processConfiguration(new Configuration\CustomerUpdate(), [$params]);
 
-        $response = $this->httpPost("/v1/customers/$id", $params);
+        $response = $this->httpPost("customers/$id", $params);
 
         return $this->hydrator->hydrate($response, CustomerModel::class);
     }

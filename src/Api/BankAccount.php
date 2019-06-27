@@ -20,7 +20,7 @@ final class BankAccount extends HttpApi
      */
     public function get(string $customerId, string $bankAccountId)
     {
-        $response = $this->httpGet("/v1/customers/$customerId/sources/$bankAccountId");
+        $response = $this->httpGet("customers/$customerId/sources/$bankAccountId");
 
         return $this->hydrator->hydrate($response, BankAccountModel::class);
     }
@@ -32,7 +32,7 @@ final class BankAccount extends HttpApi
     {
         $params['object'] = 'bank_account';
 
-        $response = $this->httpGet("/v1/customers/$customerId/sources", $params);
+        $response = $this->httpGet("customers/$customerId/sources", $params);
 
         return $this->hydrator->hydrate($response, BankAccountCollection::class);
     }

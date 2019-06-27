@@ -22,7 +22,7 @@ final class TaxRate extends HttpApi
      */
     public function get(string $id)
     {
-        $response = $this->httpGet("/v1/tax_rates/$id");
+        $response = $this->httpGet("tax_rates/$id");
 
         return $this->hydrator->hydrate($response, TaxRateModel::class);
     }
@@ -35,7 +35,7 @@ final class TaxRate extends HttpApi
         $processor = new Processor();
         $processor->processConfiguration(new Configuration\TaxRateCreate(), [$params]);
 
-        $response = $this->httpPost('/v1/tax_rates', $params);
+        $response = $this->httpPost('tax_rates', $params);
 
         return $this->hydrator->hydrate($response, TaxRateModel::class);
     }
@@ -45,7 +45,7 @@ final class TaxRate extends HttpApi
      */
     public function all(array $params = [])
     {
-        $response = $this->httpGet('/v1/tax_rates', $params);
+        $response = $this->httpGet('tax_rates', $params);
 
         return $this->hydrator->hydrate($response, TaxRateCollection::class);
     }

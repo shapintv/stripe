@@ -22,7 +22,7 @@ final class Refund extends HttpApi
      */
     public function get(string $id)
     {
-        $response = $this->httpGet("/v1/refunds/$id");
+        $response = $this->httpGet("refunds/$id");
 
         return $this->hydrator->hydrate($response, RefundModel::class);
     }
@@ -32,7 +32,7 @@ final class Refund extends HttpApi
      */
     public function all(array $params = [])
     {
-        $response = $this->httpGet('/v1/refunds', $params);
+        $response = $this->httpGet('refunds', $params);
 
         return $this->hydrator->hydrate($response, RefundCollection::class);
     }
@@ -45,7 +45,7 @@ final class Refund extends HttpApi
         $processor = new Processor();
         $processor->processConfiguration(new Configuration\RefundCreate(), [$params]);
 
-        $response = $this->httpPost('/v1/refunds', $params);
+        $response = $this->httpPost('refunds', $params);
 
         return $this->hydrator->hydrate($response, RefundModel::class);
     }

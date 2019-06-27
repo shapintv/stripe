@@ -22,7 +22,7 @@ final class Coupon extends HttpApi
      */
     public function get(string $id)
     {
-        $response = $this->httpGet("/v1/coupons/$id");
+        $response = $this->httpGet("coupons/$id");
 
         return $this->hydrator->hydrate($response, CouponModel::class);
     }
@@ -32,7 +32,7 @@ final class Coupon extends HttpApi
      */
     public function all(array $params = [])
     {
-        $response = $this->httpGet('/v1/coupons', $params);
+        $response = $this->httpGet('coupons', $params);
 
         return $this->hydrator->hydrate($response, CouponCollection::class);
     }
@@ -45,7 +45,7 @@ final class Coupon extends HttpApi
         $processor = new Processor();
         $params = $processor->processConfiguration(new Configuration\CouponCreate(), [$params]);
 
-        $response = $this->httpPost('/v1/coupons', $params);
+        $response = $this->httpPost('coupons', $params);
 
         return $this->hydrator->hydrate($response, CouponModel::class);
     }

@@ -9,10 +9,10 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Tests;
 
-use GuzzleHttp\Psr7\Response;
 use PHPUnit\Framework\TestCase;
 use Shapin\Stripe\ErrorHandler;
 use Shapin\Stripe\Exception\Domain as DomainExceptions;
+use Symfony\Contracts\HttpClient\ResponseInterface;
 
 final class ErrorHandlerTest extends TestCase
 {
@@ -23,11 +23,15 @@ final class ErrorHandlerTest extends TestCase
     {
         $this->expectException($expectedException);
 
-        (new ErrorHandler())->handle(new Response($statusCode, [], json_encode([
+        $response = $this->prophesize(ResponseInterface::class);
+        $response->getContent(false)->willReturn(json_encode([
             'error' => [
                 'message' => 'Just a test message',
             ],
-        ])));
+        ]));
+        $response->getStatusCode()->willReturn($statusCode);
+
+        (new ErrorHandler())->handle($response->reveal());
     }
 
     public function statusCodeProvider()
@@ -44,12 +48,16 @@ final class ErrorHandlerTest extends TestCase
     {
         $this->expectException($expectedException);
 
-        (new ErrorHandler())->handle(new Response(400, [], json_encode([
+        $response = $this->prophesize(ResponseInterface::class);
+        $response->getContent(false)->willReturn(json_encode([
             'error' => [
                 'code' => $errorCode,
                 'message' => 'Just a test message',
             ],
-        ])));
+        ]));
+        $response->getStatusCode()->willReturn(400);
+
+        (new ErrorHandler())->handle($response->reveal());
     }
 
     public function errorCodeProvider()

@@ -10,7 +10,7 @@ declare(strict_types=1);
 namespace Shapin\Stripe\Hydrator;
 
 use Shapin\Stripe\Exception\HydrationException;
-use Psr\Http\Message\ResponseInterface;
+use Symfony\Contracts\HttpClient\ResponseInterface;
 
 /**
  * Hydrate an HTTP response to array.
@@ -25,12 +25,16 @@ final class ArrayHydrator implements Hydrator
      */
     public function hydrate(ResponseInterface $response, string $class): array
     {
-        $body = $response->getBody()->__toString();
-        if (0 !== strpos($response->getHeaderLine('Content-Type'), 'application/json')) {
-            throw new HydrationException('The ArrayHydrator cannot hydrate response with Content-Type:'.$response->getHeaderLine('Content-Type'));
+        if (!isset($response->getHeaders()['content-type'])) {
+            throw new HydrationException('The ArrayHydrator cannot hydrate response without Content-Type.');
         }
 
-        $content = json_decode($body, true);
+        $contentType = reset($response->getHeaders()['content-type']);
+        if (0 !== strpos($contentType, 'application/json')) {
+            throw new HydrationException("The ArrayHydrator cannot hydrate response with Content-Type: $contentType.");
+        }
+
+        $content = json_decode($response->getContent(), true);
         if (JSON_ERROR_NONE !== json_last_error()) {
             throw new HydrationException(sprintf('Error (%d) when trying to json_decode response', json_last_error()));
         }

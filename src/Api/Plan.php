@@ -22,7 +22,7 @@ final class Plan extends HttpApi
      */
     public function get(string $id)
     {
-        $response = $this->httpGet("/v1/plans/$id");
+        $response = $this->httpGet("plans/$id");
 
         return $this->hydrator->hydrate($response, PlanModel::class);
     }
@@ -32,7 +32,7 @@ final class Plan extends HttpApi
      */
     public function all(array $params = [])
     {
-        $response = $this->httpGet('/v1/plans', $params);
+        $response = $this->httpGet('plans', $params);
 
         return $this->hydrator->hydrate($response, PlanCollection::class);
     }
@@ -50,7 +50,7 @@ final class Plan extends HttpApi
             unset($params['existing_product']);
         }
 
-        $response = $this->httpPost('/v1/plans', $params);
+        $response = $this->httpPost('plans', $params);
 
         return $this->hydrator->hydrate($response, PlanModel::class);
     }
@@ -63,7 +63,7 @@ final class Plan extends HttpApi
         $processor = new Processor();
         $processor->processConfiguration(new Configuration\PlanUpdate(), [$params]);
 
-        $response = $this->httpPost("/v1/plans/$id", $params);
+        $response = $this->httpPost("plans/$id", $params);
 
         return $this->hydrator->hydrate($response, PlanModel::class);
     }

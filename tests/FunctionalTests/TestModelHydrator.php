@@ -11,7 +11,7 @@ namespace Shapin\Stripe\Tests\FunctionalTests;
 
 use Shapin\Stripe\Hydrator\Hydrator;
 use Shapin\Stripe\Hydrator\ModelHydrator;
-use Psr\Http\Message\ResponseInterface;
+use Symfony\Contracts\HttpClient\ResponseInterface;
 
 final class TestModelHydrator implements Hydrator
 {
@@ -27,9 +27,11 @@ final class TestModelHydrator implements Hydrator
      */
     public function hydrate(ResponseInterface $response, string $class)
     {
-        return $this->hydrator->hydrate(
-            $response->withHeader('Content-Type', 'application/json'),
-            $class
-        );
+        $reflection = new \ReflectionClass($response);
+        $property = $reflection->getProperty('headers');
+        $property->setAccessible(true);
+        $property->setValue($response, array_merge($response->getHeaders(), ['content-type' => ['application/json']]));
+
+        return $this->hydrator->hydrate($response, $class);
     }
 }

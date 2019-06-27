@@ -11,7 +11,7 @@ namespace Shapin\Stripe;
 
 use Shapin\Stripe\Hydrator\ModelHydrator;
 use Shapin\Stripe\Hydrator\Hydrator;
-use Http\Client\HttpClient;
+use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 final class StripeClient
 {
@@ -26,118 +26,92 @@ final class StripeClient
     private $hydrator;
 
     /**
-     * @var RequestBuilder
-     */
-    private $requestBuilder;
-
-    /**
      * The constructor accepts already configured HTTP clients.
      * Use the configure method to pass a configuration to the Client and create an HTTP Client.
      */
-    public function __construct(
-        HttpClient $httpClient,
-        Hydrator $hydrator = null,
-        RequestBuilder $requestBuilder = null
-    ) {
-        $this->httpClient = $httpClient;
-        $this->hydrator = $hydrator ?: new ModelHydrator();
-        $this->requestBuilder = $requestBuilder ?: new RequestBuilder();
-    }
-
-    public static function configure(
-        HttpClientConfigurator $httpClientConfigurator,
-        Hydrator $hydrator = null,
-        RequestBuilder $requestBuilder = null
-    ): self {
-        $httpClient = $httpClientConfigurator->createConfiguredClient();
-
-        return new self($httpClient, $hydrator, $requestBuilder);
-    }
-
-    public static function create(string $apiKey): self
+    public function __construct(HttpClientInterface $stripeClient, Hydrator $hydrator = null)
     {
-        $httpClientConfigurator = (new HttpClientConfigurator())->setApiKey($apiKey);
-
-        return self::configure($httpClientConfigurator);
+        $this->httpClient = $stripeClient;
+        $this->hydrator = $hydrator ?: new ModelHydrator();
     }
 
     public function balances(): Api\Balance
     {
-        return new Api\Balance($this->httpClient, $this->hydrator, $this->requestBuilder);
+        return new Api\Balance($this->httpClient, $this->hydrator);
     }
 
     public function charges(): Api\Charge
     {
-        return new Api\Charge($this->httpClient, $this->hydrator, $this->requestBuilder);
+        return new Api\Charge($this->httpClient, $this->hydrator);
     }
 
     public function refunds(): Api\Refund
     {
-        return new Api\Refund($this->httpClient, $this->hydrator, $this->requestBuilder);
+        return new Api\Refund($this->httpClient, $this->hydrator);
     }
 
     public function cards(): Api\Card
     {
-        return new Api\Card($this->httpClient, $this->hydrator, $this->requestBuilder);
+        return new Api\Card($this->httpClient, $this->hydrator);
     }
 
     public function bankAccounts(): Api\BankAccount
     {
-        return new Api\BankAccount($this->httpClient, $this->hydrator, $this->requestBuilder);
+        return new Api\BankAccount($this->httpClient, $this->hydrator);
     }
 
     public function accounts(): Api\Account
     {
-        return new Api\Account($this->httpClient, $this->hydrator, $this->requestBuilder);
+        return new Api\Account($this->httpClient, $this->hydrator);
     }
 
     public function sources(): Api\Source
     {
-        return new Api\Source($this->httpClient, $this->hydrator, $this->requestBuilder);
+        return new Api\Source($this->httpClient, $this->hydrator);
     }
 
     public function transfers(): Api\Transfer
     {
-        return new Api\Transfer($this->httpClient, $this->hydrator, $this->requestBuilder);
+        return new Api\Transfer($this->httpClient, $this->hydrator);
     }
 
     public function products(): Api\Product
     {
-        return new Api\Product($this->httpClient, $this->hydrator, $this->requestBuilder);
+        return new Api\Product($this->httpClient, $this->hydrator);
     }
 
     public function customers(): Api\Customer
     {
-        return new Api\Customer($this->httpClient, $this->hydrator, $this->requestBuilder);
+        return new Api\Customer($this->httpClient, $this->hydrator);
     }
 
     public function subscriptions(): Api\Subscription
     {
-        return new Api\Subscription($this->httpClient, $this->hydrator, $this->requestBuilder);
+        return new Api\Subscription($this->httpClient, $this->hydrator);
     }
 
     public function plans(): Api\Plan
     {
-        return new Api\Plan($this->httpClient, $this->hydrator, $this->requestBuilder);
+        return new Api\Plan($this->httpClient, $this->hydrator);
     }
 
     public function invoices(): Api\Invoice
     {
-        return new Api\Invoice($this->httpClient, $this->hydrator, $this->requestBuilder);
+        return new Api\Invoice($this->httpClient, $this->hydrator);
     }
 
     public function coupons(): Api\Coupon
     {
-        return new Api\Coupon($this->httpClient, $this->hydrator, $this->requestBuilder);
+        return new Api\Coupon($this->httpClient, $this->hydrator);
     }
 
     public function paymentIntents(): Api\PaymentIntent
     {
-        return new Api\PaymentIntent($this->httpClient, $this->hydrator, $this->requestBuilder);
+        return new Api\PaymentIntent($this->httpClient, $this->hydrator);
     }
 
     public function taxRates(): Api\TaxRate
     {
-        return new Api\TaxRate($this->httpClient, $this->hydrator, $this->requestBuilder);
+        return new Api\TaxRate($this->httpClient, $this->hydrator);
     }
 }

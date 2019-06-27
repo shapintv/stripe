@@ -20,7 +20,7 @@ final class Card extends HttpApi
      */
     public function get(string $customerId, string $cardId)
     {
-        $response = $this->httpGet("/v1/customers/$customerId/cards/$cardId");
+        $response = $this->httpGet("customers/$customerId/cards/$cardId");
 
         return $this->hydrator->hydrate($response, CardModel::class);
     }
@@ -30,7 +30,7 @@ final class Card extends HttpApi
      */
     public function all(string $customerId, array $params = [])
     {
-        $response = $this->httpGet("/v1/customers/$customerId/cards", $params);
+        $response = $this->httpGet("customers/$customerId/cards", $params);
 
         return $this->hydrator->hydrate($response, CardCollection::class);
     }

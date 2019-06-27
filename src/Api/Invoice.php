@@ -22,7 +22,7 @@ final class Invoice extends HttpApi
      */
     public function get(string $id)
     {
-        $response = $this->httpGet("/v1/invoices/$id");
+        $response = $this->httpGet("invoices/$id");
 
         return $this->hydrator->hydrate($response, InvoiceModel::class);
     }
@@ -35,7 +35,7 @@ final class Invoice extends HttpApi
         $processor = new Processor();
         $params = $processor->processConfiguration(new Configuration\InvoiceList(), [$params]);
 
-        $response = $this->httpGet('/v1/invoices', $params);
+        $response = $this->httpGet('invoices', $params);
 
         return $this->hydrator->hydrate($response, InvoiceCollection::class);
     }

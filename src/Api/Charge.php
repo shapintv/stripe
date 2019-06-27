@@ -22,7 +22,7 @@ final class Charge extends HttpApi
      */
     public function get(string $id)
     {
-        $response = $this->httpGet("/v1/charges/$id");
+        $response = $this->httpGet("charges/$id");
 
         return $this->hydrator->hydrate($response, ChargeModel::class);
     }
@@ -35,7 +35,7 @@ final class Charge extends HttpApi
         $processor = new Processor();
         $processor->processConfiguration(new Configuration\ChargeCreate(), [$params]);
 
-        $response = $this->httpPost('/v1/charges', $params);
+        $response = $this->httpPost('charges', $params);
 
         return $this->hydrator->hydrate($response, ChargeModel::class);
     }
@@ -48,7 +48,7 @@ final class Charge extends HttpApi
         $processor = new Processor();
         $processor->processConfiguration(new Configuration\ChargeUpdate(), [$params]);
 
-        $response = $this->httpPost("/v1/charges/$id", $params);
+        $response = $this->httpPost("charges/$id", $params);
 
         return $this->hydrator->hydrate($response, ChargeModel::class);
     }
@@ -61,7 +61,7 @@ final class Charge extends HttpApi
         $processor = new Processor();
         $params = $processor->processConfiguration(new Configuration\ChargeList(), [$params]);
 
-        $response = $this->httpGet('/v1/charges', $params);
+        $response = $this->httpGet('charges', $params);
 
         return $this->hydrator->hydrate($response, ChargeCollection::class);
     }

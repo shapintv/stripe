@@ -22,7 +22,7 @@ final class Product extends HttpApi
      */
     public function get(string $productId)
     {
-        $response = $this->httpGet("/v1/products/$productId");
+        $response = $this->httpGet("products/$productId");
 
         return $this->hydrator->hydrate($response, ProductModel::class);
     }
@@ -35,7 +35,7 @@ final class Product extends HttpApi
         $processor = new Processor();
         $params = $processor->processConfiguration(new Configuration\ProductCreate(), [$params]);
 
-        $response = $this->httpPost('/v1/products', $params);
+        $response = $this->httpPost('products', $params);
 
         return $this->hydrator->hydrate($response, ProductModel::class);
     }
@@ -48,7 +48,7 @@ final class Product extends HttpApi
         $processor = new Processor();
         $params = $processor->processConfiguration(new Configuration\ProductUpdate(), [$params]);
 
-        $response = $this->httpPost("/v1/products/$id", $params);
+        $response = $this->httpPost("products/$id", $params);
 
         return $this->hydrator->hydrate($response, ProductModel::class);
     }
@@ -58,7 +58,7 @@ final class Product extends HttpApi
      */
     public function all(array $params = [])
     {
-        $response = $this->httpGet('/v1/products', $params);
+        $response = $this->httpGet('products', $params);
 
         return $this->hydrator->hydrate($response, ProductCollection::class);
     }

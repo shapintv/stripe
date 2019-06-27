@@ -9,11 +9,11 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Tests\FunctionalTests;
 
+use PHPUnit\Framework\TestCase as BaseTestCase;
 use Shapin\Stripe\HttpClientConfigurator;
 use Shapin\Stripe\StripeClient;
-use GuzzleHttp\Psr7\Request;
-use Http\Client\Exception\NetworkException;
-use PHPUnit\Framework\TestCase as BaseTestCase;
+use Symfony\Component\HttpClient\Exception\TransportException;
+use Symfony\Component\HttpClient\HttpClient;
 
 abstract class TestCase extends BaseTestCase
 {
@@ -22,17 +22,17 @@ abstract class TestCase extends BaseTestCase
 
     public function getStripeClient()
     {
-        $httpClientConfigurator = new HttpClientConfigurator();
-        $httpClientConfigurator
-            ->setApiKey(self::API_KEY)
-            ->setEndpoint(self::API_ENDPOINT)
-        ;
-
-        $httpClient = $httpClientConfigurator->createConfiguredClient();
+        $httpClient = HttpClient::create([
+            'base_uri' => 'http://127.0.0.1:12111/v1/',
+            'auth_bearer' => self::API_KEY,
+            'headers' => [
+                'Content-Type' => 'application/json',
+            ],
+        ]);
 
         try {
-            $httpClient->sendRequest(new Request('GET', '/'));
-        } catch (NetworkException $e) {
+            $httpClient->request('GET', '')->getStatusCode();
+        } catch (TransportException $e) {
             $this->fail('Looks like Stripe MOCK API is not running: '.$e->getMessage());
         }
 

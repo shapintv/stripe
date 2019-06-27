@@ -23,7 +23,7 @@ final class Subscription extends HttpApi
      */
     public function get(string $id)
     {
-        $response = $this->httpGet("/v1/subscriptions/$id");
+        $response = $this->httpGet("subscriptions/$id");
 
         return $this->hydrator->hydrate($response, SubscriptionModel::class);
     }
@@ -33,7 +33,7 @@ final class Subscription extends HttpApi
      */
     public function all(array $params = [])
     {
-        $response = $this->httpGet('/v1/subscriptions', $params);
+        $response = $this->httpGet('subscriptions', $params);
 
         return $this->hydrator->hydrate($response, SubscriptionCollection::class);
     }
@@ -46,7 +46,7 @@ final class Subscription extends HttpApi
         $processor = new Processor();
         $params = $processor->processConfiguration(new Configuration\SubscriptionCreate(), [$params]);
 
-        $response = $this->httpPost('/v1/subscriptions', $params);
+        $response = $this->httpPost('subscriptions', $params);
 
         return $this->hydrator->hydrate($response, SubscriptionModel::class);
     }
@@ -59,7 +59,7 @@ final class Subscription extends HttpApi
         $processor = new Processor();
         $params = $processor->processConfiguration(new Configuration\SubscriptionCancel(), [$params]);
 
-        $response = $this->httpDelete("/v1/subscriptions/$id", $params);
+        $response = $this->httpDelete("subscriptions/$id", $params);
 
         return $this->hydrator->hydrate($response, SubscriptionModel::class);
     }
@@ -69,7 +69,7 @@ final class Subscription extends HttpApi
      */
     public function getItem(string $id)
     {
-        $response = $this->httpGet("/v1/subscription_items/$id");
+        $response = $this->httpGet("subscription_items/$id");
 
         return $this->hydrator->hydrate($response, Item::class);
     }
@@ -82,7 +82,7 @@ final class Subscription extends HttpApi
         $processor = new Processor();
         $params = $processor->processConfiguration(new Configuration\SubscriptionUpdate(), [$params]);
 
-        $response = $this->httpPost("/v1/subscriptions/$id", $params);
+        $response = $this->httpPost("subscriptions/$id", $params);
 
         return $this->hydrator->hydrate($response, SubscriptionModel::class);
     }

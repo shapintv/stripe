@@ -26,7 +26,7 @@ final class Balance extends HttpApi
             $headers = ['Stripe-Account' => $stripeAccount];
         }
 
-        $response = $this->httpGet('/v1/balance', [], $headers);
+        $response = $this->httpGet('balance', [], $headers);
 
         return $this->hydrator->hydrate($response, BalanceModel::class);
     }
@@ -36,7 +36,7 @@ final class Balance extends HttpApi
      */
     public function getBalanceTransaction(string $id)
     {
-        $response = $this->httpGet("/v1/balance/history/$id");
+        $response = $this->httpGet("balance/history/$id");
 
         return $this->hydrator->hydrate($response, BalanceTransaction::class);
     }
@@ -46,7 +46,7 @@ final class Balance extends HttpApi
      */
     public function getBalanceTransactions(array $params = [])
     {
-        $response = $this->httpGet('/v1/balance/history', $params);
+        $response = $this->httpGet('balance/history', $params);
 
         return $this->hydrator->hydrate($response, BalanceTransactionCollection::class);
     }

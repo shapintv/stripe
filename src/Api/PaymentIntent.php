@@ -23,7 +23,7 @@ final class PaymentIntent extends HttpApi
      */
     public function get(string $id)
     {
-        $response = $this->httpGet("/v1/payment_intents/$id");
+        $response = $this->httpGet("payment_intents/$id");
 
         return $this->hydrator->hydrate($response, PaymentIntentModel::class);
     }
@@ -33,7 +33,7 @@ final class PaymentIntent extends HttpApi
      */
     public function all(array $params = [])
     {
-        $response = $this->httpGet('/v1/payment_intents', $params);
+        $response = $this->httpGet('payment_intents', $params);
 
         return $this->hydrator->hydrate($response, PaymentIntentCollection::class);
     }

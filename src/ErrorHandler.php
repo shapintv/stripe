@@ -9,9 +9,9 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe;
 
-use Psr\Http\Message\ResponseInterface;
 use Shapin\Stripe\Exception\Domain as DomainExceptions;
 use Shapin\Stripe\Exception\DomainException;
+use Symfony\Contracts\HttpClient\ResponseInterface;
 
 final class ErrorHandler
 {
@@ -106,7 +106,7 @@ final class ErrorHandler
 
     public function handle(ResponseInterface $response): void
     {
-        $data = json_decode((string) $response->getBody(), true);
+        $data = json_decode($response->getContent(false), true);
 
         if (\JSON_ERROR_NONE !== json_last_error()) {
             throw $this->getExceptionForStatusCode($response);

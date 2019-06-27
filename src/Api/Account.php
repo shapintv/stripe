@@ -22,7 +22,7 @@ final class Account extends HttpApi
      */
     public function get(string $id)
     {
-        $response = $this->httpGet("/v1/accounts/$id");
+        $response = $this->httpGet("accounts/$id");
 
         return $this->hydrator->hydrate($response, AccountModel::class);
     }
@@ -32,7 +32,7 @@ final class Account extends HttpApi
      */
     public function all(array $params = [])
     {
-        $response = $this->httpGet('/v1/accounts'.http_build_query($params));
+        $response = $this->httpGet('accounts'.http_build_query($params));
 
         return $this->hydrator->hydrate($response, AccountCollection::class);
     }
@@ -45,7 +45,7 @@ final class Account extends HttpApi
         $processor = new Processor();
         $processor->processConfiguration(new Configuration\AccountCreate(), [$params]);
 
-        $response = $this->httpPost('/v1/accounts', $params);
+        $response = $this->httpPost('accounts', $params);
 
         return $this->hydrator->hydrate($response, AccountModel::class);
     }
@@ -58,7 +58,7 @@ final class Account extends HttpApi
         $processor = new Processor();
         $processor->processConfiguration(new Configuration\AccountUpdate(), [$params]);
 
-        $response = $this->httpPost("/v1/accounts/$id", $params);
+        $response = $this->httpPost("accounts/$id", $params);
 
         return $this->hydrator->hydrate($response, AccountModel::class);
     }

@@ -18,7 +18,19 @@ $ composer require shapintv/stripe
 ## Usage
 
 ``` php
-$stripeClient = StripeClient::create($stripeApiKey);
+use Shapin\Stripe\StripeClient;
+use Symfony\Component\HttpClient\HttpClient;
+
+$httpClient = HttpClient::create([
+    'base_uri' => 'http://127.0.0.1:12111/v1/',
+    'auth_bearer' => 'api_key',
+    'headers' => [
+        'Content-Type' => 'application/json',
+    ],
+]);
+
+$stripeClient = new StripeClient($httpClient);
+
 $subscription = $apiClient->subscriptions()->get('sub_myid');
 echo $subscription->isActive(); // true
 echo $subscription->getCreatedAt()->getTimestamp(); // 1234567890

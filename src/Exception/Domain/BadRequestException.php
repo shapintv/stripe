@@ -9,8 +9,8 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Exception\Domain;
 
-use Psr\Http\Message\ResponseInterface;
 use Shapin\Stripe\Exception\DomainException;
+use Symfony\Contracts\HttpClient\ResponseInterface;
 
 class BadRequestException extends \Exception implements DomainException
 {
@@ -19,7 +19,7 @@ class BadRequestException extends \Exception implements DomainException
     public function __construct(ResponseInterface $response)
     {
         $this->response = $response;
-        $content = json_decode($response->getBody()->__toString(), true);
+        $content = json_decode($response->getContent(false), true);
 
         parent::__construct($content['error']['message']);
     }

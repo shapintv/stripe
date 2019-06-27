@@ -21,7 +21,7 @@ final class Source extends HttpApi
      */
     public function get(string $id)
     {
-        $response = $this->httpGet("/v1/sources/$id");
+        $response = $this->httpGet("sources/$id");
 
         return $this->hydrator->hydrate($response, SourceModel::class);
     }
@@ -34,7 +34,7 @@ final class Source extends HttpApi
         $processor = new Processor();
         $processor->processConfiguration(new Configuration\SourceCreate(), [$params]);
 
-        $response = $this->httpPost('/v1/sources', $params);
+        $response = $this->httpPost('sources', $params);
 
         return $this->hydrator->hydrate($response, SourceModel::class);
     }

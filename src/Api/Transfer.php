@@ -22,7 +22,7 @@ final class Transfer extends HttpApi
      */
     public function get(string $id)
     {
-        $response = $this->httpGet("/v1/transfers/$id");
+        $response = $this->httpGet("transfers/$id");
 
         return $this->hydrator->hydrate($response, TransferModel::class);
     }
@@ -35,7 +35,7 @@ final class Transfer extends HttpApi
         $processor = new Processor();
         $params = $processor->processConfiguration(new Configuration\TransferList(), [$params]);
 
-        $response = $this->httpGet('/v1/transfers', $params);
+        $response = $this->httpGet('transfers', $params);
 
         return $this->hydrator->hydrate($response, TransferCollection::class);
     }
@@ -48,7 +48,7 @@ final class Transfer extends HttpApi
         $processor = new Processor();
         $processor->processConfiguration(new Configuration\TransferCreate(), [$params]);
 
-        $response = $this->httpPost('/v1/transfers', $params);
+        $response = $this->httpPost('transfers', $params);
 
         return $this->hydrator->hydrate($response, TransferModel::class);
     }
