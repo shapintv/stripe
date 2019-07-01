@@ -18,15 +18,16 @@ use Symfony\Component\HttpClient\HttpClient;
 abstract class TestCase extends BaseTestCase
 {
     const API_KEY = 'sk_test_123';
-    const API_ENDPOINT = 'http://127.0.0.1:12111';
+    const API_ENDPOINT = 'http://127.0.0.1:12111/v1/';
 
     public function getStripeClient()
     {
         $httpClient = HttpClient::create([
-            'base_uri' => 'http://127.0.0.1:12111/v1/',
+            'base_uri' => self::API_ENDPOINT,
             'auth_bearer' => self::API_KEY,
             'headers' => [
                 'Content-Type' => 'application/json',
+                'Stripe-Version' => '2019-05-16',
             ],
         ]);
 
