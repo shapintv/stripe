@@ -68,11 +68,12 @@ abstract class HttpApi
      */
     protected function httpPost(string $path, array $params = [], array $requestHeaders = []): ResponseInterface
     {
-        if (empty($requestHeaders)) {
-            $requestHeaders = ['Content-Type' => 'application/x-www-form-urlencoded'];
-        }
+        $requestHeaders['Content-Type'] = 'application/x-www-form-urlencoded';
 
-        $response = $this->httpPostRaw($path, $this->httpQueryBuilder->build($params), $requestHeaders);
+        $response = $this->httpClient->request('POST', $path, [
+            'body' => $this->httpQueryBuilder->build($params),
+            'headers' => $requestHeaders,
+        ]);
 
         if (200 !== $response->getStatusCode()) {
             $this->errorHandler->handle($response);
@@ -113,16 +114,5 @@ abstract class HttpApi
         }
 
         return $response;
-    }
-
-    /**
-     * Send a POST request with raw data.
-     */
-    private function httpPostRaw(string $path, $body, array $requestHeaders = []): ResponseInterface
-    {
-        return $this->httpClient->request('POST', $path, [
-            'body' => $body,
-            'headers' => $requestHeaders,
-        ]);
     }
 }
