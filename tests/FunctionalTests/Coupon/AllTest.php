@@ -34,4 +34,16 @@ final class AllTest extends TestCase
             $this->assertInstanceOf(Coupon::class, $coupon);
         }
     }
+
+    public function testCreateCoupon()
+    {
+        $coupon = $this->couponApi->create([
+            'duration' => 'once',
+            'amount_off' => 500,
+            'currency' => 'EUR',
+            'name' => 'a test coupon',
+        ]);
+
+        $this->assertInstanceOf(Coupon::class, $coupon);
+    }
 }
