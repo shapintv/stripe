@@ -42,6 +42,7 @@ final class GetTest extends TestCase
         $this->assertIsString($subscription->getCustomer());
         $this->assertNull($subscription->getDaysUntilDue());
         $this->assertNull($subscription->getDefaultSource());
+        $this->assertCount(0, $subscription->getDefaultTaxRates());
         $this->assertFalse($subscription->hasDiscount());
         $this->assertFalse($subscription->hasActiveDiscountForCurrentPeriod());
         $this->assertNull($subscription->getDiscount());
@@ -54,7 +55,6 @@ final class GetTest extends TestCase
         $this->assertSame(1, $subscription->getQuantity());
         $this->assertTrue(is_int($subscription->getStartAt()->getTimestamp()));
         $this->assertSame(Subscription::STATUS_ACTIVE, $subscription->getStatus());
-        $this->assertNull($subscription->getTaxPercent());
         $this->assertSame(1234567890, $subscription->getTrialEndAt()->getTimestamp());
         $this->assertSame(1234567890, $subscription->getTrialStartAt()->getTimestamp());
     }

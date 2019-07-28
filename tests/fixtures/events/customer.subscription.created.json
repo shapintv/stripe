@@ -23,6 +23,7 @@
       "customer": "cus_00000000000000",
       "days_until_due": null,
       "default_source": null,
+      "default_tax_rates": [],
       "discount": null,
       "ended_at": null,
       "items": {
@@ -94,7 +95,6 @@
       "quantity": 1,
       "start": 1549296189,
       "status": "active",
-      "tax_percent": null,
       "trial_end": null,
       "trial_start": null
     }

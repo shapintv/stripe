@@ -93,6 +93,11 @@ final class Subscription implements CreatableFromArray, ContainsMetadata
     private $defaultSource;
 
     /**
+     * @var array
+     */
+    private $defaultTaxRates;
+
+    /**
      * @var ?Discount
      */
     private $discount;
@@ -128,11 +133,6 @@ final class Subscription implements CreatableFromArray, ContainsMetadata
     private $status;
 
     /**
-     * @var ?float
-     */
-    private $taxPercent;
-
-    /**
      * @var ?\DateTimeImmutable
      */
     private $trialEndAt;
@@ -157,6 +157,7 @@ final class Subscription implements CreatableFromArray, ContainsMetadata
         $model->customer = $data['customer'];
         $model->daysUntilDue = null !== $data['days_until_due'] ? (int) $data['days_until_due'] : null;
         $model->defaultSource = $data['default_source'] ?? null;
+        $model->defaultTaxRates = $data['default_tax_rates'];
         $model->discount = isset($data['discount']) ? Discount::createFromArray($data['discount']) : null;
         $model->endedAt = null !== $data['ended_at'] ? new \DateTimeImmutable('@'.$data['ended_at']) : null;
         $model->items = ItemCollection::createFromArray($data['items']);
@@ -166,7 +167,6 @@ final class Subscription implements CreatableFromArray, ContainsMetadata
         $model->quantity = (int) $data['quantity'];
         $model->startAt = new \DateTimeImmutable('@'.$data['start']);
         $model->status = $data['status'];
-        $model->taxPercent = null !== $data['tax_percent'] ? (float) $data['tax_percent'] : null;
         $model->trialEndAt = null !== $data['trial_end'] ? new \DateTimeImmutable('@'.$data['trial_end']) : null;
         $model->trialStartAt = null !== $data['trial_start'] ? new \DateTimeImmutable('@'.$data['trial_start']) : null;
 
@@ -278,6 +278,11 @@ final class Subscription implements CreatableFromArray, ContainsMetadata
         return $this->defaultSource;
     }
 
+    public function getDefaultTaxRates(): array
+    {
+        return $this->defaultTaxRates;
+    }
+
     public function getDiscount(): ?Discount
     {
         return $this->discount;
@@ -336,11 +341,6 @@ final class Subscription implements CreatableFromArray, ContainsMetadata
     public function getStatus(): string
     {
         return $this->status;
-    }
-
-    public function getTaxPercent(): ?float
-    {
-        return $this->taxPercent;
     }
 
     public function getTrialEndAt(): ?\DateTimeImmutable
