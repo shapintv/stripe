@@ -49,7 +49,7 @@ final class EventBuilder
         'invoice.created' => Event\InvoiceCreatedEvent::class,
         'invoice.deleted' => Event\InvoiceDeletedEvent::class,
         'invoice.finalized' => Event\InvoiceFinalizedEvent::class,
-        'invoice.marked_uncollectible' => Event\InvoiceMarkedUncollectibleEvent::class,
+        'invoice.payment_action_required' => Event\InvoiceMarkedUncollectibleEvent::class,
         'invoice.payment_failed' => Event\InvoicePaymentFailedEvent::class,
         'invoice.payment_succeeded' => Event\InvoicePaymentSucceededEvent::class,
         'invoice.sent' => Event\InvoiceSentEvent::class,

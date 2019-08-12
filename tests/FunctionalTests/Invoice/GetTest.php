@@ -81,6 +81,7 @@ final class GetTest extends TestCase
         $this->assertSame(1234567890, $invoice->getNextPaymentAttempt()->getTimestamp());
         $this->assertIsString($invoice->getNumber());
         $this->assertFalse($invoice->isPaid());
+        $this->assertNull($invoice->getPaymentIntentId());
         $this->assertInstanceOf(\DateTimeImmutable::class, $invoice->getPeriodEndAt());
         $this->assertInstanceOf(\DateTimeImmutable::class, $invoice->getPeriodStartAt());
         $this->assertNull($invoice->getReceiptNumber());

@@ -177,6 +177,11 @@ final class Invoice implements CreatableFromArray, ContainsMetadata
     private $paid;
 
     /**
+     * @var ?string
+     */
+    private $paymentIntentId;
+
+    /**
      * @var \DateTimeImmutable
      */
     private $periodEndAt;
@@ -287,6 +292,7 @@ final class Invoice implements CreatableFromArray, ContainsMetadata
         $model->nextPaymentAttempt = isset($data['next_payment_attempt']) ? new \DateTimeImmutable('@'.$data['next_payment_attempt']) : null;
         $model->number = $data['number'];
         $model->paid = (bool) $data['paid'];
+        $model->paymentIntentId = $data['payment_intent'];
         $model->periodEndAt = new \DateTimeImmutable('@'.$data['period_end']);
         $model->periodStartAt = new \DateTimeImmutable('@'.$data['period_start']);
         $model->receiptNumber = $data['receipt_number'];
@@ -438,6 +444,11 @@ final class Invoice implements CreatableFromArray, ContainsMetadata
     public function isPaid(): bool
     {
         return $this->paid;
+    }
+
+    public function getPaymentIntentId(): ?string
+    {
+        return $this->paymentIntentId;
     }
 
     public function getPeriodEndAt(): \DateTimeImmutable

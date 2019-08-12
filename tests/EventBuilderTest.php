@@ -69,7 +69,6 @@ final class EventBuilderTest extends TestCase
         yield ['invoice.created', Event\InvoiceCreatedEvent::class];
         yield ['invoice.deleted', Event\InvoiceDeletedEvent::class];
         yield ['invoice.finalized', Event\InvoiceFinalizedEvent::class];
-        yield ['invoice.marked_uncollectible', Event\InvoiceMarkedUncollectibleEvent::class];
         yield ['invoice.payment_failed', Event\InvoicePaymentFailedEvent::class];
         yield ['invoice.payment_succeeded', Event\InvoicePaymentSucceededEvent::class];
         yield ['invoice.sent', Event\InvoiceSentEvent::class];
@@ -169,6 +168,17 @@ final class EventBuilderTest extends TestCase
 
         $event = (new EventBuilder())->createEventFromArray($data);
         $this->assertSame($eventName, $event->getType());
+    }
+
+    public function testInvoiceMarkedAsUncollectibleEvent()
+    {
+        $data = json_decode(file_get_contents(__DIR__.'/fixtures/events/invoice.marked_uncollectible.json'), true);
+        $this->assertSame(\JSON_ERROR_NONE, json_last_error());
+
+        $this->assertSame('invoice.payment_action_required', $data['type']);
+
+        $event = (new EventBuilder())->createEventFromArray($data);
+        $this->assertSame('invoice.payment_action_required', $event->getType());
     }
 
     /**
