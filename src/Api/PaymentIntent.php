@@ -11,7 +11,6 @@ namespace Shapin\Stripe\Api;
 
 use Shapin\Stripe\Configuration;
 use Shapin\Stripe\Exception;
-use Shapin\Stripe\Model\PaymentIntent\Item;
 use Shapin\Stripe\Model\PaymentIntent\PaymentIntent as PaymentIntentModel;
 use Shapin\Stripe\Model\PaymentIntent\PaymentIntentCollection;
 use Symfony\Component\Config\Definition\Processor;
@@ -36,5 +35,18 @@ final class PaymentIntent extends HttpApi
         $response = $this->httpGet('payment_intents', $params);
 
         return $this->hydrator->hydrate($response, PaymentIntentCollection::class);
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function create(array $params)
+    {
+        $processor = new Processor();
+        $processor->processConfiguration(new Configuration\PaymentIntentCreate(), [$params]);
+
+        $response = $this->httpPost('payment_intents', $params);
+
+        return $this->hydrator->hydrate($response, PaymentIntentModel::class);
     }
 }
