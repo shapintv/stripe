@@ -49,4 +49,17 @@ final class PaymentIntent extends HttpApi
 
         return $this->hydrator->hydrate($response, PaymentIntentModel::class);
     }
+
+    /**
+     * @throws Exception
+     */
+    public function confirm(string $id, array $params = [])
+    {
+        $processor = new Processor();
+        $processor->processConfiguration(new Configuration\PaymentIntentConfirm(), [$params]);
+
+        $response = $this->httpPost("payment_intents/$id/confirm", $params);
+
+        return $this->hydrator->hydrate($response, PaymentIntentModel::class);
+    }
 }
