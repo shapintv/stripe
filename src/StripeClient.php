@@ -114,4 +114,9 @@ final class StripeClient
     {
         return new Api\TaxRate($this->httpClient, $this->hydrator);
     }
+
+    public function setupIntents(): Api\SetupIntent
+    {
+        return new Api\SetupIntent($this->httpClient, $this->hydrator);
+    }
 }
