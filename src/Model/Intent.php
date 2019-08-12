@@ -39,6 +39,11 @@ abstract class Intent
         return self::STATUS_REQUIRES_PAYMENT_METHOD === $this->status;
     }
 
+    public function isSucceeded()
+    {
+        return self::STATUS_SUCCEEDED === $this->status;
+    }
+
     public function getNextAction(): ?IntentNextAction
     {
         return $this->nextAction;
