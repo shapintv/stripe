@@ -39,4 +39,17 @@ final class Invoice extends HttpApi
 
         return $this->hydrator->hydrate($response, InvoiceCollection::class);
     }
+
+    /**
+     * @throws Exception
+     */
+    public function pay(string $id, array $params = [])
+    {
+        $processor = new Processor();
+        $processor->processConfiguration(new Configuration\InvoicePay(), [$params]);
+
+        $response = $this->httpPost("invoices/$id/pay", $params);
+
+        return $this->hydrator->hydrate($response, InvoiceModel::class);
+    }
 }
