@@ -11,5 +11,6 @@ namespace Shapin\Stripe\Model\Event;
 
 final class AccountUpdatedEvent implements ContainsAccount, ContainsPreviousAttributes
 {
-    use ContainsAccountTrait, ContainsPreviousAttributesTrait;
+    use ContainsAccountTrait;
+    use ContainsPreviousAttributesTrait;
 }

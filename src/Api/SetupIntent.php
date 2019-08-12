@@ -11,7 +11,6 @@ namespace Shapin\Stripe\Api;
 
 use Shapin\Stripe\Configuration;
 use Shapin\Stripe\Exception;
-use Shapin\Stripe\Model\SetupIntent\Item;
 use Shapin\Stripe\Model\SetupIntent\SetupIntent as SetupIntentModel;
 use Shapin\Stripe\Model\SetupIntent\SetupIntentCollection;
 use Symfony\Component\Config\Definition\Processor;

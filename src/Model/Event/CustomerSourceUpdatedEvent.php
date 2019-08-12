@@ -11,5 +11,6 @@ namespace Shapin\Stripe\Model\Event;
 
 final class CustomerSourceUpdatedEvent implements ContainsSource, ContainsPreviousAttributes
 {
-    use ContainsSourceTrait, ContainsPreviousAttributesTrait;
+    use ContainsSourceTrait;
+    use ContainsPreviousAttributesTrait;
 }

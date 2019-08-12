@@ -10,7 +10,6 @@ declare(strict_types=1);
 namespace Shapin\Stripe\Tests\FunctionalTests;
 
 use PHPUnit\Framework\TestCase as BaseTestCase;
-use Shapin\Stripe\HttpClientConfigurator;
 use Shapin\Stripe\StripeClient;
 use Symfony\Component\HttpClient\Exception\TransportException;
 use Symfony\Component\HttpClient\HttpClient;

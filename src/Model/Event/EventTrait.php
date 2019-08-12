@@ -32,7 +32,8 @@ use Shapin\Stripe\Model\Transfer\Transfer;
 
 trait EventTrait
 {
-    use LivemodeTrait, MetadataTrait;
+    use LivemodeTrait;
+    use MetadataTrait;
 
     /**
      * @var string

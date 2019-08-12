@@ -10,17 +10,15 @@ declare(strict_types=1);
 namespace Shapin\Stripe\Model\SetupIntent;
 
 use Shapin\Stripe\Model\ContainsMetadata;
-use Shapin\Stripe\Model\Charge\ChargeCollection;
 use Shapin\Stripe\Model\CreatableFromArray;
 use Shapin\Stripe\Model\LivemodeTrait;
 use Shapin\Stripe\Model\MetadataTrait;
 use Shapin\Stripe\Model\MetadataCollection;
-use Money\Currency;
-use Money\Money;
 
 final class SetupIntent implements CreatableFromArray, ContainsMetadata
 {
-    use LivemodeTrait, MetadataTrait;
+    use LivemodeTrait;
+    use MetadataTrait;
 
     const CANCELLATION_REASON_ABANDONED = 'abandoned';
     const CANCELLATION_REASON_REQUESTED_BY_CUSTOMER = 'requested_by_customer';

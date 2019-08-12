@@ -17,7 +17,8 @@ use Shapin\Stripe\Model\MetadataCollection;
 
 final class TaxRate implements CreatableFromArray, ContainsMetadata
 {
-    use LivemodeTrait, MetadataTrait;
+    use LivemodeTrait;
+    use MetadataTrait;
 
     /**
      * @var string

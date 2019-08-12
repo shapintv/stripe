@@ -23,7 +23,8 @@ use Money\Currency;
 
 final class Customer implements CreatableFromArray, ContainsMetadata
 {
-    use LivemodeTrait, MetadataTrait;
+    use LivemodeTrait;
+    use MetadataTrait;
 
     /**
      * @var string

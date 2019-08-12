@@ -10,7 +10,6 @@ declare(strict_types=1);
 namespace Shapin\Stripe\Tests\FunctionalTests\Coupon;
 
 use Shapin\Stripe\Model\Coupon\Coupon;
-use Shapin\Stripe\Model\MetadataCollection;
 use Shapin\Stripe\Tests\FunctionalTests\TestCase;
 
 final class CreateTest extends TestCase

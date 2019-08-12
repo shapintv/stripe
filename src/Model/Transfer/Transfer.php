@@ -19,7 +19,8 @@ use Money\Money;
 
 final class Transfer implements CreatableFromArray, ContainsMetadata
 {
-    use LivemodeTrait, MetadataTrait;
+    use LivemodeTrait;
+    use MetadataTrait;
 
     /**
      * @var string

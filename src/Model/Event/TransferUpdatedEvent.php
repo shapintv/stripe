@@ -11,5 +11,6 @@ namespace Shapin\Stripe\Model\Event;
 
 final class TransferUpdatedEvent implements ContainsTransfer, ContainsPreviousAttributes
 {
-    use ContainsTransferTrait, ContainsPreviousAttributesTrait;
+    use ContainsTransferTrait;
+    use ContainsPreviousAttributesTrait;
 }

@@ -9,12 +9,7 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Model\PaymentIntent;
 
-use Shapin\Stripe\Model\Charge\ChargeCollection;
 use Shapin\Stripe\Model\CreatableFromArray;
-use Shapin\Stripe\Model\Customer\CustomField;
-use Shapin\Stripe\Model\Source\Source;
-use Money\Currency;
-use Money\Money;
 
 final class NextAction implements CreatableFromArray
 {

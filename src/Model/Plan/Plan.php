@@ -19,7 +19,8 @@ use Money\Money;
 
 final class Plan implements CreatableFromArray, ContainsMetadata
 {
-    use LivemodeTrait, MetadataTrait;
+    use LivemodeTrait;
+    use MetadataTrait;
 
     const AGGREGATE_USAGE_SUM = 'sum';
     const AGGREGATE_USAGE_LAST_DURING_PERIOD = 'last_during_period';

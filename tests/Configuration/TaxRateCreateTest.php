@@ -11,7 +11,6 @@ namespace Shapin\Stripe\Tests\Configuration;
 
 use PHPUnit\Framework\TestCase;
 use Shapin\Stripe\Configuration\TaxRateCreate;
-use Shapin\Stripe\Model\TaxRate\TaxRate;
 use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
 use Symfony\Component\Config\Definition\Processor;
 

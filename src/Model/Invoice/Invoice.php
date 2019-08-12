@@ -21,7 +21,8 @@ use Money\Money;
 
 final class Invoice implements CreatableFromArray, ContainsMetadata
 {
-    use LivemodeTrait, MetadataTrait;
+    use LivemodeTrait;
+    use MetadataTrait;
 
     const BILLING_CHARGE_AUTOMATICALLY = 'charge_automatically';
     const BILLING_SEND_INVOICE = 'send_invoice';

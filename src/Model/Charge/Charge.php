@@ -23,7 +23,8 @@ use Money\Money;
 
 final class Charge implements CreatableFromArray, ContainsMetadata
 {
-    use LivemodeTrait, MetadataTrait;
+    use LivemodeTrait;
+    use MetadataTrait;
 
     const STATUS_FAILED = 'failed';
     const STATUS_PENDING = 'pending';
@@ -215,7 +216,7 @@ final class Charge implements CreatableFromArray, ContainsMetadata
         // Most of the time, the source is a card
         // @see: https://stripe.com/docs/api/charges/object?lang=curl#charge_object-source
         $source = $data['source'] ?? null;
-        if (is_array($source) && isset($source['object'])) {
+        if (\is_array($source) && isset($source['object'])) {
             if ('card' === $source['object']) {
                 $source = Card::createFromArray($source);
             } elseif ('account' === $source['object']) {

@@ -11,5 +11,6 @@ namespace Shapin\Stripe\Model\Event;
 
 final class CustomerDiscountUpdatedEvent implements ContainsDiscount, ContainsPreviousAttributes
 {
-    use ContainsDiscountTrait, ContainsPreviousAttributesTrait;
+    use ContainsDiscountTrait;
+    use ContainsPreviousAttributesTrait;
 }

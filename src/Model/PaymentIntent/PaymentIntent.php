@@ -20,7 +20,8 @@ use Money\Money;
 
 final class PaymentIntent implements CreatableFromArray, ContainsMetadata
 {
-    use LivemodeTrait, MetadataTrait;
+    use LivemodeTrait;
+    use MetadataTrait;
 
     const CAPTURE_METHOD_AUTOMATIC = 'automatic';
     const CAPTURE_METHOD_MANUAL = 'manual';

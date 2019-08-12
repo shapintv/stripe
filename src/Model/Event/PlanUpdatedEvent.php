@@ -11,5 +11,6 @@ namespace Shapin\Stripe\Model\Event;
 
 final class PlanUpdatedEvent implements ContainsPlan, ContainsPreviousAttributes
 {
-    use ContainsPlanTrait, ContainsPreviousAttributesTrait;
+    use ContainsPlanTrait;
+    use ContainsPreviousAttributesTrait;
 }

@@ -12,7 +12,6 @@ namespace Shapin\Stripe\Api;
 use Shapin\Stripe\ErrorHandler;
 use Shapin\Stripe\HttpQueryBuilder;
 use Shapin\Stripe\Hydrator\Hydrator;
-use Shapin\Stripe\RequestBuilder;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
 

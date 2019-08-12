@@ -19,7 +19,8 @@ use Money\Money;
 
 final class LineItem implements CreatableFromArray, ContainsMetadata
 {
-    use LivemodeTrait, MetadataTrait;
+    use LivemodeTrait;
+    use MetadataTrait;
 
     const TYPE_INVOICE_ITEM = 'invoiceitem';
     const TYPE_SUBSCRIPTION = 'subscription';

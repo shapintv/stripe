@@ -11,5 +11,6 @@ namespace Shapin\Stripe\Model\Event;
 
 final class AccountExternalAccountUpdatedEvent implements ContainsExternalAccount, ContainsPreviousAttributes
 {
-    use ContainsExternalAccountTrait, ContainsPreviousAttributesTrait;
+    use ContainsExternalAccountTrait;
+    use ContainsPreviousAttributesTrait;
 }

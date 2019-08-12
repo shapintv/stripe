@@ -19,7 +19,8 @@ use Money\Money;
 
 final class Coupon implements CreatableFromArray, ContainsMetadata
 {
-    use LivemodeTrait, MetadataTrait;
+    use LivemodeTrait;
+    use MetadataTrait;
 
     const DURATION_FOREVER = 'forever';
     const DURATION_ONCE = 'once';

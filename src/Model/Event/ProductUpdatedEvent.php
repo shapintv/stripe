@@ -11,5 +11,6 @@ namespace Shapin\Stripe\Model\Event;
 
 final class ProductUpdatedEvent implements ContainsProduct, ContainsPreviousAttributes
 {
-    use ContainsProductTrait, ContainsPreviousAttributesTrait;
+    use ContainsProductTrait;
+    use ContainsPreviousAttributesTrait;
 }

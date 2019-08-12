@@ -57,7 +57,8 @@ final class Source implements CreatableFromArray, ContainsMetadata
     const USAGE_REUSABLE = 'reusable';
     const USAGE_SINGLE_USE = 'single_use';
 
-    use LivemodeTrait, MetadataTrait;
+    use LivemodeTrait;
+    use MetadataTrait;
 
     /**
      * @var string

@@ -9,7 +9,6 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Tests\FunctionalTests\Charge;
 
-use Shapin\Stripe\Model\Account\Account;
 use Shapin\Stripe\Model\Charge\Charge;
 use Shapin\Stripe\Model\MetadataCollection;
 use Shapin\Stripe\Model\Refund\Refund;

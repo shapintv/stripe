@@ -19,7 +19,8 @@ final class Product implements CreatableFromArray, ContainsMetadata
     const TYPE_GOOD = 'good';
     const TYPE_SERVICE = 'service';
 
-    use LivemodeTrait, MetadataTrait;
+    use LivemodeTrait;
+    use MetadataTrait;
 
     /**
      * @var string

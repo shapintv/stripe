@@ -9,7 +9,6 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Tests\FunctionalTests\SetupIntent;
 
-use Shapin\Stripe\Model\Charge\ChargeCollection;
 use Shapin\Stripe\Model\SetupIntent\SetupIntent;
 use Shapin\Stripe\Model\MetadataCollection;
 use Shapin\Stripe\Tests\FunctionalTests\TestCase;
