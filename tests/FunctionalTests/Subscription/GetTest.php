@@ -48,6 +48,7 @@ final class GetTest extends TestCase
         $this->assertNull($subscription->getDiscount());
         $this->assertSame(1234567890, $subscription->getEndedAt()->getTimestamp());
         $this->assertInstanceOf(ItemCollection::class, $subscription->getItems());
+        $this->assertNull($subscription->getLatestInvoiceId());
         $this->assertCount(1, $subscription->getItems());
         $this->assertFalse($subscription->isLive());
         $this->assertInstanceOf(MetadataCollection::class, $subscription->getMetadata());

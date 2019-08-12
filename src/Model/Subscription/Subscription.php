@@ -114,6 +114,11 @@ final class Subscription implements CreatableFromArray, ContainsMetadata
     private $items;
 
     /**
+     * @var ?string
+     */
+    private $latestInvoiceId;
+
+    /**
      * @var Plan
      */
     private $plan;
@@ -162,6 +167,7 @@ final class Subscription implements CreatableFromArray, ContainsMetadata
         $model->discount = isset($data['discount']) ? Discount::createFromArray($data['discount']) : null;
         $model->endedAt = null !== $data['ended_at'] ? new \DateTimeImmutable('@'.$data['ended_at']) : null;
         $model->items = ItemCollection::createFromArray($data['items']);
+        $model->latestInvoiceId = $data['latest_invoice'];
         $model->live = $data['livemode'];
         $model->metadata = MetadataCollection::createFromArray($data['metadata']);
         $model->plan = Plan::createFromArray($data['plan']);
@@ -322,6 +328,11 @@ final class Subscription implements CreatableFromArray, ContainsMetadata
     public function getItems(): ItemCollection
     {
         return $this->items;
+    }
+
+    public function getLatestInvoiceId(): ?string
+    {
+        return $this->latestInvoiceId;
     }
 
     public function getPlan(): Plan

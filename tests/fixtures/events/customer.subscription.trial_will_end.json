@@ -1,12 +1,12 @@
 {
   "created": 1326853478,
   "livemode": false,
-  "id": "customer.subscription.trial_00000000000000",
+  "id": "evt_00000000000000",
   "type": "customer.subscription.trial_will_end",
   "object": "event",
   "request": null,
   "pending_webhooks": 1,
-  "api_version": "2018-11-08",
+  "api_version": "2019-05-16",
   "data": {
     "object": {
       "id": "sub_00000000000000",
@@ -15,15 +15,19 @@
       "billing": "charge_automatically",
       "billing_cycle_anchor": 1549296189,
       "billing_thresholds": null,
+      "cancel_at": null,
       "cancel_at_period_end": false,
       "canceled_at": null,
+      "collection_method": "charge_automatically",
       "created": 1549296189,
-      "current_period_end": 1551715389,
-      "current_period_start": 1549296189,
+      "current_period_end": 1567612989,
+      "current_period_start": 1564934589,
       "customer": "cus_00000000000000",
       "days_until_due": null,
+      "default_payment_method": null,
       "default_source": null,
-      "default_tax_rates": [],
+      "default_tax_rates": [
+      ],
       "discount": null,
       "ended_at": null,
       "items": {
@@ -59,17 +63,21 @@
               "usage_type": "licensed"
             },
             "quantity": 1,
-            "subscription": "sub_00000000000000"
+            "subscription": "sub_00000000000000",
+            "tax_rates": [
+            ]
           }
         ],
         "has_more": false,
         "total_count": 1,
         "url": "/v1/subscription_items?subscription=sub_ET66shSN5vKSDe"
       },
+      "latest_invoice": "in_1F3mAyIpafQncvOMeAHc3r5u",
       "livemode": false,
       "metadata": {
         "member_id": "ad3bbc8d-afc0-416b-b0e0-834267566e73"
       },
+      "pending_setup_intent": null,
       "plan": {
         "id": "plan_00000000000000",
         "object": "plan",
@@ -93,10 +101,13 @@
         "usage_type": "licensed"
       },
       "quantity": 1,
+      "schedule": null,
       "start": 1549296189,
+      "start_date": 1549296189,
       "status": "trialing",
-      "trial_end": 1549698257,
-      "trial_start": 1549439057
+      "tax_percent": null,
+      "trial_end": 1565886082,
+      "trial_start": 1565626882
     }
   }
 }
