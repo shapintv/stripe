@@ -12,13 +12,15 @@ namespace Shapin\Stripe\Model\PaymentIntent;
 use Shapin\Stripe\Model\ContainsMetadata;
 use Shapin\Stripe\Model\Charge\ChargeCollection;
 use Shapin\Stripe\Model\CreatableFromArray;
+use Shapin\Stripe\Model\Intent;
+use Shapin\Stripe\Model\IntentNextAction;
 use Shapin\Stripe\Model\LivemodeTrait;
 use Shapin\Stripe\Model\MetadataTrait;
 use Shapin\Stripe\Model\MetadataCollection;
 use Money\Currency;
 use Money\Money;
 
-final class PaymentIntent implements CreatableFromArray, ContainsMetadata
+final class PaymentIntent extends Intent implements CreatableFromArray, ContainsMetadata
 {
     use LivemodeTrait;
     use MetadataTrait;
@@ -28,14 +30,6 @@ final class PaymentIntent implements CreatableFromArray, ContainsMetadata
 
     const CONFIRMATION_METHOD_AUTOMATIC = 'automatic';
     const CONFIRMATION_METHOD_MANUAL = 'manual';
-
-    const STATUS_REQUIRES_PAYMENT_METHOD = 'requires_payment_method';
-    const STATUS_REQUIRES_CONFIRMATION = 'requires_confirmation';
-    const STATUS_REQUIRES_ACTION = 'requires_action';
-    const STATUS_PROCESSING = 'processing';
-    const STATUS_REQUIRES_CAPTURE = 'requires_capture';
-    const STATUS_CANCELED = 'canceled';
-    const STATUS_SUCCEEDED = 'succeeded';
 
     /**
      * @var ?string
@@ -128,11 +122,6 @@ final class PaymentIntent implements CreatableFromArray, ContainsMetadata
     private $lastPaymentError;
 
     /**
-     * @var ?NextAction
-     */
-    private $nextAction;
-
-    /**
      * @var ?string
      */
     private $onBehalfOfId;
@@ -168,11 +157,6 @@ final class PaymentIntent implements CreatableFromArray, ContainsMetadata
     private $statementDescriptor;
 
     /**
-     * @var string
-     */
-    private $status;
-
-    /**
      * @var ?TransferData
      */
     private $transferData;
@@ -206,7 +190,7 @@ final class PaymentIntent implements CreatableFromArray, ContainsMetadata
         $model->lastPaymentError = isset($data['last_payment_error']) ? LastPaymentError::createFromArray($data['last_payment_error']) : null;
         $model->live = $data['livemode'];
         $model->metadata = MetadataCollection::createFromArray($data['metadata']);
-        $model->nextAction = isset($data['next_action']) ? NextAction::createFromArray($data['next_action']) : null;
+        $model->nextAction = isset($data['next_action']) ? IntentNextAction::createFromArray($data['next_action']) : null;
         $model->onBehalfOfId = $data['on_behalf_of'];
         $model->paymentMethodId = $data['payment_method'];
         $model->paymentMethodTypes = $data['payment_method_types'];
@@ -219,11 +203,6 @@ final class PaymentIntent implements CreatableFromArray, ContainsMetadata
         $model->transferGroup = $data['transfer_group'];
 
         return $model;
-    }
-
-    public function requiresAction(): bool
-    {
-        return self::STATUS_REQUIRES_ACTION === $this->status;
     }
 
     public function getId(): string
@@ -316,11 +295,6 @@ final class PaymentIntent implements CreatableFromArray, ContainsMetadata
         return $this->lastPaymentError;
     }
 
-    public function getNextAction(): ?NextAction
-    {
-        return $this->nextAction;
-    }
-
     public function getOnBehalfOfId(): ?string
     {
         return $this->onBehalfOfId;
@@ -354,11 +328,6 @@ final class PaymentIntent implements CreatableFromArray, ContainsMetadata
     public function getStatementDescriptor(): ?string
     {
         return $this->statementDescriptor;
-    }
-
-    public function getStatus(): string
-    {
-        return $this->status;
     }
 
     public function getTransferData(): ?TransferData

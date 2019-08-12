@@ -7,11 +7,11 @@ declare(strict_types=1);
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace Shapin\Stripe\Model\PaymentIntent;
+namespace Shapin\Stripe\Model;
 
 use Shapin\Stripe\Model\CreatableFromArray;
 
-final class NextAction implements CreatableFromArray
+final class IntentNextAction implements CreatableFromArray
 {
     const TYPE_REDIRECT_TO_URL = 'redirect_to_url';
     const TYPE_USE_STRIPE_SDK = 'use_stripe_sdk';

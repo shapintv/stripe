@@ -11,11 +11,13 @@ namespace Shapin\Stripe\Model\SetupIntent;
 
 use Shapin\Stripe\Model\ContainsMetadata;
 use Shapin\Stripe\Model\CreatableFromArray;
+use Shapin\Stripe\Model\Intent;
+use Shapin\Stripe\Model\IntentNextAction;
 use Shapin\Stripe\Model\LivemodeTrait;
 use Shapin\Stripe\Model\MetadataTrait;
 use Shapin\Stripe\Model\MetadataCollection;
 
-final class SetupIntent implements CreatableFromArray, ContainsMetadata
+final class SetupIntent extends Intent implements CreatableFromArray, ContainsMetadata
 {
     use LivemodeTrait;
     use MetadataTrait;
@@ -23,14 +25,6 @@ final class SetupIntent implements CreatableFromArray, ContainsMetadata
     const CANCELLATION_REASON_ABANDONED = 'abandoned';
     const CANCELLATION_REASON_REQUESTED_BY_CUSTOMER = 'requested_by_customer';
     const CANCELLATION_REASON_DUPLICATE = 'duplicate';
-
-    const STATUS_REQUIRES_PAYMENT_METHOD = 'requires_payment_method';
-    const STATUS_REQUIRES_CONFIRMATION = 'requires_confirmation';
-    const STATUS_REQUIRES_ACTION = 'requires_action';
-    const STATUS_PROCESSING = 'processing';
-    const STATUS_REQUIRES_CAPTURE = 'requires_capture';
-    const STATUS_CANCELED = 'canceled';
-    const STATUS_SUCCEEDED = 'succeeded';
 
     const USAGE_ON_SESSION = 'on_session';
     const USAGE_OFF_SESSION = 'off_session';
@@ -81,11 +75,6 @@ final class SetupIntent implements CreatableFromArray, ContainsMetadata
     private $lastSetupError;
 
     /**
-     * @var ?NextAction
-     */
-    private $nextAction;
-
-    /**
      * @var ?string
      */
     private $onBehalfOfId;
@@ -99,11 +88,6 @@ final class SetupIntent implements CreatableFromArray, ContainsMetadata
      * @var array
      */
     private $setupMethodTypes;
-
-    /**
-     * @var string
-     */
-    private $status;
 
     /**
      * @var string
@@ -123,7 +107,7 @@ final class SetupIntent implements CreatableFromArray, ContainsMetadata
         $model->lastSetupError = isset($data['last_setup_error']) ? LastSetupError::createFromArray($data['last_setup_error']) : null;
         $model->live = $data['livemode'];
         $model->metadata = MetadataCollection::createFromArray($data['metadata']);
-        $model->nextAction = isset($data['next_action']) ? NextAction::createFromArray($data['next_action']) : null;
+        $model->nextAction = isset($data['next_action']) ? IntentNextAction::createFromArray($data['next_action']) : null;
         $model->onBehalfOfId = $data['on_behalf_of'];
         $model->paymentMethodId = $data['payment_method'];
         $model->paymentMethodTypes = $data['payment_method_types'];
@@ -131,11 +115,6 @@ final class SetupIntent implements CreatableFromArray, ContainsMetadata
         $model->usage = $data['usage'];
 
         return $model;
-    }
-
-    public function requiresAction(): bool
-    {
-        return self::STATUS_REQUIRES_ACTION === $this->status;
     }
 
     public function getId(): string
@@ -178,11 +157,6 @@ final class SetupIntent implements CreatableFromArray, ContainsMetadata
         return $this->lastSetupError;
     }
 
-    public function getNextAction(): ?NextAction
-    {
-        return $this->nextAction;
-    }
-
     public function getOnBehalfOfId(): ?string
     {
         return $this->onBehalfOfId;
@@ -196,11 +170,6 @@ final class SetupIntent implements CreatableFromArray, ContainsMetadata
     public function getPaymentMethodTypes(): array
     {
         return $this->paymentMethodTypes;
-    }
-
-    public function getStatus(): string
-    {
-        return $this->status;
     }
 
     public function getUsage(): string
