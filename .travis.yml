@@ -13,7 +13,7 @@ php:
 env:
     global:
         - TEST_COMMAND="composer test"
-        - STRIPE_MOCK_VERSION=0.62.0
+        - STRIPE_MOCK_VERSION=0.63.0
 
 matrix:
     fast_finish: true
