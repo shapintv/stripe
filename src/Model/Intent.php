@@ -34,6 +34,11 @@ abstract class Intent
         return self::STATUS_REQUIRES_ACTION === $this->status;
     }
 
+    public function requiresPaymentMethod(): bool
+    {
+        return self::STATUS_REQUIRES_PAYMENT_METHOD === $this->status;
+    }
+
     public function getNextAction(): ?IntentNextAction
     {
         return $this->nextAction;
