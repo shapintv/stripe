@@ -119,6 +119,11 @@ final class Subscription implements CreatableFromArray, ContainsMetadata
     private $latestInvoiceId;
 
     /**
+     * @var ?string
+     */
+    private $pendingSetupIntentId;
+
+    /**
      * @var Plan
      */
     private $plan;
@@ -170,6 +175,7 @@ final class Subscription implements CreatableFromArray, ContainsMetadata
         $model->latestInvoiceId = $data['latest_invoice'];
         $model->live = $data['livemode'];
         $model->metadata = MetadataCollection::createFromArray($data['metadata']);
+        $model->pendingSetupIntentId = $data['pending_setup_intent'] ?? null;
         $model->plan = Plan::createFromArray($data['plan']);
         $model->quantity = (int) $data['quantity'];
         $model->startAt = new \DateTimeImmutable('@'.$data['start']);
@@ -333,6 +339,11 @@ final class Subscription implements CreatableFromArray, ContainsMetadata
     public function getLatestInvoiceId(): ?string
     {
         return $this->latestInvoiceId;
+    }
+
+    public function getPendingSetupIntentId(): ?string
+    {
+        return $this->pendingSetupIntentId;
     }
 
     public function getPlan(): Plan
