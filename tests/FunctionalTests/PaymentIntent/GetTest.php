@@ -46,7 +46,7 @@ final class GetTest extends TestCase
         $this->assertInstanceOf(ChargeCollection::class, $charges);
         $this->assertCount(1, $charges->getElements());
 
-        $this->assertSame('pi_1EoxNXIUzFSXAEcAkjvIz9IC_secret_S4tAHTYYcFJrNfCgmddzeFHpj', $paymentIntent->getClientSecret());
+        $this->assertSame('pi_1FFSmOLnOvDBaStmR6QrJW3W_secret_pzk57HslA7QcRjyxleKkdFT6B', $paymentIntent->getClientSecret());
         $this->assertSame(PaymentIntent::CONFIRMATION_METHOD_AUTOMATIC, $paymentIntent->getConfirmationMethod());
         $this->assertSame(1234567890, $paymentIntent->getCreatedAt()->getTimestamp());
         $this->assertSame('USD', (string) $paymentIntent->getCurrency());

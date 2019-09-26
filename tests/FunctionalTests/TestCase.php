@@ -26,7 +26,7 @@ abstract class TestCase extends BaseTestCase
             'auth_bearer' => self::API_KEY,
             'headers' => [
                 'Content-Type' => 'application/json',
-                'Stripe-Version' => '2019-05-16',
+                'Stripe-Version' => '2019-09-09',
             ],
         ]);
 

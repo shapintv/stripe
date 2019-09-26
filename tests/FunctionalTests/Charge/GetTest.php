@@ -30,7 +30,7 @@ final class GetTest extends TestCase
 
         $this->assertInstanceOf(Charge::class, $charge);
 
-        $this->assertSame('1099', $charge->getAmount()->getAmount());
+        $this->assertSame('100', $charge->getAmount()->getAmount());
         $this->assertSame('0', $charge->getAmountRefunded()->getAmount());
         $this->assertNull($charge->getApplication());
         $this->assertSame('0', $charge->getApplicationFee()->getAmount());
@@ -53,10 +53,10 @@ final class GetTest extends TestCase
         $this->assertNull($charge->getOrder());
         $this->assertNull($charge->getOutcome());
         $this->assertTrue($charge->isPaid());
-        $this->assertSame('pi_1EpHIkIUzFSXAEcAjtVLEF2j', $charge->getPaymentIntent());
+        $this->assertNull($charge->getPaymentIntent());
         $this->assertNull($charge->getReceiptEmail());
         $this->assertNull($charge->getReceiptNumber());
-        $this->assertSame('https://remi-manage-mydev.dev.stripe.me/receipts/acct_1EoxNNIUzFSXAEcA/ch_1EpHIkIUzFSXAEcAUTltbyYx/rcpt_FJv9BjgHRfhp6XMaKdYalM9EjyEC8LG', $charge->getReceiptUrl());
+        $this->assertSame('https://remi-manage-mydev.dev.stripe.me/receipts/acct_1FFSmGLnOvDBaStm/ch_1FFSmLLnOvDBaStmes6xKsRO/rcpt_Fkyj50BAezUsIMX0RCfCbXhpbpAF79f', $charge->getReceiptUrl());
         $this->assertFalse($charge->isRefunded());
         $this->assertInstanceOf(RefundCollection::class, $charge->getRefunds());
         $this->assertCount(1, $charge->getRefunds());
