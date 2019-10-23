@@ -84,7 +84,7 @@ final class Invoice implements CreatableFromArray, ContainsMetadata
     /**
      * @var string
      */
-    private $billing;
+    private $collectionMethod;
 
     /**
      * @var string
@@ -271,7 +271,7 @@ final class Invoice implements CreatableFromArray, ContainsMetadata
         $model->attemptCount = (int) $data['attempt_count'];
         $model->attempted = (bool) $data['attempted'];
         $model->autoAdvance = (bool) $data['auto_advance'];
-        $model->billing = $data['billing'];
+        $model->collectionMethod = $data['collection_method'];
         $model->billingReason = $data['billing_reason'];
         $model->charge = $data['charge'];
         $model->createdAt = new \DateTimeImmutable('@'.$data['created']);
@@ -353,7 +353,14 @@ final class Invoice implements CreatableFromArray, ContainsMetadata
 
     public function getBilling(): string
     {
-        return $this->billing;
+        @trigger_error('Calling the method getBilling is deprecated since Stripe API 2019-10-17. Use getCollectionMethod instead.', E_USER_DEPRECATED);
+
+        return $this->collectionMethod;
+    }
+
+    public function getCollectionMethod(): string
+    {
+        return $this->collectionMethod;
     }
 
     public function getBillingReason(): string

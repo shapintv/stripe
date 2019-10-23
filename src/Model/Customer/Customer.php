@@ -34,7 +34,7 @@ final class Customer implements CreatableFromArray, ContainsMetadata
     /**
      * @var int
      */
-    private $accountBalance;
+    private $balance;
 
     /**
      * @var \DateTimeImmutable
@@ -114,7 +114,7 @@ final class Customer implements CreatableFromArray, ContainsMetadata
     {
         $model = new self();
         $model->id = $data['id'];
-        $model->accountBalance = (int) $data['account_balance'];
+        $model->balance = (int) $data['balance'];
         $model->createdAt = new \DateTimeImmutable('@'.$data['created']);
         if (isset($data['currency'])) {
             $model->currency = new Currency(strtoupper($data['currency']));
@@ -150,7 +150,14 @@ final class Customer implements CreatableFromArray, ContainsMetadata
 
     public function getAccountBalance(): int
     {
-        return $this->accountBalance;
+        @trigger_error('Calling the method getAccountBalance is deprecated since Stripe API 2019-10-17. Use getBalance instead.', E_USER_DEPRECATED);
+
+        return $this->balance;
+    }
+
+    public function getBalance(): int
+    {
+        return $this->balance;
     }
 
     public function getCreatedAt(): \DateTimeImmutable

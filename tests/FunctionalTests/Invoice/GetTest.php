@@ -39,7 +39,7 @@ final class GetTest extends TestCase
         $this->assertSame(0, $invoice->getAttemptCount());
         $this->assertFalse($invoice->isAttempted());
         $this->assertTrue($invoice->isAutoAdvance());
-        $this->assertSame(Invoice::BILLING_CHARGE_AUTOMATICALLY, $invoice->getBilling());
+        $this->assertSame(Invoice::BILLING_CHARGE_AUTOMATICALLY, $invoice->getCollectionMethod());
         $this->assertSame(Invoice::BILLING_REASON_MANUAL, $invoice->getBillingReason());
         $this->assertNull($invoice->getCharge());
         $this->assertTrue(\is_int($invoice->getCreatedAt()->getTimestamp()));

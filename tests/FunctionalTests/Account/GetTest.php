@@ -46,7 +46,7 @@ final class GetTest extends TestCase
         $this->assertNull($businessProfile->getSupportUrl());
         $this->assertNull($businessProfile->getUrl());
         $this->assertNull($account->getBusinessType());
-        $this->assertSame([], $account->getCapabilities());
+        $this->assertSame(['card_payments' => 'active'], $account->getCapabilities());
         $this->assertFalse($account->areChargesEnabled());
         $this->assertSame('US', $account->getCountry());
         $this->assertSame(1234567890, $account->getCreatedAt()->getTimestamp());

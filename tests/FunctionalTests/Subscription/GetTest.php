@@ -31,7 +31,7 @@ final class GetTest extends TestCase
 
         $this->assertSame('sub_ERVlqYNDDX0sZR', $subscription->getId());
         $this->assertNull($subscription->getApplicationFeePercent());
-        $this->assertSame(Subscription::BILLING_CHARGE_AUTOMATICALLY, $subscription->getBilling());
+        $this->assertSame(Subscription::BILLING_CHARGE_AUTOMATICALLY, $subscription->getCollectionMethod());
         $this->assertTrue($subscription->isBilledAutomatically());
         $this->assertSame(1234567890, $subscription->getBillingCycleAnchor());
         $this->assertFalse($subscription->willBeCanceledAtPeriodEnd());

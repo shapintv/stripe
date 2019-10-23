@@ -32,7 +32,7 @@ final class GetTest extends TestCase
         $this->assertInstanceOf(Customer::class, $customer);
 
         $this->assertSame('cus_ERVlaeXFbkOLgD', $customer->getId());
-        $this->assertSame(0, $customer->getAccountBalance());
+        $this->assertSame(0, $customer->getBalance());
         $this->assertSame(1234567890, $customer->getCreatedAt()->getTimestamp());
         $this->assertSame('USD', (string) $customer->getCurrency());
         $this->assertNull($customer->getDefaultSource());

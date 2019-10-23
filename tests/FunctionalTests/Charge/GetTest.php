@@ -56,7 +56,7 @@ final class GetTest extends TestCase
         $this->assertNull($charge->getPaymentIntent());
         $this->assertNull($charge->getReceiptEmail());
         $this->assertNull($charge->getReceiptNumber());
-        $this->assertSame('https://remi-manage-mydev.dev.stripe.me/receipts/acct_1FFSmGLnOvDBaStm/ch_1FFSmLLnOvDBaStmes6xKsRO/rcpt_Fkyj50BAezUsIMX0RCfCbXhpbpAF79f', $charge->getReceiptUrl());
+        $this->assertRegExp('#https://.*/receipts/acct_.*/ch_.*/rcpt_.*#', $charge->getReceiptUrl());
         $this->assertFalse($charge->isRefunded());
         $this->assertInstanceOf(RefundCollection::class, $charge->getRefunds());
         $this->assertCount(1, $charge->getRefunds());

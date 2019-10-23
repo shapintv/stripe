@@ -46,7 +46,7 @@ final class Subscription implements CreatableFromArray, ContainsMetadata
     /**
      * @var string
      */
-    private $billing;
+    private $collectionMethod;
 
     /**
      * @var mixed
@@ -158,7 +158,7 @@ final class Subscription implements CreatableFromArray, ContainsMetadata
         $model = new self();
         $model->id = $data['id'];
         $model->applicationFeePercent = null !== $data['application_fee_percent'] ? (float) $data['application_fee_percent'] : null;
-        $model->billing = $data['billing'];
+        $model->collectionMethod = $data['collection_method'];
         $model->billingCycleAnchor = $data['billing_cycle_anchor'];
         $model->cancelAtPeriodEnd = (bool) $data['cancel_at_period_end'];
         $model->canceledAt = null !== $data['canceled_at'] ? new \DateTimeImmutable('@'.$data['canceled_at']) : null;
@@ -178,7 +178,7 @@ final class Subscription implements CreatableFromArray, ContainsMetadata
         $model->pendingSetupIntentId = $data['pending_setup_intent'] ?? null;
         $model->plan = Plan::createFromArray($data['plan']);
         $model->quantity = (int) $data['quantity'];
-        $model->startAt = new \DateTimeImmutable('@'.$data['start']);
+        $model->startAt = new \DateTimeImmutable('@'.$data['start_date']);
         $model->status = $data['status'];
         $model->trialEndAt = null !== $data['trial_end'] ? new \DateTimeImmutable('@'.$data['trial_end']) : null;
         $model->trialStartAt = null !== $data['trial_start'] ? new \DateTimeImmutable('@'.$data['trial_start']) : null;
@@ -188,7 +188,7 @@ final class Subscription implements CreatableFromArray, ContainsMetadata
 
     public function isBilledAutomatically(): bool
     {
-        return self::BILLING_CHARGE_AUTOMATICALLY === $this->billing;
+        return self::BILLING_CHARGE_AUTOMATICALLY === $this->collectionMethod;
     }
 
     public function isIncomplete(): bool
@@ -243,7 +243,14 @@ final class Subscription implements CreatableFromArray, ContainsMetadata
 
     public function getBilling(): string
     {
-        return $this->billing;
+        @trigger_error('Calling the method getBilling is deprecated since Stripe API 2019-10-17. Use getCollectionMethod instead.', E_USER_DEPRECATED);
+
+        return $this->collectionMethod;
+    }
+
+    public function getCollectionMethod(): string
+    {
+        return $this->collectionMethod;
     }
 
     public function getBillingCycleAnchor()
