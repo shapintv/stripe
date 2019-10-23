@@ -104,6 +104,8 @@ final class ErrorHandler
     ];
 
     public static $cardDeclinedCodes = [
+        'card_not_supported' => DomainExceptions\CardDeclined\CardNotSupportedException::class,
+        'expired_card' => DomainExceptions\CardDeclined\ExpiredCardException::class,
         'incorrect_cvc' => DomainExceptions\CardDeclined\IncorrectCvcException::class,
         'incorrect_number' => DomainExceptions\CardDeclined\IncorrectNumberException::class,
         'invalid_cvc' => DomainExceptions\CardDeclined\IncorrectCvcException::class,
