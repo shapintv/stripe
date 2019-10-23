@@ -30,7 +30,7 @@ final class Card implements CreatableFromArray, ContainsMetadata
     private $account;
 
     /**
-     * @var Address
+     * @var ?Address
      */
     private $address;
 
@@ -40,7 +40,7 @@ final class Card implements CreatableFromArray, ContainsMetadata
     private $availablePayoutMethods;
 
     /**
-     * @var string
+     * @var ?string
      */
     private $brand;
 
@@ -75,27 +75,27 @@ final class Card implements CreatableFromArray, ContainsMetadata
     private $dynamicLastFour;
 
     /**
-     * @var int
+     * @var ?int
      */
     private $expirationMonth;
 
     /**
-     * @var int
+     * @var ?int
      */
     private $expirationYear;
 
     /**
-     * @var string
+     * @var ?string
      */
     private $fingerprint;
 
     /**
-     * @var string
+     * @var ?string
      */
     private $funding;
 
     /**
-     * @var string
+     * @var ?string
      */
     private $lastFour;
 
@@ -119,24 +119,24 @@ final class Card implements CreatableFromArray, ContainsMetadata
         $model = new self();
         $model->id = $data['id'];
         $model->account = $data['account'] ?? null;
-        $model->address = Address::createFromArray($data);
+        $model->address = array_key_exists('address_city', $data) ? Address::createFromArray($data) : null;
         $model->availablePayoutMethods = $data['available_payout_methods'] ?? null;
-        $model->brand = $data['brand'];
+        $model->brand = $data['brand'] ?? null;
         $model->country = $data['country'];
         $model->currency = isset($data['currency']) ? new Currency(strtoupper($data['currency'])) : null;
-        $model->customer = $data['customer'];
-        $model->cvcCheck = $data['cvc_check'];
+        $model->customer = $data['customer'] ?? null;
+        $model->cvcCheck = $data['cvc_check'] ?? null;
         $model->defaultForCurrency = isset($data['default_for_currency']) ? (bool) $data['default_for_currency'] : null;
-        $model->dynamicLastFour = $data['dynamic_last4'];
-        $model->expirationMonth = (int) $data['exp_month'];
-        $model->expirationYear = (int) $data['exp_year'];
-        $model->fingerprint = $data['fingerprint'];
-        $model->funding = $data['funding'];
-        $model->lastFour = $data['last4'];
+        $model->dynamicLastFour = $data['dynamic_last4'] ?? null;
+        $model->expirationMonth = isset($data['exp_month']) ? (int) $data['exp_month'] : null;
+        $model->expirationYear = isset($data['exp_year']) ? (int) $data['exp_year'] : null;
+        $model->fingerprint = $data['fingerprint'] ?? null;
+        $model->funding = $data['funding'] ?? null;
+        $model->lastFour = $data['last4'] ?? null;
         $model->metadata = MetadataCollection::createFromArray($data['metadata']);
-        $model->name = $data['name'];
+        $model->name = $data['name'] ?? null;
         $model->recipient = $data['recipient'] ?? null;
-        $model->tokenizationMethod = $data['tokenization_method'];
+        $model->tokenizationMethod = $data['tokenization_method'] ?? null;
 
         return $model;
     }
@@ -151,7 +151,7 @@ final class Card implements CreatableFromArray, ContainsMetadata
         return $this->account;
     }
 
-    public function getAddress(): Address
+    public function getAddress(): ?Address
     {
         return $this->address;
     }
@@ -161,7 +161,7 @@ final class Card implements CreatableFromArray, ContainsMetadata
         return $this->availablePayoutMethods;
     }
 
-    public function getBrand(): string
+    public function getBrand(): ?string
     {
         return $this->brand;
     }
@@ -196,27 +196,27 @@ final class Card implements CreatableFromArray, ContainsMetadata
         return $this->dynamicLastFour;
     }
 
-    public function getExpirationMonth(): int
+    public function getExpirationMonth(): ?int
     {
         return $this->expirationMonth;
     }
 
-    public function getExpirationYear(): int
+    public function getExpirationYear(): ?int
     {
         return $this->expirationYear;
     }
 
-    public function getFingerprint(): string
+    public function getFingerprint(): ?string
     {
         return $this->fingerprint;
     }
 
-    public function getFunding(): string
+    public function getFunding(): ?string
     {
         return $this->funding;
     }
 
-    public function getLastFour(): string
+    public function getLastFour(): ?string
     {
         return $this->lastFour;
     }

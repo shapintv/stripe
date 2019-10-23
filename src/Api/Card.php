@@ -34,4 +34,14 @@ final class Card extends HttpApi
 
         return $this->hydrator->hydrate($response, CardCollection::class);
     }
+
+    /**
+     * @throws Exception
+     */
+    public function create(string $customerId, array $params)
+    {
+        $response = $this->httpPost("customers/$customerId/cards", $params);
+
+        return $this->hydrator->hydrate($response, CardModel::class);
+    }
 }
