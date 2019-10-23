@@ -66,4 +66,33 @@ final class ErrorHandlerTest extends TestCase
             yield [$key, $value];
         }
     }
+
+    /**
+     * @dataProvider cardDeclinedCodeProvider
+     */
+    public function testCardDeclinedErrors(string $declineCode, string $expectedException)
+    {
+        $this->expectException($expectedException);
+
+        $response = $this->prophesize(ResponseInterface::class);
+        $response->getContent(false)->willReturn(json_encode([
+            'error' => [
+                'code' => 'card_declined',
+                'decline_code' => $declineCode,
+                'message' => 'Just a test message',
+            ],
+        ]));
+        $response->getStatusCode()->willReturn(400);
+
+        (new ErrorHandler())->handle($response->reveal());
+    }
+
+    public function cardDeclinedCodeProvider()
+    {
+        foreach (ErrorHandler::$cardDeclinedCodes as $key => $value) {
+            yield [$key, $value];
+        }
+
+        yield ['invalid_amount', DomainExceptions\CardDeclinedException::class];
+    }
 }

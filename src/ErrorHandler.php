@@ -29,7 +29,6 @@ final class ErrorHandler
         'bank_account_unusable' => DomainExceptions\BadRequestException::class,
         'bank_account_unverified' => DomainExceptions\BadRequestException::class,
         'bitcoin_upgrade_required' => DomainExceptions\BadRequestException::class,
-        'card_declined' => DomainExceptions\CardDeclinedException::class,
         'charge_already_captured' => DomainExceptions\BadRequestException::class,
         'charge_already_refunded' => DomainExceptions\ChargeAlreadyRefundedException::class,
         'charge_disputed' => DomainExceptions\BadRequestException::class,
@@ -104,6 +103,14 @@ final class ErrorHandler
         'url_invalid' => DomainExceptions\BadRequestException::class,
     ];
 
+    public static $cardDeclinedCodes = [
+        'incorrect_cvc' => DomainExceptions\CardDeclined\IncorrectCvcException::class,
+        'incorrect_number' => DomainExceptions\CardDeclined\IncorrectNumberException::class,
+        'invalid_cvc' => DomainExceptions\CardDeclined\IncorrectCvcException::class,
+        'invalid_number' => DomainExceptions\CardDeclined\IncorrectNumberException::class,
+        'insufficient_funds' =>  DomainExceptions\CardDeclined\InsufficientFundsException::class,
+    ];
+
     public function handle(ResponseInterface $response): void
     {
         $data = json_decode($response->getContent(false), true);
@@ -122,11 +129,22 @@ final class ErrorHandler
 
         $errorCode = $data['error']['code'];
 
-        if (!\array_key_exists($errorCode, self::$errorCodes)) {
-            throw $this->getExceptionForStatusCode($response);
+        if (\array_key_exists($errorCode, self::$errorCodes)) {
+            throw new self::$errorCodes[$errorCode]($response);
         }
 
-        throw new self::$errorCodes[$errorCode]($response);
+        // We have a lot of decline codes for "card_declined" errors.
+        if ('card_declined' === $errorCode) {
+            $declineCode = $data['error']['decline_code'];
+
+            if (\array_key_exists($declineCode, self::$cardDeclinedCodes)) {
+                throw new self::$cardDeclinedCodes[$declineCode]($response);
+            }
+
+            throw new DomainExceptions\CardDeclinedException($response);
+        }
+
+        throw $this->getExceptionForStatusCode($response);
     }
 
     private function getExceptionForStatusCode(ResponseInterface $response): DomainException

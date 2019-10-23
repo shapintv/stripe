@@ -9,6 +9,6 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Exception\Domain;
 
-final class CardDeclinedException extends BadRequestException
+class CardDeclinedException extends BadRequestException
 {
 }
