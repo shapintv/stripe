@@ -181,6 +181,17 @@ final class EventBuilderTest extends TestCase
         $this->assertSame('invoice.payment_action_required', $event->getType());
     }
 
+    public function testCustomerCardCreatedEvent()
+    {
+        $data = json_decode(file_get_contents(__DIR__.'/fixtures/events/customer.card.created.json'), true);
+        $this->assertSame(\JSON_ERROR_NONE, json_last_error());
+
+        $this->assertSame('customer.source.created', $data['type']);
+
+        $event = (new EventBuilder())->createEventFromArray($data);
+        $this->assertSame('customer.source.created', $event->getType());
+    }
+
     /**
      * @dataProvider unsupportedEvents
      */

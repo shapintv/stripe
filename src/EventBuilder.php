@@ -37,7 +37,6 @@ final class EventBuilder
         'customer.discount.created' => Event\CustomerDiscountCreatedEvent::class,
         'customer.discount.deleted' => Event\CustomerDiscountDeletedEvent::class,
         'customer.discount.updated' => Event\CustomerDiscountUpdatedEvent::class,
-        'customer.source.created' => Event\CustomerSourceCreatedEvent::class,
         'customer.source.deleted' => Event\CustomerSourceDeletedEvent::class,
         'customer.source.expiring' => Event\CustomerSourceExpiringEvent::class,
         'customer.source.updated' => Event\CustomerSourceUpdatedEvent::class,
@@ -94,6 +93,14 @@ final class EventBuilder
 
         if (\array_key_exists($data['type'], $this->events)) {
             return \call_user_func($this->events[$data['type']].'::createFromArray', $data);
+        }
+
+        if ('customer.source.created' === $data['type']) {
+            if ('card' === $data['data']['object']['object']) {
+                return Event\CustomerCardCreatedEvent::createFromArray($data);
+            }
+
+            return Event\CustomerSourceCreatedEvent::createFromArray($data);
         }
 
         throw new InvalidArgumentException("Unable to process event: Event \"{$data['type']}\" is not supported yet.");
