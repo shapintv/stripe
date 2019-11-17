@@ -12,6 +12,7 @@ namespace Shapin\Stripe\Api;
 use Shapin\Stripe\Configuration;
 use Shapin\Stripe\Exception;
 use Shapin\Stripe\Model\Customer\Customer as CustomerModel;
+use Shapin\Stripe\Model\Customer\CustomerDeleted;
 use Shapin\Stripe\Model\Customer\CustomerCollection;
 use Symfony\Component\Config\Definition\Processor;
 
@@ -61,5 +62,15 @@ final class Customer extends HttpApi
         $response = $this->httpPost("customers/$id", $params);
 
         return $this->hydrator->hydrate($response, CustomerModel::class);
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function delete(string $id)
+    {
+        $response = $this->httpDelete("customers/$id");
+
+        return $this->hydrator->hydrate($response, CustomerDeleted::class);
     }
 }
