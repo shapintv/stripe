@@ -1,7 +1,7 @@
 .PHONY: ${TARGETS}
 .DEFAULT_GOAL := help
 
-STRIPE_MOCK_VERSION=0.70.0
+STRIPE_MOCK_VERSION=0.75.0
 
 define say_red =
     echo "\033[31m$1\033[0m"
