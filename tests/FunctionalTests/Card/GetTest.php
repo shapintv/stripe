@@ -47,7 +47,7 @@ final class GetTest extends TestCase
         $this->assertSame(8, $card->getExpirationMonth());
         $this->assertSame(2020, $card->getExpirationYear());
         $this->assertIsString($card->getFingerprint());
-        $this->assertSame('unknown', $card->getFunding());
+        $this->assertSame('credit', $card->getFunding());
         $this->assertSame('4242', $card->getLastFour());
         $this->assertInstanceOf(MetadataCollection::class, $card->getMetadata());
         $this->assertCount(0, $card->getMetadata());

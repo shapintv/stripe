@@ -46,7 +46,7 @@ final class GetTest extends TestCase
         $this->assertNull($businessProfile->getSupportUrl());
         $this->assertNull($businessProfile->getUrl());
         $this->assertNull($account->getBusinessType());
-        $this->assertSame(['card_payments' => 'active'], $account->getCapabilities());
+        $this->assertSame(['card_payments' => 'active', 'transfers' => 'active'], $account->getCapabilities());
         $this->assertFalse($account->areChargesEnabled());
         $this->assertSame('US', $account->getCountry());
         $this->assertSame(1234567890, $account->getCreatedAt()->getTimestamp());
@@ -63,7 +63,7 @@ final class GetTest extends TestCase
         $requirements = $account->getRequirements();
         $this->assertInstanceOf(Requirements::class, $requirements);
         $this->assertNull($requirements->getCurrentDeadline());
-        $this->assertCount(12, $requirements->getCurrentlyDue());
+        $this->assertCount(6, $requirements->getCurrentlyDue());
         $this->assertSame('requirements.past_due', $requirements->getDisabledReason());
         $this->assertCount(6, $requirements->getEventuallyDue());
         $this->assertCount(0, $requirements->getPastDue());
