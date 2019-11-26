@@ -115,7 +115,7 @@ class SubscriptionUpdate implements ConfigurationInterface
                 ->integerNode('proration_date')
                     ->info('If set, the proration will be calculated as though the subscription was updated at the given time. This can be used to apply exactly the same proration that was previewed with upcoming invoice endpoint. It can also be used to implement custom proration logic, such as prorating by day instead of by second, by providing the time that you wish to use for proration calculations.')
                 ->end()
-                ->integerNode('trial_end')
+                ->scalarNode('trial_end')
                     ->info('Unix timestamp representing the end of the trial period the customer will get before being charged for the first time. This will always overwrite any trials that might apply via a subscribed plan. If set, trial_end will override the default trial period of the plan the customer is being subscribed to. The special value now can be provided to end the customer’s trial immediately.')
                 ->end()
                 ->booleanNode('trial_from_plan')
