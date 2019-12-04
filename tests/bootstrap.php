@@ -29,7 +29,7 @@ if (null === $version) {
     exit(1);
 }
 
-if ('master' != $version && -1 == version_compare($version, '0.33.0')) {
-    echo "Your version of stripe-mock ($version) is too old. The minimum version to run this test suite is 0.33.0.\n";
+if ('master' != $version && -1 == version_compare($version, '0.78.0')) {
+    echo "Your version of stripe-mock ($version) is too old. The minimum version to run this test suite is 0.78.0.\n";
     exit(1);
 }
