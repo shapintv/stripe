@@ -9,9 +9,9 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Tests\FunctionalTests\Balance;
 
+use Money\Money;
 use Shapin\Stripe\Model\Balance\BalanceTransaction;
 use Shapin\Stripe\Tests\FunctionalTests\TestCase;
-use Money\Money;
 
 final class GetBalanceTransactionTest extends TestCase
 {

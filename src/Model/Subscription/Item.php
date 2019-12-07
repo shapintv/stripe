@@ -11,8 +11,8 @@ namespace Shapin\Stripe\Model\Subscription;
 
 use Shapin\Stripe\Model\ContainsMetadata;
 use Shapin\Stripe\Model\CreatableFromArray;
-use Shapin\Stripe\Model\MetadataTrait;
 use Shapin\Stripe\Model\MetadataCollection;
+use Shapin\Stripe\Model\MetadataTrait;
 use Shapin\Stripe\Model\Plan\Plan;
 
 final class Item implements CreatableFromArray, ContainsMetadata

@@ -9,11 +9,11 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Model\Card;
 
+use Money\Currency;
 use Shapin\Stripe\Model\ContainsMetadata;
 use Shapin\Stripe\Model\CreatableFromArray;
-use Shapin\Stripe\Model\MetadataTrait;
 use Shapin\Stripe\Model\MetadataCollection;
-use Money\Currency;
+use Shapin\Stripe\Model\MetadataTrait;
 
 final class Card implements CreatableFromArray, ContainsMetadata
 {
@@ -119,7 +119,7 @@ final class Card implements CreatableFromArray, ContainsMetadata
         $model = new self();
         $model->id = $data['id'];
         $model->account = $data['account'] ?? null;
-        $model->address = array_key_exists('address_city', $data) ? Address::createFromArray($data) : null;
+        $model->address = \array_key_exists('address_city', $data) ? Address::createFromArray($data) : null;
         $model->availablePayoutMethods = $data['available_payout_methods'] ?? null;
         $model->brand = $data['brand'] ?? null;
         $model->country = $data['country'];

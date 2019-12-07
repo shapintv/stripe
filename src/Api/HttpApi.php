@@ -17,24 +17,9 @@ use Symfony\Contracts\HttpClient\ResponseInterface;
 
 abstract class HttpApi
 {
-    /**
-     * @var HttpClient
-     */
     protected $httpClient;
-
-    /**
-     * @var Hydrator
-     */
     protected $hydrator;
-
-    /**
-     * @var HttpQueryBuilder
-     */
     protected $httpQueryBuilder;
-
-    /**
-     * @var ErrorHandler
-     */
     protected $errorHandler;
 
     public function __construct(HttpClientInterface $httpClient, Hydrator $hydrator, HttpQueryBuilder $httpQueryBuilder = null, ErrorHandler $errorHandler = null)

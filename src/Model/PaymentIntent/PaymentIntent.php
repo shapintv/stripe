@@ -9,16 +9,16 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Model\PaymentIntent;
 
-use Shapin\Stripe\Model\ContainsMetadata;
+use Money\Currency;
+use Money\Money;
 use Shapin\Stripe\Model\Charge\ChargeCollection;
+use Shapin\Stripe\Model\ContainsMetadata;
 use Shapin\Stripe\Model\CreatableFromArray;
 use Shapin\Stripe\Model\Intent;
 use Shapin\Stripe\Model\IntentNextAction;
 use Shapin\Stripe\Model\LivemodeTrait;
-use Shapin\Stripe\Model\MetadataTrait;
 use Shapin\Stripe\Model\MetadataCollection;
-use Money\Currency;
-use Money\Money;
+use Shapin\Stripe\Model\MetadataTrait;
 
 final class PaymentIntent extends Intent implements CreatableFromArray, ContainsMetadata
 {

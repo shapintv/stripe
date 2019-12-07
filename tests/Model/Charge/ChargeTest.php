@@ -9,12 +9,12 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Tests\Model\Charge;
 
+use PHPUnit\Framework\TestCase;
 use Shapin\Stripe\Model\Charge\Charge;
 use Shapin\Stripe\Model\Charge\Outcome;
 use Shapin\Stripe\Model\MetadataCollection;
 use Shapin\Stripe\Model\Refund\RefundCollection;
 use Shapin\Stripe\Model\Source\Source;
-use PHPUnit\Framework\TestCase;
 
 class ChargeTest extends TestCase
 {

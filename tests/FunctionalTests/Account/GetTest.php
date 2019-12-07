@@ -58,7 +58,6 @@ final class GetTest extends TestCase
         $this->assertInstanceOf(BankAccount::class, $account->getExternalAccounts()[0]);
         $this->assertInstanceOf(MetadataCollection::class, $account->getMetadata());
         $this->assertCount(0, $account->getMetadata());
-        $this->assertNull($account->getIndividual());
         $this->assertFalse($account->arePayoutsEnabled());
         $requirements = $account->getRequirements();
         $this->assertInstanceOf(Requirements::class, $requirements);

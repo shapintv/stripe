@@ -12,6 +12,7 @@ namespace Shapin\Stripe\Tests;
 use PHPUnit\Framework\TestCase;
 use Shapin\Stripe\EventBuilder;
 use Shapin\Stripe\Exception\InvalidArgumentException;
+use Shapin\Stripe\Model\Event;
 use Symfony\Component\HttpFoundation\Request;
 
 final class EventBuilderTest extends TestCase

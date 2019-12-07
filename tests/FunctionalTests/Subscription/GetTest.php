@@ -9,9 +9,9 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Tests\FunctionalTests\Subscription;
 
+use Shapin\Stripe\Model\MetadataCollection;
 use Shapin\Stripe\Model\Subscription\ItemCollection;
 use Shapin\Stripe\Model\Subscription\Subscription;
-use Shapin\Stripe\Model\MetadataCollection;
 use Shapin\Stripe\Tests\FunctionalTests\TestCase;
 
 final class GetTest extends TestCase

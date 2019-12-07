@@ -9,20 +9,13 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe;
 
-use Shapin\Stripe\Hydrator\ModelHydrator;
 use Shapin\Stripe\Hydrator\Hydrator;
+use Shapin\Stripe\Hydrator\ModelHydrator;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 final class StripeClient
 {
-    /**
-     * @var HttpClient
-     */
     private $httpClient;
-
-    /**
-     * @var Hydrator
-     */
     private $hydrator;
 
     /**

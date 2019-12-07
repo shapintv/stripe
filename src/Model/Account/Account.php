@@ -9,11 +9,11 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Model\Account;
 
+use Money\Currency;
 use Shapin\Stripe\Model\ContainsMetadata;
 use Shapin\Stripe\Model\CreatableFromArray;
-use Shapin\Stripe\Model\MetadataTrait;
 use Shapin\Stripe\Model\MetadataCollection;
-use Money\Currency;
+use Shapin\Stripe\Model\MetadataTrait;
 
 final class Account implements CreatableFromArray, ContainsMetadata
 {
@@ -86,11 +86,6 @@ final class Account implements CreatableFromArray, ContainsMetadata
     private $externalAccounts;
 
     /**
-     * @var ?Individual
-     */
-    private $individual;
-
-    /**
      * @var bool
      */
     private $payoutsEnabled;
@@ -130,7 +125,6 @@ final class Account implements CreatableFromArray, ContainsMetadata
         $model->detailsSubmitted = (bool) $data['details_submitted'];
         $model->email = $data['email'];
         $model->externalAccounts = ExternalAccountCollection::createFromArray($data['external_accounts'] ?? []);
-        $model->individual = isset($data['individual']) ? Individual::createFromArray($data['individual']) : null;
         $model->metadata = MetadataCollection::createFromArray($data['metadata'] ?? [] ?? []);
         $model->payoutsEnabled = (bool) $data['payouts_enabled'];
         $model->requirements = isset($data['requirements']) ? Requirements::createFromArray($data['requirements']) : null;
@@ -199,11 +193,6 @@ final class Account implements CreatableFromArray, ContainsMetadata
     public function getExternalAccounts(): ExternalAccountCollection
     {
         return $this->externalAccounts;
-    }
-
-    public function getIndividual(): ?Individual
-    {
-        return $this->individual;
     }
 
     public function arePayoutsEnabled(): bool

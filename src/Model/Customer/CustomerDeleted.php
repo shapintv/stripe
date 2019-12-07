@@ -9,17 +9,7 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Model\Customer;
 
-use Shapin\Stripe\Exception\LogicException;
-use Shapin\Stripe\Model\ContainsMetadata;
 use Shapin\Stripe\Model\CreatableFromArray;
-use Shapin\Stripe\Model\LivemodeTrait;
-use Shapin\Stripe\Model\MetadataTrait;
-use Shapin\Stripe\Model\MetadataCollection;
-use Shapin\Stripe\Model\Source\Source;
-use Shapin\Stripe\Model\Source\SourceCollection;
-use Shapin\Stripe\Model\Subscription\Subscription;
-use Shapin\Stripe\Model\Subscription\SubscriptionCollection;
-use Money\Currency;
 
 final class CustomerDeleted implements CreatableFromArray
 {

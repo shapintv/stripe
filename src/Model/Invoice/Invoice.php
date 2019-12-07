@@ -9,15 +9,15 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Model\Invoice;
 
+use Money\Currency;
+use Money\Money;
 use Shapin\Stripe\Model\ContainsMetadata;
 use Shapin\Stripe\Model\CreatableFromArray;
 use Shapin\Stripe\Model\Customer\CustomField;
 use Shapin\Stripe\Model\Discount\Discount;
 use Shapin\Stripe\Model\LivemodeTrait;
-use Shapin\Stripe\Model\MetadataTrait;
 use Shapin\Stripe\Model\MetadataCollection;
-use Money\Currency;
-use Money\Money;
+use Shapin\Stripe\Model\MetadataTrait;
 
 final class Invoice implements CreatableFromArray, ContainsMetadata
 {

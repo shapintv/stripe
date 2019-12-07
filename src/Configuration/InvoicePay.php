@@ -9,7 +9,6 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Configuration;
 
-use Shapin\Stripe\Model\Invoice\Invoice;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
