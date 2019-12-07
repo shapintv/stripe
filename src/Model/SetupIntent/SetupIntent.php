@@ -14,8 +14,8 @@ use Shapin\Stripe\Model\CreatableFromArray;
 use Shapin\Stripe\Model\Intent;
 use Shapin\Stripe\Model\IntentNextAction;
 use Shapin\Stripe\Model\LivemodeTrait;
-use Shapin\Stripe\Model\MetadataTrait;
 use Shapin\Stripe\Model\MetadataCollection;
+use Shapin\Stripe\Model\MetadataTrait;
 
 final class SetupIntent extends Intent implements CreatableFromArray, ContainsMetadata
 {
@@ -70,11 +70,6 @@ final class SetupIntent extends Intent implements CreatableFromArray, ContainsMe
     private $description;
 
     /**
-     * @var ?LastSetupError
-     */
-    private $lastSetupError;
-
-    /**
      * @var ?string
      */
     private $onBehalfOfId;
@@ -87,7 +82,7 @@ final class SetupIntent extends Intent implements CreatableFromArray, ContainsMe
     /**
      * @var array
      */
-    private $setupMethodTypes;
+    private $paymentMethodTypes;
 
     /**
      * @var string
@@ -104,7 +99,6 @@ final class SetupIntent extends Intent implements CreatableFromArray, ContainsMe
         $model->createdAt = new \DateTimeImmutable('@'.$data['created']);
         $model->customerId = $data['customer'];
         $model->description = $data['description'];
-        $model->lastSetupError = isset($data['last_setup_error']) ? LastSetupError::createFromArray($data['last_setup_error']) : null;
         $model->live = $data['livemode'];
         $model->metadata = MetadataCollection::createFromArray($data['metadata']);
         $model->nextAction = isset($data['next_action']) ? IntentNextAction::createFromArray($data['next_action']) : null;
@@ -150,11 +144,6 @@ final class SetupIntent extends Intent implements CreatableFromArray, ContainsMe
     public function getDescription(): ?string
     {
         return $this->description;
-    }
-
-    public function getLastSetupError(): ?LastSetupError
-    {
-        return $this->lastSetupError;
     }
 
     public function getOnBehalfOfId(): ?string

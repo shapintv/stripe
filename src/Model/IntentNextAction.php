@@ -9,8 +9,6 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Model;
 
-use Shapin\Stripe\Model\CreatableFromArray;
-
 final class IntentNextAction implements CreatableFromArray
 {
     const TYPE_REDIRECT_TO_URL = 'redirect_to_url';

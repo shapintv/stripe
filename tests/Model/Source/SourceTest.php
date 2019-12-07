@@ -9,11 +9,11 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Tests\Model\Source;
 
+use PHPUnit\Framework\TestCase;
+use Shapin\Stripe\Model\MetadataCollection;
 use Shapin\Stripe\Model\Source\Card;
 use Shapin\Stripe\Model\Source\Owner;
 use Shapin\Stripe\Model\Source\Source;
-use Shapin\Stripe\Model\MetadataCollection;
-use PHPUnit\Framework\TestCase;
 
 class SourceTest extends TestCase
 {

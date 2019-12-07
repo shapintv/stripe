@@ -9,8 +9,8 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Tests\Model\Account;
 
-use Shapin\Stripe\Model\Account\ExternalAccountCollection;
 use PHPUnit\Framework\TestCase;
+use Shapin\Stripe\Model\Account\ExternalAccountCollection;
 
 class ExternalAccountCollectionTest extends TestCase
 {

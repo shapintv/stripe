@@ -9,8 +9,8 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Tests\FunctionalTests\Refund;
 
-use Shapin\Stripe\Model\Refund\Refund;
 use Shapin\Stripe\Model\MetadataCollection;
+use Shapin\Stripe\Model\Refund\Refund;
 use Shapin\Stripe\Tests\FunctionalTests\TestCase;
 
 final class GetTest extends TestCase

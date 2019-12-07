@@ -9,8 +9,8 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Tests\FunctionalTests\TaxRate;
 
-use Shapin\Stripe\Model\TaxRate\TaxRate;
 use Shapin\Stripe\Model\MetadataCollection;
+use Shapin\Stripe\Model\TaxRate\TaxRate;
 use Shapin\Stripe\Tests\FunctionalTests\TestCase;
 
 final class GetTest extends TestCase

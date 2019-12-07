@@ -4,7 +4,6 @@ return PhpCsFixer\Config::create()
     ->setRules([
         '@Symfony' => true,
         '@Symfony:risky' => true,
-        'array_syntax' => ['syntax' => 'short'],
         'declare_strict_types' => true,
     ])
     ->setRiskyAllowed(true)

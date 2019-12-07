@@ -9,9 +9,9 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Tests\FunctionalTests\Invoice;
 
+use Shapin\Stripe\Model\Invoice\Invoice;
 use Shapin\Stripe\Model\Invoice\LineItem;
 use Shapin\Stripe\Model\Invoice\LineItemCollection;
-use Shapin\Stripe\Model\Invoice\Invoice;
 use Shapin\Stripe\Model\Invoice\Period;
 use Shapin\Stripe\Model\MetadataCollection;
 use Shapin\Stripe\Tests\FunctionalTests\TestCase;

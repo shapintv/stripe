@@ -9,8 +9,8 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Tests\Model;
 
-use Shapin\Stripe\Model\MetadataCollection;
 use PHPUnit\Framework\TestCase;
+use Shapin\Stripe\Model\MetadataCollection;
 
 class MetadataCollectionTest extends TestCase
 {

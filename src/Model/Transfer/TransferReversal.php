@@ -9,12 +9,12 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Model\Transfer;
 
-use Shapin\Stripe\Model\ContainsMetadata;
-use Shapin\Stripe\Model\CreatableFromArray;
-use Shapin\Stripe\Model\MetadataTrait;
-use Shapin\Stripe\Model\MetadataCollection;
 use Money\Currency;
 use Money\Money;
+use Shapin\Stripe\Model\ContainsMetadata;
+use Shapin\Stripe\Model\CreatableFromArray;
+use Shapin\Stripe\Model\MetadataCollection;
+use Shapin\Stripe\Model\MetadataTrait;
 
 final class TransferReversal implements CreatableFromArray, ContainsMetadata
 {

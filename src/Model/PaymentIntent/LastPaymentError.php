@@ -48,6 +48,11 @@ final class LastPaymentError implements CreatableFromArray
     private $docUrl;
 
     /**
+     * @var string
+     */
+    private $message;
+
+    /**
      * @var ?string
      */
     private $param;
@@ -56,11 +61,6 @@ final class LastPaymentError implements CreatableFromArray
      * @var ?PaymentIntent
      */
     private $paymentIntent;
-
-    /**
-     * @var ?PaymentMethod
-     */
-    private $paymentMethod;
 
     /**
      * @var ?Source
@@ -77,9 +77,7 @@ final class LastPaymentError implements CreatableFromArray
         $model->docUrl = $data['doc_url'];
         $model->message = $data['message'];
         $model->param = $data['param'] ?? null;
-        $model->paymentIntent = isset($data['payment_intent']) ? PaymentIntent::createFromArray($data['payment_method']) : null;
-        // TODO: Deal with payment methods
-        //$model->paymentMethod = isset($data['payment_method']) ? PaymentMethod::createFromArray($data['payment_method']) : null;
+        $model->paymentIntent = isset($data['payment_intent']) ? PaymentIntent::createFromArray($data['payment_intent']) : null;
         $model->source = isset($data['source']) ? Source::createFromArray($data['source']) : null;
 
         return $model;
@@ -92,7 +90,7 @@ final class LastPaymentError implements CreatableFromArray
 
     public function getChargeId(): ?string
     {
-        return $this->charge;
+        return $this->chargeId;
     }
 
     public function getCode(): ?string
@@ -123,11 +121,6 @@ final class LastPaymentError implements CreatableFromArray
     public function getPaymentIntent(): ?PaymentIntent
     {
         return $this->paymentIntent;
-    }
-
-    public function getPaymentMethod(): ?PaymentMethod
-    {
-        return $this->paymentMethod;
     }
 
     public function getSource(): ?Source

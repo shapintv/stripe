@@ -13,8 +13,8 @@ use Shapin\Stripe\Model\ContainsMetadata;
 use Shapin\Stripe\Model\CreatableFromArray;
 use Shapin\Stripe\Model\Discount\Discount;
 use Shapin\Stripe\Model\LivemodeTrait;
-use Shapin\Stripe\Model\MetadataTrait;
 use Shapin\Stripe\Model\MetadataCollection;
+use Shapin\Stripe\Model\MetadataTrait;
 use Shapin\Stripe\Model\Plan\Plan;
 
 final class Subscription implements CreatableFromArray, ContainsMetadata

@@ -12,8 +12,8 @@ namespace Shapin\Stripe\Api;
 use Shapin\Stripe\Configuration;
 use Shapin\Stripe\Exception;
 use Shapin\Stripe\Model\Customer\Customer as CustomerModel;
-use Shapin\Stripe\Model\Customer\CustomerDeleted;
 use Shapin\Stripe\Model\Customer\CustomerCollection;
+use Shapin\Stripe\Model\Customer\CustomerDeleted;
 use Symfony\Component\Config\Definition\Processor;
 
 final class Customer extends HttpApi

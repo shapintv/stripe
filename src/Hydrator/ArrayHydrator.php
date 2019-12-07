@@ -17,12 +17,6 @@ use Symfony\Contracts\HttpClient\ResponseInterface;
  */
 final class ArrayHydrator implements Hydrator
 {
-    /**
-     * @param ResponseInterface $response
-     * @param string            $class
-     *
-     * @return array
-     */
     public function hydrate(ResponseInterface $response, string $class): array
     {
         if (!isset($response->getHeaders()['content-type'])) {

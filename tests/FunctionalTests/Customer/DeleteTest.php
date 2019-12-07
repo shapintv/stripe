@@ -10,10 +10,6 @@ declare(strict_types=1);
 namespace Shapin\Stripe\Tests\FunctionalTests\Customer;
 
 use Shapin\Stripe\Model\Customer\CustomerDeleted;
-use Shapin\Stripe\Model\Customer\InvoiceSettings;
-use Shapin\Stripe\Model\Source\SourceCollection;
-use Shapin\Stripe\Model\Subscription\Subscription;
-use Shapin\Stripe\Model\Subscription\SubscriptionCollection;
 use Shapin\Stripe\Tests\FunctionalTests\TestCase;
 
 final class DeleteTest extends TestCase

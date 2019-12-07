@@ -9,9 +9,9 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Model\Balance;
 
-use Shapin\Stripe\Model\CreatableFromArray;
 use Money\Currency;
 use Money\Money;
+use Shapin\Stripe\Model\CreatableFromArray;
 
 final class BalanceTransaction implements CreatableFromArray
 {

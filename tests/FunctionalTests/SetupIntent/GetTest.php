@@ -9,8 +9,8 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Tests\FunctionalTests\SetupIntent;
 
-use Shapin\Stripe\Model\SetupIntent\SetupIntent;
 use Shapin\Stripe\Model\MetadataCollection;
+use Shapin\Stripe\Model\SetupIntent\SetupIntent;
 use Shapin\Stripe\Tests\FunctionalTests\TestCase;
 
 final class GetTest extends TestCase
@@ -35,7 +35,6 @@ final class GetTest extends TestCase
         $this->assertSame(1234567890, $setupIntent->getCreatedAt()->getTimestamp());
         $this->assertNull($setupIntent->getCustomerId());
         $this->assertNull($setupIntent->getDescription());
-        $this->assertNull($setupIntent->getLastSetupError());
         $this->assertNull($setupIntent->getNextAction());
         $this->assertNull($setupIntent->getOnBehalfOfId());
         $this->assertNull($setupIntent->getPaymentMethodId());

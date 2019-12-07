@@ -9,17 +9,17 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Model\Charge;
 
+use Money\Currency;
+use Money\Money;
 use Shapin\Stripe\Model\Account\Account;
 use Shapin\Stripe\Model\Card\Card;
 use Shapin\Stripe\Model\ContainsMetadata;
 use Shapin\Stripe\Model\CreatableFromArray;
 use Shapin\Stripe\Model\LivemodeTrait;
-use Shapin\Stripe\Model\MetadataTrait;
 use Shapin\Stripe\Model\MetadataCollection;
+use Shapin\Stripe\Model\MetadataTrait;
 use Shapin\Stripe\Model\Refund\RefundCollection;
 use Shapin\Stripe\Model\Source\Source;
-use Money\Currency;
-use Money\Money;
 
 final class Charge implements CreatableFromArray, ContainsMetadata
 {

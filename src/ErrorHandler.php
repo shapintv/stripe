@@ -110,7 +110,7 @@ final class ErrorHandler
         'incorrect_number' => DomainExceptions\CardDeclined\IncorrectNumberException::class,
         'invalid_cvc' => DomainExceptions\CardDeclined\IncorrectCvcException::class,
         'invalid_number' => DomainExceptions\CardDeclined\IncorrectNumberException::class,
-        'insufficient_funds' =>  DomainExceptions\CardDeclined\InsufficientFundsException::class,
+        'insufficient_funds' => DomainExceptions\CardDeclined\InsufficientFundsException::class,
     ];
 
     public function handle(ResponseInterface $response): void

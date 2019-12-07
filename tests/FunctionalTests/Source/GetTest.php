@@ -9,11 +9,11 @@ declare(strict_types=1);
 
 namespace Shapin\Stripe\Tests\FunctionalTests\Source;
 
+use Shapin\Stripe\Model\MetadataCollection;
 use Shapin\Stripe\Model\Source\AchCreditTransfer;
 use Shapin\Stripe\Model\Source\Owner;
 use Shapin\Stripe\Model\Source\Receiver;
 use Shapin\Stripe\Model\Source\Source;
-use Shapin\Stripe\Model\MetadataCollection;
 use Shapin\Stripe\Tests\FunctionalTests\TestCase;
 
 final class GetTest extends TestCase

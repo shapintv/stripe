@@ -2,6 +2,8 @@
 .DEFAULT_GOAL := help
 
 STRIPE_MOCK_VERSION=0.78.0
+DIR := ${CURDIR}
+QA_IMAGE := jakzal/phpqa:php7.3-alpine
 
 define say_red =
     echo "\033[31m$1\033[0m"
@@ -41,7 +43,10 @@ test: ## Launch tests
 	@vendor/bin/phpunit
 
 cs-lint: ## Verify check styles
-	-vendor/bin/php-cs-fixer fix --dry-run --using-cache=no --verbose --diff
+	@docker run --rm -v $(DIR):/project -w /project $(QA_IMAGE) php-cs-fixer fix --diff-format udiff --dry-run -vvv
 
 cs-fix: ## Apply Check styles
-	-vendor/bin/php-cs-fixer fix --using-cache=no --verbose --diff
+	@docker run --rm -v $(DIR):/project -w /project $(QA_IMAGE) php-cs-fixer fix --diff-format udiff -vvv
+
+phpstan: ## Run PHPStan
+	@docker run --rm -v $(DIR):/project -w /project $(QA_IMAGE) phpstan analyse

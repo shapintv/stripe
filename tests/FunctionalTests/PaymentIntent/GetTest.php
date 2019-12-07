@@ -10,8 +10,8 @@ declare(strict_types=1);
 namespace Shapin\Stripe\Tests\FunctionalTests\PaymentIntent;
 
 use Shapin\Stripe\Model\Charge\ChargeCollection;
-use Shapin\Stripe\Model\PaymentIntent\PaymentIntent;
 use Shapin\Stripe\Model\MetadataCollection;
+use Shapin\Stripe\Model\PaymentIntent\PaymentIntent;
 use Shapin\Stripe\Tests\FunctionalTests\TestCase;
 
 final class GetTest extends TestCase
